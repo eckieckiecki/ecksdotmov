@@ -1,0 +1,126 @@
+
+.about-me {
+    color: black;
+    font-family: 'Sans Nouveaux';
+    text-rendering: 'optimizeLegibility';
+}
+.about-me-border {
+        width: 70%;
+        border-color: #ffffff;
+        font-size: 14px;
+        line-height: 1;
+        padding: 0 -30px 0 0;
+}
+.ECKS-NAME {
+  color: #ff0000;
+  font-family: 'arial';
+  font-size: 36px;
+  font-weight: bold;
+  -webkit-transition: .3s ease;
+  transition: .3s;
+  line-height: 1em;
+  
+  text-shadow:
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000;
+}
+.ECKS-NAME:hover {
+  font-size: 48px;
+}
+.ECKS-BIO {
+    color: #000000;
+    font-size: 12px;
+    -webkit-transition: .3s ease;
+    transition: .3s;
+    line-height: 1.3em;
+  }
+.bigdeal {
+  font-family: 'Pixeloid Sans Bold';
+  padding: 1%;
+  -webkit-transition: .3s ease;
+  transition: .2s;
+}
+.bigdeal:hover {
+  font-size: 14px;
+  padding: 2%;
+  line-height: 1.6;
+}
+h3 {
+    font-size: 2em;
+    margin: 0.5em 0;
+    text-align: center;
+    font-weight: bold;
+}
+
+.notepad {
+  color: black;
+}
+
+.notepad a:link {
+  color: rgb(100, 108, 255) !important;
+}
+
+.notepad-header {
+  font-family: 'Pixeloid Sans Bold';
+  font-size: 18px;
+  font-weight: bold;
+}
+
+
+.crt::before {
+  content: " ";
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+  z-index: 2;
+  background-size: 100% 2px, 3px 100%;
+  pointer-events: none;
+}
+
+@keyframes flicker {
+  0% {
+  opacity: 0.27861;
+  }
+  5% {
+  opacity: 0.34769;
+  }
+  10% {
+  opacity: 0.23604;
+  }
+  15% {
+  opacity: 0.10626;
+  }
+  20% {
+  opacity: 0.18128;
+  }
+  25% {
+  opacity: 0.10626;
+  }
+  30% {
+  opacity: 0.18128;
+  }
+  35% {
+  opacity: 0.23604;
+  }
+}
+
+.crt::after {
+  content: " ";
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(18, 16, 16, 0.1);
+  opacity: 0;
+  z-index: 2;
+  pointer-events: none;
+  animation: flicker 0.15s infinite;
+}

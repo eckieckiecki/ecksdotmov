@@ -1,0 +1,30 @@
+
+.icon {
+    -webkit-transition: .3s;
+    transition: .3s;
+}
+
+.icon:hover {
+    transform: scale(1.1);
+    margin-left: 8px;
+    margin-right: 8px;
+
+}
+.email {
+    -webkit-transition: .3s;
+    transition: .3s;
+    color: black;
+}
+.email:hover {
+    background-color: #393939;
+    color: #fcfcfc
+}
+.bottom-tag {
+    display: block;
+    line-height: 0.5;
+    width: 45%;
+    font-size: 8px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+  }
