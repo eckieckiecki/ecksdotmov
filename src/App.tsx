@@ -23,7 +23,7 @@ import Donate from './components/windows/Donate.tsx';
 import Credits from './components/windows/Credits.tsx';
 
 
-let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3];
+let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
 let randomNum = Math.floor(imageArr.length * Math.random());
 let randomImage = imageArr[randomNum];
 console.log(randomImage);

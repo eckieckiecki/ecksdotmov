@@ -17,33 +17,33 @@ const images = [
   },
 
   {
-    src: '/gallery/2025-uhuhuh.png',
+    src: '/gallery/2025-uhuhuh.jpg',
     alt: 'UHUHUH',
-    full: '/gallery/2025-uhuhuh.png',
+    full: '/gallery/2025-uhuhuh.jpg',
   },
 
   {
-    src: '/gallery/2025-vinyl.png',
+    src: '/gallery/2025-vinyl.jpg',
     alt: 'VINYL',
-    full: '/gallery/2025-vinyl.png',
+    full: '/gallery/2025-vinyl.jpg',
   },
 
   {
-    src: '/gallery/2025_bro-has-kickassia.png',
+    src: '/gallery/2025_bro-has-kickassia.jpg',
     alt: 'BRO-HAS-KICKASSIA',
-    full: '/gallery/2025_bro-has-kickassia.png',
+    full: '/gallery/2025_bro-has-kickassia.jpg',
   },
   
   {
-    src: '/gallery/2024-HBO.png',
+    src: '/gallery/2024-HBO.jpg',
     alt: 'HBO',
-    full: '/gallery/2024-HBO.png',
+    full: '/gallery/2024-HBO.jpg',
   },
 
   {
-    src: '/gallery/2024-firestar.png',
+    src: '/gallery/2024-firestar.jpg',
     alt: 'FIRESTAR',
-    full: '/gallery/2024-firestar.png',
+    full: '/gallery/2024-firestar.jpg',
   },
 
   {
@@ -53,9 +53,9 @@ const images = [
   },
 
   {
-    src: '/gallery/2024-sagsog.png',
+    src: '/gallery/2024-sagsog.jpg',
     alt: 'SAGSOG',
-    full: '/gallery/2024-sagsog.png',
+    full: '/gallery/2024-sagsog.jpg',
   },
 
   {
@@ -65,15 +65,15 @@ const images = [
   },
 
   {
-    src: '/gallery/2023-setup.png',
+    src: '/gallery/2023-setup.jpg',
     alt: 'SETUP',
-    full: '/gallery/2023-setup.png',
+    full: '/gallery/2023-setup.jpg',
   },
 
   {
-    src: '/gallery/2022-waffle.png',
+    src: '/gallery/2022-waffle.jpg',
     alt: 'WH',
-    full: '/gallery/2022-waffle.png',
+    full: '/gallery/2022-waffle.jpg',
   },
   
   
