@@ -48,7 +48,7 @@ const Donate = () => {
           </a>
         </div>
       </div>
-      <span className="bottom-tag" >- preciate it boss -</span>
+      <span className="bottom-tag" >- preciate it boss. -</span>
     </div></>
   );
 };

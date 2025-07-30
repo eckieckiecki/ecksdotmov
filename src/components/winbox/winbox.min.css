@@ -59,7 +59,7 @@
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   will-change: contents;
-  background: #fff;
+  background: #FDFDFD;
   margin-top: 0 !important;
   contain: strict;
   z-index: 0;

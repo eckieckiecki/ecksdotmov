@@ -65,7 +65,6 @@ const App = () => {
     return false;
   };
 
-
   const [showPreLoader, setShowPreLoader] = useState(true);
   const [showWelcome, setShowWelcome] = useState(false);
   const [open, TaskbarOpen] = useState(false);
@@ -145,7 +144,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://google.com", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -168,7 +167,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
     const CreditsContainer = document.createElement('div');
     CreditsContainer.className = 'terminal-winbox-body';
     new WinBox({
-      title: "~X/CREDITS.TXT/",
+      title: "~X/CREDITS.TXT",
       icon: images.notepad,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
@@ -227,9 +226,9 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
       icon: images.desktop_about,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
-      width: Math.min(450, window.innerWidth * 0.8) + "px", 
-      maxWidth: "475px",
-      height: Math.min(500, window.innerHeight * 0.7) + "px",
+      width: Math.min(440, window.innerWidth * 0.8) + "px", 
+      maxWidth: "440px",
+      height: Math.min(575, window.innerHeight * 0.7) + "px",
       maxHeight: "550px",
       x: WindowPosition('about'),
       y: "10%",
@@ -328,7 +327,12 @@ const GalleryRoot = ReactDOM.createRoot(GalleryContainer);
 GalleryRoot.render(<Gallery />);
   };
 
-
+ useEffect(() => {
+    Object.values(images).forEach(src => {
+      const img = new window.Image();
+      img.src = src;
+    });
+  }, []);
 
   return (
     <>
@@ -505,8 +509,8 @@ GalleryRoot.render(<Gallery />);
         
         style={{ right: 'auto', padding: '0.1rem', width: '140px', height: '40px', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#fff', backgroundColor: '#000', border: 'black inset 2px', borderRadius: '0.1rem', marginTop: 4, marginBottom: 4, marginRight: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} 
       >
-        <div>{timeString}</div>
-        <div style={{ fontSize: '1em', marginTop: 6 }}>{dateString}</div>
+        <div style={{ fontSize: '0.9em'}}>{timeString}</div>
+        <div style={{ fontSize: '0.9em', marginTop: 6 }}>{dateString}</div>
       </Frame>
       </Toolbar>
     </AppBar>

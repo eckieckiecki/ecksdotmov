@@ -46,6 +46,7 @@ declare module './images.js' {
         'youtube':youtube,
         'xitter':xitter,
         'instagram':instagram,
+        'steam':steam,
         'newgrounds':newgrounds,
 
         'tornada':tornada,
@@ -53,7 +54,6 @@ declare module './images.js' {
         'info':info,
         'pager':pager,
 
-        'steam':steam,
         'cashapp':cashapp,    
         'paypal':paypal,
         'moneyspin':moneyspin,

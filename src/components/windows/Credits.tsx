@@ -34,7 +34,10 @@ import '../../assets/images.js';
         <br />
         <span>
         Loading screen art by <a href="https://x.com/BappyKG" target="_blank">@BappyKG</a>
+        <br />
+        "About Me" illustration by <a href="https://www.instagram.com/coledawg2001/" target="_blank">@ColeDawg</a>
         </span>
+        
         <p>
         <span className="notepad-header">SPECIAL THANKS</span>
         <br />

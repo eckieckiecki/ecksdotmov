@@ -1,10 +1,31 @@
 .about-me {
     color: black
 }
+.bottom-tag {
+  color: black;
+}
+.gallery-bottom-tag {
+    color: black;
+    display: block;
+    line-height: 0.5;
+    width: 100%;
+    font-size: 8px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+}
 .gallery-header {
   text-align: center;
   margin: auto;
   margin-bottom: 8;
+}
+.gallery-header-title {
+  font-family: 'Pixeloid Sans Bold';
+}
+.gallery-header-subtitle {
+  font-family: 'Pixeloid Sans';
+  width: 90%;
+  margin: auto;
 }
 .gallery-grid {
     display: grid;

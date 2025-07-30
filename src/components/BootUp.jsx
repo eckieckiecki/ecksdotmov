@@ -34,7 +34,7 @@ const PreLoader = () => {
       alignItems: 'center',
       justifyContent: 'center'
     }}>
-        <img src={logo} className="monitor" alt="WELCOME" />
+        <img src={logo} className="monitor" alt="~X:/WEBSITE/ > BOOTING UP..." />
         <br></br>
         <div className="loading-bar-container" style={{
           width: 240,

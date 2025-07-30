@@ -5,7 +5,7 @@
     width: 100vw;
     z-index: 33;
     background: black;
-    color: white;
+    color: #fdfdfd;
     display: flex;
     position: fixed;
     text-align: center;

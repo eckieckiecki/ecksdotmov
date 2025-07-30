@@ -1,20 +1,60 @@
 
 .about-me {
+
     color: black;
     font-family: 'Sans Nouveaux';
-    text-rendering: 'optimizeLegibility';
+    line-height: 1.25em;
+    margin-top: 4px;
+    width: 100%;
 }
-.about-me-border {
-        width: 70%;
-        border-color: #ffffff;
-        font-size: 14px;
-        line-height: 1;
-        padding: 0 -30px 0 0;
+.about-header {
+  width: 100%;
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: 'Pixeloid Sans Bold';
+
+}
+.about-image {
+  width: auto;
+  height: 10%;
+  padding-right: 16px;
+}
+.about-tagline {
+  margin-left: 10px;
+  width: 100%;
+  display: flex;
+}
+.about-bio {
+  margin: 8px;
+  line-height: 1.3em;
+}
+.about-quote {
+  font-weight: bold;
+  font-family: 'arial';
+  font-size: 14px;
+  line-height: 1em;
+}
+.about-split {
+  width: 100%;
+  border-bottom: 2px solid #000;
+  margin: 4px 0 8px 0;
+}
+.about-content {
+        line-height: 1.25em;
+        border-color: #fdfdfd;
+        font-size: 8pt;
+        padding: 0 -15px 0 0;
+}
+.about-content .bio {
+  margin: 10px;
 }
 .ECKS-NAME {
   color: #ff0000;
+  background: linear-gradient(0deg,rgba(255, 21, 0, 1) 0%, rgba(135, 0, 0, 1) 100%);
+  background-clip: text;
   font-family: 'arial';
-  font-size: 36px;
+  font-size: 48px;
   font-weight: bold;
   -webkit-transition: .3s ease;
   transition: .3s;
@@ -27,17 +67,9 @@
     2px -2px 0 #000;
 }
 .ECKS-NAME:hover {
-  font-size: 48px;
+  font-size: 54px;
 }
-.ECKS-BIO {
-    color: #000000;
-    font-size: 12px;
-    -webkit-transition: .3s ease;
-    transition: .3s;
-    line-height: 1.3em;
-  }
 .bigdeal {
-  font-family: 'Pixeloid Sans Bold';
   padding: 1%;
   -webkit-transition: .3s ease;
   transition: .2s;
@@ -47,13 +79,6 @@
   padding: 2%;
   line-height: 1.6;
 }
-h3 {
-    font-size: 2em;
-    margin: 0.5em 0;
-    text-align: center;
-    font-weight: bold;
-}
-
 .notepad {
   color: black;
 }
@@ -124,3 +149,13 @@ h3 {
   pointer-events: none;
   animation: flicker 0.15s infinite;
 }
+.bottom-tag {
+    display: block;
+    text-rendering: optimizeLegibility;
+    line-height: 1;
+    width: 60%;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+  }

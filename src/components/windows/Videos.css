@@ -10,6 +10,7 @@ a:link, a:active { text-decoration: none; color: #970707 }
 }
 .my-videos img {
   image-rendering: pixelated;
+  filter: grayscale(28%);
 }
 .my-videos {
   font-family: 'Pixeloid Sans Bold';
@@ -48,25 +49,25 @@ a:link, a:active { text-decoration: none; color: #970707 }
 }
 
 .videos-featured, .videos-header {
-  background: linear-gradient(0deg,rgba(217, 217, 217, 1) 0%, rgba(117, 117, 117, 1) 50%, rgba(0, 0, 0, 1) 100%);
+  background: linear-gradient(0deg,rgb(84, 84, 84) 0%, rgba(117, 117, 117, 1) 50%, rgba(0, 0, 0, 1) 100%);
   text-shadow: 1px 1px 0 #000000;
-  border-bottom: 4px solid #808080;
+  border-bottom: 2px solid #d5d5d5;
     font-family: 'Pixeloid Sans';
+}
+.videos-header-subtitle {
+  text-shadow: 1px 1px 0 #000000;
 }
 .videos-header {
   border-bottom: 4px solid #808080;
-  text-shadow: 1px 1px 0 #fff;
-
+  text-shadow: 2px 2px 1px #000000;
 }
 .featured-video-title {
   font-family: 'Pixeloid Sans Bold';
-  border: 2px solid #fff;
-  font-size: 1.1em;
   text-shadow:
-    1px 1px 0 #000,
-    -1px 1px 0 #000,
-    -1px -1px 0 #000,
-    1px -1px 0 #000;
+    2px 2px 0 #000,
+    -2px 2px 0 #000,
+    -2px -2px 0 #000,
+    2px -2px 0 #000;
 }
 .crt::before {
     content: " ";
@@ -140,3 +141,12 @@ a:link, a:active { text-decoration: none; color: #970707 }
     gap: 10px;
   }
 }
+.bottom-tag {
+    display: block;
+    line-height: 0.5;
+    width: 60%;
+    font-size: 12px;
+    text-align: center;
+    align-items: center;
+    margin: auto;
+  }

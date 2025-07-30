@@ -114,7 +114,7 @@ body {
   transition: .3s;
 }
 .desktop-item a {
-  color: white !important;
+  color: #fdfdfd !important;
   -webkit-transition: .3s;
   transition: .3s;
 }
