@@ -96,6 +96,13 @@ const images = [
   },
 
   {
+    src: '/gallery/2023-mach-stoney.jpg',
+    alt: 'MACH-STONEY',
+    year: '2023',
+    full: '/gallery/2023-mach-stoney.jpg',
+  },
+
+  {
     src: '/gallery/2023-setup.jpg',
     alt: 'SETUP',
     year: '2023',
