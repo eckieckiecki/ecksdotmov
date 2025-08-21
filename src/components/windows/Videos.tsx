@@ -5,6 +5,7 @@ import featured_vhs from '../../assets/Featured-VHS.gif';
 
 const featured = [
   {
+  title: 'THE COLOR BROTHERS',
   description: 'Four colorful boys and their dad.',
   featuring: 'ColeDawg',
   featuring_link: 'https://www.instagram.com/coledawg2001/',
@@ -14,6 +15,17 @@ const featured = [
 const videos = [
   {
     id: 0,
+    title: 'BAKLAFA',
+    window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
+    alt_title: 'BAKLAVA is FUCKING AWESOME',
+    url: 'https://iframe.mediadelivery.net/embed/393622/23432bf3-b371-4a99-b45f-988a094e0d38?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    date: '06-2025',
+    description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
+    thumbnail: './thumbnails/baklafa.jpg',
+    isYouTube: false,
+  },
+  {
+    id: 1,
     title: 'THE COLOR BROTHERS',
     window_title: 'THE-COLOR-BROTHERS',
     alt_title: 'COLOR BROTHERS',
@@ -82,6 +94,17 @@ const videos = [
     isYouTube: true,
   },
   {
+    id: 7,
+    title: 'SAGGY AND SOGGY',
+    window_title: 'SAGGY-AND-SOGGY-SODIUM-CONNECTIONS',
+    alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
+    url: 'https://www.youtube.com/embed/RnXMoazSLo4',
+    date: '05-15-2020',
+    description: 'This ones pretty old but still means a lot to me. Originally wrote the first draft of the script for this in 2018 after a PlayStation party with a friend where we were discussing what a funny name for a cartoon would be and we decided on "Saggy and Soggy." I wanted to write something I wasnt used to writing before, an actual cartoon longer than 30 seconds. Looking at it now my writing was debatably as goofy as it is now but for different reasons. I had cutaway gags in this mix at some point. During a perfect time, Tornada just so happened to also form at this time and after a few months, fellow videomaster and partner-in-crime Pity Fowl offered to take over. He showed a lot more love to this project than I had originally and this is ultimately what led to his extended involvement. He finished the script and animated most of it while I offered a music video segment which was my first time using After Effects if you couldnt already tell along with lending some quick lines.', 
+    thumbnail: './thumbnails/sagsog.jpg',
+    isYouTube: true,
+  },
+  {
     id: 8,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'RIDETOSEVENELEVEN',
@@ -140,7 +163,7 @@ const Videos = () => {
     ${video.date} - <a href="${video.source}" target="_blank" style="color: #505050; text-decoration: none; font-size: 14px; margin-top: 8px;">Watch Original Here</a>
     
     <p style="color: #FDFDFD; padding-bottom: 0.5em;>Description:</p>
-    <p style="color: #FDFDFD; padding-bottom: 0.5em; line-height: 1em; border: 2px solid #FDFDFD;">${video.description}</p>
+    <p style="color: #FDFDFD; whiteSpace: 'pre-line'; padding-bottom: 0.5em; line-height: 1em; border: 2px solid #FDFDFD;">${video.description}</p>
     </div>
     `;
   };
@@ -166,12 +189,12 @@ const Videos = () => {
     cursor: 'pointer',
     lineHeight: 1,
   }}
-  onClick={() => openVideoWinBox(videos[0])}
+  onClick={() => openVideoWinBox(videos[1])}
 >
   <div style={{ display: 'flex', alignItems: 'center', }}>
     <img
       src={featured_vhs}
-      alt={videos[0].alt_title}
+      alt={featured[0].title}
       style={{
         width: 120,
         height: 140,
@@ -195,7 +218,7 @@ const Videos = () => {
       }}
     >
       <span>-  FEATURED </span>
-      <br></br><span>{videos[0].alt_title}</span>
+      <br></br><span>{featured[0].title}</span>
     </span>
   </div>
   <span
