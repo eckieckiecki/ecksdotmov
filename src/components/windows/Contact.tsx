@@ -13,7 +13,7 @@ const Contact = () => {
             <span className='icon'><a href='https://youtube.com/ecksposting' target="_blank"><img src={icons.youtube} alt="YouTube" style={{ width: 48, height: 48}} /></a></span>
             <span className='icon'><a href='https://instagram.com/ecksposting' target="_blank"><img src={icons.instagram} alt="Instagram" style={{ width: 48, height: 48}} /></a></span>
             <span className='icon'><a href='https://twitter.com/ecksposting' target="_blank"><img src={icons.xitter} alt="Xitter" style={{ width: 48, height: 48}} /></a></span>
-            <span className='icon'><a href='https://steamcommunity.com/ecksposting' target="_blank"><img src={icons.steam} alt="Steam" style={{ width: 48, height: 48}} /></a></span>
+            <span className='icon'><a href='https://steamcommunity.com/id/ecksposting' target="_blank"><img src={icons.steam} alt="Steam" style={{ width: 48, height: 48}} /></a></span>
             <span className='icon'><a href='https://eckslol.newgrounds.com' target="_blank"><img src={icons.newgrounds} alt="Newgrounds" style={{ width: 48, height: 48}} /></a></span>
             </div>
 

@@ -5,13 +5,13 @@ import '../../assets/images.js';
   const Credits = () => {
   return (
     <>
-      <div className='notepad' style={{ fontSize: 8, fontFamily: 'Sans Nouveaux', overflow: 'hidden', paddingLeft: 16, paddingRight: 16, textRendering: 'optimizeLegibility', lineHeight: 1.3}}>
+      <div className='notepad' style={{ fontSize: 8, fontFamily: 'Sans Nouveaux', overflow: 'hidden', paddingLeft: 16, paddingRight: 16, textRendering: 'optimizeLegibility', lineHeight: 1.4}}>
 
         <p>
         <span className="notepad-header">ADMIN</span>
         <br />
         <span>
-        Like most of what you see on here, this website was designed and built by the homeboy who's running it. He couldn't do it however without the help of:
+        Like most of what you see on here, this website was designed and built by the homeboy who's running it! He couldn't do it however without the help of:
         </span>
         </p>
 

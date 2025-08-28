@@ -108,7 +108,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
   const positions = {
     about: "10%",
     gallery: "50%",
-    videos: "40%",
+    videos: "25%",
     contact: "30%",
     donate: "50%",
     credits: "50%"
@@ -144,7 +144,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://google.com", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -456,45 +456,51 @@ GalleryRoot.render(<Gallery />);
     ref={menuRef}
     style={{
       position: 'absolute',
-      left: '0px',
-      bottom: '100%'
+      left: '-3px',
+      bottom: '80%',
     }}
     onClick={() => TaskbarOpen(false)}
   >
-              <MenuListItem className="taskbar-tab" onClick={openVideoWindow}>
+              <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
               <span role='img'>
                   <img src={images.desktop_videos} alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 VIDEOS
               </MenuListItem>
-              <MenuListItem className="taskbar-tab" onClick={openGalleryWindow}>
+              <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
                   <img src={images.desktop_gallery} alt="GALLERY" style={{ width: '20px', height: '20px',  margin: '0 15px -4px 0'}} />
                 </span>
-                PHOTOS
+                GALLERY
               </MenuListItem>
-              <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow}>
+              <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
                   <img src={images.desktop_about} alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 ABOUT
               </MenuListItem>
+              <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                <span role='img'>
+                  <img src={images.blog} alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                </span>
+                BLOG
+              </MenuListItem>
               <Separator />
-              <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')}>
+              <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
                   <img src={images.tornada} alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 TORNADA
               </MenuListItem>
               <Separator />
-              <MenuListItem className="taskbar-tab" onClick={openCreditsWindow}>
-                <span role='img' aria-label='📁'>
+              <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                <span role='img'>
                   <img src={images.notepad} alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
                 </span>
                 CREDITS
               </MenuListItem>
-              <MenuListItem disabled>
-                <span role='img' aria-label='🔙'> 
+              <MenuListItem disabled style={{fontFamily: 'Pixeloid Sans'}}>
+                <span role='img'> 
                   <img src={powerIMG} style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
                 </span>
                 SHUTDOWN

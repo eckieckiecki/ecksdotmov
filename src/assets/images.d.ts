@@ -24,6 +24,7 @@ declare module './images.js' {
   import notepad from '../assets/icons/notepad.png';
   import info from '../assets/icons/info.png';
   import pager from '../assets/icons/pager.png';
+  import blog from '../assets/icons/blog.png';
   
   import youtube from '../assets/icons/youtube.png';
   import xitter from '../assets/icons/xitter.png';
@@ -53,6 +54,7 @@ declare module './images.js' {
         'notepad':notepad,
         'info':info,
         'pager':pager,
+        'blog':blog,
 
         'cashapp':cashapp,    
         'paypal':paypal,

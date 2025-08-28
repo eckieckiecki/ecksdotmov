@@ -18,7 +18,7 @@ const videos = [
     title: 'BAKLAFA',
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
-    url: 'https://iframe.mediadelivery.net/embed/393622/23432bf3-b371-4a99-b45f-988a094e0d38?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    url: 'https://iframe.mediadelivery.net/embed/393622/72c5d760-6c3d-4f7f-b01f-4c0586212526?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     date: '06-2025',
     description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
     thumbnail: './thumbnails/baklafa.jpg',
@@ -44,7 +44,7 @@ const videos = [
     url: 'https://iframe.mediadelivery.net/embed/393622/2acc6b72-6566-40f0-abb7-b2716fbc272d?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: '',
     date: '11-24-2022',
-    description: 'Lyric video I did for my homegirl Lambs. Peace to bluvelv who is on the song as well.',
+    description: 'Lyric video I did for my homegirl Lambs. Threw this together in about a day, just in time for the album she had just released back then. Peace to bluvelv who is on the song as well.',
     thumbnail: './thumbnails/lambs.jpg',
     isYouTube: false,
   },
@@ -177,17 +177,7 @@ const Videos = () => {
       </div>
       <div className="videos-featured"
   style={{
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'flex-start',
-    justifyContent: 'center',
-    marginTop: 1,
-    padding: 4,
-    borderRadius: 0,
-    borderBottom: '2px solid black',
-    maxWidth: 480,
-    cursor: 'pointer',
-    lineHeight: 1,
+    display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', marginTop: 1, padding: 4, borderRadius: 0, borderBottom: '2px solid black', maxWidth: 480, cursor: 'pointer', lineHeight: 1,
   }}
   onClick={() => openVideoWinBox(videos[1])}
 >
@@ -196,41 +186,20 @@ const Videos = () => {
       src={featured_vhs}
       alt={featured[0].title}
       style={{
-        width: 120,
-        height: 140,
-        objectFit: 'contain',
-        paddingRight: 8,
-        marginTop: 4,
+        width: 120, height: 140, objectFit: 'contain', paddingRight: 8, marginTop: 4,
       }}
     />
     <span
       className="featured-video-title"
       style={{
-        paddingLeft: 4,
-        paddingRight: 16,
-        color: 'white',
-        fontSize: 26,
-        lineHeight: 1.25,
-        fontWeight: 'bold',
-        display: 'block',
-        width: '280px',
-        textWrap: 'wrap',
+        paddingLeft: 4, paddingRight: 16, color: 'white', fontSize: 26, lineHeight: 1.25, fontWeight: 'bold', display: 'block', width: '280px', textWrap: 'wrap',
       }}
     >
       <span>-  FEATURED </span>
       <br></br><span>{featured[0].title}</span>
     </span>
   </div>
-  <span
-    style={{
-      color: 'white',
-      fontSize: 14,
-      display: 'block',
-      marginTop: 12,
-      marginLeft: 2,
-      lineHeight: 1,
-    }}
-  >
+  <span style={{ color: 'white', fontSize: 14, display: 'block', marginTop: 12, marginLeft: 2, lineHeight: 1,}}>
     {featured[0].description} Art done by <a href={featured[0].featuring_link} target="_blank">@{featured[0].featuring}</a>
   </span>
 </div>

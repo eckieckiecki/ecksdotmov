@@ -18,6 +18,7 @@ import paypal from '../assets/icons/paypal.png';
 import tornada from '../assets/icons/tornada.png';
 import notepad from '../assets/icons/notepad.png';
 import info from '../assets/icons/info.png';
+import blog from '../assets/icons/blog.png';
 import pager from '../assets/icons/pager.png';
 
 import youtube from '../assets/icons/youtube.png';
@@ -45,6 +46,7 @@ export default {
     'notepad':notepad,
     'info':info,
     'pager':pager,
+    'blog':blog,
 
     'youtube':youtube,
     'xitter':xitter,

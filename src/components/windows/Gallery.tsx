@@ -1,14 +1,25 @@
 import './Gallery.css';
 import WinBox from '../winbox/winbox.min.jsx';
 import icons from '../../assets/images.js'; 
+import { useState } from 'react';
+
 
 const images = [
+
+  {
+    src: '/gallery/2025-search-thumb.jpg',
+    alt: 'INTERNET-SEARCH',
+    year: '2025',
+    full: '/gallery/2025-search.jpg',
+    tags: ['graphics']
+  },
 
   {
     src: '/gallery/2025-baklava-mockup-thumb.jpg',
     alt: 'BAKLAVA-AD-MOCKUP',
     year: '2025',
     full: '/gallery/2025-baklava-mockup.jpg',
+    tags: ['graphics']
   },
 
   {
@@ -16,6 +27,7 @@ const images = [
     alt: 'BAKLAVA.BLEND',
     year: '2025',
     full: '/gallery/2025-baklava-blend.jpg',
+    tags: ['graphics']
   },
 
   {
@@ -23,6 +35,7 @@ const images = [
     alt: 'TOM-Y-JERRY',
     year: '2025',
     full: '/gallery/2025-nada.gif',
+    tags: ['graphics']
   },
 
   {
@@ -30,6 +43,7 @@ const images = [
     alt: 'BANNER',
     year: '2025',
     full: '/gallery/2025-banner.jpg',
+    tags: ['graphics']
   },
 
   {
@@ -37,6 +51,7 @@ const images = [
     alt: 'CRANKDAT',
     year: '2025',
     full: '/gallery/2025_crankdat.jpg',
+    tags: ['music']
   },
 
   {
@@ -44,6 +59,7 @@ const images = [
     alt: 'UHUHUH',
     year: '2025',
     full: '/gallery/2025-uhuhuh.jpg',
+    tags: ['photos']
   },
 
   {
@@ -51,6 +67,7 @@ const images = [
     alt: 'VINYL',
     year: '2025',
     full: '/gallery/2025-vinyl.jpg',
+    tags: ['music']
   },
 
   {
@@ -58,13 +75,31 @@ const images = [
     alt: 'BRO-HAS-KICKASSIA',
     year: '2025',
     full: '/gallery/2025_bro-has-kickassia.jpg',
+    tags: ['music']
   },
   
+  {
+    src: '/gallery/2024-tape-mockup.jpg',
+    alt: 'SCRAPPED-TAPE-MOCKUP',
+    year: '2024',
+    full: '/gallery/2024-tape-mockup.jpg',
+    tags: ['graphics']
+  },
+
+  {
+    src: '/gallery/2024-be.jpg',
+    alt: 'BE',
+    year: '2024',
+    full: '/gallery/2024-be.jpg',
+    tags: ['music']
+  },
+
   {
     src: '/gallery/2024-HBO.jpg',
     alt: 'HBO',
     year: '2024',
     full: '/gallery/2024-HBO.jpg',
+    tags: ['music']
   },
 
   {
@@ -72,6 +107,7 @@ const images = [
     alt: 'FIRESTAR',
     year: '2024',
     full: '/gallery/2024-firestar.jpg',
+    tags: ['photos']
   },
 
   {
@@ -79,13 +115,15 @@ const images = [
     alt: 'THREEBEERSDEEP',
     year: '2024',
     full: '/gallery/2024-threebeersdeep.jpg',
+    tags: ['photos']
   },
 
   {
     src: '/gallery/2024-sagsog.jpg',
-    alt: 'SAGSOG',
+    alt: 'SAG-SOG',
     year: '2024',
     full: '/gallery/2024-sagsog.jpg',
+    tags: ['photos']
   },
 
   {
@@ -93,6 +131,7 @@ const images = [
     alt: 'BABYGREENONEARTH',
     year: '2024',
     full: '/gallery/2024-babygreen.jpg',
+    tags: ['photos']
   },
 
   {
@@ -100,6 +139,15 @@ const images = [
     alt: 'MACH-STONEY',
     year: '2023',
     full: '/gallery/2023-mach-stoney.jpg',
+    tags: ['graphics']
+  },
+
+  {
+    src: '/gallery/2023-orpheus-thumb.jpg',
+    alt: 'ORPHEUS',
+    year: '2023',
+    full: '/gallery/2023-orpheus.jpg',
+    tags: ['music']
   },
 
   {
@@ -107,6 +155,7 @@ const images = [
     alt: 'SETUP',
     year: '2023',
     full: '/gallery/2023-setup.jpg',
+    tags: ['photos']
   },
 
   {
@@ -114,12 +163,17 @@ const images = [
     alt: 'WH',
     year: '2022',
     full: '/gallery/2022-waffle.jpg',
+    tags: ['photos']
   },
   
   
 ];
 
+const TAGS = ['all', 'graphics', 'photos', 'music'];
+
 const Gallery = () => {
+  const [activeTag, setActiveTag] = useState('all');
+
   const handleDoubleClick = (img: typeof images[0]) => {
     const imgContainer = document.createElement('div');
     imgContainer.style.background = '#000';
@@ -163,15 +217,35 @@ const Gallery = () => {
       });
     };
   };
+
+  const filteredImages = activeTag === 'all'
+    ? images
+    : images.filter(img => img.tags && img.tags.includes(activeTag));
+
   return (
     <>
       <div className="gallery-header" style={{ color: 'black', fontSize: 40, margin: 4 }}>
         <p className="gallery-header-title">THE GALLERY</p>
-        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>A lil archive of photos I have taken, graphics I have made, photos of my record collection, various side-quests and more. Double click an image to view it in full size.</p>
-        <div className="line"></div>
+        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and more. Double click an image to view it in full size.</p>
+
+
+      <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
+        {TAGS.map(tag => (
+          <button
+            key={tag}
+            onClick={() => setActiveTag(tag)}
+            style={{
+              boxShadow: '0 2px 4px rgba(0,0,0,0.44)', fontFamily: 'Pixeloid Sans', padding: '6px 16px', borderRadius: 3, border: activeTag === tag ? '4px ridge #222' : '2px ridge #666565', background: activeTag === tag ? '#222' : '#f5f5f5', color: activeTag === tag ? '#f5f5f5' : '#222', fontWeight: activeTag === tag ? 'bold' : 'normal', cursor: 'pointer', outline: 'none',
+            }}
+          >
+            {tag.toUpperCase()}
+          </button>
+        ))}
+      </div>
+              <div className="line" />
       </div>
       <div
-  className="gallery-grid"
+        className="gallery-grid"
   style={{
     width: '98%',
     display: 'flex',
@@ -181,23 +255,12 @@ const Gallery = () => {
     marginBottom: 16,
   }}
 >
-  {images.map((img, idx) => (
+  {filteredImages.map((img, idx) => (
     <div
       key={idx}
       className="gallery-image-frame"
       style={{
-        aspectRatio: 'auto',
-        background: '#111',
-        border: '2px ridge #222',
-        margin: 'auto',
-        padding: 4,
-        display: 'flex',
-        objectFit: 'cover',
-        alignItems: 'center',
-        justifyContent: 'center',
-        maxWidth: 200,
-        maxHeight: 200,
-        cursor: 'pointer',
+        aspectRatio: 'auto', background: '#111', border: '2px ridge #222', margin: 'auto', padding: 4, display: 'flex', objectFit: 'cover', alignItems: 'center', justifyContent: 'center', maxWidth: 200, maxHeight: 200,cursor: 'pointer',
       }}
       onDoubleClick={() => handleDoubleClick(img)}
       title={img.alt}
@@ -207,13 +270,7 @@ const Gallery = () => {
         alt={img.alt}
         loading="lazy"
         style={{
-          background:'black',
-          aspectRatio: 'auto',
-          maxWidth: '200px',
-          maxHeight: '200px',
-          width: 'auto',
-          height: 'auto',
-          display: 'inline',
+          background:'black', aspectRatio: 'auto', maxWidth: '200px', maxHeight: '200px', width: 'auto', height: 'auto', display: 'inline',
         }}
       />
     </div>

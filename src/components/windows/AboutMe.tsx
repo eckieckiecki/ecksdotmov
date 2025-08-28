@@ -7,9 +7,10 @@ const quotes = [
 "self-driven creative powerhouse",
 "big boy with small dreams",
 "just a guy tbh",
-"you're doing a great job",
+"nothing but a wizard",
+"you're doing a great job!",
 "set the scene. 86 degrees.",
-"5'10 stand on my money now I'm 5'6",
+"5'10, stand on my money now I'm 5'6",
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -39,7 +40,7 @@ const AboutMe = () => {
   <p className="about-bio" style={{ width: '95%' }}>This site aims to be an archive of some of my best scraps, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
   </p>
   <p className="about-bio" style={{ width: '95%' }}>
-    Some of my other work can be found at <a href="https://tornada/net" target="_blank"><span className='bigdeal'>Tornada</span></a> - an animation supergroup with an all-star lineup of me and my relatives.
+    Some of my other work can be found at <a href="https://tornada.net" target="_blank"><span className='bigdeal'>Tornada</span></a> - an animation supergroup with an all-star lineup of me and my relatives.
   </p>
   <p className="about-bio" style={{ width: '95%' }}>
     At the end of the day, I simply just create the stuff that I wish to see and experience. To me that's the only compass that really makes sense.

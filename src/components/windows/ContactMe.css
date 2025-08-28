@@ -16,7 +16,7 @@
     color: black;
 }
 .email:hover {
-    background-color: #393939;
+    background: linear-gradient(0deg,rgba(57, 57, 57, 1) 0%, rgba(23, 23, 23, 1) 100%);
     color: #fcfcfc
 }
 .bottom-tag {
