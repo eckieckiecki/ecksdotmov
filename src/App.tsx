@@ -117,21 +117,34 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
   return positions[windowType];
 };
 
-  useEffect(() => {
-    if (window.location.pathname === '/donate') {
-      openDonateWindow();
-      setShowWelcome(false);
+useEffect(() => {
+  setShowPreLoader(true);
+  setShowWelcome(false);
+
+  const timer = setTimeout(() => {
+    setShowPreLoader(false);
+
+    switch (window.location.pathname) {
+      case '/donate':
+        openDonateWindow();
+        break;
+      case '/videos':
+        openVideoWindow();
+        break;
+      case '/gallery':
+        openGalleryWindow();
+        break;
+      case '/blog':
+        setShowWelcome(true); 
+        break;
+      default:
+        setShowWelcome(true);
+        break;
     }
-  }, []);
+  }, 6116);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowPreLoader(false);
-      setShowWelcome(true);
-    }, 6000);
-
-    return () => clearTimeout(timer);
-  }, []);
+  return () => clearTimeout(timer);
+}, []);
 
   useEffect(() => {
     if (showWelcome) {

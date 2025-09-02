@@ -19,6 +19,7 @@ const videos = [
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
     url: 'https://iframe.mediadelivery.net/embed/393622/72c5d760-6c3d-4f7f-b01f-4c0586212526?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    source: '',
     date: '06-2025',
     description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
     thumbnail: './thumbnails/baklafa.jpg',
@@ -42,7 +43,7 @@ const videos = [
     window_title: 'HOT-THEM-SUMMER',
     alt_title: 'HOT THEM SUMMER!',
     url: 'https://iframe.mediadelivery.net/embed/393622/2acc6b72-6566-40f0-abb7-b2716fbc272d?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: '',
+    source: 'https://open.spotify.com/track/2Yej9zYQmeMcoClt5dKpeB',
     date: '11-24-2022',
     description: 'Lyric video I did for my homegirl Lambs. Threw this together in about a day, just in time for the album she had just released back then. Peace to bluvelv who is on the song as well.',
     thumbnail: './thumbnails/lambs.jpg',
@@ -66,6 +67,7 @@ const videos = [
     window_title: 'MC-RIDE-GOES-TO-THE-STORE',
     alt_title: 'MC RIDE GOES TO THE STORE',
     url: 'https://www.youtube.com/embed/DKDvPdll1D4',
+    source: 'https://youtu.be/DKDvPdll1D4',
     date: '11-24-2019',
     description: 'A fan favorite? Not sure. Made this in 20 minutes on a Sunday and still get asked about it.',
     thumbnail: './thumbnails/ride.jpg',
@@ -77,6 +79,7 @@ const videos = [
     window_title: 'FED-UP-IN-VR',
     alt_title: 'FEDUP!INVR!',
     url: 'https://www.youtube.com/embed/9m8US6X9gWs',
+    source: 'https://www.youtube.com/watch?v=9m8US6X9gWs',
     date: '08-31-2021',
     description: 'This was one of my first times making money off editing. Threw this one together for Joy Way, the team behind the game being played. They used this video for promo and I was explicitly told to avoid using copyrighted music, but thankfully artist Bazanji came through with a plate of dense, royalty-free raps. Not my usual preferences but at least the client was happy. Honestly besides this I could NOT tell you the last time I played a VR game.',
     thumbnail: './thumbnails/stride.jpg',
@@ -88,6 +91,7 @@ const videos = [
     window_title: 'CHOPPA-WEDNESDAY',
     alt_title: 'CHOPPA WEDNESDAY',
     url: 'https://www.youtube.com/embed/G6ik_SLRulQ',
+    source: 'https://www.youtube.com/watch?v=G6ik_SLRulQ',
     date: '10-07-2020',
     description: 'Got really into Team Fortress 2 (and Atlanta trap) during this era and made a few videos like this. I think they all look rougher around the edges now but this one is still my favorite. Was planning to do make 2-3 more but my SFM stopped working lol',
     thumbnail: './thumbnails/choppa.jpg',
@@ -95,21 +99,35 @@ const videos = [
   },
   {
     id: 7,
-    title: 'SAGGY AND SOGGY',
-    window_title: 'SAGGY-AND-SOGGY-SODIUM-CONNECTIONS',
-    alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
-    url: 'https://www.youtube.com/embed/RnXMoazSLo4',
-    date: '05-15-2020',
-    description: 'This ones pretty old but still means a lot to me. Originally wrote the first draft of the script for this in 2018 after a PlayStation party with a friend where we were discussing what a funny name for a cartoon would be and we decided on "Saggy and Soggy." I wanted to write something I wasnt used to writing before, an actual cartoon longer than 30 seconds. Looking at it now my writing was debatably as goofy as it is now but for different reasons. I had cutaway gags in this mix at some point. During a perfect time, Tornada just so happened to also form at this time and after a few months, fellow videomaster and partner-in-crime Pity Fowl offered to take over. He showed a lot more love to this project than I had originally and this is ultimately what led to his extended involvement. He finished the script and animated most of it while I offered a music video segment which was my first time using After Effects if you couldnt already tell along with lending some quick lines.', 
-    thumbnail: './thumbnails/sagsog.jpg',
+    title: 'BALD! (TF2)',
+    window_title: 'BALD',
+    alt_title: 'BALD! (TF2)',
+    url: 'https://www.youtube.com/embed/K3XvXyNBrHA',
+    source: 'https://www.youtube.com/watch?v=K3XvXyNBrHA',
+    date: '06-10-2020',
+    description: 'This one came to me in a dream. It would ultimately serve as the beginning of a short series that kept me occupied during a weird time in my life. Most of my days were being eaten up by stress that I would channel into learning Source Filmmaker in the only way I knew how: by making quick lil videos that were asking to get several effects thrown on in post. Wouldn’t say it’s anywhere near my best work nowadays but I got some fond memories and met some cool people through it. Shoutout to anyone who remembers when I would promote this on TF2 trading sites.',
+    thumbnail: './thumbnails/bald.jpg',
     isYouTube: true,
   },
   {
     id: 8,
+    title: 'SAGGY AND SOGGY',
+    window_title: 'SAGGY-AND-SOGGY',
+    alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
+    url: 'https://www.youtube.com/embed/RnXMoazSLo4',
+    source: 'https://www.youtube.com/watch?vRnXMoazSLo4',
+    date: '05-15-2020',
+    description: 'This one’s pretty old but still means a lot to me. Originally wrote the first draft of the script for this in 2018 after a PlayStation party with a friend. We were discussing what a funny name for a kids cartoon would be and landed on "Saggy and Soggy." That name stuck with me and would come up the next time I was in my studio. I wanted to write something I wasn’t used to, which at the time, was a cartoon longer than 30 seconds. Looking at it now, my writing was debatably as goofy as it is now, but for different reasons. While I was tryna get this up on the site, I came across the first draft again and was surprised at what got cut out. Mostly just random lines like Saggy saying "God and his son, Curious George" along with even having cutaway gags in the mix at some point. At the perfect time, Tornada just so happened to form, and after a few months, fellow videomaster and partner-in-crime Pity Fowl offered to take over. He showed (and has continued to show) a lotta love to this project, honestly more than what I had originally. That’s what ultimately led to his extended involvement: he wrote the second half of the script and ended up animating most of it. From my end, I offered a music video segment, which was my first time using After Effects if you could not already tell..', 
+    thumbnail: './thumbnails/sagsog.jpg',
+    isYouTube: true,
+  },
+  {
+    id: 9,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'RIDETOSEVENELEVEN',
     alt_title: 'MC RIDE GOES TO THE STORE',
     url: 'https://www.youtube.com/embed/DKDvPdll1D4',
+    source: 'https://youtu.be/DKDvPdll1D4',
     date: '11-24-2019',
     description: 'A fan favorite? Not sure. Made this in 20 minutes on a Sunday and still get asked about it.',
     thumbnail: './thumbnails/ride.jpg',
@@ -140,7 +158,7 @@ const Videos = () => {
   const openVideoWinBox = (video: typeof videos[0]) => {
     const videoContainer = document.createElement('div');
     new WinBox({
-      title: `~/X/${video.window_title}`,
+      title: `~/X/VIDEOS/${video.window_title}`,
       icon: icons.desktop_videos,
       width: Math.min(500, window.innerWidth * 0.9) + "px",
       height: VideoPreviewSize(),
@@ -158,12 +176,13 @@ const Videos = () => {
     <div>
     <div style="position:relative; padding-top:56.25%; border-bottom: 3px solid #FDFDFD"><iframe src="${video.url}" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"></iframe></div>
     </div>
-    <div class="video-description" style="padding: 1em; border-top: 4px ridge #222; line-height: 1; background: #141414; width:text-align: center;">
+    <div class="video-description" style="padding: 1em; border-top: 4px ridge #222; line-height: 1; background: linear-gradient(0deg,rgba(77, 77, 77, 1) 0%, rgba(20, 20, 20, 1) 86%); width:text-align: center;">
     <h2 style="color: #FDFDFD; margin: 0.3em 0;">${video.alt_title}</h2>
-    ${video.date} - <a href="${video.source}" target="_blank" style="color: #505050; text-decoration: none; font-size: 14px; margin-top: 8px;">Watch Original Here</a>
-    
-    <p style="color: #FDFDFD; padding-bottom: 0.5em;>Description:</p>
-    <p style="color: #FDFDFD; whiteSpace: 'pre-line'; padding-bottom: 0.5em; line-height: 1em; border: 2px solid #FDFDFD;">${video.description}</p>
+    ${video.date} - <a href="${video.source}" target="_blank" style="color:rgb(255, 0, 0); text-decoration: none; font-size: 14px; margin-top: 10px;">Watch Original Here</a>
+    <p style="color: #FDFDFD; margin-top: 24px; white-space: pre-wrap; font-size: 16px; font-weight: bold;">Description / Notes:</p>
+    <div class="description-border" style="padding: 6px; line-height: 1.25em; background-color:rgba(0, 0, 0, 0.3); border: 2px solid #FDFDFD;">
+    ${video.description}
+    </div>
     </div>
     `;
   };
@@ -207,7 +226,7 @@ const Videos = () => {
   
   <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
   {videos
-    .filter(video => video.id !== 8)
+    .filter(video => video.id !== 9)
     .map((video) => (
       <div
         key={video.id}

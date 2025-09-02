@@ -47,6 +47,14 @@ const images = [
   },
 
   {
+    src: '/gallery/2025-you-rule-thumb.jpg',
+    alt: 'YOU-RULE',
+    year: '2025',
+    full: '/gallery/2025-you-rule.jpg',
+    tags: ['photos']
+  },
+
+  {
     src: '/gallery/2025_crankdat.jpg',
     alt: 'CRANKDAT',
     year: '2025',
