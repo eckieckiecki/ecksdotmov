@@ -12,6 +12,7 @@ import { useState, useEffect, useRef } from 'react';
 import WinBox from './components/winbox/winbox.min.jsx'
 import PreLoader from './components/BootUp.jsx';
 
+
 import images from './assets/images.js';
 import backgrounds from './assets/backgrounds.js';
 
@@ -21,6 +22,8 @@ import Gallery from './components/windows/Gallery.tsx';
 import Contact from './components/windows/Contact.tsx';
 import Donate from './components/windows/Donate.tsx';
 import Credits from './components/windows/Credits.tsx';
+
+import { videos, openVideoWinBox } from './components/windows/Videos';
 
 
 let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
@@ -124,7 +127,23 @@ useEffect(() => {
   const timer = setTimeout(() => {
     setShowPreLoader(false);
 
-    switch (window.location.pathname) {
+    const path = window.location.pathname;
+
+    // Check for /watch/:slug
+    const match = path.match(/^\/watch\/([^/]+)$/i);
+    if (match) {
+      const slug = match[1].toLowerCase();
+      const videoToOpen = videos.find(
+        v =>
+          v.window_title.replace(/[^a-z0-9]/gi, '').toLowerCase() === slug.replace(/[^a-z0-9]/gi, '')
+      );
+      if (videoToOpen) {
+        openVideoWinBox(videoToOpen);
+        return;
+      }
+    }
+
+    switch (path) {
       case '/donate':
         openDonateWindow();
         break;

@@ -173,6 +173,14 @@ const images = [
     full: '/gallery/2022-waffle.jpg',
     tags: ['photos']
   },
+
+  {
+    src: '/gallery/2018-tux.jpg',
+    alt: 'TUX',
+    year: '2018',
+    full: '/gallery/2018-tux.jpg',
+    tags: ['photos']
+  },
   
   
 ];
@@ -239,7 +247,7 @@ const Gallery = () => {
 
       <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
         {TAGS.map(tag => (
-          <button
+          <button className="default"
             key={tag}
             onClick={() => setActiveTag(tag)}
             style={{

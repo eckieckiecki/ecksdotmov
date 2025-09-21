@@ -30,6 +30,8 @@ declare module './images.js' {
   import xitter from '../assets/icons/xitter.png';
   import instagram from '../assets/icons/instagram.png';
   import newgrounds from '../assets/icons/newgrounds.png';
+  import reddit from '../assets/icons/reddit.png';
+  import facebook from '../assets/icons/facebook.png';
 
   export default {
       'desktop_about':desktop_about,
@@ -49,6 +51,8 @@ declare module './images.js' {
         'instagram':instagram,
         'steam':steam,
         'newgrounds':newgrounds,
+        'reddit':reddit,
+        'facebook':facebook,
 
         'tornada':tornada,
         'notepad':notepad,

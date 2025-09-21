@@ -153,3 +153,18 @@ a:link, a:active { text-decoration: none; color: #970707 }
   .fieldset {
     border: 1px solid #ffffff;
 }
+
+.share-icon:hover img,
+.share-icon:hover span {
+  filter: drop-shadow(0 0 3px #fff) contrast(140%);
+  text-shadow: 0 0 3px #fff, 0 0 5px #fff;
+  color: #fff;
+  scale: 1.1;
+  transition: 0.3s ease;
+}
+.share-btn:hover {
+  border-color: red !important;
+}
+.share-btn {
+  transition: 0.3s ease;
+}

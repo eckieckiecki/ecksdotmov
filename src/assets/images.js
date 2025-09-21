@@ -25,6 +25,8 @@ import youtube from '../assets/icons/youtube.png';
 import xitter from '../assets/icons/xitter.png';
 import instagram from '../assets/icons/instagram.png';
 import newgrounds from '../assets/icons/newgrounds.png';
+import reddit from '../assets/icons/reddit.png';
+import facebook from '../assets/icons/facebook.png';
 
 
 
@@ -52,6 +54,8 @@ export default {
     'xitter':xitter,
     'instagram':instagram,
     'newgrounds':newgrounds,
+    'reddit':reddit,
+    'facebook':facebook,
 
     'steam':steam,
     'cashapp':cashapp,    
