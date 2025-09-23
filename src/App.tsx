@@ -182,7 +182,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://ecks-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
