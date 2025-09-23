@@ -1,4 +1,5 @@
 import ReactDOM from 'react-dom/client';
+import { useLocation } from 'react-router-dom';
 import { createGlobalStyle, ThemeProvider} from 'styled-components';
 
 import { AppBar, Toolbar, Button } from 'react95';
@@ -56,7 +57,9 @@ createGlobalStyle`
 
 
 
+
 const App = () => {
+  
   const lastWindowOpenTime = useRef(0);
   
   const canOpenWindow = () => {
@@ -120,14 +123,17 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
   return positions[windowType];
 };
 
+const location = useLocation();
+const path = location.pathname;
+
+
 useEffect(() => {
   setShowPreLoader(true);
   setShowWelcome(false);
 
   const timer = setTimeout(() => {
     setShowPreLoader(false);
-
-    const path = window.location.pathname;
+    
 
     // Check for /watch/:slug
     const match = path.match(/^\/watch\/([^/]+)$/i);
@@ -163,7 +169,7 @@ useEffect(() => {
   }, 6116);
 
   return () => clearTimeout(timer);
-}, []);
+}, [path]);
 
   useEffect(() => {
     if (showWelcome) {
