@@ -19,7 +19,7 @@ export const videos = [
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
     url: 'https://iframe.mediadelivery.net/embed/393622/72c5d760-6c3d-4f7f-b01f-4c0586212526?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/watch/baklava-is-fucking-awesome',
+    source: 'https://3cks.net/#/watch/baklava-is-fucking-awesome',
     date: '06-2025',
     description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/baklafa.jpg',
@@ -43,7 +43,7 @@ export const videos = [
     window_title: 'HOT-THEM-SUMMER',
     alt_title: 'HOT THEM SUMMER!',
     url: 'https://iframe.mediadelivery.net/embed/393622/2acc6b72-6566-40f0-abb7-b2716fbc272d?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/watch/hot-them-summer',
+    source: 'https://3cks.net/#/watch/hot-them-summer',
     date: '11-24-2022',
     description: 'Lyric video I did for my homegirl Lambs. Threw this together in about a day, just in time for the album she had just released back then. Peace to bluvelv who is on the song as well.',
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/lambs.jpg',
@@ -171,7 +171,7 @@ export function openVideoWinBox(video: typeof videos[0]) {
     const shareBtn = videoContainer.querySelector('#share-btn');
     if (shareBtn) {
       shareBtn.addEventListener('click', () => {
-        const shareUrl = `https://3cks.net/watch/${video.window_title.toLowerCase()}`;
+        const shareUrl = `https://3cks.net/watch/#/${video.window_title.toLowerCase()}`;
         if (navigator.share) {
           navigator.share({
             title: video.title,

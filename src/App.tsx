@@ -124,7 +124,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
 };
 
 const location = useLocation();
-const path = location.pathname;
+const hashPath = location.pathname;
 
 
 useEffect(() => {
@@ -136,7 +136,7 @@ useEffect(() => {
     
 
     // Check for /watch/:slug
-    const match = path.match(/^\/watch\/([^/]+)$/i);
+    const match = hashPath.match(/^\/watch\/([^/]+)$/i);
     if (match) {
       const slug = match[1].toLowerCase();
       const videoToOpen = videos.find(
@@ -149,7 +149,7 @@ useEffect(() => {
       }
     }
 
-    switch (path) {
+    switch (hashPath) {
       case '/donate':
         openDonateWindow();
         break;
@@ -169,7 +169,7 @@ useEffect(() => {
   }, 6116);
 
   return () => clearTimeout(timer);
-}, [path]);
+}, [hashPath]);
 
   useEffect(() => {
     if (showWelcome) {
@@ -182,7 +182,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "...", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
