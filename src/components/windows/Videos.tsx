@@ -171,7 +171,7 @@ export function openVideoWinBox(video: typeof videos[0]) {
     const shareBtn = videoContainer.querySelector('#share-btn');
     if (shareBtn) {
       shareBtn.addEventListener('click', () => {
-        const shareUrl = `https://3cks.net/watch/#/${video.window_title.toLowerCase()}`;
+        const shareUrl = `https://3cks.net/#/watch/${video.window_title.toLowerCase()}`;
         if (navigator.share) {
           navigator.share({
             title: video.title,
