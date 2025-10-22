@@ -20,6 +20,7 @@ import backgrounds from './assets/backgrounds.js';
 import AboutMe from './components/windows/AboutMe.tsx';
 import Videos from './components/windows/Videos.tsx';
 import Gallery from './components/windows/Gallery.tsx';
+import Music from './components/windows/Music.tsx';
 import Contact from './components/windows/Contact.tsx';
 import Donate from './components/windows/Donate.tsx';
 import Credits from './components/windows/Credits.tsx';
@@ -60,6 +61,21 @@ createGlobalStyle`
 
 const App = () => {
   
+  const [crtEnabled, setCrtEnabled] = useState(true);
+
+  const toggleCRT = () => {
+  setCrtEnabled(prev => {
+    const next = !prev;
+    if (next) {
+      document.body.classList.add('crt');
+    } else {
+      document.body.classList.remove('crt');
+    }
+    return next;
+  });
+};
+
+
   const lastWindowOpenTime = useRef(0);
   
   const canOpenWindow = () => {
@@ -77,6 +93,7 @@ const App = () => {
 
   const startBtnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+
 
   useEffect(() => {
   if (!open) return;
@@ -123,6 +140,13 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
   return positions[windowType];
 };
 
+const setTemporaryTitle = (newTitle: string, revertTitle: string = "[3cks.net]") => {
+  document.title = newTitle;
+  setTimeout(() => {
+    document.title = revertTitle;
+  }, 11111); 
+};
+
 const location = useLocation();
 const hashPath = location.pathname;
 
@@ -130,12 +154,13 @@ const hashPath = location.pathname;
 useEffect(() => {
   setShowPreLoader(true);
   setShowWelcome(false);
+  document.body.classList.add('crt');
 
   const timer = setTimeout(() => {
     setShowPreLoader(false);
     
+    
 
-    // Check for /watch/:slug
     const match = hashPath.match(/^\/watch\/([^/]+)$/i);
     if (match) {
       const slug = match[1].toLowerCase();
@@ -158,6 +183,9 @@ useEffect(() => {
         break;
       case '/gallery':
         openGalleryWindow();
+        break;
+      case '/music':
+        openMusicWindow();
         break;
       case '/blog':
         setShowWelcome(true); 
@@ -202,6 +230,7 @@ useEffect(() => {
 
   const openCreditsWindow = () => {
     if (!canOpenWindow()) return;
+    setTemporaryTitle("[3cks.net] - CREDITS!");
     const CreditsContainer = document.createElement('div');
     CreditsContainer.className = 'terminal-winbox-body';
     new WinBox({
@@ -219,6 +248,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
       console.log("Window closed");
+      document.title = "[3cks.net]";
       const root = ReactDOM.createRoot(CreditsContainer);
       root.unmount(); 
           CreditsContainer.remove(); 
@@ -230,6 +260,7 @@ useEffect(() => {
 
   const openDonateWindow = () => {
     if (!canOpenWindow()) return;
+    setTemporaryTitle("[3cks.net] - DONATE!");
     const DonateContainer = document.createElement('div');
     new WinBox({
       title: "~X/DONATE/",
@@ -246,6 +277,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
       console.log("Window closed");
+      document.title = "[3cks.net]";
       const root = ReactDOM.createRoot(DonateContainer);
       root.unmount(); 
           DonateContainer.remove();
@@ -257,6 +289,7 @@ useEffect(() => {
 
   const openAboutMeWindow = () => {
     if (!canOpenWindow()) return;
+    setTemporaryTitle("[3cks.net] - ABOUT!");
     const aboutMeContainer = document.createElement('div');
     new WinBox({
       title: "~X/ABOUT/",
@@ -275,6 +308,7 @@ useEffect(() => {
       noResize: true,
       onClose: () => {
       console.log("Window closed");
+      document.title = "[3cks.net]";
       const root = ReactDOM.createRoot(aboutMeContainer);
       root.unmount(); 
       aboutMeContainer.remove(); 
@@ -286,7 +320,11 @@ useEffect(() => {
 
     const openVideoWindow = () => {
       if (!canOpenWindow()) return;
+      setTemporaryTitle("[3cks.net] - VIDEOS!");
       const VideoContainer = document.createElement('div');
+      if (crtEnabled) {
+    VideoContainer.classList.add('crt');
+  }
       new WinBox({
         title: "~X/VIDEOS/",
         icon: images.desktop_videos,
@@ -302,6 +340,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed");
+        document.title = "[3cks.net]";
         const root = ReactDOM.createRoot(VideoContainer);
         root.unmount();
         VideoContainer.remove(); 
@@ -313,6 +352,7 @@ useEffect(() => {
 
     const openContactWindow = () => {
       if (!canOpenWindow()) return;
+      setTemporaryTitle("[3cks.net] - CONTACT!");
       const ContactContainer = document.createElement('div');
       new WinBox({
         title: "~X/HIT_MY_LINE/",
@@ -329,6 +369,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed");
+        document.title = "[3cks.net]";
         const root = ReactDOM.createRoot(ContactContainer);
         root.unmount();
         ContactContainer.remove(); 
@@ -340,6 +381,7 @@ useEffect(() => {
 
   const openGalleryWindow = () => {
     if (!canOpenWindow()) return;
+    setTemporaryTitle("[3cks.net] - GALLERY!");
     const GalleryContainer = document.createElement('div');
     new WinBox({
       title: "~X/GALLERY/",
@@ -356,6 +398,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed");
+        document.title = "[3cks.net]";
         const root = ReactDOM.createRoot(GalleryContainer);
         root.unmount();
         GalleryContainer.remove(); 
@@ -363,6 +406,35 @@ useEffect(() => {
     });
 const GalleryRoot = ReactDOM.createRoot(GalleryContainer); 
 GalleryRoot.render(<Gallery />);
+  };
+
+const openMusicWindow = () => {
+    if (!canOpenWindow()) return;
+    setTemporaryTitle("[3cks.net] - MUSIC!");
+    const MusicContainer = document.createElement('div');
+    new WinBox({
+      title: "~X/MUSIC/",
+      icon: images.desktop_gallery,
+      background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
+      border: "0.3em",
+      width: Math.min(650, window.innerWidth * 0.8) + "px",
+      maxWidth: "675px",
+      height: Math.min(375, window.innerHeight * 0.7) + "px",
+      maxHeight: "400px",
+      x: WindowPosition('gallery'),
+      y: "30%",
+      mount: MusicContainer, 
+      setBackground: (color: string) => console.log(`Background set to ${color}`),
+      onClose: () => {
+        console.log("Window closed");
+        document.title = "[3cks.net]";
+        const root = ReactDOM.createRoot(MusicContainer);
+        root.unmount();
+        MusicContainer.remove(); 
+      },
+    });
+const MusicRoot = ReactDOM.createRoot(MusicContainer); 
+MusicRoot.render(<Music />);
   };
 
  useEffect(() => {
@@ -378,9 +450,10 @@ GalleryRoot.render(<Gallery />);
 {showPreLoader && <PreLoader />}
 
 <div className="App">
+  <div className="crt" style={{ opacity: crtEnabled ? 1 : 0, pointerEvents: 'none', transition: 'opacity 0.3 ease' }} />
   <div id="desktop">
   <label htmlFor={'about-me'} className="desktop-item" onClick={openAboutMeWindow}>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a href="#/about/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_about_gif} className="logo" alt="ABOUT" />
             <div className="desktop-text">ABOUT</div>
             </a>
@@ -388,7 +461,7 @@ GalleryRoot.render(<Gallery />);
           <div id="about-me-content" style={{ display: 'none' }}>
           </div>
   <label htmlFor={'videos'} className="desktop-item" onClick={openVideoWindow}>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a href="#/videos/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_videos_gif} className="logo" alt="VIDEOS" />
             <div className="desktop-text">VIDEOS</div>
             </a>
@@ -397,7 +470,7 @@ GalleryRoot.render(<Gallery />);
           </div>
 
   <label htmlFor={'gallery'} className="desktop-item" onClick={openGalleryWindow}>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a href="#/gallery/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_gallery_gif} className="logo" alt="GALLERY" />
             <div className="desktop-text">GALLERY</div>
             </a>
@@ -406,7 +479,7 @@ GalleryRoot.render(<Gallery />);
           </div> 
 
     <label htmlFor={'contact'} className="desktop-item" onClick={openContactWindow}>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a href="#/contact/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_contact_gif} className="logo" alt="CONTACT" />
             <div className="desktop-text">CONTACT</div>
             </a>
@@ -414,7 +487,7 @@ GalleryRoot.render(<Gallery />);
           <div id="contact-content" style={{ display: 'none' }}>
           </div> 
     <label htmlFor={'donate'} className="desktop-item" onClick={openDonateWindow}>
-            <a href="#" onClick={(e) => e.preventDefault()}>
+            <a href="#/donate/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_donate_gif} className="logo" alt="GALLERY" />
             <div className="desktop-text">DONATE</div>
             </a>
@@ -547,6 +620,14 @@ GalleryRoot.render(<Gallery />);
           
           )}
         </div>
+        
+        <Button
+  style={{ marginRight: 8, fontWeight: 'bold', background: crtEnabled ? '#222' : '#444', color: '#fff' }}
+  onClick={toggleCRT}
+>
+  {crtEnabled ? "CRT" : "LCD"}
+</Button>
+
         <Frame
         variant='well'
         shadow={true}

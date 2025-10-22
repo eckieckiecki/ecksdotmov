@@ -7,6 +7,22 @@ import { useState } from 'react';
 const images = [
 
   {
+    src: '/gallery/website-collage.png',
+    alt: 'untitled02',
+    year: '2025',
+    full: '/gallery/website-collage.png',
+    tags: ['graphics']
+  },
+
+  {
+    src: '/gallery/website-collage.png',
+    alt: 'untitled01',
+    year: '2025',
+    full: '/gallery/website-collage.png',
+    tags: ['graphics']
+  },
+
+  {
     src: '/gallery/2025-search-thumb.jpg',
     alt: 'INTERNET-SEARCH',
     year: '2025',
@@ -175,6 +191,22 @@ const images = [
   },
 
   {
+    src: '/gallery/2020-fight-songs-thumb.jpg',
+    alt: 'FIGHT-SONGS',
+    year: '2020',
+    full: '/gallery/2020-fight-songs.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2020-floppa-thumb.jpg',
+    alt: 'BIG-FLOPPA',
+    year: '2020',
+    full: '/gallery/2020-floppa.jpg',
+    tags: ['photos']
+  },
+
+  {
     src: '/gallery/2018-tux.jpg',
     alt: 'TUX',
     year: '2018',
@@ -185,10 +217,18 @@ const images = [
   
 ];
 
-const TAGS = ['all', 'graphics', 'photos', 'music'];
+const TAGS = ['graphics', 'photos', 'music'];
 
 const Gallery = () => {
-  const [activeTag, setActiveTag] = useState('all');
+  const [activeTags, setActiveTags] = useState([...TAGS]);
+
+  const handleTagToggle = (tag: string) => {
+    setActiveTags(prev =>
+      prev.includes(tag)
+        ? prev.filter(t => t !== tag)
+        : [...prev, tag]
+    );
+  };
 
   const handleDoubleClick = (img: typeof images[0]) => {
     const imgContainer = document.createElement('div');
@@ -234,9 +274,10 @@ const Gallery = () => {
     };
   };
 
-  const filteredImages = activeTag === 'all'
-    ? images
-    : images.filter(img => img.tags && img.tags.includes(activeTag));
+   const filteredImages =
+    activeTags.length === 0
+      ? []
+      : images.filter(img => img.tags && img.tags.some(tag => activeTags.includes(tag)));
 
   return (
     <>
@@ -245,18 +286,29 @@ const Gallery = () => {
         <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and more. Double click an image to view it in full size.</p>
 
 
-      <div style={{ display: 'flex', gap: 12, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
-        {TAGS.map(tag => (
-          <button className="default"
-            key={tag}
-            onClick={() => setActiveTag(tag)}
-            style={{
-              boxShadow: '0 2px 4px rgba(0,0,0,0.44)', fontFamily: 'Pixeloid Sans', padding: '6px 16px', borderRadius: 3, border: activeTag === tag ? '4px ridge #222' : '2px ridge #666565', background: activeTag === tag ? '#222' : '#f5f5f5', color: activeTag === tag ? '#f5f5f5' : '#222', fontWeight: activeTag === tag ? 'bold' : 'normal', cursor: 'pointer', outline: 'none',
-            }}
-          >
-            {tag.toUpperCase()}
-          </button>
-        ))}
+      <div style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
+          {TAGS.map(tag => (
+            <label key={tag} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'Pixeloid Sans', fontSize: 16 }}>
+              <input
+                type="checkbox"
+                checked={activeTags.includes(tag)}
+                onChange={() => handleTagToggle(tag)}
+                style={{
+                  accentColor: '#222',
+                  width: 18,
+                  height: 18,
+                  marginRight: 8,
+                  borderRadius: 4,
+                  border: '2px solid #222',
+                  boxShadow: '0 2px 4px rgba(0,0,0,0.44)',
+                  cursor: 'pointer'
+                }}
+              />
+              <span style={{ color: activeTags.includes(tag) ? '#222' : '#888', fontWeight: activeTags.includes(tag) ? 'bold' : 'normal' }}>
+                {tag.toUpperCase()}
+              </span>
+            </label>
+          ))}
       </div>
               <div className="line" />
       </div>
@@ -279,6 +331,7 @@ const Gallery = () => {
         aspectRatio: 'auto', background: '#111', border: '2px ridge #222', margin: 'auto', padding: 4, display: 'flex', objectFit: 'cover', alignItems: 'center', justifyContent: 'center', maxWidth: 200, maxHeight: 200,cursor: 'pointer',
       }}
       onDoubleClick={() => handleDoubleClick(img)}
+      onTouchEnd={() => handleDoubleClick(img)}
       title={img.alt}
     >
       <img

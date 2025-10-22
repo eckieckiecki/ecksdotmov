@@ -18,7 +18,7 @@ export const videos = [
     title: 'BAKLAFA',
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
-    url: 'https://iframe.mediadelivery.net/embed/393622/72c5d760-6c3d-4f7f-b01f-4c0586212526?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    url: 'https://iframe.mediadelivery.net/embed/516695/2a455ed0-a3b0-4171-9221-99c465d21d84?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/baklava-is-fucking-awesome',
     date: '06-2025',
     description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
@@ -30,7 +30,7 @@ export const videos = [
     title: 'THE COLOR BROTHERS',
     window_title: 'THE-COLOR-BROTHERS',
     alt_title: 'COLOR BROTHERS',
-    url: 'https://iframe.mediadelivery.net/embed/393622/b01f3be6-5a68-445e-9a39-a4f59d2ec845?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    url: 'https://iframe.mediadelivery.net/embed/516695/515277d2-1b3a-4169-b8f0-fc1fea52746b?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://www.youtube.com/watch?v=KAqmREHqTmg',
     date: '03-23-2025',
     description: ' Segment I did for Tornada’s “Four of a Kind.” This one was a long time in the making. We had already been trading around this idea for years before being blessed with the time and energy to shoot it. Many strings were pulled in one week but it led to some of the most fun I’ve ever had putting something together. We got plenty of B-Roll (of us asking people in public for happy meals) that I wanna put up eventually.',
@@ -38,11 +38,11 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 2,
+    id: 3,
     title: 'HOT THEM SUMMER!',
     window_title: 'HOT-THEM-SUMMER',
     alt_title: 'HOT THEM SUMMER!',
-    url: 'https://iframe.mediadelivery.net/embed/393622/2acc6b72-6566-40f0-abb7-b2716fbc272d?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    url: 'https://iframe.mediadelivery.net/embed/516695/03c5e997-f922-42a8-8762-ccd12fab1d05?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/hot-them-summer',
     date: '11-24-2022',
     description: 'Lyric video I did for my homegirl Lambs. Threw this together in about a day, just in time for the album she had just released back then. Peace to bluvelv who is on the song as well.',
@@ -50,11 +50,11 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 3,
+    id: 4,
     title: 'KNOWLEDGEGOD!',
     window_title: 'KNOWLEDGE-GOD',
     alt_title: 'KNOWLEDEGOD!',
-    url: 'https://iframe.mediadelivery.net/embed/393622/5d9bc1aa-9bc8-42f8-bce1-931d46f8ba8c?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    url: 'https://iframe.mediadelivery.net/embed/516695/53a7705a-b207-4c1a-ac95-84cb68ca4cc6?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://www.youtube.com/watch?v=sziewA2jzEY',
     date: '12-31-2022',
     description: 'Segment I did for Tornada’s "Two of a Kind." Was asked to do a music video and this is what I sent back. You can prolly tell it was my first time datamoshing.',
@@ -62,7 +62,7 @@ export const videos = [
     isYouTube: false,
   },
     {
-    id: 4,
+    id: 5,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'MC-RIDE-GOES-TO-THE-STORE',
     alt_title: 'MC RIDE GOES TO THE STORE',
@@ -74,7 +74,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 5,
+    id: 6,
     title: 'FED UP! (IN VR)',
     window_title: 'FED-UP-IN-VR',
     alt_title: 'FEDUP!INVR!',
@@ -86,7 +86,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 6,
+    id: 7,
     title: 'CHOPPA WEDNESDAY!',
     window_title: 'CHOPPA-WEDNESDAY',
     alt_title: 'CHOPPA WEDNESDAY',
@@ -98,7 +98,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 7,
+    id: 8,
     title: 'BALD! (TF2)',
     window_title: 'BALD',
     alt_title: 'BALD! (TF2)',
@@ -110,7 +110,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 8,
+    id: 9,
     title: 'SAGGY AND SOGGY',
     window_title: 'SAGGY-AND-SOGGY',
     alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
@@ -122,7 +122,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 9,
+    id: 10,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'RIDETOSEVENELEVEN',
     alt_title: 'MC RIDE GOES TO THE STORE',
@@ -312,15 +312,15 @@ const Videos = () => {
 </div>
   </div>
   
-  <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
+  <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px', backgroundColor: '#FDFDFD'}}>
   {videos
-    .filter(video => video.id !== 9)
+    .filter(video => video.id !== 10)
     .map((video) => (
       <button
         key={video.id}
         className="my-videos"
         style={{
-          width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: 'white', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',
+          width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: '#FDFDFD', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',
         }}
         title={video.title}
         onClick={() => openVideoWinBox(video)}

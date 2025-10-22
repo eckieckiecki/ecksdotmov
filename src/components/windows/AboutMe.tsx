@@ -6,11 +6,14 @@ const quotes = [
 "jack of all trades, master at some",
 "self-driven creative powerhouse",
 "big boy with small dreams",
-"just a guy tbh",
+"just some guy tbh",
 "nothing but a wizard",
 "you're doing a great job!",
 "set the scene. 86 degrees.",
-"5'10, stand on my money now I'm 5'6",
+"5'10, stand on my money, now I'm 5'6",
+"long live the new flesh!",
+"make that tv explode. bjork style.",
+"antisocial experiment"
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -22,17 +25,17 @@ const AboutMe = () => {
   return (
     
     <>
-    <div style={{ width: '100%', height: '100%', padding: 0, margin: 0 }}>
-    <div className="about-me">
+    <div style={{ width: 'auto', height: '100%', padding: 0, margin: 0}}>
+    <div className="about-me" style={{overflowX: 'hidden'}}>
     <span className="about-header"> SYSTEM &gt; ABOUT</span>
     <div className="about-split"></div>
     <div className="about-content">
-      <span className="about-tagline" style={{ display: 'flex', alignItems: 'center'}}>
+    <span className="about-tagline" style={{ display: 'flex', alignItems: 'center'}}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
     <span className="ECKS-NAME">ECKS!</span>
     <span className="about-quote" style={{ marginTop: 2 }}>"{randomQuote}"</span>
   </div>
-  <img src={about_img} alt="ECKS" className="about-image" style={{ right: 0, marginLeft: 60, maxWidth: 172, alignSelf: 'flex-start'}} />
+  <img src={about_img} alt="ECKS" className="about-image" style={{ right: 0, marginLeft: 50, maxWidth: 172, alignSelf: 'flex-start'}} />
 </span>
 
     <div className="about-split"></div>
@@ -41,7 +44,7 @@ const AboutMe = () => {
     </p>
   <p className="about-bio" style={{ width: '95%' }}>This site aims to be an archive of some of my best scraps, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
   </p>
-  <p className="about-bio" style={{ width: '95%' }}>
+  <p className="about-bio" style={{ width: '98%' }}>
     Some of my other work can be found at <a href="https://tornada.net" target="_blank"><span className='bigdeal'>Tornada</span></a> - an animation supergroup with an all-star lineup of me and my relatives.
   </p>
   <p className="about-bio" style={{ width: '95%' }}>
