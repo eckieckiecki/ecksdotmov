@@ -28,7 +28,8 @@ import newgrounds from '../assets/icons/newgrounds.png';
 import reddit from '../assets/icons/reddit.png';
 import facebook from '../assets/icons/facebook.png';
 
-
+import lightmode from '../assets/icons/light-mode.png';
+import darkmode from '../assets/icons/dark-mode.png';
 
 export default {
     
@@ -61,4 +62,7 @@ export default {
     'cashapp':cashapp,    
     'paypal':paypal,
     'moneyspin':moneyspin,
+
+    'lightmode':lightmode,
+    'darkmode':darkmode,
 };

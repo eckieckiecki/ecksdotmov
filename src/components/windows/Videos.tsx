@@ -1,7 +1,10 @@
 import './Videos.css';
 import WinBox from '../winbox/winbox.min.jsx';
 import icons from '../../assets/images.js';
-import featured_vhs from '../../assets/Featured-VHS.gif'; 
+import featured_vhs from '../../assets/Featured-VHS.gif';
+import featured_monitor from '../../assets/icons/videos-monitor.gif';
+import { useRef, useEffect, useState } from 'react';
+
 
 const featured = [
   {
@@ -275,44 +278,51 @@ const VideoPreviewSize = () => {
 };
 
 const Videos = () => {
+    const headerRef = useRef<HTMLDivElement>(null);
+  const [showSubtitle, setShowSubtitle] = useState(true);
+
+  useEffect(() => {
+    const node = headerRef.current;
+    if (!node) return;
+    const observer = new window.ResizeObserver(entries => {
+      for (let entry of entries) {
+        setShowSubtitle(entry.contentRect.width > 480);
+      }
+    });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
   return (
     <>
-    <div className="videos-header" style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16}}>
-      <div style={{fontFamily: 'Pixeloid Sans', flexDirection: 'column', display: 'flex', minWidth: 128, borderBottom: '2px solid black', width: '40%', paddingRight: 30}}>
-      <p className="videos-header-title" style={{ width: '100px', fontFamily: 'Pixeloid Sans Bold', fontSize: 40, marginLeft: 8}}>VIDEOS</p>
-      <p className="videos-header-subtitle" style={{ fontSize: 14, width: '168px', lineHeight: 1, marginTop: -8, marginLeft: 12, marginRight: 8, textWrap: 'wrap'}}>I made a few of these here and there.. and you can watch em on here or <a href="https://youtube.com/ecksposting" target="_blank">YouTube!</a></p>
+    <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}>
+      <div style={{fontFamily: 'Pixeloid Sans', flexDirection: 'column', display: 'flex', minWidth: 128, borderBottom: '2px solid black', width: '40%', paddingRight: 20}}><span style={{paddingTop: 30, marginLeft: 24, fontSize: 16, position: 'absolute', wordSpacing: 8}}><span style={{color: 'yellow', fontFamily: 'Pixeloid Sans Bold', fontSize: 18}}>ECKS</span>  →   bunker</span>
+      <img src={featured_monitor} style= {{ width: 'auto', height: '75%', objectFit: 'contain', margin: 'auto', marginLeft: 0, paddingTop: 48, alignSelf: 'flex-start'}}/>
       </div>
+      {showSubtitle && (
+      <div className="videos-header-subtitle"></div>
+      )}
       <div className="videos-featured"
   style={{
-    display: 'flex', flexDirection: 'column', alignItems: 'flex-start', justifyContent: 'center', marginTop: 1, padding: 4, borderRadius: 0, borderBottom: '2px solid black', maxWidth: 480, cursor: 'pointer', lineHeight: 1,
+    display: 'flex', flexDirection: 'column', alignItems: 'flex-end', padding: 4, paddingRight: 24, borderRadius: 0, cursor: 'pointer', lineHeight: 1, marginLeft: 'auto',
   }}
   onClick={() => openVideoWinBox(videos[1])}
 >
-  <div style={{ display: 'flex', alignItems: 'center', }}>
+  <div style={{ display: 'flex', justifyContent: 'flex-end', textAlign: 'center', flexDirection: 'column', paddingLeft: 36 }}>
     <img
       src={featured_vhs}
       alt={featured[0].title}
       style={{
-        width: 120, height: 140, objectFit: 'contain', paddingRight: 8, marginTop: 4,
+        width: 165, height: 165, objectFit: 'contain', paddingRight: 6, margin: 'auto', marginTop: 33, display: 'block',
       }}
     />
-    <span
-      className="featured-video-title"
-      style={{
-        paddingLeft: 4, paddingRight: 16, color: 'white', fontSize: 26, lineHeight: 1.25, fontWeight: 'bold', display: 'block', width: '280px', textWrap: 'wrap',
-      }}
-    >
-      <span>-  FEATURED </span>
-      <br></br><span>{featured[0].title}</span>
-    </span>
+
+  <span style={{ fontSize: 12, marginRight: 8, lineHeight: 1,marginTop: -12}}>
+  <span style={{ color: 'yellow'}}>FEATURED VIDEO</span><br></br>"{featured[0].title}"</span>
   </div>
-  <span style={{ color: 'white', fontSize: 14, display: 'block', marginTop: 12, marginLeft: 2, lineHeight: 1,}}>
-    {featured[0].description} Art done by <a href={featured[0].featuring_link} target="_blank">@{featured[0].featuring}</a>
-  </span>
 </div>
   </div>
   
-  <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px', backgroundColor: '#FDFDFD'}}>
+  <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
   {videos
     .filter(video => video.id !== 10)
     .map((video) => (
@@ -330,7 +340,7 @@ const Videos = () => {
           alt={video.alt_title}
           loading="lazy"
           style={{ width: '90%', height: '90%', display: 'block', border: '2px solid #222'}} />
-        <span
+        <span className="video-title"
           style={{
             color: 'black',
             fontWeight: 'bold',
@@ -354,7 +364,7 @@ const Videos = () => {
     
       </div>
       <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>
-      <span style={{ textAlign: 'center' }}>...</span>
+      <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
       </>
     );
 };

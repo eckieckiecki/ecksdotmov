@@ -95,6 +95,7 @@ type WinBoxControlInfo = {
 }
 }
     export default class WinBox {
+      window: any;
       focus() {
         throw new Error('Method not implemented.');
       }

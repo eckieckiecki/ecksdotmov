@@ -61,7 +61,26 @@ createGlobalStyle`
 
 const App = () => {
   
-  const [crtEnabled, setCrtEnabled] = useState(true);
+  const [crtEnabled, setCrtEnabled] = useState(true)
+
+  const [darkMode, setDarkMode] = useState(true)
+
+  const toggleDarkMode = () => setDarkMode((prev) => !prev)
+  useEffect(() => {
+  if (darkMode) {
+    document.body.classList.add('dark-mode')
+  } else {
+    document.body.classList.remove('dark-mode')
+  }
+
+  document.querySelectorAll('.winbox').forEach(winbox => {
+    if (darkMode) {
+      winbox.classList.add('dark-mode');
+    } else {
+      winbox.classList.remove('dark-mode');
+    }
+  });
+}, [darkMode]);
 
   const toggleCRT = () => {
   setCrtEnabled(prev => {
@@ -232,8 +251,10 @@ useEffect(() => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - CREDITS!");
     const CreditsContainer = document.createElement('div');
-    CreditsContainer.className = 'terminal-winbox-body';
-    new WinBox({
+    if (darkMode) {
+      CreditsContainer.classList.add('dark-mode');
+    }
+    const winbox =new WinBox({
       title: "~X/CREDITS.TXT",
       icon: images.notepad,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -254,7 +275,11 @@ useEffect(() => {
           CreditsContainer.remove(); 
         },
       });
+      if (darkMode) {
+  winbox.window.classList.add('dark-mode');
+}
   const CreditsRoot = ReactDOM.createRoot(CreditsContainer); 
+  
   CreditsRoot.render(<Credits />);
       };
 
@@ -262,7 +287,10 @@ useEffect(() => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - DONATE!");
     const DonateContainer = document.createElement('div');
-    new WinBox({
+    if (darkMode) {
+      DonateContainer.classList.add('dark-mode');
+    }
+    const winbox = new WinBox({
       title: "~X/DONATE/",
       icon: images.desktop_donate,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -283,6 +311,9 @@ useEffect(() => {
           DonateContainer.remove();
         },
       });
+      if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
   const DonateRoot = ReactDOM.createRoot(DonateContainer); 
   DonateRoot.render(<Donate />);
       };
@@ -291,7 +322,10 @@ useEffect(() => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - ABOUT!");
     const aboutMeContainer = document.createElement('div');
-    new WinBox({
+    if (darkMode) {
+      aboutMeContainer.classList.add('dark-mode');
+    }
+    const winbox = new WinBox({
       title: "~X/ABOUT/",
       className: "no-resize",
       icon: images.desktop_about,
@@ -314,6 +348,9 @@ useEffect(() => {
       aboutMeContainer.remove(); 
     },
       });
+      if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
   const aboutMeRoot = ReactDOM.createRoot(aboutMeContainer); 
   aboutMeRoot.render(<AboutMe />);
     }; 
@@ -322,10 +359,13 @@ useEffect(() => {
       if (!canOpenWindow()) return;
       setTemporaryTitle("[3cks.net] - VIDEOS!");
       const VideoContainer = document.createElement('div');
+      if (darkMode) {
+        VideoContainer.classList.add('dark-mode');
+      }
       if (crtEnabled) {
     VideoContainer.classList.add('crt');
   }
-      new WinBox({
+      const winbox = new WinBox({
         title: "~X/VIDEOS/",
         icon: images.desktop_videos,
         background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -346,6 +386,9 @@ useEffect(() => {
         VideoContainer.remove(); 
       },
       });
+      if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
   const videosRoot = ReactDOM.createRoot(VideoContainer); 
   videosRoot.render(<Videos />);
     };
@@ -354,7 +397,10 @@ useEffect(() => {
       if (!canOpenWindow()) return;
       setTemporaryTitle("[3cks.net] - CONTACT!");
       const ContactContainer = document.createElement('div');
-      new WinBox({
+      if (darkMode) {
+        ContactContainer.classList.add('dark-mode');
+      }
+      const winbox = new WinBox({
         title: "~X/HIT_MY_LINE/",
         icon: images.desktop_contact,
         background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -375,6 +421,9 @@ useEffect(() => {
         ContactContainer.remove(); 
       },
       });
+      if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
   const contactRoot = ReactDOM.createRoot(ContactContainer); 
   contactRoot.render(<Contact />);
     };
@@ -383,7 +432,10 @@ useEffect(() => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - GALLERY!");
     const GalleryContainer = document.createElement('div');
-    new WinBox({
+    if (darkMode) {
+      GalleryContainer.classList.add('dark-mode');
+    }
+    const winbox = new WinBox({
       title: "~X/GALLERY/",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -404,6 +456,9 @@ useEffect(() => {
         GalleryContainer.remove(); 
       },
     });
+    if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
 const GalleryRoot = ReactDOM.createRoot(GalleryContainer); 
 GalleryRoot.render(<Gallery />);
   };
@@ -412,7 +467,10 @@ const openMusicWindow = () => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - MUSIC!");
     const MusicContainer = document.createElement('div');
-    new WinBox({
+    if (darkMode) {
+      MusicContainer.classList.add('dark-mode');
+    }
+    const winbox = new WinBox({
       title: "~X/MUSIC/",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
@@ -433,6 +491,9 @@ const openMusicWindow = () => {
         MusicContainer.remove(); 
       },
     });
+    if (darkMode) {
+    winbox.window.classList.add('dark-mode');
+  }
 const MusicRoot = ReactDOM.createRoot(MusicContainer); 
 MusicRoot.render(<Music />);
   };
@@ -620,7 +681,20 @@ MusicRoot.render(<Music />);
           
           )}
         </div>
-        
+        <img className="taskbar-item"
+  src={darkMode ? images.darkmode : images.lightmode}
+  alt={darkMode ? "Dark mode" : "Light mode"}
+  onClick={toggleDarkMode}
+  title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+  style={{
+    height: 28,
+    width: 28,
+    marginRight: 8,
+    cursor: 'pointer',
+    userSelect: 'none',
+    verticalAlign: 'middle'
+  }}
+/>
         <Button
   style={{ marginRight: 8, fontWeight: 'bold', background: crtEnabled ? '#222' : '#444', color: '#fff' }}
   onClick={toggleCRT}

@@ -3,7 +3,7 @@ import icons from '../../assets/images.js';
 
 const Donate = () => {
   return (
-    <><div style={{ color: 'black', fontSize: 24, overflow: 'hidden', margin: 12, paddingBottom: 4, fontFamily: 'Sans Nouveaux'}}>
+    <><div className="donate" style={{ color: 'black', fontSize: 24, overflow: 'hidden', margin: 12, paddingBottom: 4, fontFamily: 'Sans Nouveaux'}}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
         <img
           src={icons.moneyspin}

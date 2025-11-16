@@ -5,21 +5,12 @@ import { useState } from 'react';
 
 
 const images = [
-
   {
-    src: '/gallery/website-collage.png',
-    alt: 'untitled02',
+    src: '/gallery/2025-alfreds-comm.jpg',
+    alt: 'ALFREDS-COMMISSION',
     year: '2025',
-    full: '/gallery/website-collage.png',
-    tags: ['graphics']
-  },
-
-  {
-    src: '/gallery/website-collage.png',
-    alt: 'untitled01',
-    year: '2025',
-    full: '/gallery/website-collage.png',
-    tags: ['graphics']
+    full: '/gallery/2025-alfreds-comm.jpg',
+    tags: ['art/gfx']
   },
 
   {
@@ -27,7 +18,7 @@ const images = [
     alt: 'INTERNET-SEARCH',
     year: '2025',
     full: '/gallery/2025-search.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -35,7 +26,7 @@ const images = [
     alt: 'BAKLAVA-AD-MOCKUP',
     year: '2025',
     full: '/gallery/2025-baklava-mockup.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -43,7 +34,7 @@ const images = [
     alt: 'BAKLAVA.BLEND',
     year: '2025',
     full: '/gallery/2025-baklava-blend.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -51,7 +42,7 @@ const images = [
     alt: 'TOM-Y-JERRY',
     year: '2025',
     full: '/gallery/2025-nada.gif',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -59,7 +50,7 @@ const images = [
     alt: 'BANNER',
     year: '2025',
     full: '/gallery/2025-banner.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -79,7 +70,7 @@ const images = [
   },
 
   {
-    src: '/gallery/2025-uhuhuh.jpg',
+    src: '/gallery/2025-uhuhuh-thumb.jpg',
     alt: 'UHUHUH',
     year: '2025',
     full: '/gallery/2025-uhuhuh.jpg',
@@ -107,7 +98,7 @@ const images = [
     alt: 'SCRAPPED-TAPE-MOCKUP',
     year: '2024',
     full: '/gallery/2024-tape-mockup.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -127,7 +118,7 @@ const images = [
   },
 
   {
-    src: '/gallery/2024-firestar.jpg',
+    src: '/gallery/2024-firestar-thumb.jpg',
     alt: 'FIRESTAR',
     year: '2024',
     full: '/gallery/2024-firestar.jpg',
@@ -163,7 +154,7 @@ const images = [
     alt: 'MACH-STONEY',
     year: '2023',
     full: '/gallery/2023-mach-stoney.jpg',
-    tags: ['graphics']
+    tags: ['art/gfx']
   },
 
   {
@@ -183,8 +174,16 @@ const images = [
   },
 
   {
-    src: '/gallery/2022-waffle.jpg',
-    alt: 'WH',
+    src: '/gallery/2022-location.jpg',
+    alt: 'LOCATION',
+    year: '2022',
+    full: '/gallery/2022-location.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2022-waffle-thumb.jpg',
+    alt: 'WAFFLES',
     year: '2022',
     full: '/gallery/2022-waffle.jpg',
     tags: ['photos']
@@ -217,7 +216,7 @@ const images = [
   
 ];
 
-const TAGS = ['graphics', 'photos', 'music'];
+const TAGS = ['art/gfx', 'photos', 'music'];
 
 const Gallery = () => {
   const [activeTags, setActiveTags] = useState([...TAGS]);
@@ -241,22 +240,32 @@ const Gallery = () => {
     const image = new window.Image();
     image.src = img.full;
     image.alt = img.alt;
-    image.style.width = '100%';
-    image.style.maxWidth = '600px';
-    image.style.height = 'auto';
-    image.style.display = 'flex';
-    image.style.margin = 'auto';
+    image.style.maxWidth = '100%';
+image.style.maxHeight = '100%';
+image.style.width = 'auto';
+image.style.height = 'auto';
+image.style.display = 'block';
+image.style.margin = 'auto';
   
     image.onload = () => {
-      const maxWinWidth = Math.min(image.naturalWidth, window.innerWidth * 0.33);
-      const maxWinHeight = Math.min(image.naturalHeight, window.innerHeight * 0.33);
-      const winWidth = Math.max(220, maxWinWidth);
-      const winHeight = Math.max(120, maxWinHeight);
-      imgContainer.innerHTML = '';
-      imgContainer.appendChild(image);
+  const maxWinWidth = window.innerWidth * 0.6;
+  const maxWinHeight = window.innerHeight * 0.5;
+
+  let winWidth = image.naturalWidth;
+  let winHeight = image.naturalHeight;
+
+  const widthRatio = maxWinWidth / winWidth;
+  const heightRatio = maxWinHeight / winHeight;
+  const scale = Math.min(1, widthRatio, heightRatio);
+
+  winWidth = Math.max(220, winWidth * scale);
+  winHeight = Math.max(150, winHeight * scale);
+
+  imgContainer.innerHTML = '';
+  imgContainer.appendChild(image);
   
       new WinBox({
-        title: `~/X/GALLERY/IMAGES/${img.year}/${img.alt}`,
+        title: `~/X/GALLERY/${img.year}/${img.alt}`,
     icon: icons.desktop_gallery,
     background: '#000',
     width: `${winWidth}px`,
@@ -286,7 +295,7 @@ const Gallery = () => {
         <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and more. Double click an image to view it in full size.</p>
 
 
-      <div style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
+      <div className="gallery-junk" style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
           {TAGS.map(tag => (
             <label key={tag} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'Pixeloid Sans', fontSize: 16 }}>
               <input
@@ -310,17 +319,20 @@ const Gallery = () => {
             </label>
           ))}
       </div>
-              <div className="line" />
+      <div className="line" />
       </div>
       <div
         className="gallery-grid"
   style={{
-    width: '98%',
+    width: '99%',
     display: 'flex',
     flexWrap: 'wrap',
     gap: 16,
     justifyContent: 'center',
-    marginBottom: 16,
+    margin: '0 auto 16px auto',
+    paddingLeft: 16,
+    paddingRight: 24,
+    boxSizing: 'border-box',
   }}
 >
   {filteredImages.map((img, idx) => (
@@ -339,13 +351,13 @@ const Gallery = () => {
         alt={img.alt}
         loading="lazy"
         style={{
-          background:'black', aspectRatio: 'auto', maxWidth: '200px', maxHeight: '200px', width: 'auto', height: 'auto', display: 'inline',
+          background:'black', aspectRatio: 'auto', maxWidth: '190px', maxHeight: '200px', width: 'auto', height: 'auto', display: 'inline',
         }}
       />
     </div>
   ))}
   <br></br>
-  <span className="gallery-bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 18}} >- one shot. cut. print. perfect. -</span>
+  <span className="bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 18}} >- one shot. cut. print. perfect. -</span>
 </div></>
   );
 };

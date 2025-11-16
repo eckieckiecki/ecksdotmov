@@ -1,5 +1,7 @@
 import './AboutMe.css';
 import about_img from '../../assets/aboutem.gif';
+import tag from '../../assets/this-is-my-tag.png';
+import { useState, useEffect } from 'react';
 
 
 const quotes = [
@@ -13,7 +15,9 @@ const quotes = [
 "5'10, stand on my money, now I'm 5'6",
 "long live the new flesh!",
 "make that tv explode. bjork style.",
-"antisocial experiment"
+"antisocial experiment",
+"do you like iPhone?",
+"I'm afraid of what might happen if I relax."
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -22,9 +26,22 @@ console.log('ECKS - ', randomQuote);
 
 
 const AboutMe = () => {
+
+  const [showSplash, setShowSplash] = useState(true);
+  
+
+  useEffect(() => {
+    const timer = setTimeout(() => setShowSplash(false), 1666);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    
     <>
+    {showSplash && (
+    <div className={`aboutme-splash${!showSplash ? ' splash-fade-out' : ''}`}>
+      <div className="this-is-my-tag"><img src={tag}/></div>
+    </div>
+  )}
     <div style={{ width: 'auto', height: '100%', padding: 0, margin: 0}}>
     <div className="about-me" style={{overflowX: 'hidden'}}>
     <span className="about-header"> SYSTEM &gt; ABOUT</span>
@@ -56,7 +73,8 @@ const AboutMe = () => {
       </div>
 
     </div>
-    <span className="bottom-tag" style={{marginTop: 24, fontFamily: 'Sans Nouveaux', fontSize: '8px'}} >- 🅮 ECKS 2025 -</span>
+    <span className="bottom-tag" style={{marginTop: 12, fontFamily: 'Sans Nouveaux', fontSize: '8px'}} >- 🅮 ECKS 2025 -</span>
+    <span style={{ textAlign: 'center', visibility: 'hidden' }}>.</span>
     </div>
     </>
   );

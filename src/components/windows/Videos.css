@@ -1,3 +1,8 @@
+@media (max-width: 600px) {
+  .videos-header-subtitle {
+    display: none !important;
+  }
+}
 .about-me {
     color: black
 }
@@ -14,17 +19,18 @@ a:link, a:active { text-decoration: none; color: #970707 }
 }
 .my-videos {
   font-family: 'Pixeloid Sans Bold';
+  text-rendering: 'optimizeLegibility';
   box-shadow: 0 4px 16px rgba(0,0,0,0.44);
   box-shadow: 2px 2px 0 #808080;
   margin: auto;
-  width: 180px;
+  width: 190px;
 }
 .videos-grid {
   margin: 0 auto 16px auto;
   width: 100%;
 
-  box-shadow: 0 2px 24px rgba(0,255,231,0.08);
-  padding: 1% 0;
+  box-shadow: 4px 4px 24px rgba(0, 0, 0, 0.11);
+  padding: 0;
 }
 .my-videos:hover {
   background: #c0c0c0;
@@ -47,16 +53,17 @@ a:link, a:active { text-decoration: none; color: #970707 }
   content: " ";
   padding: 3px;
 }
-
-.videos-featured, .videos-header {
-  background: linear-gradient(0deg,rgb(84, 84, 84) 0%, rgba(117, 117, 117, 1) 50%, rgba(0, 0, 0, 1) 100%);
+.videos-header span {
+  text-rendering: 'optimizeLegibility'
+}
+.videos-header {
+  background: linear-gradient(180deg,rgba(0, 0, 0, 1) 11%, rgb(255, 33, 0) 28%, rgba(255, 0, 0, 0.86) 83%, rgba(0, 0, 0, 1) 98%);
   text-shadow: 1px 1px 0 #000000;
-  border-bottom: 2px solid #d5d5d5;
-    font-family: 'Pixeloid Sans';
+  font-family: 'Pixeloid Sans';
 }
 .videos-header-subtitle {
-  text-shadow: 1px 1px 0 #000000;
-}
+  text-shadow: 1px 1px 0 #000000;justify-content: center;
+  font-size: 28; width: 100px; line-height: 1; display: flex; margin: auto; text-align: center; color: black;}
 .videos-header {
   border-bottom: 4px solid #808080;
   text-shadow: 2px 2px 1px #000000;

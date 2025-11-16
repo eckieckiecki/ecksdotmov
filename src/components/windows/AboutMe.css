@@ -1,4 +1,27 @@
-
+.this-is-my-tag img {
+  position: fixed;
+  width: 36%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  animation: scale-in 0.77s ease;
+}
+@keyframes scale-in {
+  0% {
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+  }
+  55% {
+    transform: translate(-50%, -50%) scale(1.08);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+  }
+}
 .about-me {
 
     color: black;
@@ -70,6 +93,28 @@
 .ECKS-NAME:hover {
   font-size: 54px;
 }
+.aboutme-splash {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: #040404;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  animation: about-me 0.86s ease forwards;
+}
+@keyframes about-me {
+  0% {
+    opacity: 1;
+  }
+  66% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
 .bigdeal {
   padding: 1%;
   -webkit-transition: .3s ease;
@@ -85,7 +130,7 @@
 }
 
 .notepad a:link {
-  color: rgb(100, 108, 255) !important;
+  color: red !important;
 }
 
 .notepad-header {

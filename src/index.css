@@ -13,6 +13,51 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+body,
+.winbox {
+  background: #f4f4f4;
+  color: #222;
+}
+
+body.dark-mode {
+  color: #f4f4f4 !important;
+}
+
+.winbox.dark-mode .wb-body, .winbox.dark-mode .about-me,
+body.dark-mode .about-me,
+.winbox.dark-mode .videos-window,
+body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .videos-grid, body.dark-mode .videos-grid, body.dark-mode .video-title, .winbox.dark-mode .video-title, body.dark-mode .gallery-header, .winbox.dark-mode .gallery-header, body.dark-mode .contact-me, .winbox.dark-mode .contact-me, .winbox.dark-mode .bottom-tag, body.dark-mode .bottom-tag, body.dark-mode .donate, .winbox.dark-mode .donate {
+  background: #181818 !important;
+  color: #f4f4f4 !important;
+}
+
+.winbox.dark-mode .about-split, .winbox.dark-mode .email, .winbox.dark-mode .socials, .winbox.dark-mode .paypal-button, .winbox.dark-mode .cashapp-button, .winbox.dark-mode .gallery-junk input[type="checkbox"], .winbox.dark-mode .line, .winbox.dark-mode .my-videos, .winbox.dark-mode .my-videos img {
+  accent-color: #f4f4f4 !important;
+  border-color: #f4f4f4 !important;
+}
+.winbox.dark-mode .about-me,
+.winbox.dark-mode .videos-window
+.winbox.dark-mode .my-videos, .winbox.dark-mode .videos-grid, .winbox.dark-mode .video-title, .winbox.dark-mode .gallery-header, .winbox.dark-mode .bottom-tag, .winbox.dark-mode .gallery-junk, .winbox.dark-mode .notepad, .winbox.dark-mode .gallery-junk label, .winbox.dark-mode .gallery-junk span {
+  background: #181818 !important;
+  color: #fcfcfc !important;
+}
+.winbox.dark-mode .gallery-image-frame {
+  background: #ffffff !important;
+}
+.winbox.dark-mode .my-videos {
+    box-shadow: 2px 2px 0 #fcfcfc !important;
+}
+.winbox-dark-mode .gallery-grid img, .winbox-dark-mode .gallery-image-frame:hover {
+  box-shadow: 0 8px 16px rgba(255,255,255,0.55) !important;
+}
+
+.winbox.dark-mode .email {
+    color: #fcfcfc !important;
+}
+.winbox.dark-mode .line {
+    background: #fcfcfc content-box !important;
+}
+
 body *::-webkit-scrollbar {
   width: 16px;
   height: 16px;
