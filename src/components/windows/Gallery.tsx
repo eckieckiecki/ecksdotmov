@@ -357,8 +357,9 @@ image.style.margin = 'auto';
     </div>
   ))}
   <br></br>
-  <span className="bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 18}} >- one shot. cut. print. perfect. -</span>
-</div></>
+  </div>
+  <span className="bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 24, marginBottom: 24, margin: 'auto'}} >- one shot. cut. print. perfect. -</span>
+</>
   );
 };
 
