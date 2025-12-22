@@ -19,7 +19,6 @@ import tornada from '../assets/icons/tornada.png';
 import notepad from '../assets/icons/notepad.png';
 import info from '../assets/icons/info.png';
 import blog from '../assets/icons/blog.png';
-import pager from '../assets/icons/pager.png';
 
 import youtube from '../assets/icons/youtube.png';
 import xitter from '../assets/icons/xitter.png';
@@ -30,6 +29,8 @@ import facebook from '../assets/icons/facebook.png';
 
 import lightmode from '../assets/icons/light-mode.png';
 import darkmode from '../assets/icons/dark-mode.png';
+import lcdmode from '../assets/icons/LCD.gif';
+import crtmode from '../assets/icons/CRT.gif';
 
 export default {
     
@@ -48,7 +49,6 @@ export default {
     'tornada':tornada,
     'notepad':notepad,
     'info':info,
-    'pager':pager,
     'blog':blog,
 
     'youtube':youtube,
@@ -65,4 +65,6 @@ export default {
 
     'lightmode':lightmode,
     'darkmode':darkmode,
+    'lcdmode':lcdmode,
+    'crtmode':crtmode,
 };

@@ -23,7 +23,6 @@ declare module './images.js' {
   import tornada from '../assets/icons/tornada.png';
   import notepad from '../assets/icons/notepad.png';
   import info from '../assets/icons/info.png';
-  import pager from '../assets/icons/pager.png';
   import blog from '../assets/icons/blog.png';
   
   import youtube from '../assets/icons/youtube.png';
@@ -35,6 +34,8 @@ declare module './images.js' {
 
 import lightmode from '../assets/icons/light-mode.png';
 import darkmode from '../assets/icons/dark-mode.png';
+import lcdmode from '../assets/icons/LCD.gif';
+import crtmode from '../assets/icons/CRT.gif';
 
   export default {
       'desktop_about':desktop_about,
@@ -60,7 +61,6 @@ import darkmode from '../assets/icons/dark-mode.png';
         'tornada':tornada,
         'notepad':notepad,
         'info':info,
-        'pager':pager,
         'blog':blog,
 
         'cashapp':cashapp,    
@@ -69,4 +69,6 @@ import darkmode from '../assets/icons/dark-mode.png';
 
         'lightmode':lightmode,
         'darkmode':darkmode,
+        'lcdmode':lcdmode,
+        'crtmode':crtmode,
   };

@@ -17,7 +17,7 @@ const featured = [
 
 export const videos = [
   {
-    id: 0,
+    id: 1,
     title: 'BAKLAFA',
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
@@ -29,7 +29,7 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 1,
+    id: 2,
     title: 'THE COLOR BROTHERS',
     window_title: 'THE-COLOR-BROTHERS',
     alt_title: 'COLOR BROTHERS',
@@ -319,9 +319,7 @@ const Videos = () => {
   <span style={{ fontSize: 12, marginRight: 8, lineHeight: 1,marginTop: -12}}>
   <span style={{ color: 'yellow'}}>FEATURED VIDEO</span><br></br>"{featured[0].title}"</span>
   </div>
-</div>
-  </div>
-  
+  </div></div>
   <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
   {videos
     .filter(video => video.id !== 10)

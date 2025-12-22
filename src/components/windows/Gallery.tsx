@@ -6,6 +6,14 @@ import { useState } from 'react';
 
 const images = [
   {
+    src: '/gallery/2025-november-haul.jpg',
+    alt: 'NOVEMBER-HAUL',
+    year: '2025',
+    full: '/gallery/2025-november-haul.jpg',
+    tags: ['photos']
+  },
+  
+  {
     src: '/gallery/2025-alfreds-comm.jpg',
     alt: 'ALFREDS-COMMISSION',
     year: '2025',

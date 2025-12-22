@@ -13,7 +13,6 @@ import { useState, useEffect, useRef } from 'react';
 import WinBox from './components/winbox/winbox.min.jsx'
 import PreLoader from './components/BootUp.jsx';
 
-
 import images from './assets/images.js';
 import backgrounds from './assets/backgrounds.js';
 
@@ -26,7 +25,6 @@ import Donate from './components/windows/Donate.tsx';
 import Credits from './components/windows/Credits.tsx';
 
 import { videos, openVideoWinBox } from './components/windows/Videos';
-
 
 let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
 let randomNum = Math.floor(imageArr.length * Math.random());
@@ -242,7 +240,7 @@ useEffect(() => {
 
   useEffect(() => {
     document.body.style.backgroundImage = `url(${randomImage})`;
-    document.body.style.backgroundSize = 'cover';
+    document.body.style.backgroundSize = '110% auto';
     document.body.style.backgroundRepeat = 'no-repeat';
     document.body.style.backgroundPosition = 'center';
   }, []);
@@ -504,6 +502,37 @@ MusicRoot.render(<Music />);
       img.src = src;
     });
   }, []);
+useEffect(() => {
+  let x = 0, y = 0;
+  let targetX = 0, targetY = 0;
+  let rafId: number;
+
+  const maxOffset = 33; 
+
+  const handleMouseMove = (e: MouseEvent) => {
+    targetX = (e.clientX / window.innerWidth - 0.5) * maxOffset;
+    targetY = (e.clientY / window.innerHeight - 0.5) * maxOffset;
+  };
+
+  const animate = () => {
+    // Smoothly interpolate towards target
+    const prevX = x, prevY = y;
+    x += (targetX - x) * 0.1;
+    y += (targetY - y) * 0.1;
+    if (Math.abs(x - prevX) > 0.1 || Math.abs(y - prevY) > 0.1) {
+      document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+    }
+    rafId = requestAnimationFrame(animate);
+  };
+
+  window.addEventListener('mousemove', handleMouseMove);
+  rafId = requestAnimationFrame(animate);
+
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    cancelAnimationFrame(rafId);
+  };
+}, []);
 
   return (
     <>
@@ -566,62 +595,32 @@ MusicRoot.render(<Music />);
         ref={startBtnRef}
         onClick={() => TaskbarOpen(!open)}
         active={open ? true : undefined}
-        style={{ fontWeight: 'bold', marginRight: 6, marginLeft: 6 }}
->
-            <img
-              src={logoIMG}
-              alt='react95 logo'
-              style={{ height: '20px', marginRight: 4 }}
+        style={{ fontWeight: 'bold', marginRight: 6, marginLeft: 6 }}>
+        <img src={logoIMG} alt='START' style={{ height: '20px', marginRight: 4 }}
             />
             START
           </Button>
           <Handle size={35} style={{ marginRight: 10 }}/>
 
-
-
 <div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://youtube.com/ecksposting', '_blank', 'noopener,noreferrer')}>
   <img src={images.youtube}
-    alt='YouTube' className="taskbar-item"
-    style={{ height: '25px'}}/>
-  <div className="taskbar-tooltip" style={{
-      display: 'none', position: 'absolute', bottom: '120%', left: '50%', transform: 'translateX(-45%)', background: '#222', color: '#fff', padding: '6px 8px', border: '2px solid white', fontSize: 14, whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px #0006', pointerEvents: 'none'
-    }}
-  >
-    YOUTUBE
-</div></div>
+    alt='YouTube' className="taskbar-item"/>
+  <div className="taskbar-tooltip">YOUTUBE</div></div>
 
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://youtube.com/ecksposting', '_blank', 'noopener,noreferrer')}>
+<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://instagram.com/ecksposting', '_blank', 'noopener,noreferrer')}>
   <img src={images.instagram}
-    alt='react95 logo' className="taskbar-item"
-    style={{ height: '25px' }}/>
-  <div className="taskbar-tooltip" style={{
-      display: 'none', position: 'absolute', bottom: '120%', left: '50%', transform: 'translateX(-45%)', background: '#222', color: '#fff', padding: '6px 8px', border: '2px solid white', fontSize: 14, whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px #0006', pointerEvents: 'none'
-    }}
-  >
-    INSTA
-</div></div>
+    alt='Instagram' className="taskbar-item"/>
+  <div className="taskbar-tooltip">INSTAGRAM</div></div>
 
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://youtube.com/ecksposting', '_blank', 'noopener,noreferrer')}>
+<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://twitter.com/ecksposting', '_blank', 'noopener,noreferrer')}>
   <img src={images.xitter}
-    alt='react95 logo' className="taskbar-item"
-    style={{ height: '25px'}}/>
-  <div className="taskbar-tooltip" style={{
-      display: 'none', position: 'absolute', bottom: '120%', left: '50%', transform: 'translateX(-45%)', background: '#222', color: '#fff', padding: '6px 8px', border: '2px solid white', fontSize: 14, whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px #0006', pointerEvents: 'none'
-    }}
-  >
-    XITTER
-</div></div>
+    alt='Xitter' className="taskbar-item"/>
+  <div className="taskbar-tooltip">XITTER</div></div>
 
 <div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://eckslol.newgrounds.com/', '_blank', 'noopener,noreferrer')}>
   <img src={images.newgrounds}
-    alt='react95 logo' className="taskbar-item"
-    style={{ height: '25px' }}/>
-  <div className="taskbar-tooltip" style={{
-      display: 'none', position: 'absolute', bottom: '120%', left: '50%', transform: 'translateX(-45%)', background: '#222', color: '#fff', padding: '6px 8px', border: '2px solid white', fontSize: 14, whiteSpace: 'nowrap', zIndex: 100, boxShadow: '0 2px 8px #0006', pointerEvents: 'none'
-    }}
-  >
-    NEWGROUNDS
-</div></div>
+    alt='Newgrounds' className="taskbar-item"/>
+  <div className="taskbar-tooltip">NEWGROUNDS</div></div>
 
 {open && (
   <MenuList
@@ -635,76 +634,65 @@ MusicRoot.render(<Music />);
   >
               <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
               <span role='img'>
-                  <img src={images.desktop_videos} alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  <img src={images.desktop_videos} loading="eager" alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 VIDEOS
               </MenuListItem>
               <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
-                  <img src={images.desktop_gallery} alt="GALLERY" style={{ width: '20px', height: '20px',  margin: '0 15px -4px 0'}} />
+                  <img src={images.desktop_gallery} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px',  margin: '0 15px -4px 0'}} />
                 </span>
                 GALLERY
               </MenuListItem>
               <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
-                  <img src={images.desktop_about} alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  <img src={images.desktop_about} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 ABOUT
               </MenuListItem>
               <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
-                  <img src={images.blog} alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  <img src={images.blog} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 BLOG
               </MenuListItem>
               <Separator />
               <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
-                  <img src={images.tornada} alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  <img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
                 </span>
                 TORNADA
               </MenuListItem>
               <Separator />
               <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'>
-                  <img src={images.notepad} alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
+                  <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
                 </span>
                 CREDITS
               </MenuListItem>
               <MenuListItem disabled style={{fontFamily: 'Pixeloid Sans'}}>
                 <span role='img'> 
-                  <img src={powerIMG} style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
+                  <img src={powerIMG} loading="eager" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
                 </span>
                 SHUTDOWN
               </MenuListItem>
-            </MenuList>
-          
+            </MenuList>     
           )}
         </div>
-        <img className="taskbar-item"
+<img className="taskbar-corner-item"
   src={darkMode ? images.darkmode : images.lightmode}
-  alt={darkMode ? "Dark mode" : "Light mode"}
+  alt={darkMode ? "DARK MODE" : "LIGHT MODE"}
   onClick={toggleDarkMode}
-  title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-  style={{
-    height: 28,
-    width: 28,
-    marginRight: 8,
-    cursor: 'pointer',
-    userSelect: 'none',
-    verticalAlign: 'middle'
-  }}
+  title={darkMode ? "Theme: After Dark" : "Theme: Rise N' Grind"}
 />
-        <Button
-  style={{ marginRight: 8, fontWeight: 'bold', background: crtEnabled ? '#222' : '#444', color: '#fff' }}
+<img className="taskbar-corner-item"
+  src={crtEnabled ? images.crtmode : images.lcdmode}
+  alt={crtEnabled ? "CRT" : "LCD"}
   onClick={toggleCRT}
->
-  {crtEnabled ? "CRT" : "LCD"}
-</Button>
-
+  title={crtEnabled ? "Display: CRT" : "Dislay: LCD"}
+/>
         <Frame
         variant='well'
-        shadow={true}
         
         style={{ right: 'auto', padding: '0.1rem', width: '140px', height: '40px', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#fff', backgroundColor: '#000', border: 'black inset 2px', borderRadius: '0.1rem', marginTop: 4, marginBottom: 4, marginRight: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} 
       >
