@@ -26,7 +26,7 @@ body.dark-mode {
 .winbox.dark-mode .wb-body, .winbox.dark-mode .about-me,
 body.dark-mode .about-me,
 .winbox.dark-mode .videos-window,
-body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .videos-grid, body.dark-mode .videos-grid, body.dark-mode .video-title, .winbox.dark-mode .video-title, body.dark-mode .gallery-header, .winbox.dark-mode .gallery-header, body.dark-mode .contact-me, .winbox.dark-mode .contact-me, .winbox.dark-mode .bottom-tag, body.dark-mode .bottom-tag, body.dark-mode .donate, .winbox.dark-mode .donate {
+body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .videos-grid, body.dark-mode .videos-grid, body.dark-mode .video-title, .winbox.dark-mode .video-title, body.dark-mode .gallery-header, .winbox.dark-mode .gallery-header, body.dark-mode .contact-me, .winbox.dark-mode .contact-me, .winbox.dark-mode .bottom-tag, body.dark-mode .bottom-tag, body.dark-mode .donate, .winbox.dark-mode .donate, .winbox.dark-mode .videos-header-subtitle button {
   background: #181818 !important;
   color: #f4f4f4 !important;
 }
@@ -123,7 +123,11 @@ body *::-webkit-scrollbar-corner {
   src: local('Pixeloid Sans Bold'), url(PixeloidSans-Bold.ttf) format('truetype');
   text-rendering: optimizeLegibility;
 }
-
+@font-face {
+  font-family: 'Zpix';
+  src: local('Zpix'), url(zpix.ttf) format('truetype');
+  text-rendering: optimizeLegibility;
+}
 
 
 body {

@@ -29,6 +29,7 @@
     line-height: 1.25em;
     margin-top: 4px;
     width: 100%;
+    overflow-x: hidden;
 }
 .about-header {
   width: 100%;

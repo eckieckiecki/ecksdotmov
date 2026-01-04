@@ -227,7 +227,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://google.com", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -506,6 +506,8 @@ useEffect(() => {
   let x = 0, y = 0;
   let targetX = 0, targetY = 0;
   let rafId: number;
+  const maxTilt = 18; // degrees
+
 
   const maxOffset = 33; 
 
@@ -515,12 +517,13 @@ useEffect(() => {
   };
 
   const animate = () => {
-    // Smoothly interpolate towards target
+
     const prevX = x, prevY = y;
     x += (targetX - x) * 0.1;
     y += (targetY - y) * 0.1;
     if (Math.abs(x - prevX) > 0.1 || Math.abs(y - prevY) > 0.1) {
-      document.body.style.backgroundPosition = `calc(50% + ${x}px) calc(50% + ${y}px)`;
+      document.body.style.backgroundPosition = `perspective(${x}px) rotateX(${-y * maxTilt}deg) rotateY(${x * maxTilt}deg)`;
+      ;
     }
     rafId = requestAnimationFrame(animate);
   };

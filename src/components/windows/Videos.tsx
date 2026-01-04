@@ -4,18 +4,73 @@ import icons from '../../assets/images.js';
 import featured_vhs from '../../assets/Featured-VHS.gif';
 import featured_monitor from '../../assets/icons/videos-monitor.gif';
 import { useRef, useEffect, useState } from 'react';
+import ReactDOM from 'react-dom';
 
+function Tooltip({
+  visible,
+  pos,
+  children,
+}: {
+  visible: boolean;
+  pos: { x: number; y: number };
+  children: React.ReactNode;
+}) {
+  if (!visible) return null;
+  return ReactDOM.createPortal(
+    <div
+      style={{
+        position: 'fixed',
+        left: pos.x,
+        top: pos.y,
+        background: '#f0f0f0',
+        color: '#222',
+        border: '2px outset #fff',
+        borderBottom: '2px solid #888',
+        borderRight: '2px solid #888',
+        padding: '8px 16px',
+        fontFamily: 'Tahoma, Geneva, sans-serif',
+        fontSize: 13,
+        zIndex: 9999,
+        pointerEvents: 'none',
+        whiteSpace: 'nowrap',
+      }}
+    >
+      {children}
+    </div>,
+    document.body
+  );
+}
 
 const featured = [
   {
-  title: 'THE COLOR BROTHERS',
-  description: 'Four colorful boys and their dad.',
-  featuring: 'ColeDawg',
-  featuring_link: 'https://www.instagram.com/coledawg2001/',
+  title: 'COMPS! Vol. 1',
+  description: 'also known as Compositions...',
+  featuring: 'ECKS',
+  featuring_link: 'https://3cks.net',
   }
 ];
 
+const randomvid = () => {
+    const eligible = videos.filter(v => v.id !== 10);
+    const random = eligible[Math.floor(Math.random() * eligible.length)];
+    openVideoWinBox(random);
+  };
+
 export const videos = [
+
+  {
+    id: 0,
+    title: 'COMPS! - VOL. 1',
+    window_title: 'COMPS',
+    alt_title: 'COMPS! VOLUME 1 (2018-2025)',
+    url: 'https://iframe.mediadelivery.net/embed/516695/fd769d04-3160-45d3-b4f3-b82195c22393?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    source: 'https://3cks.net/#/watch/comps',
+    date: '01-03-2026',
+    description: 'A collection of various edits, music videos, and other assorted projects I have worked on from 2018 to 2025. Some of these were made for clients, some were personal projects, and some were just random experiments that I felt like sharing. Hope you enjoy the ride through my messy brain. Made with VEGAS Pro, Afer Effects, FL Studio, and a dream. Beat in tha intro also made by me.',
+    thumbnail: 'https://3cks.b-cdn.net/thumbnails/compz-thumb.jpg',
+    isYouTube: false,
+  },
+
   {
     id: 1,
     title: 'BAKLAFA',
@@ -278,8 +333,23 @@ const VideoPreviewSize = () => {
 };
 
 const Videos = () => {
-    const headerRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
   const [showSubtitle, setShowSubtitle] = useState(true);
+
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ x: -120, y: -120 });
+  const tooltipTimeout = useRef<number | null>(null);
+
+  const handleMonitorMouseEnter = () => {
+    tooltipTimeout.current = window.setTimeout(() => setShowTooltip(true), 900);
+  };
+  const handleMonitorMouseLeave = () => {
+    setShowTooltip(false);
+    if (tooltipTimeout.current) clearTimeout(tooltipTimeout.current);
+  };
+  const handleMonitorMouseMove = (e: React.MouseEvent) => {
+  setTooltipPos({ x: e.pageX + 4, y: e.pageY + 4 });
+};
 
   useEffect(() => {
     const node = headerRef.current;
@@ -296,26 +366,43 @@ const Videos = () => {
     <>
     <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}>
       <div style={{fontFamily: 'Pixeloid Sans', flexDirection: 'column', display: 'flex', minWidth: 128, borderBottom: '2px solid black', width: '40%', paddingRight: 20}}><span style={{paddingTop: 30, marginLeft: 24, fontSize: 16, position: 'absolute', wordSpacing: 8}}><span style={{color: 'yellow', fontFamily: 'Pixeloid Sans Bold', fontSize: 18}}>ECKS</span>  →   bunker</span>
-      <img src={featured_monitor} style= {{ width: 'auto', height: '75%', objectFit: 'contain', margin: 'auto', marginLeft: 0, paddingTop: 48, alignSelf: 'flex-start'}}/>
+      <img className="featured-monitor-img" src={featured_monitor} style= {{ width: 'auto', height: '75%', objectFit: 'contain', margin: 'auto', marginLeft: 0, paddingTop: 48, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
+      onClick={randomvid}
+      onMouseEnter={handleMonitorMouseEnter}
+            onMouseLeave={handleMonitorMouseLeave}
+            onMouseMove={handleMonitorMouseMove}
+            alt="Featured Monitor"
+      />
+      <Tooltip visible={showTooltip} pos={tooltipPos}>
+        click here to play a random video, playa!
+      </Tooltip>
+
       </div>
       {showSubtitle && (
-      <div className="videos-header-subtitle"></div>
-      )}
-      <div className="videos-featured"
-  style={{
-    display: 'flex', flexDirection: 'column', alignItems: 'flex-end', padding: 4, paddingRight: 24, borderRadius: 0, cursor: 'pointer', lineHeight: 1, marginLeft: 'auto',
-  }}
-  onClick={() => openVideoWinBox(videos[1])}
->
-  <div style={{ display: 'flex', justifyContent: 'flex-end', textAlign: 'center', flexDirection: 'column', paddingLeft: 36 }}>
+      <div className="videos-header-subtitle">
+        <span className="header-in-a-header">エックス・ネット</span>
+  <span className="videos-header-quote"
+    style={{ fontSize: '0.41em', lineHeight: 0.9, maxWidth: 222, color: '#060606', fontFamily: 'inherit', display: 'block', whiteSpace: 'pre-line', marginLeft: 72, textRendering: 'optimizeLegibility', textAlign: 'center', alignItems: 'center',}}>
+    My select contributions to this wave. Find peace in its motion and create 'til you die.
+  </span>
+    <div style={{ display: 'flex', flexDirection: 'row', gap: 20, marginLeft: 60 }}>
+  <button
+      style={{
+        paddingLeft: 0, width: 120, display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'flex-start',}}
+      onClick={() => window.open('https://www.youtube.com/@ecksposting?sub_confirmation=1', '_blank')}>{YouTubeIcon}<span style={{ marginLeft: 2 }}> / @ECKSPOSTING</span></button>
+  <button
+      style={{
+        paddingLeft: 0, width: 100, display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'flex-start',}} 
+        onClick={() => window.open('https://www.youtube.com/@ECKSONYT/playlists', '_blank')}>{YouTubeIcon}<span style={{ marginLeft: 2 }}> / PLAYLISTS</span></button>
+  </div>
+    </div>)}
+      <div className="videos-featured" style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', padding: 4, paddingRight: 24, borderRadius: 0, cursor: 'pointer', lineHeight: 1, marginLeft: 'auto',}}
+  onClick={() => openVideoWinBox(videos[0])}>
+  <div style={{ display: 'flex', justifyContent: 'flex-end', textAlign: 'center', flexDirection: 'column', paddingLeft: 12 }}>
     <img
       src={featured_vhs}
       alt={featured[0].title}
-      style={{
-        width: 165, height: 165, objectFit: 'contain', paddingRight: 6, margin: 'auto', marginTop: 33, display: 'block',
-      }}
-    />
-
+      style={{width: 165, height: 165, objectFit: 'contain', paddingRight: 6, margin: 'auto', marginTop: 33, display: 'block',}}/>
   <span style={{ fontSize: 12, marginRight: 8, lineHeight: 1,marginTop: -12}}>
   <span style={{ color: 'yellow'}}>FEATURED VIDEO</span><br></br>"{featured[0].title}"</span>
   </div>
@@ -327,38 +414,19 @@ const Videos = () => {
       <button
         key={video.id}
         className="my-videos"
-        style={{
-          width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: '#FDFDFD', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',
-        }}
+        style={{width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: '#FDFDFD', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',}}
         title={video.title}
-        onClick={() => openVideoWinBox(video)}
-      >
+        onClick={() => openVideoWinBox(video)}>
         <img
           src={video.thumbnail}
           alt={video.alt_title}
           loading="lazy"
           style={{ width: '90%', height: '90%', display: 'block', border: '2px solid #222'}} />
-        <span className="video-title"
-          style={{
-            color: 'black',
-            fontWeight: 'bold',
-            fontSize: 10,
-            textAlign: 'center',
-            margin: 'auto',
-            padding: '6px 4px',
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-            height: '100%',
-          }}
-        >
+        <span className="video-title" style={{color: 'black', fontWeight: 'bold', fontSize: 10, textAlign: 'center', margin: 'auto', padding: '6px 4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', height: '100%',}}>
       {video.title}{video.isYouTube ? YouTubeIcon : ArrowIcon}
 </span>
-      </button>
-      
+      </button> 
     ))}
-    
-
     
       </div>
       <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>

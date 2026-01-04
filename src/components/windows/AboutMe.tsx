@@ -12,12 +12,16 @@ const quotes = [
 "nothing but a wizard",
 "you're doing a great job!",
 "set the scene. 86 degrees.",
+"quick to flip the script...",
+"my shit's official!",
+"also known as 'Big Fat Ecki'",
 "5'10, stand on my money, now I'm 5'6",
 "long live the new flesh!",
 "make that tv explode. bjork style.",
-"antisocial experiment",
+"antisocial experiment!",
 "do you like iPhone?",
-"I'm afraid of what might happen if I relax."
+"I'm afraid of what might happen if I relax.",
+"sample text",
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
@@ -43,7 +47,7 @@ const AboutMe = () => {
     </div>
   )}
     <div style={{ width: 'auto', height: '100%', padding: 0, margin: 0}}>
-    <div className="about-me" style={{overflowX: 'hidden'}}>
+    <div className="about-me">
     <span className="about-header"> SYSTEM &gt; ABOUT</span>
     <div className="about-split"></div>
     <div className="about-content">

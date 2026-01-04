@@ -32,8 +32,8 @@ declare module './images.js' {
   import reddit from '../assets/icons/reddit.png';
   import facebook from '../assets/icons/facebook.png';
 
-import lightmode from '../assets/icons/light-mode.png';
-import darkmode from '../assets/icons/dark-mode.png';
+import lightmode from '../assets/icons/switch-1.gif';
+import darkmode from '../assets/icons/switch-2.gif';
 import lcdmode from '../assets/icons/LCD.gif';
 import crtmode from '../assets/icons/CRT.gif';
 

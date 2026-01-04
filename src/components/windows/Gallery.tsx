@@ -3,8 +3,23 @@ import WinBox from '../winbox/winbox.min.jsx';
 import icons from '../../assets/images.js'; 
 import { useState } from 'react';
 
+ // src = thumbnails, don't forget that
 
 const images = [
+  {
+    src: '/gallery/2026-thumb-gawd.jpg',
+    alt: 'COMPS',
+    year: '2026',
+    full: '/gallery/2026-comp-gawd.png',
+    tags: ['art/gfx']
+  },
+  {
+    src: '/gallery/2026-cookin-dumb.jpg',
+    alt: 'IM-COOKING-AGAIN',
+    year: '2026',
+    full: '/gallery/2026-cookin.jpg',
+    tags: ['photos']
+  },
   {
     src: '/gallery/2025-november-haul.jpg',
     alt: 'NOVEMBER-HAUL',
@@ -28,7 +43,13 @@ const images = [
     full: '/gallery/2025-search.jpg',
     tags: ['art/gfx']
   },
-
+  {
+    src: '/gallery/2025-muffins-thumb.jpg',
+    alt: 'MUFFINS',
+    year: '2025',
+    full: '/gallery/2025-muffins.jpg',
+    tags: ['photos']
+  },
   {
     src: '/gallery/2025-baklava-mockup-thumb.jpg',
     alt: 'BAKLAVA-AD-MOCKUP',
@@ -181,12 +202,20 @@ const images = [
     tags: ['photos']
   },
 
-  {
+ {
     src: '/gallery/2022-location.jpg',
     alt: 'LOCATION',
     year: '2022',
     full: '/gallery/2022-location.jpg',
     tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2022-DGSE.png',
+    alt: 'DUMPGAWD-SCOUT-EDITION-BY-LUVBAPPY',
+    year: '2022',
+    full: '/gallery/2022-DGSE.png',
+    tags: ['art/gfx']
   },
 
   {
@@ -300,7 +329,7 @@ image.style.margin = 'auto';
     <>
       <div className="gallery-header" style={{ color: 'black', fontSize: 40, margin: 4 }}>
         <p className="gallery-header-title">THE GALLERY</p>
-        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and more. Double click an image to view it in full size.</p>
+        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and everything inbetween. Double click an image to view it in full size.</p>
 
 
       <div className="gallery-junk" style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>

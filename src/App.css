@@ -23,6 +23,11 @@ body {
   display: flex;
 }
 
+.background-3d {
+  transition: transform 0.2s cubic-bezier(.03,.98,.52,.99);
+  will-change: transform;
+}
+
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
