@@ -144,8 +144,8 @@
     display: block;
     text-rendering: optimizeLegibility;
     line-height: 1;
-    width: 60%;
-    font-size: 12px;
+    width: 60%; max-width: 180px;
+    font-size: 0.5em;
     text-align: center;
     align-items: center;
     margin: auto;

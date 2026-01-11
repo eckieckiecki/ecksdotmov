@@ -257,6 +257,7 @@ const TAGS = ['art/gfx', 'photos', 'music'];
 
 const Gallery = () => {
   const [activeTags, setActiveTags] = useState([...TAGS]);
+  const [lastOpenTime, setLastOpenTime] = useState(0);
 
   const handleTagToggle = (tag: string) => {
     setActiveTags(prev =>
@@ -267,6 +268,10 @@ const Gallery = () => {
   };
 
   const handleDoubleClick = (img: typeof images[0]) => {
+      const now = Date.now();
+    if (now - lastOpenTime < 1111) return; 
+    setLastOpenTime(now);
+
     const imgContainer = document.createElement('div');
     imgContainer.style.background = '#000';
     imgContainer.style.display = 'flex';

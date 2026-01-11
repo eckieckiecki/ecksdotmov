@@ -240,8 +240,7 @@ useEffect(() => {
 
   useEffect(() => {
     document.body.style.backgroundImage = `url(${randomImage})`;
-    document.body.style.backgroundSize = '110% auto';
-    document.body.style.backgroundRepeat = 'no-repeat';
+    document.body.style.backgroundSize = 'cover';
     document.body.style.backgroundPosition = 'center';
   }, []);
 
@@ -331,8 +330,8 @@ useEffect(() => {
       border: "0.3em",
       width: Math.min(440, window.innerWidth * 0.8) + "px", 
       maxWidth: "440px",
-      height: Math.min(575, window.innerHeight * 0.7) + "px",
-      maxHeight: "550px",
+      height: Math.min(333, window.innerHeight * 0.7) + "px",
+      maxHeight: "444px",
       x: WindowPosition('about'),
       y: "10%",
       mount: aboutMeContainer, 

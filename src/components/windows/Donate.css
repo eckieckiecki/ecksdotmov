@@ -49,15 +49,3 @@ h4 {
 .paypal-button a, .cashapp-button a {
   color: white;
 }
-
-
-
-  .bottom-tag {
-    display: block;
-    line-height: 0.5;
-    width: 45%;
-    font-size: 8px;
-    text-align: center;
-    align-items: center;
-    margin: auto;
-  }

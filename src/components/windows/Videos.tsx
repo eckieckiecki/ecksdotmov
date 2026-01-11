@@ -66,7 +66,7 @@ export const videos = [
     url: 'https://iframe.mediadelivery.net/embed/516695/fd769d04-3160-45d3-b4f3-b82195c22393?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/comps',
     date: '01-03-2026',
-    description: 'A collection of various edits, music videos, and other assorted projects I have worked on from 2018 to 2025. Some of these were made for clients, some were personal projects, and some were just random experiments that I felt like sharing. Hope you enjoy the ride through my messy brain. Made with VEGAS Pro, Afer Effects, FL Studio, and a dream. Beat in tha intro also made by me.',
+    description: 'New year, new video, new me oh yeahhgh baby. To get the mood right here’s a collection of various projects I have worked on over the years.. Hope you enjoy the ride through my messy brain. Made with VEGAS Pro, Afer Effects, FL Studio, and a dream. Beat in tha intro also made by me.',
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/compz-thumb.jpg',
     isYouTube: false,
   },
@@ -79,7 +79,7 @@ export const videos = [
     url: 'https://iframe.mediadelivery.net/embed/516695/2a455ed0-a3b0-4171-9221-99c465d21d84?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/baklava-is-fucking-awesome',
     date: '06-2025',
-    description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was happy to oblige with both.',
+    description: 'Fresh hot two-pack of some commissions I did in June 2025... \n First one is a promo video for @ciorecords’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Persona 3, L4D2, Panty n Stocking, and Dexter) and I was more than happy to oblige with both.',
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/baklafa.jpg',
     isYouTube: false,
   },
@@ -417,7 +417,7 @@ const Videos = () => {
         style={{width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: '#FDFDFD', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',}}
         title={video.title}
         onClick={() => openVideoWinBox(video)}>
-        <img
+        <img 
           src={video.thumbnail}
           alt={video.alt_title}
           loading="lazy"
