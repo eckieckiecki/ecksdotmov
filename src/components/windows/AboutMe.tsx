@@ -3,36 +3,116 @@ import about_img from '../../assets/aboutem.gif';
 import tag from '../../assets/this-is-my-tag.png';
 import { useState, useEffect } from 'react';
 
-
 const quotes = [
-"jack of all trades, master at some",
-"self-driven creative powerhouse",
-"big boy with small dreams",
-"just some guy tbh",
-"nothing but a wizard",
-"you're doing a great job!",
-"set the scene. 86 degrees.",
-"quick to flip the script...",
-"my shit's official!",
-"also known as 'Big Fat Ecki'",
-"5'10, stand on my money, now I'm 5'6",
-"long live the new flesh!",
-"make that tv explode. bjork style.",
-"antisocial experiment!",
-"do you like iPhone?",
-"I'm afraid of what might happen if I relax.",
-"sample text",
+  "jack of all trades, master at some",
+  "self-driven creative powerhouse",
+  "big boy with small dreams",
+  "just some guy tbh",
+  "nothing but a wizard",
+  "you're doing a great job!",
+  "set the scene. 86 degrees.",
+  "quick to flip the script...",
+  "my shit's official!",
+  "also known as 'Big Fat Ecki'",
+  "5'10, stand on my money, now I'm 5'6",
+  "long live the new flesh!",
+  "make that tv explode. bjork style.",
+  "antisocial experiment!",
+  "do you like iPhone?",
+  "I'm afraid of what might happen if I relax.",
+  "sample text",
 ];
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-console.log('ECKS - ', randomQuote);
+const isMobile = window.innerWidth < 600;
+const tabs = [
+  {
+    key: 'about',
+    label: 'SYSTEM',
+    content: (
+      <div>
+        <div className="sysinfo-header">General System Information</div>
+<div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6 }}>
+    <span className='ECKS-NAME' style={{ textAlign: 'left', width: '100%' }}>ECKS</span>
+    <span className='about-quote' style={{ textAlign: 'left', width: '92%' }}>"{randomQuote}"</span>
+  </div>
+  <img src={about_img} alt="das me" style={{ width: 120, marginBottom: 12 }} />
+</div>
+        <div style={{fontSize: '0.75rem', fontFamily: 'Zpix', lineHeight: '1.25rem'}}>
+        <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
 
+  <div className="sysinfo-text" style={{ flex: 1, display: 'block', marginTop: 0 }}>
+    video editor. VFX. graphic designer. just some fucking guy. always open and looking for work.
+  </div>
+</div>
+        <div>E-mail <span className="sysinfo-text"><a href="mailto:spam@3cks.net">spam@3cks.net</a></span></div>
+        <div>Site Last Updated <span className="sysinfo-text">Jan 13</span></div>
+        </div>
+      </div>
+    ),
+  },
+  {
+    key: 'hardware',
+    label: 'CPU',
+    content: (
+      <div style={{ lineHeight: 1 }}>
+        <div className="sysinfo-header">More Information</div>
+        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix'}}>Nice to meet ya! I am a self-taught creative who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
 
+This site aims to be an archive of some of my best scraps, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
+
+Some of my other work can be found at Tornada and my relatives. At the end of the day, I simply just create the stuff that I wish to see and experience. To me that's the only compass that really makes sense. 
+</div>
+      </div>
+    ),
+  },
+  {
+    key: 'tools',
+    label: 'STORAGE',
+    content: (
+      <div style={{ lineHeight: 1 }}>
+        <div className="sysinfo-header">System Storage</div>
+      <div style={{fontSize: '0.75rem', fontFamily: 'Zpix', marginTop: 8}}>
+        Everything you see here was made with:
+        <div style={{marginTop: 16, marginBottom: 2}}>After Effects</div>
+        <div style={{marginBottom: 2}}>Photoshop</div>
+        <div style={{marginBottom: 2}}>Blender</div>
+        <div style={{marginBottom: 2}}>FL Studio</div>
+        <div style={{marginBottom: 2}}>VEGAS Pro</div>
+        <div style={{marginBottom: 16}}>Tux Paint</div>
+        <div style={{marginBottom: 2}}>...and a dream.</div>
+      </div>
+      </div>
+    ),
+  },
+];
 
 const AboutMe = () => {
 
+  const [dateTime, setDateTime] = useState(new Date());
+
+useEffect(() => {
+  const interval = setInterval(() => setDateTime(new Date()), 1000);
+  return () => clearInterval(interval);
+}, []);
+
+const formatClock = (date: Date) => {
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const day = days[date.getDay()];
+  const mm = String(date.getMonth() + 1).padStart(2, '0');
+  const dd = String(date.getDate()).padStart(2, '0');
+  const yyyy = date.getFullYear();
+  let hh = date.getHours();
+  const min = String(date.getMinutes()).padStart(2, '0');
+  const sec = String(date.getSeconds()).padStart(2, '0');
+  const ampm = hh >= 12 ? 'PM' : 'AM';
+  hh = hh % 12 || 12;
+  return `${day}, ${mm}/${dd}/${yyyy} ${hh}:${min}:${sec} ${ampm}`;
+};
+
   const [showSplash, setShowSplash] = useState(true);
-  
+  const [activeTab, setActiveTab] = useState(tabs[0].key);
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 1666);
@@ -41,45 +121,81 @@ const AboutMe = () => {
 
   return (
     <>
-    {showSplash && (
-    <div className={`aboutme-splash${!showSplash ? ' splash-fade-out' : ''}`}>
-      <div className="this-is-my-tag"><img src={tag}/></div>
-    </div>
-  )}
-    <div style={{ width: 'auto', height: '100%', padding: 0, margin: 0}}>
-    <div className="about-me">
-    <span className="about-header"> SYSTEM &gt; ABOUT</span>
-    <div className="about-split"></div>
-    <div className="about-content">
-    <span className="about-tagline" style={{ display: 'flex', alignItems: 'center'}}>
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-    <span className="ECKS-NAME">ECKS!</span>
-    <span className="about-quote" style={{ marginTop: 2 }}>"{randomQuote}"</span>
-  </div>
-  <img src={about_img} alt="ECKS" className="about-image" style={{ right: 0, marginLeft: 50, maxWidth: 172, alignSelf: 'flex-start'}} />
-</span>
-
-    <div className="about-split"></div>
-    <p className="about-bio" style={{ width: '95%' }}>
-    Nice to meet ya! I am a self-taught creative who finds retreat in curiously throwing things together in their free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
-    </p>
-  <p className="about-bio" style={{ width: '95%' }}>This site aims to be an archive of some of my best scraps, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
-  </p>
-  <p className="about-bio" style={{ width: '98%' }}>
-    Some of my other work can be found at <a href="https://tornada.net" target="_blank"><span className='bigdeal'>Tornada</span></a> - an animation supergroup with an all-star lineup of me and my relatives.
-  </p>
-  <p className="about-bio" style={{ width: '95%' }}>
-    At the end of the day, I simply just create the stuff that I wish to see and experience. To me that's the only compass that really makes sense.
-  </p>
-  <p className="about-bio" style={{ width: '95%' }}>
-    Anyone hoping to get in touch (or just say hi) can reach me at <a href="mailto:spam@3cks.net" target="_blank" rel="noopener noreferrer"><span className='bigdeal'>spam@3cks.net</span></a> or via the links listed on here. I'm open to work and/or whatever questions you may have. 
-  </p>
+      {showSplash && (
+        <div className={`aboutme-splash${!showSplash ? ' splash-fade-out' : ''}`}>
+          <div className="this-is-my-tag"><img src={tag} alt="tag" /></div>
+        </div>
+      )}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: isMobile ? 'column' : 'row',
+          height: '100%',
+          minHeight: 260,
+          background: 'linear-gradient(90deg, #232526 0%, #414345 100%)',
+          boxShadow: '0 2px 16px #0004',
+          overflow: 'hidden',
+        }}
+      >
+        <nav
+          style={{
+            minWidth: isMobile ? undefined : '100px',
+            width: isMobile ? '100%' : '33%',
+            maxWidth: isMobile ? undefined : '120px',
+            height: isMobile ? undefined : '100%',
+            background: 'linear-gradient(180deg, #444 60%, #555 100%)',
+            borderRight: isMobile ? 'none' : '2px solid #444',
+            borderBottom: isMobile ? '2px solid #444' : 'none',
+            display: 'flex',
+            flexDirection: isMobile ? 'row' : 'column',
+            alignItems: 'stretch',
+            padding: '2px',
+            gap: 8,
+          }}
+        >
+          {tabs.map(tab => (
+            <button
+              key={tab.key}
+              onClick={() => setActiveTab(tab.key)}
+              style={{
+                background: activeTab === tab.key ? '#4af' : 'transparent',
+                color: activeTab === tab.key ? '#fff' : '#bbb',
+                border: 'none',
+                borderLeft: !isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
+                borderBottom: isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
+                textAlign: 'left',
+                padding: '12px 18px',
+                fontWeight: activeTab === tab.key ? 'bold' : 'normal',
+                fontFamily: 'inherit',
+                fontSize: '0.8rem',
+                cursor: 'pointer',
+                outline: 'none',
+                margin: '1px',
+                transition: 'background 0.2s, color 0.2s',
+                flex: isMobile ? 1 : undefined,
+              }}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </nav>
+        <section
+          style={{
+            flex: 1,
+            padding: 12,
+            color: '#fdfdfd',
+            fontFamily: 'inherit',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'flex-start',
+            minHeight: 220,
+          }}>
+          {tabs.find(tab => tab.key === activeTab)?.content}
+          <div style={{ marginTop: 16, fontSize: '0.75rem', fontFamily: 'Zpix' }}>{formatClock(dateTime)}</div>
+        </section>
       </div>
-
-    </div>
-    <span className="bottom-tag" style={{marginTop: 12, fontFamily: 'Sans Nouveaux', fontSize: '8px'}} >- 🅮 ECKS 2025 -</span>
-    <span style={{ textAlign: 'center', visibility: 'hidden' }}>.</span>
-    </div>
+      
+      <span className="bottom-tag" style={{ marginTop: 'auto', fontFamily: 'Sans Nouveaux'}}> - 🅮 ECKS 2026 - </span>
     </>
   );
 };

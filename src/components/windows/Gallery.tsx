@@ -339,7 +339,7 @@ image.style.margin = 'auto';
 
       <div className="gallery-junk" style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
           {TAGS.map(tag => (
-            <label key={tag} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'Pixeloid Sans', fontSize: 16 }}>
+            <label key={tag} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'Pixeloid Sans', fontSize: 16, lineHeight: 1.11 }}>
               <input
                 type="checkbox"
                 checked={activeTags.includes(tag)}

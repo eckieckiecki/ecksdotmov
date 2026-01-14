@@ -51,7 +51,7 @@ body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .
   box-shadow: 0 8px 16px rgba(255,255,255,0.55) !important;
 }
 
-.winbox.dark-mode .email {
+.winbox.dark-mode .email, .winbox.dark-mode .bottom-tag {
     color: #fcfcfc !important;
 }
 .winbox.dark-mode .line {

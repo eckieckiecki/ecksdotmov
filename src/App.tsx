@@ -53,45 +53,29 @@ createGlobalStyle`
   }
 `;
 
-
-
-
-
 const App = () => {
   
   const [crtEnabled, setCrtEnabled] = useState(true)
-
   const [darkMode, setDarkMode] = useState(true)
-
   const toggleDarkMode = () => setDarkMode((prev) => !prev)
   useEffect(() => {
   if (darkMode) {
-    document.body.classList.add('dark-mode')
-  } else {
-    document.body.classList.remove('dark-mode')
-  }
+    document.body.classList.add('dark-mode')} 
+    else {document.body.classList.remove('dark-mode')}
 
   document.querySelectorAll('.winbox').forEach(winbox => {
     if (darkMode) {
-      winbox.classList.add('dark-mode');
+      winbox.classList.add('dark-mode')
     } else {
-      winbox.classList.remove('dark-mode');
-    }
-  });
-}, [darkMode]);
+      winbox.classList.remove('dark-mode')
+    }})}, [darkMode])
 
   const toggleCRT = () => {
   setCrtEnabled(prev => {
     const next = !prev;
-    if (next) {
-      document.body.classList.add('crt');
-    } else {
-      document.body.classList.remove('crt');
-    }
-    return next;
-  });
-};
-
+    if (next) {document.body.classList.add('crt')} 
+    else {document.body.classList.remove('crt')} 
+    return next })}
 
   const lastWindowOpenTime = useRef(0);
   
@@ -102,7 +86,7 @@ const App = () => {
       return true;
     }
     return false;
-  };
+  }
 
   const [showPreLoader, setShowPreLoader] = useState(true);
   const [showWelcome, setShowWelcome] = useState(false);
@@ -110,7 +94,6 @@ const App = () => {
 
   const startBtnRef = useRef<HTMLButtonElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
-
 
   useEffect(() => {
   if (!open) return;
@@ -122,7 +105,7 @@ const App = () => {
       startBtnRef.current &&
       !startBtnRef.current.contains(event.target as Node)
     ) {
-      TaskbarOpen(false);
+      TaskbarOpen(false)
     }
   }
 
@@ -130,13 +113,13 @@ const App = () => {
   return () => {
     document.removeEventListener('mousedown', handleClickOutside);
   };
-}, [open]);
+}, [open])
 
   const [now, setNow] = useState(new Date());
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [])
 
   const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   const dateString = now.toLocaleDateString([], { month: '2-digit', day: '2-digit', year: 'numeric' });
@@ -152,17 +135,15 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
     contact: "30%",
     donate: "50%",
     credits: "50%"
-  };
-
-  return positions[windowType];
-};
+  }
+  return positions[windowType]}
 
 const setTemporaryTitle = (newTitle: string, revertTitle: string = "[3cks.net]") => {
   document.title = newTitle;
   setTimeout(() => {
     document.title = revertTitle;
   }, 11111); 
-};
+}
 
 const location = useLocation();
 const hashPath = location.pathname;
@@ -323,10 +304,10 @@ useEffect(() => {
       aboutMeContainer.classList.add('dark-mode');
     }
     const winbox = new WinBox({
-      title: "~X/ABOUT/",
+      title: "~X/SYSINFO/",
       className: "no-resize",
       icon: images.desktop_about,
-      background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
+      background: "linear-gradient(180deg,rgba(40, 40, 40, 1) 1%, rgba(66, 66, 66, 1) 4%, rgba(44, 44, 44, 1) 7%, rgba(66, 66, 66, 1) 10%, rgba(44, 44, 44, 1) 14%, rgba(0, 0, 0, 1) 100%)",
       border: "0.3em",
       width: Math.min(440, window.innerWidth * 0.8) + "px", 
       maxWidth: "440px",
@@ -504,11 +485,9 @@ MusicRoot.render(<Music />);
 useEffect(() => {
   let x = 0, y = 0;
   let targetX = 0, targetY = 0;
-  let rafId: number;
-  const maxTilt = 18; // degrees
-
-
-  const maxOffset = 33; 
+  let rafId: number
+  const maxTilt = 18
+  const maxOffset = 33
 
   const handleMouseMove = (e: MouseEvent) => {
     targetX = (e.clientX / window.innerWidth - 0.5) * maxOffset;
@@ -535,6 +514,8 @@ useEffect(() => {
     cancelAnimationFrame(rafId);
   };
 }, []);
+
+const isMobile = window.innerWidth < 600;
 
   return (
     <>
@@ -590,119 +571,185 @@ useEffect(() => {
 </div> 
       <div className="taskbar">
       <ThemeProvider theme={original}>
-      <AppBar fixed={true}style={{top: 'auto', bottom: 0, position: 'fixed', zIndex: 1}}>
-      <Toolbar noPadding style={{ justifyContent: 'space-between' }}>
-        <div style={{ position: 'relative', display: 'flex', width: '100%', alignItems: 'center', padding: '0px' }}>
-        <Button
-        ref={startBtnRef}
-        onClick={() => TaskbarOpen(!open)}
-        active={open ? true : undefined}
-        style={{ fontWeight: 'bold', marginRight: 6, marginLeft: 6 }}>
-        <img src={logoIMG} alt='START' style={{ height: '20px', marginRight: 4 }}
-            />
-            START
-          </Button>
-          <Handle size={35} style={{ marginRight: 10 }}/>
-
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://youtube.com/ecksposting', '_blank', 'noopener,noreferrer')}>
-  <img src={images.youtube}
-    alt='YouTube' className="taskbar-item"/>
-  <div className="taskbar-tooltip">YOUTUBE</div></div>
-
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://instagram.com/ecksposting', '_blank', 'noopener,noreferrer')}>
-  <img src={images.instagram}
-    alt='Instagram' className="taskbar-item"/>
-  <div className="taskbar-tooltip">INSTAGRAM</div></div>
-
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://twitter.com/ecksposting', '_blank', 'noopener,noreferrer')}>
-  <img src={images.xitter}
-    alt='Xitter' className="taskbar-item"/>
-  <div className="taskbar-tooltip">XITTER</div></div>
-
-<div style={{ position: 'relative', display: 'inline-block', marginRight: 14 }} onClick={() => window.open('https://eckslol.newgrounds.com/', '_blank', 'noopener,noreferrer')}>
-  <img src={images.newgrounds}
-    alt='Newgrounds' className="taskbar-item"/>
-  <div className="taskbar-tooltip">NEWGROUNDS</div></div>
-
-{open && (
-  <MenuList
-    ref={menuRef}
-    style={{
-      position: 'absolute',
-      left: '-3px',
-      bottom: '80%',
-    }}
-    onClick={() => TaskbarOpen(false)}
-  >
-              <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-              <span role='img'>
-                  <img src={images.desktop_videos} loading="eager" alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
-                </span>
-                VIDEOS
-              </MenuListItem>
-              <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'>
-                  <img src={images.desktop_gallery} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px',  margin: '0 15px -4px 0'}} />
-                </span>
-                GALLERY
-              </MenuListItem>
-              <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'>
-                  <img src={images.desktop_about} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
-                </span>
-                ABOUT
-              </MenuListItem>
-              <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'>
-                  <img src={images.blog} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
-                </span>
-                BLOG
-              </MenuListItem>
-              <Separator />
-              <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'>
-                  <img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
-                </span>
-                TORNADA
-              </MenuListItem>
-              <Separator />
-              <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'>
-                  <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
-                </span>
-                CREDITS
-              </MenuListItem>
-              <MenuListItem disabled style={{fontFamily: 'Pixeloid Sans'}}>
-                <span role='img'> 
-                  <img src={powerIMG} loading="eager" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
-                </span>
-                SHUTDOWN
-              </MenuListItem>
-            </MenuList>     
-          )}
-        </div>
-<img className="taskbar-corner-item"
-  src={darkMode ? images.darkmode : images.lightmode}
-  alt={darkMode ? "DARK MODE" : "LIGHT MODE"}
-  onClick={toggleDarkMode}
-  title={darkMode ? "Theme: After Dark" : "Theme: Rise N' Grind"}
-/>
-<img className="taskbar-corner-item"
-  src={crtEnabled ? images.crtmode : images.lcdmode}
-  alt={crtEnabled ? "CRT" : "LCD"}
-  onClick={toggleCRT}
-  title={crtEnabled ? "Display: CRT" : "Dislay: LCD"}
-/>
-        <Frame
-        variant='well'
-        
-        style={{ right: 'auto', padding: '0.1rem', width: '140px', height: '40px', textAlign: 'center', fontSize: '1rem', fontWeight: 'bold', color: '#fff', backgroundColor: '#000', border: 'black inset 2px', borderRadius: '0.1rem', marginTop: 4, marginBottom: 4, marginRight: 6, display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }} 
+      <AppBar
+        fixed={true}
+        style={{
+          top: 'auto',
+          bottom: 0,
+          position: 'fixed',
+          zIndex: 1,
+          height: isMobile ? 38 : undefined,
+          minHeight: isMobile ? 38 : undefined,
+        }}
       >
-        <div style={{ fontSize: '0.9em'}}>{timeString}</div>
-        <div style={{ fontSize: '0.9em', marginTop: 6 }}>{dateString}</div>
-      </Frame>
-      </Toolbar>
-    </AppBar>
+        <Toolbar
+          noPadding
+          style={{
+            justifyContent: 'space-between',
+            minHeight: isMobile ? 38 : undefined,
+            padding: isMobile ? '0 2px' : undefined,
+          }}
+        >
+          <div
+            style={{
+              position: 'relative',
+              display: 'flex',
+              width: '100%',
+              alignItems: 'center',
+              padding: isMobile ? '0px' : undefined,
+            }}
+          >
+            <Button
+              ref={startBtnRef}
+              onClick={() => TaskbarOpen(!open)}
+              active={open ? true : undefined}
+              style={{
+                fontWeight: 'bold',
+                marginRight: isMobile ? 2 : 4,
+                marginLeft: isMobile ? 2 : 6,
+                fontFamily: 'Pixeloid Sans Bold',
+                fontSize: isMobile ? '0.85em' : '0.70em',
+                height: isMobile ? 28 : 36,
+                minWidth: isMobile ? 60 : undefined,
+                padding: isMobile ? '2px 6px' : undefined,
+              }}
+            >
+              <img
+                src={logoIMG}
+                alt='START'
+                style={{
+                  height: isMobile ? '15px' : '20px',
+                  marginRight: isMobile ? 2 : 4,
+                }}
+              />
+              START
+            </Button>
+            <Handle size={isMobile ? 26 : 36} style={{ marginRight: isMobile ? 4 : 6, marginLeft: isMobile ? 2 : 2 }} />
+
+            {/* Social icons */}
+            {[
+              { src: images.youtube, alt: 'YouTube', tooltip: 'YOUTUBE', url: 'https://youtube.com/ecksposting' },
+              { src: images.instagram, alt: 'Instagram', tooltip: 'INSTAGRAM', url: 'https://instagram.com/ecksposting' },
+              { src: images.xitter, alt: 'Xitter', tooltip: 'XITTER', url: 'https://twitter.com/ecksposting' },
+              { src: images.newgrounds, alt: 'Newgrounds', tooltip: 'NEWGROUNDS', url: 'https://eckslol.newgrounds.com/' },
+            ].map((icon) => (
+              <div
+                key={icon.alt}
+                style={{
+                  position: 'relative',
+                  display: 'inline-block',
+                  marginRight: isMobile ? 4 : 11
+                }}
+                onClick={() => window.open(icon.url, '_blank', 'noopener,noreferrer')}
+              >
+                <img src={icon.src} alt={icon.alt} className="taskbar-item" style={{ height: isMobile ? 18 : undefined, width: isMobile ? 18 : undefined }} />
+                <div className="taskbar-tooltip" style={{ fontSize: isMobile ? 10 : undefined }}>{icon.tooltip}</div>
+              </div>
+            ))}
+
+            {open && (
+              <MenuList
+                ref={menuRef}
+                style={{
+                  position: 'absolute',
+                  left: '-3px',
+                  bottom: '80%',
+                }}
+                onClick={() => TaskbarOpen(false)}
+              >
+                <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                <span role='img'>
+                    <img src={images.desktop_videos} loading="eager" alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  </span>
+                  VIDEOS
+                </MenuListItem>
+                <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'>
+                    <img src={images.desktop_gallery} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px',  margin: '0 15px -4px 0'}} />
+                  </span>
+                  GALLERY
+                </MenuListItem>
+                <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'>
+                    <img src={images.desktop_about} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  </span>
+                  ABOUT
+                </MenuListItem>
+                <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'>
+                    <img src={images.blog} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  </span>
+                  BLOG
+                </MenuListItem>
+                <Separator />
+                <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'>
+                    <img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                  </span>
+                  TORNADA
+                </MenuListItem>
+                <Separator />
+                <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'>
+                    <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
+                  </span>
+                  CREDITS
+                </MenuListItem>
+                <MenuListItem disabled style={{fontFamily: 'Pixeloid Sans'}}>
+                  <span role='img'> 
+                    <img src={powerIMG} loading="eager" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
+                  </span>
+                  SHUTDOWN
+                </MenuListItem>
+              </MenuList>     
+            )}
+          </div>
+          <img
+            className="taskbar-corner-item"
+            src={darkMode ? images.darkmode : images.lightmode}
+            alt={darkMode ? "DARK MODE" : "LIGHT MODE"}
+            onClick={toggleDarkMode}
+            title={darkMode ? "Theme: After Dark" : "Theme: Rise N' Grind"}
+            style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 4 }}
+          />
+          <img
+            className="taskbar-corner-item"
+            src={crtEnabled ? images.crtmode : images.lcdmode}
+            alt={crtEnabled ? "CRT" : "LCD"}
+            onClick={toggleCRT}
+            title={crtEnabled ? "Display: CRT" : "Dislay: LCD"}
+            style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 11 }}
+          />
+          <Frame
+            variant='well'
+            style={{
+              right: 'auto',
+              padding: isMobile ? '0.05rem' : '0.1rem',
+              width: isMobile ? '90px' : '140px',
+              height: isMobile ? '28px' : '40px',
+              textAlign: 'center',
+              fontSize: isMobile ? '0.8rem' : '1rem',
+              fontWeight: 'bold',
+              color: '#fff',
+              backgroundColor: '#000',
+              border: 'black inset 2px',
+              borderRadius: '0.1rem',
+              marginTop: isMobile ? 2 : 4,
+              marginBottom: isMobile ? 2 : 4,
+              marginRight: isMobile ? 2 : 6,
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{lineHeight: isMobile ? 1 : 0.6}}>
+            <div style={{ fontFamily: 'Pixeloid Sans Bold', fontSize: isMobile ? '0.55em' : '0.8em' }}>{timeString}</div>
+            <div style={{ fontFamily: 'Pixeloid Sans', fontSize: isMobile ? '0.55em' : '0.8em', marginTop: isMobile ? 2 : 6 }}>{dateString}</div>
+          </div>
+          </Frame>
+        </Toolbar>
+      </AppBar>
     </ThemeProvider>
       </div>
     </>

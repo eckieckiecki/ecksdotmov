@@ -1,3 +1,17 @@
+@media (max-width: 600px) {
+  .aboutme-container {
+    flex-direction: column !important;
+  }
+  .aboutme-nav {
+    flex-direction: row !important;
+    width: 100% !important;
+    border-right: none !important;
+    border-bottom: 2px solid #444 !important;
+  }
+  .aboutme-content {
+    padding: 8px !important;
+  }
+}
 .this-is-my-tag img {
   position: fixed;
   width: 36%;
@@ -44,42 +58,18 @@
   height: 10%;
   padding-right: 16px;
 }
-.about-tagline {
-  margin-left: 10px;
-  width: 100%;
-  display: flex;
-}
-.about-bio {
-  margin-left: 8px;
-  line-height: 1.4em;
-}
 .about-quote {
   font-weight: bold;
-  font-family: 'arial';
-  font-size: 14px;
+  font-family: 'Pixeloid Sans';
+  font-size: 0.70rem;
   line-height: 1em;
-}
-.about-split {
-  width: 100%;
-  border-bottom: 2px solid #000;
-  margin: 4px 0 8px 0;
-  padding-left: 12px;
-}
-.about-content {
-        line-height: 1.25em;
-        border-color: #fdfdfd;
-        font-size: 8pt;
-        padding: 0 -15px 0 0;
-}
-.about-content .bio {
-  margin: 10px;
+  text-rendering: optimizeLegibility;
 }
 .ECKS-NAME {
   color: #ff0000;
-  background: linear-gradient(0deg,rgba(255, 21, 0, 1) 0%, rgba(135, 0, 0, 1) 100%);
-  background-clip: text;
-  font-family: 'arial';
-  font-size: 48px;
+  font-family: 'Pixeloid Sans Bold';
+  text-shadow: 2px 2px 2px #000000;
+  font-size: 3rem;
   font-weight: bold;
   -webkit-transition: .3s ease;
   transition: .3s;
@@ -90,9 +80,6 @@
     -2px 2px 0 #000,
     -2px -2px 0 #000,
     2px -2px 0 #000;
-}
-.ECKS-NAME:hover {
-  font-size: 54px;
 }
 .aboutme-splash {
   position: fixed;
@@ -149,4 +136,31 @@
     text-align: center;
     align-items: center;
     margin: auto;
+  }
+  .sysinfo-text {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 0.65rem;
+    text-rendering: optimizeLegibility;
+    padding: 2px;
+  background: white;
+  border: 2px solid black;
+  color: black;
+  min-width: 120px;
+  max-width: 100%;
+  width: auto;
+  box-sizing: border-box;
+  white-space: normal;
+  word-break: break-word;
+  margin: 4px 0;
+  }
+  .sysinfo-header {
+    font-weight: bold;
+    background: linear-gradient(180deg,rgb(255, 14, 14) 0%, rgba(130, 0, 0, 1) 7%, rgba(255, 22, 22, 1) 44%, rgb(255, 28, 28) 100%);
+    border-radius: 4px;
+    padding: 2px;padding-left: 6px;
+    margin-bottom: 8px;
+    font-size: 1rem;
+    border: 1px ridge black;
+    line-height: 1.25;
   }

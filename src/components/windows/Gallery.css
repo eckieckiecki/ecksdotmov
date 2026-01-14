@@ -21,6 +21,7 @@
 }
 .gallery-header-title {
   font-family: 'Pixeloid Sans Bold';
+  line-height: 1;
 }
 .gallery-header-subtitle {
   font-family: 'Pixeloid Sans';

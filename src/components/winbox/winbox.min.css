@@ -46,16 +46,18 @@
   height: 35px;
   line-height: 35px;
   color: #fff;
+  text-shadow: 2px 2px 1px #000000;
+  background: linear-gradient(180deg,rgba(40, 40, 40, 1) 1%, rgba(66, 66, 66, 1) 4%, rgba(44, 44, 44, 1) 5%, rgba(66, 66, 66, 1) 8%, rgba(44, 44, 44, 1) 14%, rgba(0, 0, 0, 1) 100%);
   font-weight: bold;
   overflow: hidden;
   z-index: 1;
   border-bottom: white 2px solid;
 }
 .wb-body {
-  top: 35px;
+  top: 42px;
   right: 0;
   bottom: 0;
-  border: ridge 4px #6c6c6c;
+  border: ridge 3px #6c6c6c;
   overflow: auto;
   -webkit-overflow-scrolling: touch;
   will-change: contents;
