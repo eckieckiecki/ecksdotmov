@@ -55,6 +55,15 @@ createGlobalStyle`
 
 const App = () => {
   
+  useEffect(() => {
+  document.body.style.overflow = 'hidden';
+  document.documentElement.style.overflow = 'hidden';
+  return () => {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
+  };
+}, []);
+
   const [crtEnabled, setCrtEnabled] = useState(true)
   const [darkMode, setDarkMode] = useState(true)
   const toggleDarkMode = () => setDarkMode((prev) => !prev)
@@ -208,7 +217,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://googlel.com", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -220,10 +229,42 @@ useEffect(() => {
   }, [showWelcome]);
 
   useEffect(() => {
-    document.body.style.backgroundImage = `url(${randomImage})`;
-    document.body.style.backgroundSize = 'cover';
-    document.body.style.backgroundPosition = 'center';
-  }, []);
+  const tiltEl = document.getElementById('background-tilt');
+  if (!tiltEl) return;
+
+  // Limit tilt range to avoid exposing edges
+  const maxTilt = 12; // degrees, lower value = less risk of white space
+
+  // Mouse tilt effect
+  const handleMouseMove = (e: MouseEvent) => {
+    const { innerWidth, innerHeight } = window;
+    let x = (e.clientX / innerWidth - 0.5) * maxTilt * 2;
+    let y = (e.clientY / innerHeight - 0.5) * maxTilt * 2;
+    // Clamp values to avoid excessive tilt
+    x = Math.max(-maxTilt, Math.min(maxTilt, x));
+    y = Math.max(-maxTilt, Math.min(maxTilt, y));
+    tiltEl.style.transform = `translate(-50%, -50%) perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
+  };
+
+  // Gyroscope tilt effect
+  const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
+    let x = (e.gamma || 0) * 0.5;
+    let y = ((e.beta || 0) - 45) * 0.5;
+    // Clamp values
+    x = Math.max(-maxTilt, Math.min(maxTilt, x));
+    y = Math.max(-maxTilt, Math.min(maxTilt, y));
+    tiltEl.style.transform = `translate(-50%, -50%) perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
+  };
+
+  window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('deviceorientation', handleDeviceOrientation);
+
+  return () => {
+    window.removeEventListener('mousemove', handleMouseMove);
+    window.removeEventListener('deviceorientation', handleDeviceOrientation);
+    tiltEl.style.transform = 'translate(-50%, -50%)';
+  };
+}, [randomImage]);
 
   const openCreditsWindow = () => {
     if (!canOpenWindow()) return;
@@ -475,45 +516,12 @@ const openMusicWindow = () => {
 const MusicRoot = ReactDOM.createRoot(MusicContainer); 
 MusicRoot.render(<Music />);
   };
-
  useEffect(() => {
     Object.values(images).forEach(src => {
       const img = new window.Image();
       img.src = src;
     });
   }, []);
-useEffect(() => {
-  let x = 0, y = 0;
-  let targetX = 0, targetY = 0;
-  let rafId: number
-  const maxTilt = 18
-  const maxOffset = 33
-
-  const handleMouseMove = (e: MouseEvent) => {
-    targetX = (e.clientX / window.innerWidth - 0.5) * maxOffset;
-    targetY = (e.clientY / window.innerHeight - 0.5) * maxOffset;
-  };
-
-  const animate = () => {
-
-    const prevX = x, prevY = y;
-    x += (targetX - x) * 0.1;
-    y += (targetY - y) * 0.1;
-    if (Math.abs(x - prevX) > 0.1 || Math.abs(y - prevY) > 0.1) {
-      document.body.style.backgroundPosition = `perspective(${x}px) rotateX(${-y * maxTilt}deg) rotateY(${x * maxTilt}deg)`;
-      ;
-    }
-    rafId = requestAnimationFrame(animate);
-  };
-
-  window.addEventListener('mousemove', handleMouseMove);
-  rafId = requestAnimationFrame(animate);
-
-  return () => {
-    window.removeEventListener('mousemove', handleMouseMove);
-    cancelAnimationFrame(rafId);
-  };
-}, []);
 
 const isMobile = window.innerWidth < 600;
 
@@ -559,7 +567,7 @@ const isMobile = window.innerWidth < 600;
           </label>
           <div id="contact-content" style={{ display: 'none' }}>
           </div> 
-    <label htmlFor={'donate'} className="desktop-item" onClick={openDonateWindow}>
+    <label htmlFor={'donate'} className="desktop-item" style={{ position: 'relative', zIndex: 2 }} onClick={openDonateWindow}>
             <a href="#/donate/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_donate_gif} className="logo" alt="GALLERY" />
             <div className="desktop-text">DONATE</div>
@@ -654,6 +662,7 @@ const isMobile = window.innerWidth < 600;
                   position: 'absolute',
                   left: '-3px',
                   bottom: '80%',
+                  zIndex: 111,
                 }}
                 onClick={() => TaskbarOpen(false)}
               >
@@ -752,6 +761,25 @@ const isMobile = window.innerWidth < 600;
       </AppBar>
     </ThemeProvider>
       </div>
+      <div
+  id="background-tilt"
+  style={{
+    position: 'fixed',
+    top: '50%',
+    left: '50%',
+    width: '200vw',
+    height: '200vh',
+    transform: 'translate(-50%, -50%)',
+    zIndex: 0,
+    pointerEvents: 'none',
+    backgroundImage: `url(${randomImage})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    transition: 'transform 0.2s cubic-bezier(.4,2,.6,1)',
+    willChange: 'transform',
+    overflow: 'hidden',
+  }}
+></div>
     </>
   );
 };

@@ -44,7 +44,7 @@ import '../../assets/images.js';
         - Friends of the site: 
         <span>
         <br />
-        <a href="https://lucke.neocities.org" target="_blank">lucke.neocities.org</a>, <a href="https://4nx4e.lol" target="_blank">4nx4e.lol</a>
+        <a href="https://4nx4e.lol" target="_blank">4nx4e.lol</a>, <a href="https://lucke.strokin.it" target="_blank">lucke.strokin.it</a>, <a href="https://spideyes.neocities.org/" target="_blank">spideyes.neocities.org</a>
         </span>
         <br />
         <span>
