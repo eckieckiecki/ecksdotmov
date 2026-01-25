@@ -217,7 +217,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://googlel.com", // eckis-chronicle.neocities.org
+              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -231,37 +231,20 @@ useEffect(() => {
   useEffect(() => {
   const tiltEl = document.getElementById('background-tilt');
   if (!tiltEl) return;
+  const maxTilt = 12; 
 
-  // Limit tilt range to avoid exposing edges
-  const maxTilt = 12; // degrees, lower value = less risk of white space
-
-  // Mouse tilt effect
   const handleMouseMove = (e: MouseEvent) => {
     const { innerWidth, innerHeight } = window;
     let x = (e.clientX / innerWidth - 0.5) * maxTilt * 2;
     let y = (e.clientY / innerHeight - 0.5) * maxTilt * 2;
-    // Clamp values to avoid excessive tilt
-    x = Math.max(-maxTilt, Math.min(maxTilt, x));
-    y = Math.max(-maxTilt, Math.min(maxTilt, y));
-    tiltEl.style.transform = `translate(-50%, -50%) perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
-  };
-
-  // Gyroscope tilt effect
-  const handleDeviceOrientation = (e: DeviceOrientationEvent) => {
-    let x = (e.gamma || 0) * 0.5;
-    let y = ((e.beta || 0) - 45) * 0.5;
-    // Clamp values
     x = Math.max(-maxTilt, Math.min(maxTilt, x));
     y = Math.max(-maxTilt, Math.min(maxTilt, y));
     tiltEl.style.transform = `translate(-50%, -50%) perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
   };
 
   window.addEventListener('mousemove', handleMouseMove);
-  window.addEventListener('deviceorientation', handleDeviceOrientation);
-
   return () => {
     window.removeEventListener('mousemove', handleMouseMove);
-    window.removeEventListener('deviceorientation', handleDeviceOrientation);
     tiltEl.style.transform = 'translate(-50%, -50%)';
   };
 }, [randomImage]);

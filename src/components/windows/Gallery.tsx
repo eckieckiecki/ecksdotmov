@@ -1,5 +1,6 @@
 import './Gallery.css';
 import WinBox from '../winbox/winbox.min.jsx';
+import gallery_header from '../../assets/gallery.gif';
 import icons from '../../assets/images.js'; 
 import { useState } from 'react';
 
@@ -21,7 +22,7 @@ const images = [
     tags: ['photos']
   },
   {
-    src: '/gallery/2025-november-haul.jpg',
+    src: '/gallery/2025-november-thumb.jpg',
     alt: 'NOVEMBER-HAUL',
     year: '2025',
     full: '/gallery/2025-november-haul.jpg',
@@ -332,8 +333,9 @@ image.style.margin = 'auto';
 
   return (
     <>
+    <div style={{ background: 'linear-gradient(180deg, #232526 0%, #414345 80%, rgba(65,67,69,77) 96%, rgba(65,67,69,0) 100%)' }}></div>
       <div className="gallery-header" style={{ color: 'black', fontSize: 40, margin: 4 }}>
-        <p className="gallery-header-title">THE GALLERY</p>
+        <p className="gallery-header-title"><img src={gallery_header} alt="Gallery Header" style={{margin: '-2rem', minWidth: '150px',width: '66%', maxWidth: '555px'}}/></p>
         <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and everything inbetween. Double click an image to view it in full size.</p>
 
 
