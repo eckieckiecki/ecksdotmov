@@ -5,7 +5,7 @@ import '../../assets/images.js';
   const Credits = () => {
   return (
     <>
-      <div className='notepad' style={{ fontSize: 8, fontFamily: 'Sans Nouveaux', overflow: 'hidden', paddingLeft: 16, paddingRight: 16, textRendering: 'optimizeLegibility', lineHeight: 1.4}}>
+      <div className='notepad' style={{ fontSize: '0.55rem', fontFamily: 'Sans Nouveaux', overflow: 'hidden', paddingLeft: 16, paddingRight: 16, textRendering: 'optimizeLegibility', lineHeight: 1.4}}>
 
         <p>
         <span className="notepad-header">ADMIN</span>
@@ -15,7 +15,7 @@ import '../../assets/images.js';
         </span>
         </p>
 
-        <p className="links" style={{ fontSize: 8, lineHeight: 1.5}}>
+        <p className="links" style={{ fontSize: '0.6rem', lineHeight: 1.5}}>
         <span className="notepad-header">CODE</span>
         <span>
         <br />

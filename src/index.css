@@ -127,7 +127,11 @@ body *::-webkit-scrollbar-corner {
   src: local('Zpix'), url(zpix.ttf) format('truetype');
   text-rendering: optimizeLegibility;
 }
-
+@font-face {
+  font-family: 'Press Start 2P';
+  src: local('Press Start 2P'), url(PressStart2P.ttf) format('truetype');
+  text-rendering: optimizeLegibility;
+}
 
 body {
   margin: 0;

@@ -8,6 +8,13 @@ import { useState } from 'react';
 
 const images = [
   {
+    src: '/gallery/2026-setup-thumb.jpg',
+    alt: 'MASTER-AT-WORK',
+    year: '2026',
+    full: '/gallery/2026-setup.jpg',
+    tags: ['art/gfx', 'photos']
+  },
+  {
     src: '/gallery/2026-thumb-gawd.jpg',
     alt: 'COMPS',
     year: '2026',

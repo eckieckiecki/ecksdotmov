@@ -82,12 +82,11 @@ a:link, a:active { text-decoration: none; color: #970707 }
 .header-in-a-header {
   display: inline-block;
   perspective: 600px;
+  letter-spacing: 0.25rem;
   text-shadow: 0 2px 8px #000, 0 0 1px #fff;
-  /* animation: spinY 2.5s linear infinite; */
   transform-style: preserve-3d;
-  font-weight: bold;
-  font-family: 'Zpix';
-  font-size: 24px;
+  font-family: 'Wahupop';
+  font-size: 36px;
   margin-left: 66px;
   margin-bottom: 33px;
 }

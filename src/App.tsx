@@ -210,7 +210,7 @@ useEffect(() => {
     if (showWelcome) {
       const WelcomeContainer = document.createElement('div');
       new WinBox({
-              title: "~X/WHATS_NEW/",
+              title: "~X/WHATS_NEW",
               icon: images.info,
               background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
               width: "375px",
@@ -249,6 +249,23 @@ useEffect(() => {
   };
 }, [randomImage]);
 
+const [bgDims, setBgDims] = useState({ width: '350vw', height: '350vh' });
+
+useEffect(() => {
+  function updateBgDims() {
+    const tiltAngle = 15; 
+    const radians = (tiltAngle * Math.PI) / 180;
+    const extra = Math.tan(radians) * Math.max(window.innerWidth, window.innerHeight);
+    setBgDims({
+      width: `${window.innerWidth + extra * 2}px`,
+      height: `${window.innerHeight + extra * 2}px`,
+    })
+  }
+  updateBgDims();
+  window.addEventListener('resize', updateBgDims);
+  return () => window.removeEventListener('resize', updateBgDims);
+}, [])
+
   const openCreditsWindow = () => {
     if (!canOpenWindow()) return;
     setTemporaryTitle("[3cks.net] - CREDITS!");
@@ -276,14 +293,12 @@ useEffect(() => {
       root.unmount(); 
           CreditsContainer.remove(); 
         },
-      });
+      })
+
       if (darkMode) {
-  winbox.window.classList.add('dark-mode');
-}
+  winbox.window.classList.add('dark-mode')}
   const CreditsRoot = ReactDOM.createRoot(CreditsContainer); 
-  
-  CreditsRoot.render(<Credits />);
-      };
+  CreditsRoot.render(<Credits />)}
 
   const openDonateWindow = () => {
     if (!canOpenWindow()) return;
@@ -750,8 +765,8 @@ const isMobile = window.innerWidth < 600;
     position: 'fixed',
     top: '50%',
     left: '50%',
-    width: '200vw',
-    height: '200vh',
+    width: bgDims.width,
+    height: bgDims.height,
     transform: 'translate(-50%, -50%)',
     zIndex: 0,
     pointerEvents: 'none',
