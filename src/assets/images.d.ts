@@ -26,6 +26,7 @@ declare module './images.js' {
   import blog from '../assets/icons/blog.png';
   
   import youtube from '../assets/icons/youtube.png';
+  import tiktok from '../assets/icons/tiktok.png'
   import xitter from '../assets/icons/xitter.png';
   import instagram from '../assets/icons/instagram.png';
   import newgrounds from '../assets/icons/newgrounds.png';
@@ -51,6 +52,7 @@ import crtmode from '../assets/icons/CRT.gif';
       'desktop_videos_gif':desktop_videos_gif,
 
         'youtube':youtube,
+        'tiktok':tiktok,
         'xitter':xitter,
         'instagram':instagram,
         'steam':steam,

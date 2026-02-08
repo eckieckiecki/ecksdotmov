@@ -10,27 +10,28 @@ import desktop_donate_gif from '../assets/icons/desktop-donate.gif';
 import desktop_gallery_gif from '../assets/icons/desktop-gallery.gif';
 import desktop_videos_gif from '../assets/icons/desktop-videos.gif';
 
-import steam from '../assets/icons/steam.png';
+import steam from '../assets/icons/steam.png'
 import moneyspin from '../assets/icons/money-spin.gif'
-import cashapp from '../assets/icons/cashapp.png';
-import paypal from '../assets/icons/paypal.png';
+import cashapp from '../assets/icons/cashapp.png'
+import paypal from '../assets/icons/paypal.png'
 
-import tornada from '../assets/icons/tornada.png';
-import notepad from '../assets/icons/notepad.png';
-import info from '../assets/icons/info.png';
-import blog from '../assets/icons/blog.png';
+import tornada from '../assets/icons/tornada.png'
+import notepad from '../assets/icons/notepad.png'
+import info from '../assets/icons/info.png'
+import blog from '../assets/icons/blog.png'
 
-import youtube from '../assets/icons/youtube.png';
-import xitter from '../assets/icons/xitter.png';
-import instagram from '../assets/icons/instagram.png';
-import newgrounds from '../assets/icons/newgrounds.png';
-import reddit from '../assets/icons/reddit.png';
-import facebook from '../assets/icons/facebook.png';
+import youtube from '../assets/icons/youtube.png'
+import tiktok from '../assets/icons/tiktok.png'
+import xitter from '../assets/icons/xitter.png'
+import instagram from '../assets/icons/instagram.png'
+import newgrounds from '../assets/icons/newgrounds.png'
+import reddit from '../assets/icons/reddit.png'
+import facebook from '../assets/icons/facebook.png'
 
-import lightmode from '../assets/icons/switch-1.gif';
-import darkmode from '../assets/icons/switch-2.gif';
-import lcdmode from '../assets/icons/LCD.gif';
-import crtmode from '../assets/icons/CRT.gif';
+import lightmode from '../assets/icons/switch-1.gif'
+import darkmode from '../assets/icons/switch-2.gif'
+import lcdmode from '../assets/icons/LCD.gif'
+import crtmode from '../assets/icons/CRT.gif'
 
 export default {
     
@@ -52,6 +53,7 @@ export default {
     'blog':blog,
 
     'youtube':youtube,
+    'tiktok':tiktok,
     'xitter':xitter,
     'instagram':instagram,
     'newgrounds':newgrounds,

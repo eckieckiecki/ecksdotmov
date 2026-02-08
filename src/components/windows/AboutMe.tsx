@@ -46,7 +46,7 @@ const tabs = [
   </div>
 </div>
         <div>E-mail <span className="sysinfo-text"><a href="mailto:spam@3cks.net">spam@3cks.net</a></span></div>
-        <div>Site Last Updated <span className="sysinfo-text">Jan 28</span></div>
+        <div>Site Last Updated <span className="sysinfo-text">Feb 8</span></div>
         </div>
       </div>
     ),

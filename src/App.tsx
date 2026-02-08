@@ -638,6 +638,7 @@ const isMobile = window.innerWidth < 600;
               { src: images.instagram, alt: 'Instagram', tooltip: 'INSTAGRAM', url: 'https://instagram.com/ecksposting' },
               { src: images.xitter, alt: 'Xitter', tooltip: 'XITTER', url: 'https://twitter.com/ecksposting' },
               { src: images.newgrounds, alt: 'Newgrounds', tooltip: 'NEWGROUNDS', url: 'https://eckslol.newgrounds.com/' },
+              { src: images.tiktok, alt: 'TikTok', tooltip: 'TIKTOK', url: 'https://tiktok.com/@ecks.wtf' },
             ].map((icon) => (
               <div
                 key={icon.alt}
