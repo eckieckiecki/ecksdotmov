@@ -32,7 +32,7 @@ const tabs = [
       <div>
         <div className="sysinfo-header">General System Information</div>
 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
-  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 6 }}>
+  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 4, marginBottom: '16px', marginLeft: '8px' }}>
     <span className='ECKS-NAME' style={{ textAlign: 'left', width: '100%' }}>ECKS</span>
     <span className='about-quote' style={{ textAlign: 'left', width: '92%' }}>"{randomQuote}"</span>
   </div>
@@ -45,8 +45,8 @@ const tabs = [
     video editor. VFX artist. graphic designer. just some guy tbh. always up and looking for work...
   </div>
 </div>
-        <div>E-mail <span className="sysinfo-text"><a href="mailto:spam@3cks.net">spam@3cks.net</a></span></div>
-        <div>Site Last Updated <span className="sysinfo-text">Feb 8</span></div>
+        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net"> spam@3cks.net</a></span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Feb 20</span></div>
         </div>
       </div>
     ),
@@ -57,7 +57,7 @@ const tabs = [
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">More Information</div>
-        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix'}}>Nice to meet ya! I am a self-taught creative who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
+        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix', maxWidth: '22.5rem'}}>Nice to meet ya! I am a self-taught creative who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
 <br/><br/>
 This site aims to be a portfolio + an archive of me at my best, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
 <br/><br/>
@@ -74,7 +74,7 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">System Storage</div>
-      <div style={{fontSize: '0.75rem', fontFamily: 'Zpix', marginTop: 8}}>
+      <div style={{fontSize: '0.75rem', fontWeight: '600', fontFamily: 'Zpix', marginTop: 8}}>
         Everything you see on here was made with:
         <div style={{marginTop: 16, marginBottom: 2}}>A Computer</div>
         <div style={{marginBottom: 2}}>After Effects</div>
@@ -128,22 +128,23 @@ const formatClock = (date: Date) => {
           <div className="this-is-my-tag"><img src={tag} alt="tag" /></div>
         </div>
       )}
-      <div className="aboutme-container"
+      <div className="aboutme-container aboutme-surface"
         style={{
           display: 'flex',
           flexDirection: isMobile ? 'column' : 'row',
           height: '100%',
-          minHeight: 260,
-          background: 'linear-gradient(180deg, #232526 0%, #414345 80%, rgba(65,67,69,77) 96%, rgba(65,67,69,0) 100%)',
+          minHeight: '16rem',
+          background: 'linear-gradient(180deg, #232526 0%, #414345 80%, rgba(65,67,69,77) 90%, rgba(65,67,69,0) 100%)',
           boxShadow: '2px 0px 0px #0004',
           overflow: 'hidden',
         }}
       >
         <nav
+          className="aboutme-sidebar aboutme-3d-sidebar"
           style={{
-            minWidth: isMobile ? '60px' : '100px',
+            minWidth: isMobile ? '60px' : '6.25rem',
             width: isMobile ? '100%' : '33%',
-            maxWidth: isMobile ? '100%' : '120px',
+            maxWidth: isMobile ? '100%' : '7.5rem',
             height: isMobile ? undefined : '100%',
             background: 'linear-gradient(180deg, #444 60%, #555 100%)',
             borderRight: isMobile ? 'none' : '2px solid #444',
@@ -159,6 +160,7 @@ const formatClock = (date: Date) => {
             <button
               key={tab.key}
               onClick={() => setActiveTab(tab.key)}
+              className={`aboutme-tab aboutme-3d-tab ${activeTab === tab.key ? 'is-active' : ''}`}
               style={{
                 background: activeTab === tab.key ? '#4af' : 'transparent',
                 color: activeTab === tab.key ? '#fff' : '#bbb',
@@ -182,6 +184,7 @@ const formatClock = (date: Date) => {
           ))}
         </nav>
         <section
+          className="aboutme-content aboutme-3d-content"
           style={{
             flex: 1,
             padding: 12,
@@ -190,10 +193,10 @@ const formatClock = (date: Date) => {
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'flex-start',
-            minHeight: 220,
+            minHeight: '14rem',
           }}>
           {tabs.find(tab => tab.key === activeTab)?.content}
-          <div style={{ marginTop: 16, fontSize: '0.75rem', fontFamily: 'Zpix' }}>{formatClock(dateTime)}</div>
+          <div style={{ marginTop: 16, marginBottom: 12, fontSize: '0.75rem', fontFamily: 'Zpix' }}>{formatClock(dateTime)}</div>
         </section>
       </div>
       

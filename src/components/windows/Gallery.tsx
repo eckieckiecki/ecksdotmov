@@ -2,7 +2,7 @@ import './Gallery.css';
 import WinBox from '../winbox/winbox.min.jsx';
 import gallery_header from '../../assets/gallery.gif';
 import icons from '../../assets/images.js'; 
-import { useState } from 'react';
+import { useState} from 'react';
 
  // src = thumbnails, don't forget that
 
@@ -280,22 +280,23 @@ const Gallery = () => {
     if (now - lastOpenTime < 1111) return; 
     setLastOpenTime(now);
 
-    const imgContainer = document.createElement('div');
-    imgContainer.style.background = '#000';
-    imgContainer.style.display = 'flex';
-    imgContainer.style.alignItems = 'center';
-    imgContainer.style.justifyContent = 'center';
-    imgContainer.style.height = '100%';
+    const imgContainer = document.createElement("div");
+    imgContainer.style.background = "#000";
+    imgContainer.style.display = "flex";
+    imgContainer.style.alignItems = "center";
+    imgContainer.style.justifyContent = "center";
+    imgContainer.style.height = "100%";
+    imgContainer.style.width = "100%";
   
     const image = new window.Image();
     image.src = img.full;
     image.alt = img.alt;
-    image.style.maxWidth = '100%';
-image.style.maxHeight = '100%';
-image.style.width = 'auto';
-image.style.height = 'auto';
-image.style.display = 'block';
-image.style.margin = 'auto';
+    image.style.maxWidth = "100%";
+    image.style.maxHeight = "100%";
+    image.style.width = "auto";
+    image.style.height = "auto";
+    image.style.display = "block";
+    image.style.margin = "auto";
   
     image.onload = () => {
   const maxWinWidth = window.innerWidth * 0.6;
@@ -320,8 +321,8 @@ image.style.margin = 'auto';
     background: '#000',
     width: `${winWidth}px`,
     height: `${winHeight}px`,
-    x: 'center',
-    y: 'center',
+    x: "center",
+    y: "center",
     mount: imgContainer,
     setBackground: () => {},
     onClose: () => imgContainer.remove(),
@@ -373,19 +374,7 @@ image.style.margin = 'auto';
       <div className="line" />
       </div>
       <div
-        className="gallery-grid"
-  style={{
-    width: '99%',
-    display: 'flex',
-    flexWrap: 'wrap',
-    gap: 16,
-    justifyContent: 'center',
-    margin: '0 auto 16px auto',
-    paddingLeft: 16,
-    paddingRight: 24,
-    boxSizing: 'border-box',
-  }}
->
+        className="gallery-grid">
   {filteredImages.map((img, idx) => (
     <div
       key={idx}

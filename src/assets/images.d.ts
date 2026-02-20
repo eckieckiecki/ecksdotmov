@@ -1,5 +1,9 @@
 declare module './images.js' {
-    const images: { [key: string]: string };
+    const images: { src: string;
+  alt: string;
+  year: string;
+  full: string;
+  tags: string[]; };
     export default images;
   }
 

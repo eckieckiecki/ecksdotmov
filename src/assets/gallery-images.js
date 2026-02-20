@@ -1,0 +1,254 @@
+const galleryImages = [
+  {
+    src: '/gallery/2026-setup-thumb.jpg',
+    alt: 'MASTER-AT-WORK',
+    year: '2026',
+    full: '/gallery/2026-setup.jpg',
+    tags: ['art/gfx', 'photos']
+  },
+  {
+    src: '/gallery/2026-thumb-gawd.jpg',
+    alt: 'COMPS',
+    year: '2026',
+    full: '/gallery/2026-comp-gawd.png',
+    tags: ['art/gfx']
+  },
+  {
+    src: '/gallery/2026-cookin-dumb.jpg',
+    alt: 'IM-COOKING-AGAIN',
+    year: '2026',
+    full: '/gallery/2026-cookin.jpg',
+    tags: ['photos']
+  },
+  {
+    src: '/gallery/2025-november-thumb.jpg',
+    alt: 'NOVEMBER-HAUL',
+    year: '2025',
+    full: '/gallery/2025-november-haul.jpg',
+    tags: ['photos']
+  },
+  
+  {
+    src: '/gallery/2025-alfreds-comm.jpg',
+    alt: 'ALFREDS-COMMISSION',
+    year: '2025',
+    full: '/gallery/2025-alfreds-comm.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2025-search-thumb.jpg',
+    alt: 'INTERNET-SEARCH',
+    year: '2025',
+    full: '/gallery/2025-search.jpg',
+    tags: ['art/gfx']
+  },
+  {
+    src: '/gallery/2025-muffins-thumb.jpg',
+    alt: 'MUFFINS',
+    year: '2025',
+    full: '/gallery/2025-muffins.jpg',
+    tags: ['photos']
+  },
+  {
+    src: '/gallery/2025-baklava-mockup-thumb.jpg',
+    alt: 'BAKLAVA-AD-MOCKUP',
+    year: '2025',
+    full: '/gallery/2025-baklava-mockup.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2025-baklava-blend.jpg',
+    alt: 'BAKLAVA.BLEND',
+    year: '2025',
+    full: '/gallery/2025-baklava-blend.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2025-nadathumb.jpg',
+    alt: 'TOM-Y-JERRY',
+    year: '2025',
+    full: '/gallery/2025-nada.gif',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2025-banner.jpg',
+    alt: 'BANNER',
+    year: '2025',
+    full: '/gallery/2025-banner.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2025-you-rule-thumb.jpg',
+    alt: 'YOU-RULE',
+    year: '2025',
+    full: '/gallery/2025-you-rule.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2025_crankdat.jpg',
+    alt: 'CRANKDAT',
+    year: '2025',
+    full: '/gallery/2025_crankdat.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2025-uhuhuh-thumb.jpg',
+    alt: 'UHUHUH',
+    year: '2025',
+    full: '/gallery/2025-uhuhuh.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2025-vinyl.jpg',
+    alt: 'VINYL',
+    year: '2025',
+    full: '/gallery/2025-vinyl.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2025_bro-has-kickassia.jpg',
+    alt: 'BRO-HAS-KICKASSIA',
+    year: '2025',
+    full: '/gallery/2025_bro-has-kickassia.jpg',
+    tags: ['music']
+  },
+  
+  {
+    src: '/gallery/2024-tape-mockup.jpg',
+    alt: 'SCRAPPED-TAPE-MOCKUP',
+    year: '2024',
+    full: '/gallery/2024-tape-mockup.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2024-be.jpg',
+    alt: 'BE',
+    year: '2024',
+    full: '/gallery/2024-be.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2024-HBO.jpg',
+    alt: 'HBO',
+    year: '2024',
+    full: '/gallery/2024-HBO.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2024-firestar-thumb.jpg',
+    alt: 'FIRESTAR',
+    year: '2024',
+    full: '/gallery/2024-firestar.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2024-threebeersdeep.jpg',
+    alt: 'THREEBEERSDEEP',
+    year: '2024',
+    full: '/gallery/2024-threebeersdeep.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2024-sagsog.jpg',
+    alt: 'SAG-SOG',
+    year: '2024',
+    full: '/gallery/2024-sagsog.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2024-babygreen.jpg',
+    alt: 'BABYGREENONEARTH',
+    year: '2024',
+    full: '/gallery/2024-babygreen.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2023-mach-stoney.jpg',
+    alt: 'MACH-STONEY',
+    year: '2023',
+    full: '/gallery/2023-mach-stoney.jpg',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2023-orpheus-thumb.jpg',
+    alt: 'ORPHEUS',
+    year: '2023',
+    full: '/gallery/2023-orpheus.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2023-setup.jpg',
+    alt: 'SETUP',
+    year: '2023',
+    full: '/gallery/2023-setup.jpg',
+    tags: ['photos']
+  },
+
+ {
+    src: '/gallery/2022-location.jpg',
+    alt: 'LOCATION',
+    year: '2022',
+    full: '/gallery/2022-location.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2022-DGSE.png',
+    alt: 'DUMPGAWD-SCOUT-EDITION-BY-LUVBAPPY',
+    year: '2022',
+    full: '/gallery/2022-DGSE.png',
+    tags: ['art/gfx']
+  },
+
+  {
+    src: '/gallery/2022-waffle-thumb.jpg',
+    alt: 'WAFFLES',
+    year: '2022',
+    full: '/gallery/2022-waffle.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2020-fight-songs-thumb.jpg',
+    alt: 'FIGHT-SONGS',
+    year: '2020',
+    full: '/gallery/2020-fight-songs.jpg',
+    tags: ['music']
+  },
+
+  {
+    src: '/gallery/2020-floppa-thumb.jpg',
+    alt: 'BIG-FLOPPA',
+    year: '2020',
+    full: '/gallery/2020-floppa.jpg',
+    tags: ['photos']
+  },
+
+  {
+    src: '/gallery/2018-tux.jpg',
+    alt: 'TUX',
+    year: '2018',
+    full: '/gallery/2018-tux.jpg',
+    tags: ['photos']
+  },
+  // ... more images ...
+];
+export default galleryImages;

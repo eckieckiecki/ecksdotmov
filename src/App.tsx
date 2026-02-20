@@ -9,7 +9,7 @@ import original from 'react95/dist/themes/vistaesqueMidnight';
 
 import { MenuList, MenuListItem, Separator, styleReset, Frame, Handle } from 'react95';
 import '@react95/core/themes/tokyoDark.css';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef} from 'react';
 import WinBox from './components/winbox/winbox.min.jsx'
 import PreLoader from './components/BootUp.jsx';
 
@@ -23,6 +23,7 @@ import Music from './components/windows/Music.tsx';
 import Contact from './components/windows/Contact.tsx';
 import Donate from './components/windows/Donate.tsx';
 import Credits from './components/windows/Credits.tsx';
+import NotFound from './components/NotFound';
 
 import { videos, openVideoWinBox } from './components/windows/Videos';
 
@@ -156,24 +157,58 @@ const setTemporaryTitle = (newTitle: string, revertTitle: string = "[3cks.net]")
 
 const location = useLocation();
 const hashPath = location.pathname;
+const normalizedPath = hashPath.replace(/\/+$/, '') || '/';
+const isWatchRoute = /^\/watch\/[^/]+$/i.test(normalizedPath);
+const knownRoutes = new Set(['/', '/donate', '/videos', '/gallery', '/music', '/blog']);
+const showNotFound = !isWatchRoute && !knownRoutes.has(normalizedPath);
 
 
 useEffect(() => {
+  if (showNotFound) {
+    setShowPreLoader(false);
+    setShowWelcome(false);
+    return;
+  }
+
   setShowPreLoader(true);
   setShowWelcome(false);
   document.body.classList.add('crt');
 
-  const timer = setTimeout(() => {
+  let cancelled = false;
+
+  const preloadImages = (srcs: string[]) =>
+    Promise.all(
+      srcs.map(
+        (src) =>
+          new Promise<void>((resolve) => {
+            const img = new Image();
+            img.onload = () => resolve();
+            img.onerror = () => resolve();
+            img.src = src;
+          })
+      )
+    );
+
+  const assets = [
+    ...Object.values(images),
+    ...Object.values(backgrounds),
+  ] as string[];
+
+  const assetsPromise = preloadImages(assets);
+  const timeoutPromise = new Promise<void>((resolve) => setTimeout(resolve, 6000));
+
+  Promise.race([assetsPromise, timeoutPromise]).then(() => {
+    if (cancelled) return;
+
     setShowPreLoader(false);
-    
-    
 
     const match = hashPath.match(/^\/watch\/([^/]+)$/i);
     if (match) {
       const slug = match[1].toLowerCase();
       const videoToOpen = videos.find(
-        v =>
-          v.window_title.replace(/[^a-z0-9]/gi, '').toLowerCase() === slug.replace(/[^a-z0-9]/gi, '')
+        (v) =>
+          v.window_title.replace(/[^a-z0-9]/gi, '').toLowerCase() ===
+          slug.replace(/[^a-z0-9]/gi, '')
       );
       if (videoToOpen) {
         openVideoWinBox(videoToOpen);
@@ -195,16 +230,18 @@ useEffect(() => {
         openMusicWindow();
         break;
       case '/blog':
-        setShowWelcome(true); 
+        setShowWelcome(true);
         break;
       default:
         setShowWelcome(true);
         break;
     }
-  }, 6116);
+  });
 
-  return () => clearTimeout(timer);
-}, [hashPath]);
+  return () => {
+    cancelled = true;
+  };
+}, [hashPath, showNotFound]);
 
   useEffect(() => {
     if (showWelcome) {
@@ -231,16 +268,28 @@ useEffect(() => {
   useEffect(() => {
   const tiltEl = document.getElementById('background-tilt');
   if (!tiltEl) return;
-  const maxTilt = 12; 
+  const maxTilt = 9; 
+  const perspective = 444;
+  const scale = 1.33; 
+  let rafId: number | null = null;
+  const updateTransform = (x: number, y: number) => {
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = requestAnimationFrame(() => {
+      tiltEl.style.transform = `translate(-50%, -50%) perspective(${perspective}px) scale(${scale}) rotateY(${x}deg) rotateX(${y}deg)`;
+    });
+  };
 
   const handleMouseMove = (e: MouseEvent) => {
     const { innerWidth, innerHeight } = window;
-    let x = (e.clientX / innerWidth - 0.5) * maxTilt * 2;
-    let y = (e.clientY / innerHeight - 0.5) * maxTilt * 2;
-    x = Math.max(-maxTilt, Math.min(maxTilt, x));
-    y = Math.max(-maxTilt, Math.min(maxTilt, y));
-    tiltEl.style.transform = `translate(-50%, -50%) perspective(900px) rotateY(${x}deg) rotateX(${-y}deg)`;
+    let rx = (e.clientX / innerWidth - 0.77) * maxTilt * 2;
+    let ry = (e.clientY / innerHeight - 0.77) * maxTilt * 2;
+
+    rx = Math.max(-maxTilt, Math.min(maxTilt, rx));
+    ry = Math.max(-maxTilt, Math.min(maxTilt, ry));
+
+    updateTransform(-rx, ry * 0.9);
   };
+
 
   window.addEventListener('mousemove', handleMouseMove);
   return () => {
@@ -249,7 +298,7 @@ useEffect(() => {
   };
 }, [randomImage]);
 
-const [bgDims, setBgDims] = useState({ width: '350vw', height: '350vh' });
+const [bgDims, setBgDims] = useState({ width: '222vw', height: '222vh' });
 
 useEffect(() => {
   function updateBgDims() {
@@ -257,8 +306,8 @@ useEffect(() => {
     const radians = (tiltAngle * Math.PI) / 180;
     const extra = Math.tan(radians) * Math.max(window.innerWidth, window.innerHeight);
     setBgDims({
-      width: `${window.innerWidth + extra * 2}px`,
-      height: `${window.innerHeight + extra * 2}px`,
+      width: `${window.innerWidth + extra * 2.22}px`,
+      height: `${window.innerHeight + extra * 2.22}px`,
     })
   }
   updateBgDims();
@@ -523,6 +572,10 @@ MusicRoot.render(<Music />);
 
 const isMobile = window.innerWidth < 600;
 
+  if (showNotFound) {
+    return <NotFound path={hashPath} />;
+  }
+
   return (
     <>
 
@@ -584,15 +637,15 @@ const isMobile = window.innerWidth < 600;
           bottom: 0,
           position: 'fixed',
           zIndex: 1,
-          height: isMobile ? 38 : undefined,
-          minHeight: isMobile ? 38 : undefined,
+          height: isMobile ? '2.375rem' : undefined,
+          minHeight: isMobile ? '2.375rem' : undefined,
         }}
       >
         <Toolbar
           noPadding
           style={{
             justifyContent: 'space-between',
-            minHeight: isMobile ? 38 : undefined,
+            minHeight: isMobile ? '2.375rem' : undefined,
             padding: isMobile ? '0 2px' : undefined,
           }}
         >
@@ -608,29 +661,29 @@ const isMobile = window.innerWidth < 600;
             <Button
               ref={startBtnRef}
               onClick={() => TaskbarOpen(!open)}
-              active={open ? true : undefined}
+              active={open ? true : false}
               style={{
                 fontWeight: 'bold',
                 marginRight: isMobile ? 2 : 4,
                 marginLeft: isMobile ? 2 : 6,
                 fontFamily: 'Pixeloid Sans Bold',
                 fontSize: isMobile ? '0.85em' : '0.70em',
-                height: isMobile ? 28 : 36,
-                minWidth: isMobile ? 60 : undefined,
-                padding: isMobile ? '2px 6px' : undefined,
+                height: isMobile ? '1.75rem' : '2.25rem',
+                minWidth: isMobile ? '3.75rem' : '4.5rem',
+                padding: isMobile ? '0.13rem 0.4rem' : '0.19rem 0.5rem',
               }}
             >
               <img
                 src={logoIMG}
                 alt='START'
                 style={{
-                  height: isMobile ? '15px' : '20px',
-                  marginRight: isMobile ? 2 : 4,
+                  height: isMobile ? '0.9rem' : '1.3rem',
+                  marginRight: isMobile ? 4 : 5,
                 }}
               />
               START
             </Button>
-            <Handle size={isMobile ? 26 : 36} style={{ marginRight: isMobile ? 4 : 6, marginLeft: isMobile ? 2 : 2 }} />
+            <Handle size={isMobile ? '1.625rem' : '2.25rem'} style={{ marginRight: isMobile ? 4 : 6, marginLeft: isMobile ? 2 : 2 }} />
 
             {/* Social icons */}
             {[
@@ -645,12 +698,12 @@ const isMobile = window.innerWidth < 600;
                 style={{
                   position: 'relative',
                   display: 'inline-block',
-                  marginRight: isMobile ? 4 : 11
+                  marginRight: isMobile ? '0.25rem' : '0.7rem'
                 }}
                 onClick={() => window.open(icon.url, '_blank', 'noopener,noreferrer')}
               >
-                <img src={icon.src} alt={icon.alt} className="taskbar-item" style={{ height: isMobile ? 18 : undefined, width: isMobile ? 18 : undefined }} />
-                <div className="taskbar-tooltip" style={{ fontSize: isMobile ? 10 : undefined }}>{icon.tooltip}</div>
+                <img src={icon.src} alt={icon.alt} className="taskbar-item" style={{ height: isMobile ? '1.25rem' : undefined, width: isMobile ? '1.25rem' : undefined }} />
+                <div className="taskbar-tooltip" style={{ fontSize: isMobile ? '0.625rem' : undefined }}>{icon.tooltip}</div>
               </div>
             ))}
 
@@ -679,33 +732,33 @@ const isMobile = window.innerWidth < 600;
                 </MenuListItem>
                 <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                   <span role='img'>
-                    <img src={images.desktop_about} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                    <img src={images.desktop_about} loading="eager" alt="GALLERY" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0'}} />
                   </span>
                   ABOUT
                 </MenuListItem>
                 <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                   <span role='img'>
-                    <img src={images.blog} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                    <img src={images.blog} loading="eager" alt="GALLERY" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0'}} />
                   </span>
                   BLOG
                 </MenuListItem>
                 <Separator />
                 <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                   <span role='img'>
-                    <img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0'}} />
+                    <img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0'}} />
                   </span>
                   TORNADA
                 </MenuListItem>
                 <Separator />
                 <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{cursor: 'pointer', fontFamily: 'Pixeloid Sans'}}>
                   <span role='img'>
-                    <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}} />
+                    <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '1.25rem', height: '1.25rem', margin: '0 10px -3px 0'}} />
                   </span>
                   CREDITS
                 </MenuListItem>
                 <MenuListItem disabled style={{fontFamily: 'Pixeloid Sans'}}>
                   <span role='img'> 
-                    <img src={powerIMG} loading="eager" style={{ width: '20px', height: '20px', margin: '0 10px -3px 0'}}/>
+                    <img src={powerIMG} loading="eager" style={{ width: '1.25rem', height: '1.25rem', margin: '0 10px -3px 0'}}/>
                   </span>
                   SHUTDOWN
                 </MenuListItem>

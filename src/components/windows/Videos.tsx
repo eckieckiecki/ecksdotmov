@@ -215,7 +215,7 @@ export function openVideoWinBox(video: typeof videos[0]) {
   <div style="position:relative; padding-top:56.25%; border-bottom: 2px solid #FDFDFD"><iframe src="${video.url}" loading="lazy" style="border:0;position:absolute;top:0;height:100%;width:100%;"></iframe></div>
   </div>
   <div class="video-description" style="padding: 1em; border-top: 4px ridge #222; line-height: 1; background: linear-gradient(0deg,rgb(62, 62, 62) 0%, rgb(16, 16, 16) 86%); width:text-align: center; color: #FDFDFD;">
-  <h2 style="color: #FDFDFD; margin: 0.3em 0;">${video.alt_title}</h2>
+  <h2 style="color: #FDFDFD; margin: 0.3em 0; font-family: 'Pixeloid Sans Bold';">${video.alt_title}</h2>
   ${video.date} - <a href="${video.source}" target="_blank" style="color:rgb(255, 0, 0); text-decoration: none; font-size: 14px; margin-top: 10px;">Watch Original Here</a>
   <button id="share-btn" class="share-btn" style="margin-left:10px;background:#222;color:#fff;border:'2px rigid #222';padding:2px 10px;border-radius:4px;cursor:pointer;font-size:13px;">Share</button>
   <p style="color: #FDFDFD; margin-top: 24px; white-space: pre-wrap; font-size: 16px; font-weight: bold;">Description / Notes:</p>
@@ -414,15 +414,13 @@ const Videos = () => {
       <button
         key={video.id}
         className="my-videos"
-        style={{width: 180, border: '2px ridge #222', borderRadius: 1, height: '100%', margin: 'auto', background: '#FDFDFD', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', cursor: 'pointer', overflow: 'hidden',}}
         title={video.title}
         onClick={() => openVideoWinBox(video)}>
         <img 
           src={video.thumbnail}
           alt={video.alt_title}
-          loading="lazy"
-          style={{ width: '90%', height: '90%', display: 'block', border: '2px solid #222'}} />
-        <span className="video-title" style={{color: 'black', fontWeight: 'bold', fontSize: 10, textAlign: 'center', margin: 'auto', padding: '6px 4px', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', height: '100%',}}>
+          loading="lazy"/>
+        <span className="video-title">
       {video.title}{video.isYouTube ? YouTubeIcon : ArrowIcon}
 </span>
       </button> 

@@ -20,7 +20,9 @@ h4 {
   -webkit-transition: .3s;
   transition: .3s;
   box-shadow: 0 8px 8px rgba(0,0,0,0.22);
-
+  min-width: 70px;
+  width: 80%;
+  max-width: 150px;
   text-shadow:
     1px 1px 0 #000,
     -1px 1px 0 #000,
@@ -36,7 +38,8 @@ h4 {
   -webkit-transition: .3s;
   transition: .3s;
   box-shadow: 0 8px 8px rgba(0,0,0,0.22);
-
+  min-width: 70px; width: 80%;
+  max-width: 150px;
   text-shadow:
     1px 1px 0 #000,
     -1px 1px 0 #000,
