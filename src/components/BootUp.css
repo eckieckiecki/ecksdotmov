@@ -1,6 +1,5 @@
 .loading {
     opacity: 1;
-    animation: fadeOut 1s 5s forwards;
     height: 100vh;
     width: 100vw;
     z-index: 33;
@@ -13,6 +12,9 @@
     justify-content: center;
     overflow: hidden;
 }
+.loading.complete {
+  animation: fadeOut 1s forwards;
+}
 .loading .loading_elements {
     height: auto;
 }
@@ -23,9 +25,13 @@
     will-change: filter;
     transition: filter 300ms;
     text-align: center;
-    animation: 
-        zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards,
-        Grow 1s 5s forwards;
+    animation: zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+    /* Grow is now applied dynamically via .loading_elements.complete */
+}
+.loading_elements.complete {
+  animation: 
+    zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards,
+    Grow 1s forwards;
 }
 .loading-bar-container {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 1);

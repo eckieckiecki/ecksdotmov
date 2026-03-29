@@ -1,33 +1,12 @@
-import React, { useEffect, useRef, useState } from 'react'
-import "./BootUp.css"
+import React from 'react'
+import './BootUp.css'
 import logo from '../assets/icons/monitor.gif'
 
-const PreLoader = () => {
-  const [progress, setProgress] = useState(0);
-  const intervalRef = useRef(null);
-
-  useEffect(() => {
-    let startTimeout = setTimeout(() => {
-      let start = Date.now();
-      intervalRef.current = setInterval(() => {
-        const elapsed = Date.now() - start;
-        const percent = Math.min((elapsed / 4400) * 100, 100);
-        setProgress(percent);
-        if (percent === 100) {
-          clearInterval(intervalRef.current);
-          setTimeout(() => setProgress(100), 500); 
-        }
-      }, 30);
-    }, 300);
-
-    return () => {
-      clearTimeout(startTimeout);
-      clearInterval(intervalRef.current);
-    };
-  }, []);
+const PreLoader = ({ progress = 0 }) => {
+  const complete = progress >= 100;
 
   return (
-    <div className="loading">
+    <div className={`loading${complete ? ' complete' : ''}`}>
       <div className="loading_elements" style={{
       display: 'flex',
       flexDirection: 'column',
@@ -41,23 +20,23 @@ const PreLoader = () => {
           height: 18,
           background: '#222',
           borderRadius: 1,
-          overflow: "hidden",
+          overflow: 'hidden',
           marginTop: 24,
-          border: "6px solid #000",
+          border: '6px solid #000',
           boxShadow: '0 0 0 2px white'
 
         }}>
           <div
             className="loading-bar"
             style={{
-              display:"flex",margin: 0, width: `${progress}%`, height: "100%", background: `repeating-linear-gradient(
+              display:'flex',margin: 0, width: `${progress}%`, height: '100%', background: `repeating-linear-gradient(
         90deg,
         #fff 0,
         #fff 20px,
         #000 20px,
         #000 32px
       )`,
-      transition: "width 0.1s linear",
+      transition: 'width 0.1s linear',
     }}
           />
         </div>

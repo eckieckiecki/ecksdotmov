@@ -46,7 +46,7 @@ const tabs = [
   </div>
 </div>
         <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net"> spam@3cks.net</a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Feb 20</span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> March 29</span></div>
         </div>
       </div>
     ),
@@ -77,11 +77,11 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
       <div style={{fontSize: '0.75rem', fontWeight: '600', fontFamily: 'Zpix', marginTop: 8}}>
         Everything you see on here was made with:
         <div style={{marginTop: 16, marginBottom: 2}}>A Computer</div>
+        <div style={{marginBottom: 2}}>VEGAS Pro</div>
         <div style={{marginBottom: 2}}>After Effects</div>
         <div style={{marginBottom: 2}}>Photoshop</div>
-        <div style={{marginBottom: 2}}>VEGAS Pro</div>
-        <div style={{marginBottom: 2}}>FL Studio</div>
         <div style={{marginBottom: 2}}>Blender</div>
+        <div style={{marginBottom: 2}}>FL Studio</div>
         <div style={{marginBottom: 16}}>Tux Paint</div>
         <div style={{marginBottom: 2}}>...and a dream.</div>
       </div>

@@ -11,7 +11,6 @@ import { MenuList, MenuListItem, Separator, styleReset, Frame, Handle } from 're
 import '@react95/core/themes/tokyoDark.css';
 import { useState, useEffect, useRef} from 'react';
 import WinBox from './components/winbox/winbox.min.jsx'
-import PreLoader from './components/BootUp.jsx';
 
 import images from './assets/images.js';
 import backgrounds from './assets/backgrounds.js';
@@ -34,6 +33,7 @@ console.log(randomImage);
 
 import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
 import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
+import BootUp from './components/BootUp.jsx';
 
 createGlobalStyle`
   ${styleReset}
@@ -98,7 +98,9 @@ const App = () => {
     return false;
   }
 
+
   const [showPreLoader, setShowPreLoader] = useState(true);
+  const [loadProgress, setLoadProgress] = useState(0);
   const [showWelcome, setShowWelcome] = useState(false);
   const [open, TaskbarOpen] = useState(false);
 
@@ -171,10 +173,20 @@ useEffect(() => {
   }
 
   setShowPreLoader(true);
+  setLoadProgress(0);
   setShowWelcome(false);
   document.body.classList.add('crt');
 
   let cancelled = false;
+  let fadeTimer: number | null = null;
+
+  const assets = [
+    ...Object.values(images),
+    ...Object.values(backgrounds),
+  ] as string[];
+
+  const total = assets.length || 1;
+  let loaded = 0;
 
   const preloadImages = (srcs: string[]) =>
     Promise.all(
@@ -182,23 +194,29 @@ useEffect(() => {
         (src) =>
           new Promise<void>((resolve) => {
             const img = new Image();
-            img.onload = () => resolve();
-            img.onerror = () => resolve();
+            const onDone = () => {
+              if (!cancelled) {
+                loaded++;
+                setLoadProgress(Math.round((loaded / total) * 100));
+              }
+              resolve();
+            };
+            img.onload = onDone;
+            img.onerror = onDone;
             img.src = src;
           })
       )
     );
 
-  const assets = [
-    ...Object.values(images),
-    ...Object.values(backgrounds),
-  ] as string[];
-
   const assetsPromise = preloadImages(assets);
-  const timeoutPromise = new Promise<void>((resolve) => setTimeout(resolve, 6000));
+  const minDelayPromise = new Promise<void>((resolve) => setTimeout(resolve, 1500));
 
-  Promise.race([assetsPromise, timeoutPromise]).then(() => {
+  Promise.all([assetsPromise, minDelayPromise]).then(() => {
     if (cancelled) return;
+
+
+    fadeTimer = window.setTimeout(() => {
+      if (cancelled) return;
 
     setShowPreLoader(false);
 
@@ -236,10 +254,12 @@ useEffect(() => {
         setShowWelcome(true);
         break;
     }
+    }, 222);
   });
 
   return () => {
     cancelled = true;
+    if (fadeTimer) window.clearTimeout(fadeTimer);
   };
 }, [hashPath, showNotFound]);
 
@@ -254,7 +274,7 @@ useEffect(() => {
               height: "400px",
               x: "center",
               y: "center", 
-              url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
+              url: "https://", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onClose: () => {
                 console.log('Window closed');
@@ -579,7 +599,9 @@ const isMobile = window.innerWidth < 600;
   return (
     <>
 
-{showPreLoader && <PreLoader />}
+{showPreLoader && (
+  <BootUp progress={loadProgress}/>
+)}
 
 <div className="App">
   <div className="crt" style={{ opacity: crtEnabled ? 1 : 0, pointerEvents: 'none', transition: 'opacity 0.3 ease' }} />
@@ -696,9 +718,10 @@ const isMobile = window.innerWidth < 600;
               <div
                 key={icon.alt}
                 style={{
+
                   position: 'relative',
                   display: 'inline-block',
-                  marginRight: isMobile ? '0.25rem' : '0.7rem'
+                  marginRight: isMobile ? '0.3rem' : '0.7rem'
                 }}
                 onClick={() => window.open(icon.url, '_blank', 'noopener,noreferrer')}
               >

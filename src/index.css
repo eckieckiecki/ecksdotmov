@@ -373,3 +373,12 @@ body.crt::after,
   pointer-events: none;
   animation: flicker 0.15s infinite;
 }
+.bootup-overlay {
+  opacity: 1;
+  transition: opacity 350ms ease;
+}
+
+.bootup-overlay.fade-out {
+  opacity: 0;
+  pointer-events: none;
+}

@@ -51,7 +51,7 @@ const featured = [
 ];
 
 const randomvid = () => {
-    const eligible = videos.filter(v => v.id !== 10);
+    const eligible = videos.filter(v => v.id !== 11);
     const random = eligible[Math.floor(Math.random() * eligible.length)];
     openVideoWinBox(random);
   };
@@ -60,19 +60,32 @@ export const videos = [
 
   {
     id: 0,
+    title: 'LONG LIVE THA DMV',
+    window_title: 'LLDMV',
+    alt_title: 'VINCENT - LONG LIVE THE DMV',
+    url: 'https://iframe.mediadelivery.net/embed/516695/62dc6c28-ab9b-4e7a-9bfc-b93e84cfb36f?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
+    source: 'https://3cks.net/#/watch/lldmv',
+    date: '03-25-2026',
+    description: 'Anotha commission for CIO',
+    thumbnail: 'https://3cks.b-cdn.net/thumbnails/LLDMV.jpg',
+    isYouTube: false,
+  },
+
+  {
+    id: 1,
     title: 'COMPS! - VOL. 1',
     window_title: 'COMPS',
     alt_title: 'COMPS! VOLUME 1 (2018-2025)',
     url: 'https://iframe.mediadelivery.net/embed/516695/fd769d04-3160-45d3-b4f3-b82195c22393?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/comps',
     date: '01-03-2026',
-    description: 'New year, new video, new me oh yeahhgh baby. To get the mood right here’s a collection of various projects I have worked on over the years.. Hope you enjoy the ride through my messy brain. Made with VEGAS Pro, Afer Effects, FL Studio, and a dream. Beat in tha intro also made by me.',
+    description: 'New year, new video, new me oh yeahhgh baby.. To get the mood right here’s a collection of various projects I have worked on over the years.. Hope you enjoy the ride through my messy brain. Made with VEGAS Pro, Afer Effects, FL Studio, and a dream. Beat in tha intro also made by me.',
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/compz-thumb.jpg',
     isYouTube: false,
   },
 
   {
-    id: 1,
+    id: 2,
     title: 'BAKLAFA',
     window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
     alt_title: 'BAKLAVA is FUCKING AWESOME',
@@ -84,7 +97,7 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 2,
+    id: 3,
     title: 'THE COLOR BROTHERS',
     window_title: 'THE-COLOR-BROTHERS',
     alt_title: 'COLOR BROTHERS',
@@ -96,7 +109,7 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 3,
+    id: 4,
     title: 'HOT THEM SUMMER!',
     window_title: 'HOT-THEM-SUMMER',
     alt_title: 'HOT THEM SUMMER!',
@@ -108,7 +121,7 @@ export const videos = [
     isYouTube: false,
   },
   {
-    id: 4,
+    id: 5,
     title: 'KNOWLEDGEGOD!',
     window_title: 'KNOWLEDGE-GOD',
     alt_title: 'KNOWLEDEGOD!',
@@ -120,7 +133,7 @@ export const videos = [
     isYouTube: false,
   },
     {
-    id: 5,
+    id: 6,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'MC-RIDE-GOES-TO-THE-STORE',
     alt_title: 'MC RIDE GOES TO THE STORE',
@@ -132,7 +145,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 6,
+    id: 7,
     title: 'FED UP! (IN VR)',
     window_title: 'FED-UP-IN-VR',
     alt_title: 'FEDUP!INVR!',
@@ -144,7 +157,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 7,
+    id: 8,
     title: 'CHOPPA WEDNESDAY!',
     window_title: 'CHOPPA-WEDNESDAY',
     alt_title: 'CHOPPA WEDNESDAY',
@@ -156,7 +169,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 8,
+    id: 9,
     title: 'BALD! (TF2)',
     window_title: 'BALD',
     alt_title: 'BALD! (TF2)',
@@ -168,7 +181,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 9,
+    id: 10,
     title: 'SAGGY AND SOGGY',
     window_title: 'SAGGY-AND-SOGGY',
     alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
@@ -180,7 +193,7 @@ export const videos = [
     isYouTube: true,
   },
   {
-    id: 10,
+    id: 11,
     title: 'RIDETOSEVENELEVEN',
     window_title: 'RIDETOSEVENELEVEN',
     alt_title: 'MC RIDE GOES TO THE STORE',
@@ -409,7 +422,7 @@ const Videos = () => {
   </div></div>
   <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
   {videos
-    .filter(video => video.id !== 10)
+    .filter(video => video.id !== 11)
     .map((video) => (
       <button
         key={video.id}
