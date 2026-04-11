@@ -1,5 +1,5 @@
-import './ContactMe.css';
-import icons from '../../assets/images.js';
+import './ContactMe.css'
+import icons from '../../assets/images.js'
 
 const Contact = () => {
   return (
@@ -20,7 +20,7 @@ const Contact = () => {
 
             <span className="bottom-tag" style={{marginTop: 32}} >- your move. -</span>
     </div>
-  );
-};
+  )
+}
 
-export default Contact;
+export default Contact

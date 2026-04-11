@@ -500,26 +500,26 @@ useEffect(() => {
       mount: ContactContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
-        console.log("Window closed");
-        document.title = "[3cks.net]";
-        const root = ReactDOM.createRoot(ContactContainer);
-        root.unmount();
-        ContactContainer.remove(); 
+        console.log("Window closed")
+        document.title = "[3cks.net]"
+        const root = ReactDOM.createRoot(ContactContainer)
+        root.unmount()
+        ContactContainer.remove()
       },
-      });
+      })
       if (darkMode) {
-    winbox.window.classList.add('dark-mode');
+    winbox.window.classList.add('dark-mode')
   }
-  const contactRoot = ReactDOM.createRoot(ContactContainer); 
-  contactRoot.render(<Contact />);
-    };
+  const contactRoot = ReactDOM.createRoot(ContactContainer) 
+  contactRoot.render(<Contact />)
+    }
 
   const openGalleryWindow = () => {
-    if (!canOpenWindow()) return;
-    setTemporaryTitle("[3cks.net] - GALLERY!");
-    const GalleryContainer = document.createElement('div');
+    if (!canOpenWindow()) return
+    setTemporaryTitle("[3cks.net] - GALLERY!")
+    const GalleryContainer = document.createElement('div')
     if (darkMode) {
-      GalleryContainer.classList.add('dark-mode');
+      GalleryContainer.classList.add('dark-mode')
     }
     const winbox = new WinBox({
       title: "~X/GALLERY/",
@@ -535,26 +535,26 @@ useEffect(() => {
       mount: GalleryContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
-        console.log("Window closed");
-        document.title = "[3cks.net]";
-        const root = ReactDOM.createRoot(GalleryContainer);
-        root.unmount();
-        GalleryContainer.remove(); 
+        console.log("Window closed")
+        document.title = "[3cks.net]"
+        const root = ReactDOM.createRoot(GalleryContainer)
+        root.unmount()
+        GalleryContainer.remove()
       },
-    });
+    })
     if (darkMode) {
-    winbox.window.classList.add('dark-mode');
+    winbox.window.classList.add('dark-mode')
   }
-const GalleryRoot = ReactDOM.createRoot(GalleryContainer); 
-GalleryRoot.render(<Gallery />);
-  };
+const GalleryRoot = ReactDOM.createRoot(GalleryContainer)
+GalleryRoot.render(<Gallery />)
+  }
 
 const openMusicWindow = () => {
-    if (!canOpenWindow()) return;
-    setTemporaryTitle("[3cks.net] - MUSIC!");
-    const MusicContainer = document.createElement('div');
+    if (!canOpenWindow()) return
+    setTemporaryTitle("[3cks.net] - MUSIC!")
+    const MusicContainer = document.createElement('div')
     if (darkMode) {
-      MusicContainer.classList.add('dark-mode');
+      MusicContainer.classList.add('dark-mode')
     }
     const winbox = new WinBox({
       title: "~X/MUSIC/",
@@ -570,30 +570,30 @@ const openMusicWindow = () => {
       mount: MusicContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
-        console.log("Window closed");
-        document.title = "[3cks.net]";
-        const root = ReactDOM.createRoot(MusicContainer);
-        root.unmount();
-        MusicContainer.remove(); 
+        console.log("Window closed")
+        document.title = "[3cks.net]"
+        const root = ReactDOM.createRoot(MusicContainer)
+        root.unmount()
+        MusicContainer.remove()
       },
-    });
+    })
     if (darkMode) {
-    winbox.window.classList.add('dark-mode');
+    winbox.window.classList.add('dark-mode')
   }
-const MusicRoot = ReactDOM.createRoot(MusicContainer); 
-MusicRoot.render(<Music />);
-  };
+const MusicRoot = ReactDOM.createRoot(MusicContainer) 
+MusicRoot.render(<Music />)
+  }
  useEffect(() => {
     Object.values(images).forEach(src => {
-      const img = new window.Image();
-      img.src = src;
-    });
-  }, []);
+      const img = new window.Image()
+      img.src = src
+    })
+  }, [])
 
-const isMobile = window.innerWidth < 600;
+const isMobile = window.innerWidth < 600
 
   if (showNotFound) {
-    return <NotFound path={hashPath} />;
+    return <NotFound path={hashPath} />
   }
 
   return (
@@ -788,22 +788,30 @@ const isMobile = window.innerWidth < 600;
               </MenuList>     
             )}
           </div>
-          <img
-            className="taskbar-corner-item"
-            src={darkMode ? images.darkmode : images.lightmode}
-            alt={darkMode ? "DARK MODE" : "LIGHT MODE"}
+          <div
+            style={{ position: 'relative', display: 'inline-block' }}
             onClick={toggleDarkMode}
-            title={darkMode ? "Theme: After Dark" : "Theme: Rise N' Grind"}
-            style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 4 }}
-          />
-          <img
-            className="taskbar-corner-item"
-            src={crtEnabled ? images.crtmode : images.lcdmode}
-            alt={crtEnabled ? "CRT" : "LCD"}
+          >
+            <img
+              className="taskbar-corner-item"
+              src={darkMode ? images.darkmode : images.lightmode}
+              alt={darkMode ? "DARK MODE" : "LIGHT MODE"}
+              style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 4 }}
+            />
+            <div className="taskbar-tooltip" style={{ left: '50%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>{darkMode ? "Theme: After Dark" : "Theme: Rise N' Grind"}</div>
+          </div>
+          <div
+            style={{ position: 'relative', display: 'inline-block' }}
             onClick={toggleCRT}
-            title={crtEnabled ? "Display: CRT" : "Dislay: LCD"}
-            style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 11 }}
-          />
+          >
+            <img
+              className="taskbar-corner-item"
+              src={crtEnabled ? images.crtmode : images.lcdmode}
+              alt={crtEnabled ? "CRT" : "LCD"}
+              style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 11 }}
+            />
+            <div className="taskbar-tooltip" style={{ left: '33%', transform: 'translateX(-50%)', pointerEvents: 'none' }}>{crtEnabled ? "Display: CRT" : "Display: LCD"}</div>
+          </div>
           <Frame
             variant='well'
             style={{

@@ -7,17 +7,18 @@ h4 {
 
 .donate-img {
     transform: scale(1);
+    image-rendering: crisp-edges;
+    transition: 333ms ease;
+    cursor: pointer;
   }
   .donate-img:hover {
     transform: scale(1.1);
-    -webkit-transition: .3s;
-    transition: .3s;
   }
 
 .paypal-button {
   background: linear-gradient(180deg,rgba(0, 140, 255, 1) 0%, rgba(0, 0, 137, 1) 100%);
   color: white;
-  -webkit-transition: .3s;
+  transition: 333ms ease;
   transition: .3s;
   box-shadow: 0 8px 8px rgba(0,0,0,0.22);
   min-width: 70px;
@@ -30,10 +31,10 @@ h4 {
     1px -1px 0 #000;
 }
 .paypal-button:hover {
-  background: rgb(0, 0, 137);
+  background: linear-gradient(180deg,rgb(0, 55, 255) 0%, rgb(0, 0, 72) 100%);
 }
 .cashapp-button {
-  background: linear-gradient(180deg,rgba(0, 255, 0, 1) 0%, rgba(0, 196, 0, 1) 100%);;
+  background: linear-gradient(180deg,rgba(0, 255, 0, 1) 0%, rgb(0, 154, 0) 100%);;
   color: white;
   -webkit-transition: .3s;
   transition: .3s;
@@ -47,7 +48,7 @@ h4 {
     1px -1px 0 #000;
 }
 .cashapp-button:hover {
-  background:rgb(0, 138, 0);
+  background: linear-gradient(180deg,rgb(0, 202, 0) 0%, rgb(0, 67, 0) 100%);;
 }
 .paypal-button a, .cashapp-button a {
   color: white;

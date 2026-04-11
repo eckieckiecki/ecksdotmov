@@ -5,7 +5,7 @@ const Donate = () => {
   return (
     <><div className="donate" style={{ color: 'black', fontSize: 24, overflow: 'hidden', margin: 12, paddingBottom: 4, fontFamily: 'Sans Nouveaux'}}>
       <div style={{ display: 'flex', alignItems: 'flex-start', gap: 16 }}>
-        <img
+        <img className="donate-img"
           src={icons.moneyspin}
           alt="Donate"
           style={{ width: 96, height: 128, objectFit: 'contain', marginTop: 6 }} />
@@ -13,7 +13,7 @@ const Donate = () => {
           <span>Paypal :</span>
           <a href="https://paypal.me/ecksposting" target="_blank">
           <div className='paypal-button' style={{display: 'flex', border: '3px ridge #222', fontWeight: 'bold', textAlign: 'center', alignItems: 'center', padding: 8, marginBottom: 8,marginTop: 8, lineHeight: 1, fontSize: 12}}>
-          <span style={{ margin: '0 auto' }}>/ecksposting</span>
+          <span style={{ margin: '0 auto' }}>@ecksposting</span>
           </div>
           </a>
           <span>Cashapp :</span>

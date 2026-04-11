@@ -1,8 +1,8 @@
-import './Gallery.css';
-import WinBox from '../winbox/winbox.min.jsx';
-import gallery_header from '../../assets/gallery.gif';
-import icons from '../../assets/images.js'; 
-import { useState} from 'react';
+import './Gallery.css'
+import WinBox from '../winbox/winbox.min.jsx'
+import gallery_header from '../../assets/gallery.gif'
+import icons from '../../assets/images.js'
+import { useState} from 'react'
 
  // src = thumbnails, don't forget that
 
@@ -259,61 +259,61 @@ const images = [
   },
   
   
-];
+]
 
-const TAGS = ['art/gfx', 'photos', 'music'];
+const TAGS = ['art/gfx', 'photos', 'music']
 
 const Gallery = () => {
-  const [activeTags, setActiveTags] = useState([...TAGS]);
-  const [lastOpenTime, setLastOpenTime] = useState(0);
+  const [activeTags, setActiveTags] = useState([...TAGS])
+  const [lastOpenTime, setLastOpenTime] = useState(0)
 
   const handleTagToggle = (tag: string) => {
     setActiveTags(prev =>
       prev.includes(tag)
         ? prev.filter(t => t !== tag)
         : [...prev, tag]
-    );
-  };
+    )
+  }
 
   const handleDoubleClick = (img: typeof images[0]) => {
-      const now = Date.now();
-    if (now - lastOpenTime < 1111) return; 
-    setLastOpenTime(now);
+      const now = Date.now()
+    if (now - lastOpenTime < 1111) return
+    setLastOpenTime(now)
 
-    const imgContainer = document.createElement("div");
-    imgContainer.style.background = "#000";
-    imgContainer.style.display = "flex";
-    imgContainer.style.alignItems = "center";
-    imgContainer.style.justifyContent = "center";
-    imgContainer.style.height = "100%";
-    imgContainer.style.width = "100%";
+    const imgContainer = document.createElement("div")
+    imgContainer.style.background = "#000"
+    imgContainer.style.display = "flex"
+    imgContainer.style.alignItems = "center"
+    imgContainer.style.justifyContent = "center"
+    imgContainer.style.height = "100%"
+    imgContainer.style.width = "100%"
   
-    const image = new window.Image();
-    image.src = img.full;
-    image.alt = img.alt;
-    image.style.maxWidth = "100%";
-    image.style.maxHeight = "100%";
-    image.style.width = "auto";
-    image.style.height = "auto";
-    image.style.display = "block";
-    image.style.margin = "auto";
+    const image = new window.Image()
+    image.src = img.full
+    image.alt = img.alt
+    image.style.maxWidth = "100%"
+    image.style.maxHeight = "100%"
+    image.style.width = "auto"
+    image.style.height = "auto"
+    image.style.display = "block"
+    image.style.margin = "auto"
   
     image.onload = () => {
-  const maxWinWidth = window.innerWidth * 0.6;
-  const maxWinHeight = window.innerHeight * 0.5;
+  const maxWinWidth = window.innerWidth * 0.6
+  const maxWinHeight = window.innerHeight * 0.5
 
-  let winWidth = image.naturalWidth;
-  let winHeight = image.naturalHeight;
+  let winWidth = image.naturalWidth
+  let winHeight = image.naturalHeight
 
-  const widthRatio = maxWinWidth / winWidth;
-  const heightRatio = maxWinHeight / winHeight;
-  const scale = Math.min(1, widthRatio, heightRatio);
+  const widthRatio = maxWinWidth / winWidth
+  const heightRatio = maxWinHeight / winHeight
+  const scale = Math.min(1, widthRatio, heightRatio)
 
-  winWidth = Math.max(220, winWidth * scale);
-  winHeight = Math.max(150, winHeight * scale);
+  winWidth = Math.max(220, winWidth * scale)
+  winHeight = Math.max(150, winHeight * scale)
 
-  imgContainer.innerHTML = '';
-  imgContainer.appendChild(image);
+  imgContainer.innerHTML = ''
+  imgContainer.appendChild(image)
   
       new WinBox({
         title: `~/X/GALLERY/${img.year}/${img.alt}`,
@@ -330,14 +330,14 @@ const Gallery = () => {
     noMax: window.innerWidth < 600,
     noMin: window.innerWidth < 600,
     noFull: window.innerWidth < 600,
-      });
-    };
-  };
+      })
+    }
+  }
 
    const filteredImages =
     activeTags.length === 0
       ? []
-      : images.filter(img => img.tags && img.tags.some(tag => activeTags.includes(tag)));
+      : images.filter(img => img.tags && img.tags.some(tag => activeTags.includes(tag)))
 
   return (
     <>
@@ -399,8 +399,9 @@ const Gallery = () => {
   <br></br>
   </div>
   <span className="bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 24, marginBottom: 24, margin: 'auto'}} >- one shot. cut. print. perfect. -</span>
+  <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
 </>
-  );
-};
+  )
+}
 
-export default Gallery;
+export default Gallery

@@ -1,21 +1,21 @@
-import './Videos.css';
-import WinBox from '../winbox/winbox.min.jsx';
-import icons from '../../assets/images.js';
-import featured_vhs from '../../assets/Featured-VHS.gif';
-import featured_monitor from '../../assets/icons/videos-monitor.gif';
-import { useRef, useEffect, useState } from 'react';
-import ReactDOM from 'react-dom';
+import './Videos.css'
+import WinBox from '../winbox/winbox.min.jsx'
+import icons from '../../assets/images.js'
+import featured_vhs from '../../assets/Featured-VHS.gif'
+import featured_monitor from '../../assets/icons/videos-monitor.gif'
+import { useRef, useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 
 function Tooltip({
   visible,
   pos,
   children,
 }: {
-  visible: boolean;
-  pos: { x: number; y: number };
-  children: React.ReactNode;
+  visible: boolean
+  pos: { x: number; y: number }
+  children: React.ReactNode
 }) {
-  if (!visible) return null;
+  if (!visible) return null
   return ReactDOM.createPortal(
     <div
       style={{
@@ -38,7 +38,7 @@ function Tooltip({
       {children}
     </div>,
     document.body
-  );
+  )
 }
 
 const featured = [
@@ -48,13 +48,13 @@ const featured = [
   featuring: 'ECKS',
   featuring_link: 'https://3cks.net',
   }
-];
+]
 
 const randomvid = () => {
-    const eligible = videos.filter(v => v.id !== 11);
-    const random = eligible[Math.floor(Math.random() * eligible.length)];
-    openVideoWinBox(random);
-  };
+    const eligible = videos.filter(v => v.id !== 11)
+    const random = eligible[Math.floor(Math.random() * eligible.length)]
+    openVideoWinBox(random)
+  }
 
 export const videos = [
 
@@ -204,10 +204,10 @@ export const videos = [
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/ride.jpg',
     isYouTube: true,
   },
-];
+]
 
 export function openVideoWinBox(video: typeof videos[0]) {
-  const videoContainer = document.createElement('div');
+  const videoContainer = document.createElement('div')
   new WinBox({
     title: `~/X/VIDEOS/${video.window_title}`,
     icon: icons.desktop_videos,
@@ -219,9 +219,9 @@ export function openVideoWinBox(video: typeof videos[0]) {
     mount: videoContainer,
     setBackground: (color: string) => console.log(`Background set to ${color}`),
     onClose: () => {
-      videoContainer.remove();
+      videoContainer.remove()
     },
-  });
+  })
 
   videoContainer.innerHTML = `
   <div>
@@ -236,20 +236,20 @@ export function openVideoWinBox(video: typeof videos[0]) {
   ${video.description}
   </div>
   </div>
-  `;
+  `
 
   setTimeout(() => {
-    const shareBtn = videoContainer.querySelector('#share-btn');
+    const shareBtn = videoContainer.querySelector('#share-btn')
     if (shareBtn) {
       shareBtn.addEventListener('click', () => {
-        const shareUrl = `https://3cks.net/#/watch/${video.window_title.toLowerCase()}`;
+        const shareUrl = `https://3cks.net/#/watch/${video.window_title.toLowerCase()}`
         if (navigator.share) {
           navigator.share({
             title: video.title,
             url: shareUrl,
-          });
+          })
         } else {
-          const shareBox = document.createElement('div');
+          const shareBox = document.createElement('div')
           new WinBox({
             title: "~X/SHARE/",
             icon: icons.blog,
@@ -261,8 +261,8 @@ export function openVideoWinBox(video: typeof videos[0]) {
             mount: shareBox,
             setBackground: (color: string) => console.log(`Background set to ${color}`),
             onClose: () => {
-              console.log('Window closed');
-              shareBox.remove(); 
+              console.log('Window closed')
+              shareBox.remove()
             },
           })
           shareBox.innerHTML = `
@@ -307,74 +307,73 @@ export function openVideoWinBox(video: typeof videos[0]) {
               <span style="font-size:9px;color:#fdfdfd;font-family:'Sans Nouveaux'">- spread the luh -</span>
             </div>
             </div>
-          `;
-          ;
+          `
 
           setTimeout(() => {
-            const copyBtn = shareBox.querySelector('#copy-share-link');
+            const copyBtn = shareBox.querySelector('#copy-share-link')
             if (copyBtn) {
               copyBtn.addEventListener('click', () => {
-                navigator.clipboard.writeText(shareUrl);
-                copyBtn.textContent = 'Copied!';
-                setTimeout(() => (copyBtn.textContent = 'Copy'), 1200);
-              });
+                navigator.clipboard.writeText(shareUrl)
+                copyBtn.textContent = 'Copied!'
+                setTimeout(() => (copyBtn.textContent = 'Copy'), 1200)
+              })
             }
-          }, 0);
+          }, 0)
         }
-      });
+      })
     }
-  }, 0);
+  }, 0)
 }
 
 const YouTubeIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" style={{marginLeft: 4, verticalAlign: 'middle'}}>
     <path fill="#FF0000" d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.19 6 12 6 12 6s-6.19 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94A28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.94 1.94C5.81 18 12 18 12 18s6.19 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l5 3-5 3z"/>
   </svg>
-);
+)
 
 const ArrowIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" style={{marginLeft: 4, verticalAlign: 'middle'}}>
     <path fill="#888" d="M10 17l5-5-5-5v10z"/>
   </svg>
-);
+)
 
 const VideoPreviewSize = () => {
   if (window.innerWidth < 768) {
-    return "60%";
+    return "60%"
   }
-  return "400px";
-};
+  return "400px"
+}
 
 const Videos = () => {
-  const headerRef = useRef<HTMLDivElement>(null);
-  const [showSubtitle, setShowSubtitle] = useState(true);
+  const headerRef = useRef<HTMLDivElement>(null)
+  const [showSubtitle, setShowSubtitle] = useState(true)
 
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [tooltipPos, setTooltipPos] = useState({ x: -120, y: -120 });
-  const tooltipTimeout = useRef<number | null>(null);
+  const [showTooltip, setShowTooltip] = useState(false)
+  const [tooltipPos, setTooltipPos] = useState({ x: -120, y: -120 })
+  const tooltipTimeout = useRef<number | null>(null)
 
   const handleMonitorMouseEnter = () => {
-    tooltipTimeout.current = window.setTimeout(() => setShowTooltip(true), 900);
-  };
+    tooltipTimeout.current = window.setTimeout(() => setShowTooltip(true), 900)
+  }
   const handleMonitorMouseLeave = () => {
-    setShowTooltip(false);
-    if (tooltipTimeout.current) clearTimeout(tooltipTimeout.current);
-  };
+    setShowTooltip(false)
+    if (tooltipTimeout.current) clearTimeout(tooltipTimeout.current)
+  }
   const handleMonitorMouseMove = (e: React.MouseEvent) => {
-  setTooltipPos({ x: e.pageX + 4, y: e.pageY + 4 });
-};
+  setTooltipPos({ x: e.pageX + 4, y: e.pageY + 4 })
+}
 
   useEffect(() => {
-    const node = headerRef.current;
-    if (!node) return;
+    const node = headerRef.current
+    if (!node) return
     const observer = new window.ResizeObserver(entries => {
       for (let entry of entries) {
-        setShowSubtitle(entry.contentRect.width > 480);
+        setShowSubtitle(entry.contentRect.width > 480)
       }
-    });
-    observer.observe(node);
-    return () => observer.disconnect();
-  }, []);
+    })
+    observer.observe(node)
+    return () => observer.disconnect()
+  }, [])
   return (
     <>
     <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}>
@@ -443,7 +442,7 @@ const Videos = () => {
       <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>
       <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
       </>
-    );
-};
+    )
+}
 
-export default Videos;
+export default Videos

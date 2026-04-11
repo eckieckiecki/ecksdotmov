@@ -1,7 +1,7 @@
-import './AboutMe.css';
-import about_img from '../../assets/aboutem.gif';
-import tag from '../../assets/this-is-my-tag.png';
-import { useState, useEffect } from 'react';
+import './AboutMe.css'
+import about_img from '../../assets/aboutem.gif'
+import tag from '../../assets/this-is-my-tag.png'
+import { useState, useEffect } from 'react'
 
 const quotes = [
   "jack of all trades, master at some",
@@ -20,14 +20,14 @@ const quotes = [
   "make that tv explode. bjork style.",
   "I'm afraid of what might happen if I relax.",
   "sample text",
-];
+]
 
-const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-const isMobile = window.innerWidth < 600;
+const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
+const isMobile = window.innerWidth < 600
 const tabs = [
   {
     key: 'about',
-    label: 'SYSTEM',
+    label: 'ABOUT',
     content: (
       <div>
         <div className="sysinfo-header">General System Information</div>
@@ -36,7 +36,7 @@ const tabs = [
     <span className='ECKS-NAME' style={{ textAlign: 'left', width: '100%' }}>ECKS</span>
     <span className='about-quote' style={{ textAlign: 'left', width: '92%' }}>"{randomQuote}"</span>
   </div>
-  <img src={about_img} alt="das me" style={{ width: 120, marginBottom: 12 }} />
+  <img className="sysinfo-laptop" src={about_img} alt="das me" style={{ width: 120, marginBottom: 12 }} />
 </div>
         <div style={{fontSize: '0.75rem', fontFamily: 'Zpix', lineHeight: '1.25rem'}}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
@@ -45,15 +45,15 @@ const tabs = [
     video editor. VFX artist. graphic designer. just some guy tbh. always up and looking for work...
   </div>
 </div>
-        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net"> spam@3cks.net</a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> March 29</span></div>
+        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net"> spam@3cks.net </a></span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> April 10 </span></div>
         </div>
       </div>
     ),
   },
   {
-    key: 'hardware',
-    label: 'CPU',
+    key: 'bio',
+    label: 'BIO',
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">More Information</div>
@@ -70,56 +70,58 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
   },
   {
     key: 'tools',
-    label: 'STORAGE',
+    label: 'TOOLS',
     content: (
       <div style={{ lineHeight: 1 }}>
-        <div className="sysinfo-header">System Storage</div>
+        <div className="sysinfo-header">System Tools</div>
       <div style={{fontSize: '0.75rem', fontWeight: '600', fontFamily: 'Zpix', marginTop: 8}}>
         Everything you see on here was made with:
-        <div style={{marginTop: 16, marginBottom: 2}}>A Computer</div>
-        <div style={{marginBottom: 2}}>VEGAS Pro</div>
-        <div style={{marginBottom: 2}}>After Effects</div>
-        <div style={{marginBottom: 2}}>Photoshop</div>
-        <div style={{marginBottom: 2}}>Blender</div>
-        <div style={{marginBottom: 2}}>FL Studio</div>
-        <div style={{marginBottom: 16}}>Tux Paint</div>
-        <div style={{marginBottom: 2}}>...and a dream.</div>
+        <ul style={{ marginTop: 16, paddingLeft: 16, marginBottom: 2,listStyleType: 'disc' }}>
+          <li style={{marginBottom: 2}}>A Computer</li>
+          <li style={{marginBottom: 2}}>VEGAS Pro</li>
+          <li style={{marginBottom: 2}}>After Effects</li>
+          <li style={{marginBottom: 2}}>Photoshop</li>
+          <li style={{marginBottom: 2}}>Blender</li>
+          <li style={{marginBottom: 2}}>FL Studio</li>
+          <li style={{marginBottom: 2}}>Tux Paint</li>
+          <li style={{marginBottom: 2}}>...and a dream.</li>
+        </ul>
       </div>
       </div>
     ),
   },
-];
+]
 
 const AboutMe = () => {
 
-  const [dateTime, setDateTime] = useState(new Date());
+  const [dateTime, setDateTime] = useState(new Date())
 
 useEffect(() => {
-  const interval = setInterval(() => setDateTime(new Date()), 1000);
-  return () => clearInterval(interval);
-}, []);
+  const interval = setInterval(() => setDateTime(new Date()), 1000)
+  return () => clearInterval(interval)
+}, [])
 
 const formatClock = (date: Date) => {
-  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const day = days[date.getDay()];
-  const mm = String(date.getMonth() + 1).padStart(2, '0');
-  const dd = String(date.getDate()).padStart(2, '0');
-  const yyyy = date.getFullYear();
-  let hh = date.getHours();
-  const min = String(date.getMinutes()).padStart(2, '0');
-  const sec = String(date.getSeconds()).padStart(2, '0');
-  const ampm = hh >= 12 ? 'PM' : 'AM';
-  hh = hh % 12 || 12;
-  return `${day}, ${mm}/${dd}/${yyyy} ${hh}:${min}:${sec} ${ampm}`;
-};
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"]
+  const day = days[date.getDay()]
+  const mm = String(date.getMonth() + 1).padStart(2, '0')
+  const dd = String(date.getDate()).padStart(2, '0')
+  const yyyy = date.getFullYear()
+  let hh = date.getHours()
+  const min = String(date.getMinutes()).padStart(2, '0')
+  const sec = String(date.getSeconds()).padStart(2, '0')
+  const ampm = hh >= 12 ? 'PM' : 'AM'
+  hh = hh % 12 || 12
+  return `${day}, ${mm}/${dd}/${yyyy} ${hh}:${min}:${sec} ${ampm}`
+}
 
-  const [showSplash, setShowSplash] = useState(true);
-  const [activeTab, setActiveTab] = useState(tabs[0].key);
+  const [showSplash, setShowSplash] = useState(true)
+  const [activeTab, setActiveTab] = useState(tabs[0].key)
 
   useEffect(() => {
-    const timer = setTimeout(() => setShowSplash(false), 1666);
-    return () => clearTimeout(timer);
-  }, []);
+    const timer = setTimeout(() => setShowSplash(false), 1666)
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <>
@@ -165,7 +167,7 @@ const formatClock = (date: Date) => {
                 background: activeTab === tab.key ? '#4af' : 'transparent',
                 color: activeTab === tab.key ? '#fff' : '#bbb',
                 border: 'none',
-                borderLeft: !isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
+                borderLeft: !isMobile && activeTab === tab.key ? '0px solid #4af' : '2px solid transparent',
                 borderBottom: isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
                 textAlign: isMobile ? 'center' : 'left',
                 padding: '12px 18px',
@@ -201,8 +203,9 @@ const formatClock = (date: Date) => {
       </div>
       
       <span className="bottom-tag" style={{ marginTop: 'auto', fontFamily: 'Sans Nouveaux'}}> - 🅮 ECKS 2026 - </span>
+      <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
     </>
-  );
-};
+  )
+}
 
-export default AboutMe;
+export default AboutMe

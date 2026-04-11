@@ -9,16 +9,19 @@
   margin: auto;
   margin-bottom: 8;
 }
-.gallery-header-img {
+.gallery-header img {
   margin: -2rem;
   min-width: 150px;
   width: 66%;
   max-width: 555px;
-  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.35));
+  image-rendering: smooth;
 }
 .gallery-header-title {
   font-family: 'Pixeloid Sans Bold';
   line-height: 1;
+}
+.gallery-header-title img {
+    filter: drop-shadow(0 0 10px rgba(0, 0, 0, 0.88));
 }
 .gallery-header-subtitle {
   font-family: 'Pixeloid Sans';

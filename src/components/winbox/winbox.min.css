@@ -59,7 +59,6 @@
   bottom: 0;
   border: ridge 3px #6c6c6c;
   overflow: auto;
-  -webkit-overflow-scrolling: touch;
   will-change: contents;
   background: #FDFDFD;
   margin-top: 0 !important;

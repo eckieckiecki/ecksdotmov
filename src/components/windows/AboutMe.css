@@ -175,8 +175,8 @@
   background: white;
   background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 55%, #b5b5b5 100%);
   border: 2px solid black; border-radius: 2px;
-  border-top-color: #4a4f57;
-  border-left-color: #4a4f57;
+  border-top-color: #303030;
+  border-left-color: #303030;
   color: black;
   box-shadow: 2px 1px 3px black;
   min-width: 7rem;
@@ -188,8 +188,8 @@
   word-break: break-word;
   margin: 4px 0;
    box-shadow:
-    inset 1px 1px 0 rgba(255,255,255,0.08),
-    inset -1px -1px 0 rgba(0,0,0,0.55),
+    inset 2px 1px 0 rgba(255,255,255,0.08),
+     -1px -1px 0 rgba(0,0,0,0.55),
     0 2px 6px rgba(0,0,0,0.25);
   }
   .sysinfo-header {
@@ -205,4 +205,7 @@
     border-left-color: #565c66;
     line-height: 1.25;
     box-shadow: inset 5px 3px 0 rgba(255,255,255,0.08), 1px 1px 5px black;
+  }
+  .sysinfo-laptop {
+     image-rendering: crisp-edges;
   }

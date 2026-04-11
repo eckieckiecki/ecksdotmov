@@ -3,7 +3,7 @@ import './BootUp.css'
 import logo from '../assets/icons/monitor.gif'
 
 const PreLoader = ({ progress = 0 }) => {
-  const complete = progress >= 100;
+  const complete = progress >= 100
 
   return (
     <div className={`loading${complete ? ' complete' : ''}`}>
@@ -42,7 +42,7 @@ const PreLoader = ({ progress = 0 }) => {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default PreLoader

@@ -1,5 +1,5 @@
-import './AboutMe.css';
-import '../../assets/images.js'; 
+import './AboutMe.css'
+import '../../assets/images.js'
 
 
   const Credits = () => {
@@ -55,7 +55,7 @@ import '../../assets/images.js';
 
       </div>
     </>
-  );
-};
+  )
+}
 
-export default Credits;
+export default Credits

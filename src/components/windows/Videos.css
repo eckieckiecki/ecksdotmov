@@ -22,7 +22,7 @@ a:link, a:active { text-decoration: none; color: #970707 }
   border-radius: 1px;
   height: 100%;
   margin: auto;
-  background: linear-gradient(135deg, #e8e8e8 0%, #c0c0c0 100%);
+  background: linear-gradient(135deg, #fcfcfc 0%, #eaeaea 100%);
   box-shadow: inset 2px 2px 4px rgba(255,255,255,0.5), inset -2px -2px 4px rgba(0,0,0,0.3), 0 4px 8px rgba(0,0,0,0.4);
   display: flex;
   flex-direction: column;
@@ -35,9 +35,11 @@ a:link, a:active { text-decoration: none; color: #970707 }
 .videos-grid {
   margin: 0 auto 16px auto;
   width: 100%;
-
-  box-shadow: inset 4px 4px 24px rgba(0, 0, 0, 0.11);
   padding: 0;
+}
+.videos-grid {
+  box-shadow: inset 0px 0px 0.625rem rgba(0, 0, 0, 0.11);
+  
 }
 .my-videos:hover {
   background: #c0c0c0;
@@ -55,7 +57,7 @@ a:link, a:active { text-decoration: none; color: #970707 }
   height: 90%;
   display: block;
   border: 2px solid #222;
-  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: inset 0 2px 4px rgba(0,0,0,0.4), 0 2px 4px rgba(0,0,0,0.2); 
 }
 .my-videos img:hover {
   transform: scale(1.05);
