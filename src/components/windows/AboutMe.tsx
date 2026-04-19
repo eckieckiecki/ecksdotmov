@@ -20,6 +20,7 @@ const quotes = [
   "make that tv explode. bjork style.",
   "I'm afraid of what might happen if I relax.",
   "sample text",
+  "video music man boy",
 ]
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
@@ -42,11 +43,11 @@ const tabs = [
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
 
   <div className="sysinfo-text" style={{ flex: 1, display: 'block', marginTop: 0 }}>
-    video editor. VFX artist. graphic designer. just some guy tbh. always up and looking for work...
+    video editor. curator. VFX artist. graphic designer. just some guy tbh. always up and looking for work...
   </div>
 </div>
-        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> April 10 </span></div>
+        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> April 18 </span></div>
         </div>
       </div>
     ),
@@ -57,11 +58,11 @@ const tabs = [
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">More Information</div>
-        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix', maxWidth: '22.5rem'}}>Nice to meet ya! I am a self-taught creative who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
+        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix', maxWidth: '22.5rem'}}>Nice to meet ya! I am a self-taught who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
 <br/><br/>
 This site aims to be a portfolio + an archive of me at my best, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
 <br/><br/>
-Some of my other work can be found under <a href="https://tornada.net" target="_blank" rel="noopener noreferrer">Tornada</a> - an animation supergroup with an all-star lineup of me and my relatives.
+Some of my other work can be found under <a href="https://tornada.net" target="_blank" rel="noopener noreferrer"><b>Tornada</b></a>, an animation supergroup with an all-star lineup of me and my relatives.
 <br/><br/>
  At the end of the day I'm simply just tryna create everything I wish to see and experience. To me that's the only compass that really makes sense.
 </div>
@@ -84,7 +85,7 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
           <li style={{marginBottom: 2}}>Blender</li>
           <li style={{marginBottom: 2}}>FL Studio</li>
           <li style={{marginBottom: 2}}>Tux Paint</li>
-          <li style={{marginBottom: 2}}>...and a dream.</li>
+          <li style={{marginBottom: 6}}>...and a dream.</li>
         </ul>
       </div>
       </div>
@@ -202,7 +203,7 @@ const formatClock = (date: Date) => {
         </section>
       </div>
       
-      <span className="bottom-tag" style={{ marginTop: 'auto', fontFamily: 'Sans Nouveaux'}}> - 🅮 ECKS 2026 - </span>
+      <span className="bottom-tag" style={{ marginTop: 'auto', fontFamily: 'Sans Nouveaux'}}> - <span style={{fontFamily: 'ui-sans-serif', fontSize: '135%'}}>🅮</span> ECKS 2026 - </span>
       <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
     </>
   )

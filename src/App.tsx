@@ -1,13 +1,13 @@
 import ReactDOM from 'react-dom/client';
 import { useLocation } from 'react-router-dom';
-import { createGlobalStyle, ThemeProvider} from 'styled-components';
+import { ThemeProvider} from 'styled-components';
+import { AppBar, Toolbar, Button, MenuList, MenuListItem, Separator, Frame, Handle } from 'react95';
 
-import { AppBar, Toolbar, Button } from 'react95';
 import logoIMG from './assets/redfloppy.png';
 import powerIMG from './assets/power.png';
 import original from 'react95/dist/themes/vistaesqueMidnight';
 
-import { MenuList, MenuListItem, Separator, styleReset, Frame, Handle } from 'react95';
+
 import '@react95/core/themes/tokyoDark.css';
 import { useState, useEffect, useRef} from 'react';
 import WinBox from './components/winbox/winbox.min.jsx'
@@ -29,30 +29,8 @@ import { videos, openVideoWinBox } from './components/windows/Videos';
 let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
 let randomNum = Math.floor(imageArr.length * Math.random());
 let randomImage = imageArr[randomNum];
-console.log(randomImage);
-
-import ms_sans_serif from 'react95/dist/fonts/ms_sans_serif.woff2';
-import ms_sans_serif_bold from 'react95/dist/fonts/ms_sans_serif_bold.woff2';
 import BootUp from './components/BootUp.jsx';
 
-createGlobalStyle`
-  ${styleReset}
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif}') format('woff2');
-    font-weight: 400;
-    font-style: normal
-  }
-  @font-face {
-    font-family: 'ms_sans_serif';
-    src: url('${ms_sans_serif_bold}') format('woff2');
-    font-weight: bold;
-    font-style: normal
-  }
-  body {
-    font-family: 'ms_sans_serif';
-  }
-`;
 
 const App = () => {
   
@@ -150,12 +128,21 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
   }
   return positions[windowType]}
 
-const setTemporaryTitle = (newTitle: string, revertTitle: string = "[3cks.net]") => {
+const titleTimeoutRef = useRef<number | null>(null);
+
+const setTemporaryTitle = (newTitle: string, revertTitle = "[3cks.net]") => {
   document.title = newTitle;
-  setTimeout(() => {
+  if (titleTimeoutRef.current) window.clearTimeout(titleTimeoutRef.current);
+  titleTimeoutRef.current = window.setTimeout(() => {
     document.title = revertTitle;
-  }, 11111); 
-}
+  }, 11111);
+};
+
+useEffect(() => {
+  return () => {
+    if (titleTimeoutRef.current) window.clearTimeout(titleTimeoutRef.current);
+  };
+}, []);
 
 const location = useLocation();
 const hashPath = location.pathname;
@@ -167,13 +154,13 @@ const showNotFound = !isWatchRoute && !knownRoutes.has(normalizedPath);
 
 useEffect(() => {
   if (showNotFound) {
-    setShowPreLoader(false);
-    setShowWelcome(false);
-    return;
+    setShowPreLoader(false)
+    setShowWelcome(false)
+    return
   }
 
   setShowPreLoader(true);
-  setLoadProgress(0);
+  setLoadProgress(0)
   setShowWelcome(false);
   document.body.classList.add('crt');
 
@@ -370,39 +357,39 @@ useEffect(() => {
   CreditsRoot.render(<Credits />)}
 
   const openDonateWindow = () => {
-    if (!canOpenWindow()) return;
-    setTemporaryTitle("[3cks.net] - DONATE!");
-    const DonateContainer = document.createElement('div');
-    if (darkMode) {
-      DonateContainer.classList.add('dark-mode');
-    }
+  if (!canOpenWindow()) return;
+  setTemporaryTitle("[3cks.net] - DONATE!");
+
+  const container = document.createElement("div");
+  if (darkMode) container.classList.add("dark-mode");
+
+  const root = ReactDOM.createRoot(container); // create once
+  let cleaned = false;
+
+  const cleanup = () => {
+    if (cleaned) return;
+    cleaned = true;
+    root.unmount(); // unmount same root
+    container.remove();
+    document.title = "[3cks.net]";
+  };
     const winbox = new WinBox({
-      title: "~X/DONATE/",
-      icon: images.desktop_donate,
-      background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
-      border: "0.3em",
-      width: Math.min(325, window.innerWidth * 0.8) + "px", 
-      maxWidth: "40%",
-      height: Math.min(230, window.innerHeight * 0.7) + "px",
-      maxHeight: "35%",
-      x: WindowPosition('donate'),
-      y: "45%",
-      mount: DonateContainer, 
-      setBackground: (color: string) => console.log(`Background set to ${color}`),
-      onClose: () => {
-      console.log("Window closed");
-      document.title = "[3cks.net]";
-      const root = ReactDOM.createRoot(DonateContainer);
-      root.unmount(); 
-          DonateContainer.remove();
-        },
-      });
-      if (darkMode) {
-    winbox.window.classList.add('dark-mode');
-  }
-  const DonateRoot = ReactDOM.createRoot(DonateContainer); 
-  DonateRoot.render(<Donate />);
-      };
+    title: "~X/DONATE/",
+    icon: images.desktop_donate,
+    background: "linear-gradient(180deg,rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgb(40,40,40) 100%)",
+    border: "0.3em",
+    width: Math.min(325, window.innerWidth * 0.8) + "px",
+    height: Math.min(230, window.innerHeight * 0.7) + "px",
+    x: WindowPosition("donate"),
+    y: "45%",
+    mount: container,
+    setBackground: (color: string) => console.log(`Background set to ${color}`),
+    onClose: cleanup
+  });
+
+  if (darkMode) winbox.window.classList.add("dark-mode");
+  root.render(<Donate />);
+};
 
   const openAboutMeWindow = () => {
     if (!canOpenWindow()) return;
@@ -590,7 +577,12 @@ MusicRoot.render(<Music />)
     })
   }, [])
 
-const isMobile = window.innerWidth < 600
+const [isMobile, setIsMobile] = useState(window.innerWidth < 600);
+useEffect(() => {
+  const onResize = () => setIsMobile(window.innerWidth < 600);
+  window.addEventListener('resize', onResize);
+  return () => window.removeEventListener('resize', onResize);
+}, []);
 
   if (showNotFound) {
     return <NotFound path={hashPath} />
@@ -604,24 +596,23 @@ const isMobile = window.innerWidth < 600
 )}
 
 <div className="App">
-  <div className="crt" style={{ opacity: crtEnabled ? 1 : 0, pointerEvents: 'none', transition: 'opacity 0.3 ease' }} />
+  <div className="crt" style={{ opacity: crtEnabled ? 1 : 0, pointerEvents: 'none', transition: 'opacity 0.3s ease' }} />
   <div id="desktop">
+  
   <label htmlFor={'about-me'} className="desktop-item" onClick={openAboutMeWindow}>
             <a href="#/about/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_about_gif} className="logo" alt="ABOUT" />
             <div className="desktop-text">ABOUT</div>
             </a>
           </label>
-          <div id="about-me-content" style={{ display: 'none' }}>
-          </div>
+
   <label htmlFor={'videos'} className="desktop-item" onClick={openVideoWindow}>
             <a href="#/videos/" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_videos_gif} className="logo" alt="VIDEOS" />
             <div className="desktop-text">VIDEOS</div>
             </a>
           </label>
-          <div id="videos-content" style={{ display: 'none' }}>
-          </div>
+
 
   <label htmlFor={'gallery'} className="desktop-item" onClick={openGalleryWindow}>
             <a href="#/gallery/" onClick={(e) => e.preventDefault()}>
@@ -629,8 +620,6 @@ const isMobile = window.innerWidth < 600
             <div className="desktop-text">GALLERY</div>
             </a>
           </label>
-          <div id="gallery-content" style={{ display: 'none' }}>
-          </div> 
 
     <label htmlFor={'contact'} className="desktop-item" onClick={openContactWindow}>
             <a href="#/contact/" onClick={(e) => e.preventDefault()}>
@@ -638,16 +627,14 @@ const isMobile = window.innerWidth < 600
             <div className="desktop-text">CONTACT</div>
             </a>
           </label>
-          <div id="contact-content" style={{ display: 'none' }}>
-          </div> 
+          
     <label htmlFor={'donate'} className="desktop-item" style={{ position: 'relative', zIndex: 2 }} onClick={openDonateWindow}>
             <a href="#/donate/" onClick={(e) => e.preventDefault()}>
-              <img src={images.desktop_donate_gif} className="logo" alt="GALLERY" />
+              <img src={images.desktop_donate_gif} className="logo" alt="DONATE" />
             <div className="desktop-text">DONATE</div>
             </a>
           </label>
-          <div id="donate-content" style={{ display: 'none' }}>
-          </div> 
+          
     </div>
 </div> 
       <div className="taskbar">
@@ -788,6 +775,7 @@ const isMobile = window.innerWidth < 600
               </MenuList>     
             )}
           </div>
+
           <div
             style={{ position: 'relative', display: 'inline-block' }}
             onClick={toggleDarkMode}
