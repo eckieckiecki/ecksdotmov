@@ -43,11 +43,11 @@ const tabs = [
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
 
   <div className="sysinfo-text" style={{ flex: 1, display: 'block', marginTop: 0 }}>
-    video editor. curator. VFX artist. graphic designer. just some guy tbh. always up and looking for work...
+    video editor. curator. designer. VFX artist. just some guy tbh. always up and looking for work...
   </div>
 </div>
         <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> April 18 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> May 2 </span></div>
         </div>
       </div>
     ),
@@ -165,8 +165,8 @@ const formatClock = (date: Date) => {
               onClick={() => setActiveTab(tab.key)}
               className={`aboutme-tab aboutme-3d-tab ${activeTab === tab.key ? 'is-active' : ''}`}
               style={{
-                background: activeTab === tab.key ? '#4af' : 'transparent',
-                color: activeTab === tab.key ? '#fff' : '#bbb',
+                background: activeTab === tab.key ? 'rgb(255, 255, 255)' : 'transparent',
+                color: activeTab === tab.key ? '#2f2f2f' : '#bbb',
                 border: 'none',
                 borderLeft: !isMobile && activeTab === tab.key ? '0px solid #4af' : '2px solid transparent',
                 borderBottom: isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
