@@ -296,7 +296,7 @@ div:hover > .taskbar-tooltip {
   display: block !important;
 }
 .taskbar {
-  z-index: 2;
+  z-index: 22;
 }
 .AppBar { 
   top: auto; bottom: 0; 

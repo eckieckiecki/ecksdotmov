@@ -59,7 +59,7 @@ const Taskbar = ({
         <AppBar
           fixed={true}
           style={{
-            top: 'auto', bottom: 0, position: 'fixed', zIndex: 2,
+            top: 'auto', bottom: 0, position: 'fixed', zIndex: 10,
             height: isMobile ? '2.375rem' : undefined,
             minHeight: isMobile ? '2.375rem' : undefined,
           }}
