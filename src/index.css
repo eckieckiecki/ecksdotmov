@@ -1,7 +1,7 @@
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 0.5;
-  font-weight: 400;
+  font-weight: 500;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
@@ -280,7 +280,7 @@ div:hover > .taskbar-tooltip {
   z-index: 23;
 }
 .taskbar-item, .taskbar-corner-item {
-  filter: drop-shadow(1px 1px 0.22rem #0f0f0f);
+  filter: drop-shadow(2px 2px 2px #0f0f0f);
   cursor: pointer; user-select: none;
   transition: 111ms;
 }
@@ -296,7 +296,7 @@ div:hover > .taskbar-tooltip {
   display: block !important;
 }
 .taskbar {
-  z-index: 20;
+  z-index: 2;
 }
 .AppBar { 
   top: auto; bottom: 0; 
@@ -342,12 +342,13 @@ body.crt::before,
   linear-gradient(
     to bottom,
     rgba(18,16,16,0.08) 0%,
-    rgba(0,0,0,0.18) 100%
+    rgba(0,0,0,0.16) 100%
   ),
     linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
   z-index: 9999;
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
+  animation: flicker 3.33s alternate-reverse;
 }
 
 @keyframes shake {
@@ -375,7 +376,7 @@ body.crt::before,
   opacity: 0.27861;
 }
   5% {
-  opacity: 0.34769;
+  opacity: 0.14769;
   }
   10% {
   opacity: 0.23604;
@@ -394,6 +395,9 @@ body.crt::before,
   }
   35% {
   opacity: 0.23604;
+  }
+  40% {
+  opacity: 0.27861;
   }
 }
 

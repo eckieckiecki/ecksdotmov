@@ -106,13 +106,14 @@
   -webkit-transition: .3s ease;
   transition: .3s;
   line-height: 1em;
-  filter: drop-shadow(-1px 1px 1px #ffffff80);
+  filter: drop-shadow(0px 1px 3px #17171780);
   text-shadow:
     2px 2px 0 #000,
     -2px 2px 0 #000,
     -2px -2px 0 #000,
     2px -2px 0 #000;
 }
+
 .aboutme-splash {
   position: fixed;
   inset: 0;
@@ -192,6 +193,9 @@
      -1px -1px 0 rgba(0,0,0,0.55),
     0 2px 6px rgba(0,0,0,0.25);
   }
+  .sysinfo-text a:link {
+    text-decoration: underline;
+  }
   .sysinfo-header {
     max-width: 21.875rem;
     font-weight: bold;
@@ -205,7 +209,17 @@
     border-left-color: #565c66;
     line-height: 1.25;
     box-shadow: inset 5px 3px 0 rgba(255,255,255,0.08), 1px 1px 5px black;
+    text-shadow: 1px 1px 2px #00000080;
   }
   .sysinfo-laptop {
-     image-rendering: crisp-edges;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(2px 2px 0.77rem #0b0b0b);
+  }
+  .sysinfo-specs {
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: 'Zpix';
+    margin-top: 8px;
+    width: 80%;
+    max-width: 19.5rem;
   }

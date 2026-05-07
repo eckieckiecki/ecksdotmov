@@ -2,7 +2,7 @@ import './Gallery.css'
 import WinBox from '../winbox/winbox.min.jsx'
 import gallery_header from '../../assets/gallery.gif'
 import icons from '../../assets/images.js'
-import { useState} from 'react'
+import { useEffect, useState} from 'react'
 
  // src = thumbnails, don't forget that
 
@@ -266,6 +266,17 @@ const TAGS = ['art/gfx', 'photos', 'music']
 const Gallery = () => {
   const [activeTags, setActiveTags] = useState([...TAGS])
   const [lastOpenTime, setLastOpenTime] = useState(0)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 600px)')
+    const updateIsMobile = () => setIsMobile(mediaQuery.matches)
+
+    updateIsMobile()
+    mediaQuery.addEventListener('change', updateIsMobile)
+
+    return () => mediaQuery.removeEventListener('change', updateIsMobile)
+  }, [])
 
   const handleTagToggle = (tag: string) => {
     setActiveTags(prev =>
@@ -344,7 +355,9 @@ const Gallery = () => {
     <div style={{ background: 'linear-gradient(180deg, #232526 0%, #414345 80%, rgba(65,67,69,77) 96%, rgba(65,67,69,0) 100%)' }}></div>
       <div className="gallery-header" style={{ color: 'black', fontSize: 40, margin: 4 }}>
         <p className="gallery-header-title"><img src={gallery_header} alt="Gallery Header" style={{margin: '-2rem', minWidth: '150px',width: '66%', maxWidth: '555px'}}/></p>
-        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>Here's a lil archive of images I have made, photos of my media collection, various side-quests and everything inbetween. Double click an image to view it in full size.</p>
+        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>
+          Here's a lil archive of images I have made, photos of my media collection, various side-quests and everything inbetween. {isMobile ? 'Tap' : 'Double click'} an image to view it in a new window.
+        </p>
 
 
       <div className="gallery-junk" style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>

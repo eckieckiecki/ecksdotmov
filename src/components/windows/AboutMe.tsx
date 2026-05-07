@@ -21,6 +21,7 @@ const quotes = [
   "I'm afraid of what might happen if I relax.",
   "sample text",
   "video music man boy",
+  "(/ɛks/)",
 ]
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
@@ -34,7 +35,10 @@ const tabs = [
         <div className="sysinfo-header">General System Information</div>
 <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: 8 }}>
   <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', gap: 4, marginBottom: '16px', marginLeft: '8px' }}>
-    <span className='ECKS-NAME' style={{ textAlign: 'left', width: '100%' }}>ECKS</span>
+    <div className="ECKS-NAME">
+    <span style={{ textAlign: 'left', width: '100%' }}>ECKS</span>
+    <div className="sh-layers" aria-hidden="true"></div>
+    </div>
     <span className='about-quote' style={{ textAlign: 'left', width: '92%' }}>"{randomQuote}"</span>
   </div>
   <img className="sysinfo-laptop" src={about_img} alt="das me" style={{ width: 120, marginBottom: 12 }} />
@@ -42,13 +46,15 @@ const tabs = [
         <div style={{fontSize: '0.75rem', fontFamily: 'Zpix', lineHeight: '1.25rem'}}>
         <div style={{ display: 'flex', alignItems: 'flex-start', gap: 8 }}>
 
-  <div className="sysinfo-text" style={{ flex: 1, display: 'block', marginTop: 0 }}>
+  <div className="sysinfo-text" style={{ flex: 1, display: 'block', marginTop: 0, }}>
     video editor. curator. designer. VFX artist. just some guy tbh. always up and looking for work...
   </div>
 </div>
-        <div>E-mail - <span className="sysinfo-text"><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> May 2 </span></div>
+<div style={{width: '100%'}}>
+        <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> May 6 </span></div>
         </div>
+</div>
       </div>
     ),
   },
@@ -62,7 +68,7 @@ const tabs = [
 <br/><br/>
 This site aims to be a portfolio + an archive of me at my best, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
 <br/><br/>
-Some of my other work can be found under <a href="https://tornada.net" target="_blank" rel="noopener noreferrer"><b>Tornada</b></a>, an animation supergroup with an all-star lineup of me and my relatives.
+Some of my other work can be found under <a href="https://tornada.net" target="_blank" rel="noopener noreferrer"><span style={{ textDecoration: 'underline'}}>Tornada</span></a>, an animation supergroup with an all-star lineup of me and my relatives.
 <br/><br/>
  At the end of the day I'm simply just tryna create everything I wish to see and experience. To me that's the only compass that really makes sense.
 </div>
@@ -75,17 +81,20 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">System Tools</div>
-      <div style={{fontSize: '0.75rem', fontWeight: '600', fontFamily: 'Zpix', marginTop: 8}}>
-        Everything you see on here was made with:
+      <div className="sysinfo-specs" >
+        Everything you're gonna see on here was made with the following:
         <ul style={{ marginTop: 16, paddingLeft: 16, marginBottom: 2,listStyleType: 'disc' }}>
-          <li style={{marginBottom: 2}}>A Computer</li>
+          <li style={{marginBottom: 2}}>a Computer</li>
           <li style={{marginBottom: 2}}>VEGAS Pro</li>
           <li style={{marginBottom: 2}}>After Effects</li>
           <li style={{marginBottom: 2}}>Photoshop</li>
           <li style={{marginBottom: 2}}>Blender</li>
-          <li style={{marginBottom: 2}}>FL Studio</li>
           <li style={{marginBottom: 2}}>Tux Paint</li>
-          <li style={{marginBottom: 6}}>...and a dream.</li>
+          <li style={{marginBottom: 2}}>FL Studio</li>          
+          <li style={{marginBottom: 2}}>a Sony a7iii Camera</li>
+          <li style={{marginBottom: 2}}>two video synths from JASCO & radioshack</li>
+          <br/>
+          ...and a dream.
         </ul>
       </div>
       </div>
