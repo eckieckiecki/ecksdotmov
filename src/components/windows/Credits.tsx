@@ -35,18 +35,24 @@ import '../../assets/images.js'
         <span>
         - Loading screen art by <a href="https://x.com/luvbappy" target="_blank">@luvbappy</a>
         <br />
-        - "About Me" illustration by <a href="https://www.instagram.com/coledawg2001/" target="_blank">@ColeDawg</a>
+        - Logo/tag by <a href="https://www.instagram.com/coledawg2001/" target="_blank">@ColeDawg</a>
+        <br />
+        - Gallery icons from <a href="https://www.gnustep.org/UserSuite/UserSuite_FileIcons_Files.html" target="_blank">GNUstep</a>
         </span>
         
         <p>
         <span className="notepad-header">SPECIAL THANKS</span>
         <br />
-        - Friends of the site: 
-        <span>
-        <br />
-        <a href="https://4nx4e.lol" target="_blank">4nx4e.lol</a>, <a href="https://lucke.neocities.org/" target="_blank">lucke.neocities.org</a>, <a href="https://spideyes.neocities.org/" target="_blank">spideyes.neocities.org</a>
-        </span>
-        <br />
+        <span style={{ display: 'block' }}>- Friends of the site:</span>
+<span className="notepad-line" style={{marginLeft: 8}}>
+- <a href="https://4nx4e.lol" target="_blank">4nx4e.lol</a>
+</span>
+<span className="notepad-line" style={{marginLeft: 8}}>
+  - <a href="https://lucke.neocities.org/" target="_blank">lucke.neocities.org</a>
+</span>
+<span className="notepad-line" style={{marginLeft: 8}}>
+  - <a href="https://spideyes.neocities.org/" target="_blank">spideyes.neocities.org</a>
+</span>
         <span>
         - YOU! (Yes, you!) for bein' here!
         </span>

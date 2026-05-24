@@ -37,6 +37,12 @@ declare module './images.js' {
   import reddit from '../assets/icons/reddit.png';
   import facebook from '../assets/icons/facebook.png';
 
+import folder from '../assets/icons/folder.png'
+import folderopen from '../assets/icons/folder-open.png'
+import gallery_art from '../assets/icons/gallery-art.png'
+import gallery_gfx from '../assets/icons/gallery-gfx.png'
+import gallery_foto from '../assets/icons/gallery-meme.png'
+import gallery_music from '../assets/icons/gallery-music.png'
 import lightmode from '../assets/icons/switch-1.gif';
 import darkmode from '../assets/icons/switch-2.gif';
 import lcdmode from '../assets/icons/LCD.gif';
@@ -73,6 +79,12 @@ import crtmode from '../assets/icons/CRT.gif';
         'paypal':paypal,
         'moneyspin':moneyspin,
 
+        'folder':folder,
+        'folderopen':folderopen,
+        'gallery_art':gallery_art,
+        'gallery_gfx':gallery_gfx,
+        'gallery_foto':gallery_foto,
+        'gallery_music':gallery_music,
         'lightmode':lightmode,
         'darkmode':darkmode,
         'lcdmode':lcdmode,

@@ -1,6 +1,8 @@
 import { useRef, useState, useEffect } from 'react'
+import { createPortal } from 'react-dom'
 import { ThemeProvider } from 'styled-components'
-import { AppBar, Toolbar, Button, MenuList, MenuListItem, Separator, Frame, Handle } from 'react95'
+import './Taskbar.css'
+import { AppBar, Toolbar, Button, MenuList, MenuListItem, Frame, Handle } from 'react95'
 import original from 'react95/dist/themes/vistaesqueMidnight'
 import logoIMG from '../assets/redfloppy.png'
 import powerIMG from '../assets/power.png'
@@ -31,6 +33,17 @@ const Taskbar = ({
   const [open, TaskbarOpen] = useState(false)
   const startBtnRef = useRef<HTMLButtonElement>(null)
   const menuRef = useRef<HTMLDivElement>(null)
+  const [menuPos, setMenuPos] = useState({ bottom: 0, left: 0 })
+  const [menuReady, setMenuReady] = useState(false);
+
+useEffect(() => {
+  if (open) {
+    const timer = setTimeout(() => setMenuReady(true), 200);
+    return () => clearTimeout(timer);
+  } else {
+    setMenuReady(false);
+  }
+}, [open]);
 
   const [now, setNow] = useState(new Date())
   useEffect(() => {
@@ -41,13 +54,24 @@ const Taskbar = ({
   const timeString = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', second: '2-digit' })
   const dateString = now.toLocaleDateString([], { month: '2-digit', day: '2-digit', year: 'numeric' })
 
+  const handleStartClick = () => {
+    if (startBtnRef.current) {
+      const rect = startBtnRef.current.getBoundingClientRect()
+      setMenuPos({
+        bottom: window.innerHeight - rect.top, 
+        left: rect.left,
+      })
+    }
+    TaskbarOpen(prev => !prev)
+  }
+
   useEffect(() => {
     if (!open) return
     function handleClickOutside(event: MouseEvent) {
       if (
         menuRef.current && !menuRef.current.contains(event.target as Node) &&
         startBtnRef.current && !startBtnRef.current.contains(event.target as Node)
-      ) {TaskbarOpen(false)}
+      ) { TaskbarOpen(false) }
     }
     document.addEventListener('mousedown', handleClickOutside)
     return () => document.removeEventListener('mousedown', handleClickOutside)
@@ -59,7 +83,7 @@ const Taskbar = ({
         <AppBar
           fixed={true}
           style={{
-            top: 'auto', bottom: 0, position: 'fixed', zIndex: 10,
+            top: 'auto', bottom: 0, position: 'fixed', zIndex: 20,
             height: isMobile ? '2.375rem' : undefined,
             minHeight: isMobile ? '2.375rem' : undefined,
           }}
@@ -75,7 +99,7 @@ const Taskbar = ({
             <div style={{ position: 'relative', display: 'flex', width: '100%', alignItems: 'center', padding: isMobile ? '0px' : undefined }}>
               <Button
                 ref={startBtnRef}
-                onClick={() => TaskbarOpen(!open)}
+                onClick={handleStartClick}
                 active={open ? true : false}
                 style={{
                   fontWeight: 'bold',
@@ -109,45 +133,7 @@ const Taskbar = ({
                 </div>
               ))}
 
-              {open && (
-                <MenuList
-                  ref={menuRef}
-                  style={{ position: 'absolute', left: '-3px', bottom: '80%', zIndex: 111 }}
-                  onClick={() => TaskbarOpen(false)}
-                >
-                  <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.desktop_videos} loading="eager" alt="VIDEOS" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0' }} /></span>
-                    VIDEOS
-                  </MenuListItem>
-                  <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.desktop_gallery} loading="eager" alt="GALLERY" style={{ width: '20px', height: '20px', margin: '0 15px -4px 0' }} /></span>
-                    GALLERY
-                  </MenuListItem>
-                  <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.desktop_about} loading="eager" alt="ABOUT" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0' }} /></span>
-                    ABOUT
-                  </MenuListItem>
-                  <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.blog} loading="eager" alt="BLOG" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0' }} /></span>
-                    BLOG
-                  </MenuListItem>
-                  <Separator />
-                  <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.tornada} loading="eager" alt="TORNADA" style={{ width: '1.25rem', height: '1.25rem', margin: '0 15px -4px 0' }} /></span>
-                    TORNADA
-                  </MenuListItem>
-                  <Separator />
-                  <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{ cursor: 'pointer', fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '1.25rem', height: '1.25rem', margin: '0 10px -3px 0' }} /></span>
-                    CREDITS
-                  </MenuListItem>
-                  <MenuListItem disabled style={{ fontFamily: 'Pixeloid Sans' }}>
-                    <span role='img'><img src={powerIMG} loading="eager" style={{ width: '1.25rem', height: '1.25rem', margin: '0 10px -3px 0' }} /></span>
-                    SHUTDOWN
-                  </MenuListItem>
-                </MenuList>
-              )}
-            </div>
+              </div>
 
             <div style={{ position: 'relative', display: 'inline-block' }} onClick={toggleDarkMode}>
               <img className="taskbar-corner-item" src={darkMode ? images.darkmode : images.lightmode} alt={darkMode ? "DARK MODE" : "LIGHT MODE"} style={{ height: isMobile ? 22 : 33, width: isMobile ? 22 : 33, marginRight: isMobile ? 4 : 4 }} />
@@ -189,6 +175,88 @@ const Taskbar = ({
           </Toolbar>
         </AppBar>
       </ThemeProvider>
+
+      {createPortal(
+  <div
+      className={`start-menu${open ? ' open' : ''}${menuReady ? ' ready' : ''}`}
+    ref={menuRef}
+    style={{
+      position: 'fixed',
+      bottom: `calc(${menuPos.bottom}px + 8px)`,
+      left: `0px`,
+      zIndex: 9,
+      display: 'flex',
+      alignItems: 'stretch',
+      overflow: 'hidden',
+      backgroundColor: 'rgb(32, 32, 32)',
+    }}
+    onClick={() => TaskbarOpen(false)}
+  >
+          <div
+            style={{
+              width: '22px',
+              backgroundColor: 'red',
+              pointerEvents: 'none',
+              borderStyle: 'solid',
+  borderWidth: '2px',
+  borderLeftColor: 'rgb(128, 128, 128)',
+  borderTopColor: 'rgb(128, 128, 128)',
+  borderRightColor: 'rgb(0, 0, 0)',
+  borderBottomColor: 'rgb(0, 0, 0)',
+              borderRight: 0,
+            }}
+          />
+
+          
+          <MenuList style={{ margin: 0, borderWidth: '0px' }}>
+            <MenuListItem className="taskbar-tab" onClick={openVideoWindow} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.desktop_videos} loading="eager" alt="VIDEOS" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">VIDEOS</span>
+              </span>
+            </MenuListItem>
+            <MenuListItem className="taskbar-tab" onClick={openGalleryWindow} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.desktop_gallery} loading="eager" alt="GALLERY" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">GALLERY</span>
+              </span>
+            </MenuListItem>
+            <MenuListItem className="taskbar-tab" onClick={openAboutMeWindow} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.desktop_about} loading="eager" alt="ABOUT" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">ABOUT</span>
+              </span>
+            </MenuListItem>
+            <MenuListItem className="taskbar-tab" onClick={showWelcome ? () => {} : () => setShowWelcome(true)} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.blog} loading="eager" alt="BLOG" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">BLOG</span>
+              </span>
+            </MenuListItem>
+            <div style={{ height: '1px', backgroundColor: '#ffffff', margin: '2px 0' }} />
+            <MenuListItem className="taskbar-tab" onClick={() => window.open('https://tornada.net/', '_blank', 'noopener,noreferrer')} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.tornada} loading="eager" alt="tornada.net" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">tornada.net</span>
+              </span>
+            </MenuListItem>
+            <div style={{ height: '1px', backgroundColor: '#ffffff', margin: '2px 0' }} />
+            <MenuListItem className="taskbar-tab" onClick={openCreditsWindow} style={{ cursor: 'pointer' }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={images.notepad} loading="eager" alt="CREDITS" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">Credits</span>
+              </span>
+            </MenuListItem>
+            <MenuListItem disabled style={{ cursor: 'not-allowed', backgroundColor: 'rgb(15, 15, 15)', filter: 'grayscale(100%) brightness(80%)', opacity: 0.66 }}>
+              <span style={{ display: 'inline-flex', alignItems: 'center', gap: '10px' }}>
+                <img src={powerIMG} loading="eager" alt="SHUTDOWN" style={{ width: '1.25rem', height: '1.25rem', filter: 'drop-shadow(1px 1px 2px #000)' }} />
+                <span className="startmenu-text">Shut Down</span>
+              </span>
+            </MenuListItem>
+          </MenuList>
+        </div>,
+        document.body
+      )}
     </div>
   )
 }

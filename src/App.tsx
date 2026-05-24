@@ -352,7 +352,7 @@ useEffect(() => {
     document.title = "[3cks.net]";
   };
     const winbox = new WinBox({
-    title: "~X/DONATE/",
+    title: "~X/DONATE",
     icon: images.desktop_donate,
     background: "linear-gradient(180deg,rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgb(40,40,40) 100%)",
     border: "0.3em",
@@ -377,7 +377,7 @@ useEffect(() => {
       aboutMeContainer.classList.add('dark-mode');
     }
     const winbox = new WinBox({
-      title: "~X/SYSINFO/",
+      title: "~X/SYSINFO",
       className: "no-resize",
       icon: images.desktop_about,
       background: "linear-gradient(180deg,rgba(40, 40, 40, 1) 1%, rgba(66, 66, 66, 1) 4%, rgba(44, 44, 44, 1) 7%, rgba(66, 66, 66, 1) 10%, rgba(44, 44, 44, 1) 14%, rgba(0, 0, 0, 1) 100%)",
@@ -452,7 +452,7 @@ useEffect(() => {
         ContactContainer.classList.add('dark-mode');
       }
       const winbox = new WinBox({
-        title: "~X/HIT_MY_LINE/",
+        title: "~X/HIT_MY_LINE",
         icon: images.desktop_contact,
         background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
         border: "0.3em",
@@ -487,7 +487,7 @@ useEffect(() => {
       GalleryContainer.classList.add('dark-mode')
     }
     const winbox = new WinBox({
-      title: "~X/GALLERY/",
+      title: "~X/GALLERY",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
@@ -522,7 +522,7 @@ const openMusicWindow = () => {
       MusicContainer.classList.add('dark-mode')
     }
     const winbox = new WinBox({
-      title: "~X/MUSIC/",
+      title: "~X/MUSIC",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
@@ -631,6 +631,7 @@ useEffect(() => {
         setShowWelcome={setShowWelcome}
       />
       </div>
+      
       <div
   id="background-tilt"
   style={{
@@ -650,6 +651,10 @@ useEffect(() => {
     overflow: 'hidden',
   }}
 
-></div></>)}
+></div>
+
+
+
+</>)}
 
 export default App;

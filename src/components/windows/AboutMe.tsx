@@ -21,7 +21,7 @@ const quotes = [
   "I'm afraid of what might happen if I relax.",
   "sample text",
   "video music man boy",
-  "(/ɛks/)",
+  "/ɛks/",
 ]
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
@@ -52,7 +52,7 @@ const tabs = [
 </div>
 <div style={{width: '100%'}}>
         <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> May 6 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> May 19 </span></div>
         </div>
 </div>
       </div>
@@ -64,7 +64,7 @@ const tabs = [
     content: (
       <div style={{ lineHeight: 1 }}>
         <div className="sysinfo-header">More Information</div>
-        <div style={{fontSize: '0.70rem', fontFamily: 'Zpix', maxWidth: '22.5rem'}}>Nice to meet ya! I am a self-taught who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
+        <div className="sysinfo-bio">Nice to meet ya! I am a self-taught who finds retreat in curiously throwing things together in his free time. Over the last several years I have worked on various projects with my experiences in video editing, graphic design, VFX, and occasionally making music here and there. 
 <br/><br/>
 This site aims to be a portfolio + an archive of me at my best, loosely stitched together in a way that can at least be presentable. Everything seen on here was formed from a collection of flickering synapses and contempt for predictability.
 <br/><br/>
@@ -92,7 +92,7 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
           <li style={{marginBottom: 2}}>Tux Paint</li>
           <li style={{marginBottom: 2}}>FL Studio</li>          
           <li style={{marginBottom: 2}}>a Sony a7iii Camera</li>
-          <li style={{marginBottom: 2}}>two video synths from JASCO & radioshack</li>
+          <li style={{marginBottom: 2}}>JASCO CamGear & Radioshack Video Enhancer (for analog)</li>
           <br/>
           ...and a dream.
         </ul>
@@ -182,7 +182,7 @@ const formatClock = (date: Date) => {
                 textAlign: isMobile ? 'center' : 'left',
                 padding: '12px 18px',
                 fontWeight: activeTab === tab.key ? 'bold' : 'normal',
-                fontFamily: 'inherit',
+                fontFamily: 'Pixeloid Sans',
                 fontSize: '0.8rem',
                 cursor: 'pointer',
                 outline: 'none',

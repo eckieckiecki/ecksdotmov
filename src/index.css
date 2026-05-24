@@ -36,13 +36,18 @@ body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .
 }
 .winbox.dark-mode .about-me,
 .winbox.dark-mode .videos-window
-.winbox.dark-mode .my-videos, .winbox.dark-mode .videos-grid, .winbox.dark-mode .video-title, .winbox.dark-mode .gallery-header, .winbox.dark-mode .bottom-tag, .winbox.dark-mode .gallery-junk, .winbox.dark-mode .notepad, .winbox.dark-mode .gallery-junk label, .winbox.dark-mode .gallery-junk span {
+.winbox.dark-mode .my-videos, .winbox.dark-mode .videos-grid, .winbox.dark-mode .video-title, .winbox.dark-mode .gallery-header, .winbox.dark-mode .bottom-tag, .winbox.dark-mode .gallery-junk, .winbox.dark-mode .notepad, .winbox.dark-mode .gallery-junk label, .winbox.dark-mode .gallery-junk span, .winbox-dark-mode .gallery-main-pane {
   background: #181818 !important;
   color: #fcfcfc !important;
 }
-.winbox.dark-mode .gallery-image-frame {
-  background: #ffffff !important;
+
+.winbox.dark-mode .gallery-toolbar {
+  background: #252525 !important;
 }
+.winbox.dark-mode .gallery-address-label, .winbox.dark-mode .gallery-search-bar {
+  color: #d2d2d2 !important;
+}
+
 .winbox.dark-mode .my-videos {
     box-shadow: 2px 2px 0 #fcfcfc !important;
 }
@@ -176,7 +181,7 @@ body {
 .logo:hover {
   transform: scale(1.2);
   color: red;
-  filter: drop-shadow(0px 0px 0.88rem #0b0b0b);
+  filter: drop-shadow(0px 0px 0.99rem #0b0b0b) contrast(111%) brightness(105%);
 }
 .logo:active {
   transform: scale(1.33);
@@ -225,38 +230,11 @@ body {
 .desktop-text:hover {
   color: red;
 }
-.taskbar-tab {
-  height: 28px;
-  width: 34px;
-  margin-left: 2px;
-  cursor: pointer;
-  user-select: none;
-  vertical-align: middle;
-  z-index: 22;
-  position: relative;
-}
-.taskbar-tab:hover {
-  -webkit-transition: .3s;
-  transition: .3s;
-}
-.taskbar-tab:hover {
-  background-color: red !important;
-}
-.taskbar-tooltip {
-  display: none;
-  position: absolute;
-  bottom: 120%;
-  left: 50%;
-  transform: translateX(-45%);
-  background: #222;
-  color: #fff;
-  padding: 6px 8px;
-  border: 2px solid white;
+
+.startmenu-text {
+  font-family: 'Pixeloid Sans';
   font-size: 14px;
-  white-space: nowrap;
-  z-index: 22;
-  box-shadow: 0 2px 8px #0006;
-  pointer-events: none;
+  text-shadow: #000 1px 1px 2px;
 }
 div:hover > .taskbar-tooltip {
   display: block;
@@ -341,7 +319,7 @@ body.crt::before,
   background:
   linear-gradient(
     to bottom,
-    rgba(18,16,16,0.08) 0%,
+    rgba(177, 146, 146, 0.08) 0%,
     rgba(0,0,0,0.16) 100%
   ),
     linear-gradient(90deg, rgba(255,0,0,0.06), rgba(0,255,0,0.02), rgba(0,0,255,0.06));
@@ -350,7 +328,6 @@ body.crt::before,
   pointer-events: none;
   animation: flicker 3.33s alternate-reverse;
 }
-
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
   10% { transform: translate(-1px, -2px) rotate(-1deg); }
@@ -425,3 +402,26 @@ body.crt::after,
   opacity: 0;
   pointer-events: none;
 }
+.fuzzy-overlay {
+            position: absolute;
+            inset: 0;
+  z-index: 9999;
+            background-image: url("./assets/noise.png");
+            opacity: 0.06;
+            z-index: 0;
+            inset: -200%;
+            pointer-events: none;
+            background-repeat: repeat;
+  image-rendering: pixelated;
+            animation: shift 0.2s linear infinite both;
+        }
+
+        @keyframes shift {
+            0% {
+                transform: translateX(10%) translateY(10%);
+            }
+
+            100% {
+                transform: translateX(-10%) translateY(-10%);
+            }
+        }

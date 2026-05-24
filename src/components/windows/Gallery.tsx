@@ -1,270 +1,22 @@
 import './Gallery.css'
 import WinBox from '../winbox/winbox.min.jsx'
-import gallery_header from '../../assets/gallery.gif'
 import icons from '../../assets/images.js'
-import { useEffect, useState} from 'react'
+import { JSX, useEffect, useState} from 'react'
+import { images, TAGS } from '../../assets/gallery-images.ts'
 
- // src = thumbnails, don't forget that
+const TAG_ICONS: Record<string, JSX.Element> = {
+  'art': <img src={icons.gallery_art} alt="art" style={{ width: 12, height: 12 }} />,
+  'gfx': <img src={icons.gallery_gfx} alt="gfx" style={{ width: 12, height: 12 }} />,
+  'photos': <img src={icons.gallery_foto} alt="photos" style={{ width: 12, height: 12 }} />,
+  'media': <img src={icons.gallery_music} alt="media" style={{ width: 12, height: 12 }} />,
+}
 
-const images = [
-  {
-    src: '/gallery/2026-setup-thumb.jpg',
-    alt: 'MASTER-AT-WORK',
-    year: '2026',
-    full: '/gallery/2026-setup.jpg',
-    tags: ['art/gfx', 'photos']
-  },
-  {
-    src: '/gallery/2026-thumb-gawd.jpg',
-    alt: 'COMPS',
-    year: '2026',
-    full: '/gallery/2026-comp-gawd.png',
-    tags: ['art/gfx']
-  },
-  {
-    src: '/gallery/2026-cookin-dumb.jpg',
-    alt: 'IM-COOKING-AGAIN',
-    year: '2026',
-    full: '/gallery/2026-cookin.jpg',
-    tags: ['photos']
-  },
-  {
-    src: '/gallery/2025-november-thumb.jpg',
-    alt: 'NOVEMBER-HAUL',
-    year: '2025',
-    full: '/gallery/2025-november-haul.jpg',
-    tags: ['photos']
-  },
-  
-  {
-    src: '/gallery/2025-alfreds-comm.jpg',
-    alt: 'ALFREDS-COMMISSION',
-    year: '2025',
-    full: '/gallery/2025-alfreds-comm.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2025-search-thumb.jpg',
-    alt: 'INTERNET-SEARCH',
-    year: '2025',
-    full: '/gallery/2025-search.jpg',
-    tags: ['art/gfx']
-  },
-  {
-    src: '/gallery/2025-muffins-thumb.jpg',
-    alt: 'MUFFINS',
-    year: '2025',
-    full: '/gallery/2025-muffins.jpg',
-    tags: ['photos']
-  },
-  {
-    src: '/gallery/2025-baklava-mockup-thumb.jpg',
-    alt: 'BAKLAVA-AD-MOCKUP',
-    year: '2025',
-    full: '/gallery/2025-baklava-mockup.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2025-baklava-blend.jpg',
-    alt: 'BAKLAVA.BLEND',
-    year: '2025',
-    full: '/gallery/2025-baklava-blend.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2025-nadathumb.jpg',
-    alt: 'TOM-Y-JERRY',
-    year: '2025',
-    full: '/gallery/2025-nada.gif',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2025-banner.jpg',
-    alt: 'BANNER',
-    year: '2025',
-    full: '/gallery/2025-banner.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2025-you-rule-thumb.jpg',
-    alt: 'YOU-RULE',
-    year: '2025',
-    full: '/gallery/2025-you-rule.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2025_crankdat.jpg',
-    alt: 'CRANKDAT',
-    year: '2025',
-    full: '/gallery/2025_crankdat.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2025-uhuhuh-thumb.jpg',
-    alt: 'UHUHUH',
-    year: '2025',
-    full: '/gallery/2025-uhuhuh.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2025-vinyl.jpg',
-    alt: 'VINYL',
-    year: '2025',
-    full: '/gallery/2025-vinyl.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2025_bro-has-kickassia.jpg',
-    alt: 'BRO-HAS-KICKASSIA',
-    year: '2025',
-    full: '/gallery/2025_bro-has-kickassia.jpg',
-    tags: ['music']
-  },
-  
-  {
-    src: '/gallery/2024-tape-mockup.jpg',
-    alt: 'SCRAPPED-TAPE-MOCKUP',
-    year: '2024',
-    full: '/gallery/2024-tape-mockup.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2024-be.jpg',
-    alt: 'BE',
-    year: '2024',
-    full: '/gallery/2024-be.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2024-HBO.jpg',
-    alt: 'HBO',
-    year: '2024',
-    full: '/gallery/2024-HBO.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2024-firestar-thumb.jpg',
-    alt: 'FIRESTAR',
-    year: '2024',
-    full: '/gallery/2024-firestar.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2024-threebeersdeep.jpg',
-    alt: 'THREEBEERSDEEP',
-    year: '2024',
-    full: '/gallery/2024-threebeersdeep.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2024-sagsog.jpg',
-    alt: 'SAG-SOG',
-    year: '2024',
-    full: '/gallery/2024-sagsog.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2024-babygreen.jpg',
-    alt: 'BABYGREENONEARTH',
-    year: '2024',
-    full: '/gallery/2024-babygreen.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2023-mach-stoney.jpg',
-    alt: 'MACH-STONEY',
-    year: '2023',
-    full: '/gallery/2023-mach-stoney.jpg',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2023-orpheus-thumb.jpg',
-    alt: 'ORPHEUS',
-    year: '2023',
-    full: '/gallery/2023-orpheus.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2023-setup.jpg',
-    alt: 'SETUP',
-    year: '2023',
-    full: '/gallery/2023-setup.jpg',
-    tags: ['photos']
-  },
-
- {
-    src: '/gallery/2022-location.jpg',
-    alt: 'LOCATION',
-    year: '2022',
-    full: '/gallery/2022-location.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2022-DGSE.png',
-    alt: 'DUMPGAWD-SCOUT-EDITION-BY-LUVBAPPY',
-    year: '2022',
-    full: '/gallery/2022-DGSE.png',
-    tags: ['art/gfx']
-  },
-
-  {
-    src: '/gallery/2022-waffle-thumb.jpg',
-    alt: 'WAFFLES',
-    year: '2022',
-    full: '/gallery/2022-waffle.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2020-fight-songs-thumb.jpg',
-    alt: 'FIGHT-SONGS',
-    year: '2020',
-    full: '/gallery/2020-fight-songs.jpg',
-    tags: ['music']
-  },
-
-  {
-    src: '/gallery/2020-floppa-thumb.jpg',
-    alt: 'BIG-FLOPPA',
-    year: '2020',
-    full: '/gallery/2020-floppa.jpg',
-    tags: ['photos']
-  },
-
-  {
-    src: '/gallery/2018-tux.jpg',
-    alt: 'TUX',
-    year: '2018',
-    full: '/gallery/2018-tux.jpg',
-    tags: ['photos']
-  },
-  
-  
-]
-
-const TAGS = ['art/gfx', 'photos', 'music']
+const years = ['all', ...Array.from(new Set(images.map(img => img.year))).sort((a, b) => Number(b) - Number(a))]
 
 const Gallery = () => {
   const [activeTags, setActiveTags] = useState([...TAGS])
+  const [selectedYear, setSelectedYear] = useState('all')
+  const [searchQuery, setSearchQuery] = useState('')
   const [lastOpenTime, setLastOpenTime] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
 
@@ -301,7 +53,7 @@ const Gallery = () => {
   
     const image = new window.Image()
     image.src = img.full
-    image.alt = img.alt
+    image.alt = img.title
     image.style.maxWidth = "100%"
     image.style.maxHeight = "100%"
     image.style.width = "auto"
@@ -326,8 +78,8 @@ const Gallery = () => {
   imgContainer.innerHTML = ''
   imgContainer.appendChild(image)
   
-      new WinBox({
-        title: `~/X/GALLERY/${img.year}/${img.alt}`,
+    new WinBox({
+    title: `${img.alt} - GALLERY`,
     icon: icons.desktop_gallery,
     background: '#000',
     width: `${winWidth}px`,
@@ -345,75 +97,118 @@ const Gallery = () => {
     }
   }
 
-   const filteredImages =
-    activeTags.length === 0
-      ? []
-      : images.filter(img => img.tags && img.tags.some(tag => activeTags.includes(tag)))
+  const filteredImages = images.filter(img => {
+    const tagMatch = activeTags.length > 0 && img.tags && img.tags.some(tag => activeTags.includes(tag))
+    const yearMatch = selectedYear === 'all' || img.year === selectedYear
+    const searchMatch = searchQuery === '' || img.title.toLowerCase().includes(searchQuery.toLowerCase())
+    return tagMatch && yearMatch && searchMatch
+  })
+
+  const addressPath = `GALLERY${selectedYear === 'all' ? '' : `/${selectedYear}`}${activeTags.length === TAGS.length ? '' : `/${activeTags.join('+') || 'none'}`}`
 
   return (
-    <>
-    <div style={{ background: 'linear-gradient(180deg, #232526 0%, #414345 80%, rgba(65,67,69,77) 96%, rgba(65,67,69,0) 100%)' }}></div>
-      <div className="gallery-header" style={{ color: 'black', fontSize: 40, margin: 4 }}>
-        <p className="gallery-header-title"><img src={gallery_header} alt="Gallery Header" style={{margin: '-2rem', minWidth: '150px',width: '66%', maxWidth: '555px'}}/></p>
-        <p className="gallery-header-subtitle" style={{ fontSize: 14, lineHeight: 1}}>
-          Here's a lil archive of images I have made, photos of my media collection, various side-quests and everything inbetween. {isMobile ? 'Tap' : 'Double click'} an image to view it in a new window.
-        </p>
-
-
-      <div className="gallery-junk" style={{ display: 'flex', gap: 18, justifyContent: 'center', marginBottom: 12, marginTop: 12 }}>
-          {TAGS.map(tag => (
-            <label key={tag} style={{ display: 'flex', alignItems: 'center', cursor: 'pointer', fontFamily: 'Pixeloid Sans', fontSize: 16, lineHeight: 1.11 }}>
-              <input
-                type="checkbox"
-                checked={activeTags.includes(tag)}
-                onChange={() => handleTagToggle(tag)}
-                style={{
-                  accentColor: '#222',
-                  width: 18,
-                  height: 18,
-                  marginRight: 8,
-                  borderRadius: 4,
-                  border: '2px solid #222',
-                  boxShadow: '0 2px 4px rgba(0,0,0,0.44)',
-                  cursor: 'pointer'
-                }}
-              />
-              <span style={{ color: activeTags.includes(tag) ? '#222' : '#888', fontWeight: activeTags.includes(tag) ? 'bold' : 'normal' }}>
-                {tag.toUpperCase()}
-              </span>
-            </label>
-          ))}
+    <div className="gallery-explorer">
+      <div className="gallery-toolbar">
+        <div className="gallery-address-bar">
+          <span className="gallery-address-label">Address</span>
+          <input
+            className="gallery-address-input"
+            readOnly
+            value={addressPath}
+          />
+        </div>
+        <div className="gallery-search-bar">
+          <span className="gallery-address-label">Search⠀</span>
+          <input
+            className="gallery-address-input"
+            type="text"
+            placeholder="search files..."
+            value={searchQuery}
+            onChange={e => setSearchQuery(e.target.value)}
+          />
+        </div>
       </div>
-      <div className="line" />
-      </div>
-      <div
-        className="gallery-grid">
-  {filteredImages.map((img, idx) => (
-    <div
-      key={idx}
-      className="gallery-image-frame"
-      style={{
-        aspectRatio: 'auto', background: '#111', border: '2px ridge #222', margin: 'auto', padding: 4, display: 'flex', objectFit: 'cover', alignItems: 'center', justifyContent: 'center', maxWidth: 200, maxHeight: 200,cursor: 'pointer',
-      }}
-      onDoubleClick={() => handleDoubleClick(img)}
-      onTouchEnd={() => handleDoubleClick(img)}
-      title={img.alt}
-    >
-      <img
-        src={img.src}
-        alt={img.alt}
-        loading="lazy"
-        style={{
-          background:'black', aspectRatio: 'auto', maxWidth: '190px', maxHeight: '200px', width: 'auto', height: 'auto', display: 'inline',
-        }}
-      />
-    </div>
-  ))}
-  <br></br>
+
+      <div className="gallery-body">
+
+        <div className="gallery-sidebar">
+          <div className="gallery-sidebar-section">
+            <div className="gallery-sidebar-header">FOLDERS</div>
+            {years.map(year => (
+              <div
+                key={year}
+                className={`gallery-sidebar-item ${selectedYear === year ? 'active' : ''}`}
+                onClick={() => setSelectedYear(year)}
+              >
+                <span className="gallery-sidebar-icon">{selectedYear === year ? <img src={icons.folderopen} alt="Open Folder" /> : <img src={icons.folder} alt="Closed Folder" />}</span>
+                {year === 'all' ? 'ALL FILES' : year}
+                <span className="gallery-sidebar-count">
+                  ({year === 'all' ? images.length : images.filter(i => i.year === year).length})
+                </span>
+              </div>
+            ))}
+          </div>
+          <div className="gallery-sidebar-divider" />
+          <div className="gallery-sidebar-section">
+            <div className="gallery-sidebar-header">FILTER BY TAG</div>
+            {TAGS.map(tag => (
+              <div
+                key={tag}
+                className={`gallery-sidebar-item ${activeTags.includes(tag) ? 'active' : 'muted'}`}
+                onClick={() => handleTagToggle(tag)}
+              >
+                <span className="gallery-sidebar-icon">{activeTags.includes(tag) ? (TAG_ICONS[tag] ) : null}</span>
+    {tag.toUpperCase()}
   </div>
-  <span className="bottom-tag" style={{fontFamily: 'Sans Nouveaux', marginTop: 24, marginBottom: 24, margin: 'auto'}} >- one shot. cut. print. perfect. -</span>
-  <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
-</>
+            ))}
+          </div>
+          <div className="gallery-sidebar-divider" />
+          <div className="gallery-sidebar-section">
+            <div className="gallery-sidebar-hint">{isMobile ? 'Tap' : 'Double-click'}<br/>image to open</div>
+          </div>
+        </div>
+
+        
+        <div className="gallery-main-pane">
+          {filteredImages.length === 0 ? (
+            <div className="gallery-empty">
+              <span>📂</span>
+              <span>no files found</span>
+            </div>
+          ) : (
+            <div className="gallery-grid">
+              {filteredImages.map((img, idx) => (
+                <div
+                  key={idx}
+                  className="gallery-img"
+                  onDoubleClick={() => handleDoubleClick(img)}
+                  onTouchEnd={() => handleDoubleClick(img)}
+                  title={img.title}
+                >
+                  <img
+                    src={img.thumb}
+                    alt={img.title}
+                    loading="lazy"
+                  />
+                  <span className="gallery-file-label">{img.title}</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div className="gallery-statusbar">
+        <span>{filteredImages.length} item{filteredImages.length !== 1 ? 's' : ''}</span>
+        <span className="gallery-statusbar-sep">|</span>
+        <span>{selectedYear === 'all' ? 'all years' : selectedYear}</span>
+        <span className="gallery-statusbar-sep">|</span>
+        <span>{activeTags.length === 0 ? 'no tags' : activeTags.join(', ')}</span>
+        {searchQuery && <><span className="gallery-statusbar-sep">|</span><span>search: "{searchQuery}"</span></>}
+      </div>
+
+      <span className="bottom-tag" style={{ fontFamily: 'Sans Nouveaux', margin: 'auto', display: 'block', textAlign: 'center', padding: '8px 0' }}>- one shot. cut. print. perfect. -</span>
+    </div>
   )
 }
 
