@@ -1,6 +1,6 @@
 export const images = [
   {
-    thumb: '/gallery/2026-mixers-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-mixers-thumb.jpg',
     title: 'mixerz',
     alt: 'MIXERZ',
     year: '2026',
@@ -8,7 +8,7 @@ export const images = [
     tags: ['photos', 'media']
   },
   {
-    thumb: '/gallery/2026-limestone-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-limestone-thumb.jpg',
     title: 'limestone',
     alt: 'LIMESTONE',
     year: '2026',
@@ -16,7 +16,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2026-setup-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-setup-thumb.jpg',
     title: '"u are watching a master at work "',
     alt: 'MASTER_AT_WORK',
     year: '2026',
@@ -24,7 +24,7 @@ export const images = [
     tags: ['media', 'photos']
   },
   {
-    thumb: '/gallery/2026-still-alive.png',
+    thumb: 'https://cdn.3cks.net/img/2026-still-alive.png',
     title: 'still alive',
     alt: 'STILL ALIVE',
     year: '2026',
@@ -32,7 +32,7 @@ export const images = [
     tags: ['media']
   },
   {
-    thumb: '/gallery/2026-gowillog-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-gowillog-thumb.jpg',
     title: 'gowillog',
     alt: 'GOWILLOG',
     year: '2026',
@@ -40,7 +40,7 @@ export const images = [
     tags: ['media']
   },
   {
-    thumb: '/gallery/2026-thumb-gawd.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-thumb-gawd.jpg',
     title: 'COMPS!',
     alt: 'COMPS!',
     year: '2026',
@@ -48,7 +48,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2026-cookin-dumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2026-cookin-dumb.jpg',
     title: '"i\'m cookin again"',
     alt: 'IM_COOKIN_AGAIN',
     year: '2026',
@@ -56,7 +56,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2025-mf-wip.png',
+    thumb: 'https://cdn.3cks.net/img/2025-mf-wip.png',
     title: 'mf wip',
     alt: '______',
     year: '2025',
@@ -64,7 +64,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2025-ktownodd-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-ktownodd-thumb.jpg',
     title: 'koreatown oddity',
     alt: 'KTOWNODD',
     year: '2025',
@@ -72,15 +72,15 @@ export const images = [
     tags: ['media']
   },
   {
-    thumb: '/gallery/2025-DVDs-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-DVDs-thumb.jpg',
     title: 'dvd = da video disc',
     alt: 'DA_VIDEO_DISC',
     year: '2025',
-    full: '/gallery/2025-DVDs.png',
+    full: 'https://cdn.3cks.net/img/2025-DVDs.png',
     tags: ['media']
   },
   {
-    thumb: '/gallery/2025-november-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-november-thumb.jpg',
     title: 'november haul',
     alt: 'NOVEMBER_HAUL',
     year: '2025',
@@ -88,7 +88,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2025-alfreds-comm.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-alfreds-comm.jpg',
     title: 'alfreds commission',
     alt: 'ALFREDS_COMMISSION',
     year: '2025',
@@ -97,7 +97,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025-search-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-search-thumb.jpg',
     title: 'search',
     alt: 'INTERNET_SEARCH',
     year: '2025',
@@ -105,7 +105,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2025-muffins-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-muffins-thumb.jpg',
     title: 'muffins',
     alt: 'MUFFINS',
     year: '2025',
@@ -113,7 +113,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2025-deltron-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-deltron-thumb.jpg',
     title: 'deltron',
     alt: 'DELTRON_3030',
     year: '2025',
@@ -121,7 +121,7 @@ export const images = [
     tags: ['media']
   },
   {
-    thumb: '/gallery/2025-baklava-mockup-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-baklava-mockup-thumb.jpg',
     title: 'baklava ad mockup',
     alt: 'BAKLAVA_AD_MOCKUP',
     year: '2025',
@@ -130,7 +130,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025-baklava-blend.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-baklava-blend.jpg',
     title: 'baklava.blend',
     alt: 'BAKLAVA.BLEND',
     year: '2025',
@@ -139,7 +139,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025-nadathumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-nadathumb.jpg',
     title: 'tom y jerry',
     alt: 'TOM_Y_JERRY',
     year: '2025',
@@ -147,7 +147,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2025-you-rule-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-you-rule-thumb.jpg',
     title: 'u rule :)',
     alt: 'YOU_RULE',
     year: '2025',
@@ -156,7 +156,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025_crankdat.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025_crankdat.jpg',
     title: 'crank dat',
     alt: 'CRANK_DAT',
     year: '2025',
@@ -165,7 +165,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025-uhuhuh-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-uhuhuh-thumb.jpg',
     title: 'sheep',
     alt: 'SHEEP',
     year: '2025',
@@ -174,7 +174,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025-vinyl.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025-vinyl.jpg',
     title: 'rekkids',
     alt: 'REKKIDS',
     year: '2025',
@@ -183,7 +183,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2025_bro-has-kickassia.jpg',
+    thumb: 'https://cdn.3cks.net/img/2025_bro-has-kickassia.jpg',
     title: 'kickassia',
     alt: 'BRO_HAS_KICKASSIA',
     year: '2025',
@@ -192,7 +192,7 @@ export const images = [
   },
   
   {
-    thumb: '/gallery/2024-tape-mockup.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-tape-mockup.jpg',
     title: 'scrapped vhs mockup',
     alt: 'SCRAPPED_VHS_MOCKUP',
     year: '2024',
@@ -201,7 +201,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-be.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-be.jpg',
     title: 'be',
     alt: 'COMMON-BE',
     year: '2024',
@@ -210,7 +210,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-HBO.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-HBO.jpg',
     title: 'haitian body odor',
     alt: 'HAITIAN_BODY_ODOR',
     year: '2024',
@@ -219,7 +219,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-firestar-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-firestar-thumb.jpg',
     title: 'firestar',
     alt: 'FIRESTAR',
     year: '2024',
@@ -228,7 +228,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-threebeersdeep.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-threebeersdeep.jpg',
     title: 'three beers deep',
     alt: 'THREE_BEERS_DEEP',
     year: '2024',
@@ -237,7 +237,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-sagsog.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-sagsog.jpg',
     title: 'saggy n soggy',
     alt: 'SAGGY_N_SOGGY',
     year: '2024',
@@ -246,7 +246,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2024-babygreen.jpg',
+    thumb: 'https://cdn.3cks.net/img/2024-babygreen.jpg',
     title: 'fatherhood',
     alt: 'FATHERHOOD',
     year: '2024',
@@ -255,7 +255,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2023-mach-stoney.jpg',
+    thumb: 'https://cdn.3cks.net/img/2023-mach-stoney.jpg',
     title: 'mach-stoney',
     alt: 'MACH_STONEY',
     year: '2023',
@@ -264,7 +264,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2023-orpheus-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2023-orpheus-thumb.jpg',
     title: 'orpheus',
     alt: 'ORPHEUS',
     year: '2023',
@@ -273,7 +273,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2023-setup.jpg',
+    thumb: 'https://cdn.3cks.net/img/2023-setup.jpg',
     title: 'setup',
     alt: 'SETUP',
     year: '2023',
@@ -281,7 +281,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2023-banner.png',
+    thumb: 'https://cdn.3cks.net/img/2023-banner.png',
     title: 'banner',
     alt: 'BANNER',
     year: '2023',
@@ -289,7 +289,7 @@ export const images = [
     tags: ['gfx']
   },
   {
-    thumb: '/gallery/2023-banner-wip.jpg',
+    thumb: 'https://cdn.3cks.net/img/2023-banner-wip.jpg',
     title: 'work in progress',
     alt: 'WORK_IN_PROGRESS',
     year: '2023',
@@ -297,7 +297,7 @@ export const images = [
     tags: ['photos']
   },
  {
-    thumb: '/gallery/2022-location.jpg',
+    thumb: 'https://cdn.3cks.net/img/2022-location.jpg',
     title: 'parkin lot',
     alt: 'PARKIN_LOT',
     year: '2022',
@@ -306,7 +306,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2022-DGSE.png',
+    thumb: 'https://cdn.3cks.net/img/2022-DGSE.png',
     title: 'DGSE (by @luvbappy)',
     alt: 'DGSE',
     year: '2022',
@@ -315,7 +315,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2022-waffle-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2022-waffle-thumb.jpg',
     title: 'waffle',
     alt: 'WAFFLE',
     year: '2022',
@@ -324,7 +324,7 @@ export const images = [
   },
 
   {
-    thumb: '/gallery/2020-fight-songs-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2020-fight-songs-thumb.jpg',
     title: 'fight songs',
     alt: 'FIGHT_SONGS',
     year: '2020',
@@ -332,7 +332,7 @@ export const images = [
     tags: ['gfx', 'media']
   },
   {
-    thumb: '/gallery/2020-drbob.png',
+    thumb: 'https://cdn.3cks.net/img/2020-drbob.png',
     title: 'dr bob',
     alt: 'DR_BOB',
     year: '2020',
@@ -340,7 +340,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2020-floppa-thumb.jpg',
+    thumb: 'https://cdn.3cks.net/img/2020-floppa-thumb.jpg',
     title: 'floppa',
     alt: 'FLOPPA',
     year: '2020',
@@ -348,7 +348,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2019-fursona.jpg',
+    thumb: 'https://cdn.3cks.net/img/2019-fursona.jpg',
     title: 'fursona (by @xonras)',
     alt: 'FURSONA',
     year: '2019',
@@ -356,7 +356,7 @@ export const images = [
     tags: ['art']
   },
   {
-    thumb: '/gallery/2018-tux.jpg',
+    thumb: 'https://cdn.3cks.net/img/2018-tux.jpg',
     title: 'tux',
     alt: 'TUX',
     year: '2018',
@@ -364,7 +364,7 @@ export const images = [
     tags: ['photos']
   },
   {
-    thumb: '/gallery/2018-setup.png',
+    thumb: 'https://cdn.3cks.net/img/2018-setup.png',
     title: 'setup',
     alt: 'SETUP',
     year: '2018',
