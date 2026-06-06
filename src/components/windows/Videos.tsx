@@ -4,42 +4,8 @@ import icons from '../../assets/images.js'
 import featured_vhs from '../../assets/Featured-VHS.gif'
 import featured_monitor from '../../assets/icons/videos-monitor.gif'
 import { useRef, useEffect, useState } from 'react'
-import ReactDOM from 'react-dom'
 
-function Tooltip({
-  visible,
-  pos,
-  children,
-}: {
-  visible: boolean
-  pos: { x: number; y: number }
-  children: React.ReactNode
-}) {
-  if (!visible) return null
-  return ReactDOM.createPortal(
-    <div
-      style={{
-        position: 'fixed',
-        left: pos.x,
-        top: pos.y,
-        background: '#f0f0f0',
-        color: '#222',
-        border: '2px outset #fff',
-        borderBottom: '2px solid #888',
-        borderRight: '2px solid #888',
-        padding: '8px 16px',
-        fontFamily: 'Tahoma, Geneva, sans-serif',
-        fontSize: 13,
-        zIndex: 9999,
-        pointerEvents: 'none',
-        whiteSpace: 'nowrap',
-      }}
-    >
-      {children}
-    </div>,
-    document.body
-  )
-}
+
 
 const featured = [
   {
@@ -345,24 +311,38 @@ const VideoPreviewSize = () => {
   return "400px"
 }
 
+const parseVideoDate = (dateStr: string): number => {
+  const parts = dateStr.split('-')
+  if (parts.length === 3) {
+    // MM-DD-YYYY
+    return new Date(`${parts[2]}-${parts[0]}-${parts[1]}`).getTime()
+  } else if (parts.length === 2) {
+    // MM-YYYY
+    return new Date(`${parts[1]}-${parts[0]}-01`).getTime()
+  }
+  return 0
+}
+
 const Videos = () => {
   const headerRef = useRef<HTMLDivElement>(null)
   const [showSubtitle, setShowSubtitle] = useState(true)
+  const [searchTerm, setSearchTerm] = useState('')
+  const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest')
 
-  const [showTooltip, setShowTooltip] = useState(false)
-  const [tooltipPos, setTooltipPos] = useState({ x: -120, y: -120 })
-  const tooltipTimeout = useRef<number | null>(null)
 
-  const handleMonitorMouseEnter = () => {
-    tooltipTimeout.current = window.setTimeout(() => setShowTooltip(true), 900)
-  }
-  const handleMonitorMouseLeave = () => {
-    setShowTooltip(false)
-    if (tooltipTimeout.current) clearTimeout(tooltipTimeout.current)
-  }
-  const handleMonitorMouseMove = (e: React.MouseEvent) => {
-  setTooltipPos({ x: e.pageX + 4, y: e.pageY + 4 })
-}
+
+
+  const filteredAndSortedVideos = videos
+    .filter(video => video.id !== 11)
+    .filter(video => 
+      video.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      video.alt_title.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    .sort((a, b) => {
+      const dateA = parseVideoDate(a.date)
+      const dateB = parseVideoDate(b.date)
+      return sortOrder === 'newest' ? dateB - dateA : dateA - dateB
+    })
 
   useEffect(() => {
     const node = headerRef.current
@@ -375,20 +355,15 @@ const Videos = () => {
     observer.observe(node)
     return () => observer.disconnect()
   }, [])
+
   return (
     <>
     <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}>
       <div style={{fontFamily: 'Pixeloid Sans', flexDirection: 'column', display: 'flex', minWidth: 128, borderBottom: '2px solid black', width: '40%', paddingRight: 20}}><span style={{paddingTop: 30, marginLeft: 24, fontSize: 16, position: 'absolute', wordSpacing: 8}}><span style={{color: 'yellow', fontFamily: 'Pixeloid Sans Bold', fontSize: 18}}>ECKS</span>  →   bunker</span>
       <img className="featured-monitor-img" src={featured_monitor} style= {{ width: 'auto', height: '75%', objectFit: 'contain', margin: 'auto', marginLeft: 0, paddingTop: 48, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
       onClick={randomvid}
-      onMouseEnter={handleMonitorMouseEnter}
-            onMouseLeave={handleMonitorMouseLeave}
-            onMouseMove={handleMonitorMouseMove}
-            alt="Featured Monitor"
       />
-      <Tooltip visible={showTooltip} pos={tooltipPos}>
-        click here to play a random video, playa!
-      </Tooltip>
+
 
       </div>
       {showSubtitle && (
@@ -420,10 +395,56 @@ const Videos = () => {
   <span style={{ color: 'yellow'}}>FEATURED VIDEO</span><br></br>"{featured[0].title}"</span>
   </div>
   </div></div>
+
+    <div style={{ display: 'flex', flexDirection: 'row', gap: 12, margin: '0 auto 16px', width: '98%', maxWidth: '99%', alignItems: 'center', fontFamily: 'Pixeloid Sans'}}>
+
+      <span style={{ whiteSpace: 'nowrap', display: 'inline-block', fontSize: '10px', marginLeft: 8}}>SEARCH</span>
+
+      <input
+        type="text"
+        value={searchTerm}
+        onChange={(e) => setSearchTerm(e.target.value)}
+        style={{
+          padding: '8px 12px',
+          fontSize: '0.625rem',
+          fontFamily: 'Pixeloid Sans',
+          background: '#222',
+          color: '#FDFDFD',
+          border: '2px solid #FDFDFD',
+          width: '100%',
+          minWidth: '60px',
+          maxWidth: '260px',
+          boxSizing: 'border-box',
+        }}
+      />
+
+
+<div style={{ marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: 8, marginRight: 12}}>
+     <span style={{ whiteSpace: 'nowrap', display: 'inline-block', fontSize: '10px' }}>SORT BY</span>
+  <select
+    value={sortOrder}
+    onChange={(e) => setSortOrder(e.target.value as 'newest' | 'oldest')}
+    style={{
+      padding: '8px 10px',
+      fontSize: '0.625rem',
+      fontFamily: 'Pixeloid Sans',
+      background: '#222',
+      color: '#FDFDFD',
+      border: '2px solid #FDFDFD',
+      cursor: 'pointer',
+      outline: 'none',
+      touchAction: 'manipulation',
+      minHeight: 24,
+      minWidth: 80,
+    }}
+  >
+    <option value="newest">Newest</option>
+    <option value="oldest">Oldest</option>
+  </select>
+      </div>
+    </div>
   <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
-  {videos
-    .filter(video => video.id !== 11)
-    .map((video) => (
+  {filteredAndSortedVideos.map((video) => (
       <button
         key={video.id}
         className="my-videos"
@@ -438,12 +459,11 @@ const Videos = () => {
 </span>
       </button> 
     ))}
-    
-      </div>
-      <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>
-      <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
-      </>
-    )
+    </div>
+    <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>
+    <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
+    </>
+  )
 }
 
 export default Videos

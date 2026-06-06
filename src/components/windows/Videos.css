@@ -33,13 +33,41 @@ a:link, a:active { text-decoration: none; color: #970707 }
   transition: transform 0.2s, box-shadow 0.2s;
 }
 .videos-grid {
-  margin: 0 auto 16px auto;
-  width: 100%;
-  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  width: 95%;
+  margin: 0 auto;
+  text-align: center;
+    box-shadow: inset 0px 0px 0.625rem rgba(0, 0, 0, 0.11);
+
 }
-.videos-grid {
-  box-shadow: inset 0px 0px 0.625rem rgba(0, 0, 0, 0.11);
-  
+@media (max-width: 600px) {
+  .videos-grid {
+    gap: 8px;
+    width: 98%;
+  }
+
+  .my-videos {
+    padding: 6px;
+    width: 8.5rem;
+    font-size: 0.5rem;
+
+  }
+
+  .my-videos .video-title {
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    white-space: normal;
+    text-overflow: ellipsis;
+    line-height: 1.2;
+    min-height: calc(1.2em * 2); /* reserves space for 2 lines */
+    width: 90%;
+    margin-top: 6px;
+    font-size: 10px;
+  }
 }
 .my-videos:hover {
   background: #c0c0c0;

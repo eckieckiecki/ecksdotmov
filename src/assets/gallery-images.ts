@@ -58,9 +58,9 @@ export const images = [
   {
     thumb: 'https://cdn.3cks.net/img/2025-mf-wip.png',
     title: 'mf wip',
-    alt: '______',
+    alt: 'MF-WIP',
     year: '2025',
-    full: 'https://cdn.3cks.net/img/2025-ktownodd.jpg',
+    full: 'https://cdn.3cks.net/img/2025-mf-wip.png',
     tags: ['gfx']
   },
   {
@@ -324,6 +324,31 @@ export const images = [
   },
 
   {
+    thumb: 'https://cdn.3cks.net/img/2021-conway.jpg',
+    title: 'conway',
+    alt: 'CONWAY',
+    year: '2021',
+    full: 'https://cdn.3cks.net/img/2021-conway.jpg',
+    tags: ['media']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2021-weirdtree.png',
+    title: 'weird tree',
+    alt: 'WEIRD_TREE',
+    year: '2021',
+    full: 'https://cdn.3cks.net/img/2021-weirdtree.png',
+    tags: ['photos']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2021-dustyhot.png',
+    title: 'dustyhot',
+    alt: 'DUSTYHOT',
+    year: '2021',
+    full: 'https://cdn.3cks.net/img/2021-dustyhot.png',
+    tags: ['gfx']
+  },
+
+  {
     thumb: 'https://cdn.3cks.net/img/2020-fight-songs-thumb.jpg',
     title: 'fight songs',
     alt: 'FIGHT_SONGS',
@@ -348,12 +373,28 @@ export const images = [
     tags: ['photos']
   },
   {
+    thumb: 'https://cdn.3cks.net/img/2020-by-soursalem.jpg',
+    title: 'thas me (by @soursalem )',
+    alt: 'THAS_ME',
+    year: '2020',
+    full: 'https://cdn.3cks.net/img/2020-by-soursalem.jpg',
+    tags: ['art']
+  },
+  {
     thumb: 'https://cdn.3cks.net/img/2019-fursona.jpg',
     title: 'fursona (by @xonras)',
     alt: 'FURSONA',
     year: '2019',
     full: 'https://cdn.3cks.net/img/2019-fursona.jpg',
     tags: ['art']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2018-beavisos.jpg',
+    title: 'beavis os',
+    alt: 'BEAVIS_OS',
+    year: '2018',
+    full: 'https://cdn.3cks.net/img/2018-beavisos.jpg',
+    tags: ['photos']
   },
   {
     thumb: 'https://cdn.3cks.net/img/2018-tux.jpg',

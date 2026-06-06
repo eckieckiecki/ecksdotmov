@@ -115,7 +115,7 @@ const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' |
 
 const titleTimeoutRef = useRef<number | null>(null);
 
-const setTemporaryTitle = (newTitle: string, revertTitle = "[3cks.net]") => {
+const setTemporaryTitle = (newTitle: string, revertTitle = "3cks.net") => {
   document.title = newTitle;
   if (titleTimeoutRef.current) window.clearTimeout(titleTimeoutRef.current);
   titleTimeoutRef.current = window.setTimeout(() => {
@@ -309,7 +309,7 @@ useEffect(() => {
 
   const openCreditsWindow = () => {
     if (!canOpenWindow()) return;
-    setTemporaryTitle("[3cks.net] - CREDITS!");
+    setTemporaryTitle("3cks.net - CREDITS!");
     const CreditsContainer = document.createElement('div');
     if (darkMode) {
       CreditsContainer.classList.add('dark-mode');
@@ -336,20 +336,20 @@ useEffect(() => {
 
   const openDonateWindow = () => {
   if (!canOpenWindow()) return;
-  setTemporaryTitle("[3cks.net] - DONATE!");
+  setTemporaryTitle("3cks.net - DONATE!");
 
   const container = document.createElement("div");
   if (darkMode) container.classList.add("dark-mode");
 
-  const root = ReactDOM.createRoot(container); // create once
+  const root = ReactDOM.createRoot(container); 
   let cleaned = false;
 
   const cleanup = () => {
     if (cleaned) return;
     cleaned = true;
-    root.unmount(); // unmount same root
+    root.unmount(); 
     container.remove();
-    document.title = "[3cks.net]";
+    document.title = "3cks.net";
   };
     const winbox = new WinBox({
     title: "~X/DONATE",
@@ -371,7 +371,7 @@ useEffect(() => {
 
   const openAboutMeWindow = () => {
     if (!canOpenWindow()) return;
-    setTemporaryTitle("[3cks.net] - ABOUT!");
+    setTemporaryTitle("3cks.net - ABOUT!");
     const aboutMeContainer = document.createElement('div');
     if (darkMode) {
       aboutMeContainer.classList.add('dark-mode');
@@ -393,7 +393,7 @@ useEffect(() => {
       noResize: true,
       onClose: () => {
       console.log("Window closed");
-      document.title = "[3cks.net]";
+      document.title = "3cks.net";
       const root = ReactDOM.createRoot(aboutMeContainer);
       root.unmount(); 
       aboutMeContainer.remove(); 
@@ -408,7 +408,7 @@ useEffect(() => {
 
     const openVideoWindow = () => {
       if (!canOpenWindow()) return;
-      setTemporaryTitle("[3cks.net] - VIDEOS!");
+      setTemporaryTitle("3cks.net - VIDEOS!");
       const VideoContainer = document.createElement('div');
       if (darkMode) {
         VideoContainer.classList.add('dark-mode');
@@ -431,7 +431,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed");
-        document.title = "[3cks.net]";
+        document.title = "3cks.net";
         const root = ReactDOM.createRoot(VideoContainer);
         root.unmount();
         VideoContainer.remove(); 
@@ -446,7 +446,7 @@ useEffect(() => {
 
     const openContactWindow = () => {
       if (!canOpenWindow()) return;
-      setTemporaryTitle("[3cks.net] - CONTACT!");
+      setTemporaryTitle("3cks.net - CONTACT!");
       const ContactContainer = document.createElement('div');
       if (darkMode) {
         ContactContainer.classList.add('dark-mode');
@@ -466,7 +466,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed")
-        document.title = "[3cks.net]"
+        document.title = "3cks.net"
         const root = ReactDOM.createRoot(ContactContainer)
         root.unmount()
         ContactContainer.remove()
@@ -481,7 +481,7 @@ useEffect(() => {
 
   const openGalleryWindow = () => {
     if (!canOpenWindow()) return
-    setTemporaryTitle("[3cks.net] - GALLERY!")
+    setTemporaryTitle("3cks.net - GALLERY!")
     const GalleryContainer = document.createElement('div')
     if (darkMode) {
       GalleryContainer.classList.add('dark-mode')
@@ -501,7 +501,7 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed")
-        document.title = "[3cks.net]"
+        document.title = "3cks.net"
         const root = ReactDOM.createRoot(GalleryContainer)
         root.unmount()
         GalleryContainer.remove()
@@ -516,7 +516,7 @@ GalleryRoot.render(<Gallery />)
 
 const openMusicWindow = () => {
     if (!canOpenWindow()) return
-    setTemporaryTitle("[3cks.net] - MUSIC!")
+    setTemporaryTitle("3cks.net - MUSIC!")
     const MusicContainer = document.createElement('div')
     if (darkMode) {
       MusicContainer.classList.add('dark-mode')
@@ -536,7 +536,7 @@ const openMusicWindow = () => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onClose: () => {
         console.log("Window closed")
-        document.title = "[3cks.net]"
+        document.title = "3cks.net"
         const root = ReactDOM.createRoot(MusicContainer)
         root.unmount()
         MusicContainer.remove()

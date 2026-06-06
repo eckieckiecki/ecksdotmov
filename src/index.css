@@ -326,7 +326,7 @@ body.crt::before,
   z-index: 9999;
   background-size: 100% 2px, 3px 100%;
   pointer-events: none;
-  animation: flicker 3.33s alternate-reverse;
+  animation: flicker 3.33s reverse;
 }
 @keyframes shake {
   0% { transform: translate(1px, 1px) rotate(0deg); }
