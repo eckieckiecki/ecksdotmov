@@ -348,7 +348,7 @@ const Videos = () => {
     const node = headerRef.current
     if (!node) return
     const observer = new window.ResizeObserver(entries => {
-      for (let entry of entries) {
+      for (const entry of entries) {
         setShowSubtitle(entry.contentRect.width > 480)
       }
     })

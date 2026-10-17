@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 declare module './winbox.min.jsx' {
     interface WinBoxOptions {
       setBackground(arg0: string): unknown;
@@ -56,6 +57,7 @@ declare module './winbox.min.jsx' {
    * @return noDefaultClose - true if the winbox does not need the default close process, for example, when it needs a confirmation to close instead of being closed suddenly.
    */
   onClose?: (force: boolean) => boolean | undefined | void,
+  onclose?: (force: boolean) => boolean | undefined | void,
   onMove?: (x: number, y: number) => any,
   onResize?: (width: number, height: number) => any,
   onBlur?: () => any,

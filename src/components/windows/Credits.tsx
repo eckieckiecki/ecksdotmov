@@ -45,9 +45,6 @@ import '../../assets/images.js'
         <br />
         <span style={{ display: 'block' }}>- Friends of the site:</span>
 <span className="notepad-line" style={{marginLeft: 8}}>
-- <a href="https://4nx4e.lol" target="_blank">4nx4e.lol</a>
-</span>
-<span className="notepad-line" style={{marginLeft: 8}}>
   - <a href="https://lucke.neocities.org/" target="_blank">lucke.neocities.org</a>
 </span>
 <span className="notepad-line" style={{marginLeft: 8}}>

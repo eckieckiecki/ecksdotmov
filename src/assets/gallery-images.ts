@@ -1,5 +1,37 @@
 export const images = [
   {
+    thumb: 'https://cdn.3cks.net/img/2026-sticker-thumb.jpg',
+    title: 'sticker',
+    alt: 'STICKER',
+    year: '2026',
+    full: 'https://cdn.3cks.net/img/2026-sticker.png',
+    tags: ['photos']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2026-portta-thumb.jpg',
+    title: 'portta',
+    alt: 'PORTTA',
+    year: '2026',
+    full: 'https://cdn.3cks.net/img/2026-portta.jpg',
+    tags: ['photos', 'media']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2026-fritz-thumb.jpg',
+    title: 'fritz',
+    alt: 'FRITZ_THE_CAT',
+    year: '2026',
+    full: 'https://cdn.3cks.net/img/2026-fritz.png',
+    tags: ['media']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2026-self-portrait-thumb.jpg',
+    title: 'self portrait',
+    alt: 'SELF_PORTRAIT',
+    year: '2026',
+    full: 'https://cdn.3cks.net/img/2026-self-portrait.png',
+    tags: ['art']
+  },
+  {
     thumb: 'https://cdn.3cks.net/img/2026-mixers-thumb.jpg',
     title: 'mixerz',
     alt: 'MIXERZ',
@@ -24,11 +56,11 @@ export const images = [
     tags: ['media', 'photos']
   },
   {
-    thumb: 'https://cdn.3cks.net/img/2026-still-alive.png',
+    thumb: 'https://cdn.3cks.net/img/2026-still-alive-thumb.jpg',
     title: 'still alive',
     alt: 'STILL ALIVE',
     year: '2026',
-    full: 'https://cdn.3cks.net/img/2026-gowillog.png',
+    full: 'https://cdn.3cks.net/img/2026-still-alive.png',
     tags: ['media']
   },
   {
@@ -89,8 +121,8 @@ export const images = [
   },
   {
     thumb: 'https://cdn.3cks.net/img/2025-alfreds-comm.jpg',
-    title: 'alfreds commission',
-    alt: 'ALFREDS_COMMISSION',
+    title: '☢♞! (by @alfredmorose)',
+    alt: '☢♞!',
     year: '2025',
     full: 'https://cdn.3cks.net/img/2025-alfreds-comm.jpg',
     tags: ['art', 'gfx']
@@ -347,7 +379,14 @@ export const images = [
     full: 'https://cdn.3cks.net/img/2021-dustyhot.png',
     tags: ['gfx']
   },
-
+  {
+    thumb: 'https://cdn.3cks.net/img/2021-zozoloft-thumb.jpg',
+    title: 'negative8 ( by @huvakraft)',
+    alt: 'NEGATIVE8',
+    year: '2020',
+    full: 'https://cdn.3cks.net/img/2020-tem.jpg',
+    tags: ['art']
+  },
   {
     thumb: 'https://cdn.3cks.net/img/2020-fight-songs-thumb.jpg',
     title: 'fight songs',
@@ -381,11 +420,19 @@ export const images = [
     tags: ['art']
   },
   {
-    thumb: 'https://cdn.3cks.net/img/2019-fursona.jpg',
+    thumb: 'https://cdn.3cks.net/img/2019-fursona-thumb.jpg',
     title: 'fursona (by @xonras)',
     alt: 'FURSONA',
     year: '2019',
     full: 'https://cdn.3cks.net/img/2019-fursona.jpg',
+    tags: ['art']
+  },
+  {
+    thumb: 'https://cdn.3cks.net/img/2019-boiii-thumb.jpg',
+    title: '#ECKS (by @velursal )',
+    alt: 'HASHTAG_ECKS',
+    year: '2019',
+    full: 'https://cdn.3cks.net/img/2019-velursal.jpg',
     tags: ['art']
   },
   {

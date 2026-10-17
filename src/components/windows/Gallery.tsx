@@ -164,7 +164,7 @@ const Gallery = () => {
           </div>
           <div className="gallery-sidebar-divider" />
           <div className="gallery-sidebar-section">
-            <div className="gallery-sidebar-hint">{isMobile ? 'Tap' : 'Double-click'}<br/>image to open</div>
+            <div className="gallery-sidebar-hint">{isMobile ? 'Tap an' : 'Double-click an'}<br/>image to open</div>
           </div>
         </div>
 
@@ -172,7 +172,6 @@ const Gallery = () => {
         <div className="gallery-main-pane">
           {filteredImages.length === 0 ? (
             <div className="gallery-empty">
-              <span>📂</span>
               <span>no files found</span>
             </div>
           ) : (

@@ -52,13 +52,11 @@ const tabs = [
 </div>
 <div style={{width: '100%'}}>
         <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> June 6 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 16 </span></div>
         </div>
 </div>
       </div>
-    ),
-  },
-  {
+      ),},{
     key: 'bio',
     label: 'BIO',
     content: (
@@ -73,9 +71,7 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
  At the end of the day I'm simply just tryna create everything I wish to see and experience. To me that's the only compass that really makes sense.
 </div>
       </div>
-    ),
-  },
-  {
+    ),},{
     key: 'tools',
     label: 'TOOLS',
     content: (
@@ -92,15 +88,13 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
           <li style={{marginBottom: 2}}>Tux Paint</li>
           <li style={{marginBottom: 2}}>FL Studio</li>          
           <li style={{marginBottom: 2}}>a Sony a7iii Camera</li>
-          <li style={{marginBottom: 2}}>JASCO CamGear & Radioshack Video Enhancer (for analog)</li>
+          <li style={{marginBottom: 2}}>JASCO CamGear & Modded Radioshack Video Enhancer (for analog stuff)</li>
           <br/>
           ...and a dream.
         </ul>
       </div>
       </div>
-    ),
-  },
-]
+    ),}]
 
 const AboutMe = () => {
 

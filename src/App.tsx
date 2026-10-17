@@ -20,9 +20,9 @@ import NotFound from './components/NotFound';
 
 import { videos, openVideoWinBox } from './components/windows/Videos';
 
-let imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
-let randomNum = Math.floor(imageArr.length * Math.random());
-let randomImage = imageArr[randomNum];
+const imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
+const randomNum = Math.floor(imageArr.length * Math.random());
+const randomImage = imageArr[randomNum];
 import BootUp from './components/BootUp.jsx';
 
 
@@ -248,7 +248,7 @@ useEffect(() => {
               y: "center", 
               url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
-              onClose: () => {
+              onclose: () => {
                 console.log('Window closed');
                 WelcomeContainer.remove(); 
         },
@@ -362,7 +362,7 @@ useEffect(() => {
     y: "45%",
     mount: container,
     setBackground: (color: string) => console.log(`Background set to ${color}`),
-    onClose: cleanup
+    onclose: cleanup
   });
 
   if (darkMode) winbox.window.classList.add("dark-mode");
@@ -391,7 +391,7 @@ useEffect(() => {
       mount: aboutMeContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       noResize: true,
-      onClose: () => {
+      onclose: () => {
       console.log("Window closed");
       document.title = "3cks.net";
       const root = ReactDOM.createRoot(aboutMeContainer);
@@ -429,7 +429,7 @@ useEffect(() => {
         y: "8%",
       mount: VideoContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
-      onClose: () => {
+      onclose: () => {
         console.log("Window closed");
         document.title = "3cks.net";
         const root = ReactDOM.createRoot(VideoContainer);
@@ -464,7 +464,7 @@ useEffect(() => {
         y: "30%",
       mount: ContactContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
-      onClose: () => {
+      onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
         const root = ReactDOM.createRoot(ContactContainer)
@@ -499,7 +499,7 @@ useEffect(() => {
       y: "30%",
       mount: GalleryContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
-      onClose: () => {
+      onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
         const root = ReactDOM.createRoot(GalleryContainer)
@@ -534,7 +534,7 @@ const openMusicWindow = () => {
       y: "30%",
       mount: MusicContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
-      onClose: () => {
+      onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
         const root = ReactDOM.createRoot(MusicContainer)
