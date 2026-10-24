@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import ReactDOM from 'react-dom/client';
 import { useLocation } from 'react-router-dom';
 import Taskbar from './components/Taskbar';
@@ -327,6 +328,10 @@ useEffect(() => {
       y: "45%",
       mount: CreditsContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
+      onclose: () => {
+                console.log('Window closed');
+                CreditsContainer.remove(); 
+        },
       })
 
       if (darkMode) {
@@ -337,7 +342,6 @@ useEffect(() => {
   const openDonateWindow = () => {
   if (!canOpenWindow()) return;
   setTemporaryTitle("3cks.net - DONATE!");
-
   const container = document.createElement("div");
   if (darkMode) container.classList.add("dark-mode");
 
@@ -345,13 +349,15 @@ useEffect(() => {
   let cleaned = false;
 
   const cleanup = () => {
+    console.log('Window closed');
     if (cleaned) return;
     cleaned = true;
     root.unmount(); 
     container.remove();
     document.title = "3cks.net";
   };
-    const winbox = new WinBox({
+
+  const winbox = new WinBox({
     title: "~X/DONATE",
     icon: images.desktop_donate,
     background: "linear-gradient(180deg,rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgb(40,40,40) 100%)",

@@ -8,6 +8,23 @@
   }
 }
 
+@keyframes winbox-close {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(.8);
+  }
+}
+
+.winbox.winbox-closing {
+  pointer-events: none;
+  transition: none;
+  animation: winbox-close 187ms ease-in forwards;
+}
+
 @keyframes wb-fade-in {
   0% {
     opacity: 0;

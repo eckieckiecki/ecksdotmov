@@ -193,19 +193,35 @@ useEffect(() => {
     onClick={() => TaskbarOpen(false)}
   >
           <div
-            style={{
-              width: '22px',
-              backgroundColor: 'red',
-              pointerEvents: 'none',
-              borderStyle: 'solid',
-  borderWidth: '2px',
-  borderLeftColor: 'rgb(128, 128, 128)',
-  borderTopColor: 'rgb(128, 128, 128)',
-  borderRightColor: 'rgb(0, 0, 0)',
-  borderBottomColor: 'rgb(0, 0, 0)',
-              borderRight: 0,
-            }}
-          />
+  style={{
+    width: '22px',
+    position: 'relative',
+    flexShrink: 0,
+    background: 'linear-gradient(180deg,rgba(255, 0, 0, 1) 77%, rgba(163, 0, 0, 1) 100%)',
+    pointerEvents: 'none',
+    borderStyle: 'solid',
+    borderWidth: '2px',
+    borderLeftColor: 'rgb(128, 128, 128)',
+    borderTopColor: 'rgb(128, 128, 128)',
+    borderRightColor: 'rgb(0, 0, 0)',
+    borderBottomColor: 'rgb(0, 0, 0)',
+    borderRight: 0,
+  }}
+>
+  <span
+    style={{
+      position: 'absolute',
+      left: '50%',
+      top: '82%',
+      transform: 'translate(-50%, -50%) rotate(-90deg)',
+      color: 'white',
+      whiteSpace: 'nowrap',
+      fontFamily: 'Pixeloid Sans Bold',
+    }}
+  >
+    3CKS.NET
+  </span>
+</div>
 
           
           <MenuList style={{ margin: 0, borderWidth: '0px' }}>

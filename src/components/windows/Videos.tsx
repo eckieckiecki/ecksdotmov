@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import './Videos.css'
 import WinBox from '../winbox/winbox.min.jsx'
 import icons from '../../assets/images.js'

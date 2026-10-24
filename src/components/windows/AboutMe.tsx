@@ -15,6 +15,7 @@ const quotes = [
   "quick to flip the script...",
   "my shit's official!",
   "also known as 'Big Fat Ecki'",
+  "also known as 'VideoGawd'",
   "5'10, stand on my money, now I'm 5'6",
   "long live the new flesh!",
   "make that tv explode. bjork style.",
@@ -52,7 +53,7 @@ const tabs = [
 </div>
 <div style={{width: '100%'}}>
         <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 16 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 24 </span></div>
         </div>
 </div>
       </div>
