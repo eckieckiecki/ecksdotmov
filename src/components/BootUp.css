@@ -26,7 +26,6 @@
     transition: filter 300ms;
     text-align: center;
     animation: zoomIn 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
-    /* Grow is now applied dynamically via .loading_elements.complete */
 }
 .loading_elements.complete {
   animation: 

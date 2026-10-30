@@ -11,7 +11,40 @@
   -webkit-font-smoothing: none;
   text-rendering: optimizeSpeed;
 }
+.gallery-img {
+  position: relative;
+}
 
+.gallery-tooltip {
+  position: fixed;
+  z-index: 9999;
+  width: 180px;
+  max-height: 40vh;
+  overflow: auto;
+  padding: 0.5rem;
+  background: #111;
+  border: 1px solid #777;
+  color: #fafafa;
+  font-family: 'Pixeloid Sans';
+  line-height: 0.55rem;
+  text-align: left;
+  font-size: 0.560rem;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+}
+.tooltip-title {
+  font-size: 12px;
+  color: #fff;
+}
+.gallery-tooltip > * {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.gallery-img:hover .gallery-tooltip,
+.gallery-img:focus-within .gallery-tooltip {
+  display: block;
+}
 .gallery-explorer-title {
   text-align: center;
   padding: 8px 0 4px;

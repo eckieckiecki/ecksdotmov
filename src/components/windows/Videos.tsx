@@ -108,7 +108,7 @@ export const videos = [
     url: 'https://iframe.mediadelivery.net/embed/516695/53a7705a-b207-4c1a-ac95-84cb68ca4cc6?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://www.youtube.com/watch?v=sziewA2jzEY',
     date: '12-31-2022',
-    description: `Segment I did for Tornada’s <a href="https://www.youtube.com/watch?v=sziewA2jzEY" target="_blank">Two of a Kind</a>. Was asked to do a music video and this is what I sent back. You can prolly tell it was my first time datamoshing. <br><br>Song: al.divino & Estee Nack - KNOWLEDGE GOD`,
+    description: `Segment I did for Tornada's <a href="https://www.youtube.com/watch?v=sziewA2jzEY" target="_blank">Two of a Kind</a>. Was asked to do a music video and this is what I sent back. You can prolly tell it was my first time datamoshing. <br><br>Song: al.divino & Estee Nack - KNOWLEDGE GOD`,
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/knowledgegod.jpg',
     isYouTube: false,
   },
@@ -156,7 +156,7 @@ export const videos = [
     url: 'https://www.youtube.com/embed/K3XvXyNBrHA',
     source: 'https://www.youtube.com/watch?v=K3XvXyNBrHA',
     date: '06-10-2020',
-    description: `This one came to me in a dream. It would ultimately serve as the beginning of a short series that kept me occupied during a weird time in my life. Covid was whoopin' ass ___. Most of my days were being eaten up by stress that I would channel into learning Source Filmmaker in the only way I knew how: by making quick lil videos that were asking to get several effects thrown on in post. Wouldn't say it's anywhere near my best work nowadays but I got some fond memories and met some cool people through it. Shoutout to anyone who remembers when I would share this on TF2 trading sites.`,
+    description: `This one came to me in a dream. It would ultimately serve as the beginning of a short series that kept me occupied during a weird time in my life. Most of my days were being eaten up by stress that I would channel into learning Source Filmmaker in the only way I knew how: by making quick lil videos that were asking to get several effects thrown on in post. Wouldn't say it's anywhere near my best work nowadays but I got some fond memories and met some cool people through it. Shoutout to anyone who remembers when I would share this on TF2 trading sites.`,
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/bald.jpg',
     isYouTube: true,
   },
@@ -295,7 +295,9 @@ export function openVideoWinBox(video: typeof videos[0]) {
 
 const YouTubeIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" style={{marginLeft: 4, verticalAlign: 'middle'}}>
-    <path fill="#FF0000" d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.19 6 12 6 12 6s-6.19 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94A28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.94 1.94C5.81 18 12 18 12 18s6.19 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999zM10 15V9l5 3-5 3z"/>
+  <path fill="#FF0000"
+  d="M21.8 8.001a2.75 2.75 0 0 0-1.94-1.94C18.19 6 12 6 12 6s-6.19 0-7.86.061a2.75 2.75 0 0 0-1.94 1.94A28.6 28.6 0 0 0 2 12a28.6 28.6 0 0 0 .2 3.999 2.75 2.75 0 0 0 1.94 1.94C5.81 18 12 18 12 18s6.19 0 7.86-.061a2.75 2.75 0 0 0 1.94-1.94A28.6 28.6 0 0 0 22 12a28.6 28.6 0 0 0-.2-3.999z"/>
+  <path fill="#FFFFFF" d="M10 15V9l5 3-5 3z" />
   </svg>
 )
 

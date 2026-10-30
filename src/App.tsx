@@ -1,42 +1,40 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import ReactDOM from 'react-dom/client';
-import { useLocation } from 'react-router-dom';
-import Taskbar from './components/Taskbar';
+import ReactDOM from 'react-dom/client'
+import { useLocation } from 'react-router-dom'
+import Taskbar from './components/Taskbar'
 
-import '@react95/core/themes/tokyoDark.css';
-import { useState, useEffect, useRef} from 'react';
+import '@react95/core/themes/tokyoDark.css'
+import { useState, useEffect, useRef} from 'react'
 import WinBox from './components/winbox/winbox.min.jsx'
 
-import images from './assets/images.js';
-import backgrounds from './assets/backgrounds.js';
+import images from './assets/images.js'
+import backgrounds from './assets/backgrounds.js'
 
-import AboutMe from './components/windows/AboutMe.tsx';
-import Videos from './components/windows/Videos.tsx';
-import Gallery from './components/windows/Gallery.tsx';
-import Music from './components/windows/Music.tsx';
-import Contact from './components/windows/Contact.tsx';
-import Donate from './components/windows/Donate.tsx';
-import Credits from './components/windows/Credits.tsx';
-import NotFound from './components/NotFound';
+import AboutMe from './components/windows/AboutMe.tsx'
+import Videos from './components/windows/Videos.tsx'
+import Gallery from './components/windows/Gallery.tsx'
+import Music from './components/windows/Music.tsx'
+import Contact from './components/windows/Contact.tsx'
+import Donate from './components/windows/Donate.tsx'
+import Credits from './components/windows/Credits.tsx'
+import NotFound from './components/NotFound'
 
-import { videos, openVideoWinBox } from './components/windows/Videos';
+import { videos, openVideoWinBox } from './components/windows/Videos'
 
 const imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
-const randomNum = Math.floor(imageArr.length * Math.random());
-const randomImage = imageArr[randomNum];
-import BootUp from './components/BootUp.jsx';
-
+const randomNum = Math.floor(imageArr.length * Math.random())
+const randomImage = imageArr[randomNum]
+import BootUp from './components/BootUp.jsx'
 
 const App = () => {
   
   useEffect(() => {
-  document.body.style.overflow = 'hidden';
-  document.documentElement.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'
+  document.documentElement.style.overflow = 'hidden'
   return () => {
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-  };
-}, []);
+    document.body.style.overflow = ''
+    document.documentElement.style.overflow = ''
+  }}, [])
 
   const [crtEnabled, setCrtEnabled] = useState(true)
   const [darkMode, setDarkMode] = useState(true)
@@ -55,30 +53,26 @@ const App = () => {
 
   const toggleCRT = () => {
   setCrtEnabled(prev => {
-    const next = !prev;
+    const next = !prev
     if (next) {document.body.classList.add('crt')} 
     else {document.body.classList.remove('crt')} 
     return next })}
 
-  const lastWindowOpenTime = useRef(0);
+  const lastWindowOpenTime = useRef(0)
   
   const canOpenWindow = () => {
-    const now = Date.now();
+    const now = Date.now()
     if (now - lastWindowOpenTime.current >= 400) {
-      lastWindowOpenTime.current = now;
-      return true;
-    }
-    return false;
-  }
+      lastWindowOpenTime.current = now
+      return true } return false }
 
+  const [showPreLoader, setShowPreLoader] = useState(true)
+  const [loadProgress, setLoadProgress] = useState(0)
+  const [showWelcome, setShowWelcome] = useState(false)
+  const [open, TaskbarOpen] = useState(false)
 
-  const [showPreLoader, setShowPreLoader] = useState(true);
-  const [loadProgress, setLoadProgress] = useState(0);
-  const [showWelcome, setShowWelcome] = useState(false);
-  const [open, TaskbarOpen] = useState(false);
-
-  const startBtnRef = useRef<HTMLButtonElement>(null);
-  const menuRef = useRef<HTMLDivElement>(null);
+  const startBtnRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
   if (!open) return;
@@ -94,11 +88,10 @@ const App = () => {
     }
   }
 
-  document.addEventListener('mousedown', handleClickOutside);
+  document.addEventListener('mousedown', handleClickOutside)
   return () => {
-    document.removeEventListener('mousedown', handleClickOutside);
-  };
-}, [open])
+    document.removeEventListener('mousedown', handleClickOutside)
+  }}, [open])
 
 const WindowPosition = (windowType: 'about' | 'gallery' | 'videos' | 'contact' | 'donate' | 'credits') => {
   if (window.innerWidth < 768) {
@@ -121,8 +114,7 @@ const setTemporaryTitle = (newTitle: string, revertTitle = "3cks.net") => {
   if (titleTimeoutRef.current) window.clearTimeout(titleTimeoutRef.current);
   titleTimeoutRef.current = window.setTimeout(() => {
     document.title = revertTitle;
-  }, 11111);
-};
+  }, 11111)}
 
 useEffect(() => {
   return () => {
@@ -134,7 +126,7 @@ const location = useLocation();
 const hashPath = location.pathname;
 const normalizedPath = hashPath.replace(/\/+$/, '') || '/';
 const isWatchRoute = /^\/watch\/[^/]+$/i.test(normalizedPath);
-const knownRoutes = new Set(['/', '/donate', '/videos', '/gallery', '/music', '/blog', '/about', '/contact']);
+const knownRoutes = new Set(['/', '/donate', '/videos', '/gallery', '/music', '/blog', '/about', '/contact', '/promo']);
 const showNotFound = !isWatchRoute && !knownRoutes.has(normalizedPath);
 
 
@@ -208,6 +200,9 @@ useEffect(() => {
     }
 
     switch (hashPath) {
+      case '/about':
+        openAboutMeWindow();
+        break;
       case '/donate':
         openDonateWindow();
         break;
@@ -222,6 +217,9 @@ useEffect(() => {
         break;
       case '/blog':
         setShowWelcome(true);
+        break;
+      case '/promo':
+        openVideoWindow();
         break;
       default:
         setShowWelcome(true);
@@ -238,9 +236,10 @@ useEffect(() => {
 
   useEffect(() => {
     if (showWelcome) {
-      const WelcomeContainer = document.createElement('div');
+      const WelcomeContainer = document.createElement('div')
+      const WelcomeRoot = ReactDOM.createRoot(WelcomeContainer)
       new WinBox({
-              title: "~X/WHATS_NEW",
+              title: "~X/WHATS_NEW/",
               icon: images.info,
               background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
               width: "375px",
@@ -250,13 +249,13 @@ useEffect(() => {
               url: "https://eckis-chronicle.neocities.org", // eckis-chronicle.neocities.org
               setBackground: (color: string) => console.log(`Background set to ${color}`),
               onclose: () => {
-                console.log('Window closed');
-                WelcomeContainer.remove(); 
+                console.log('Window closed')
+                WelcomeContainer.remove()
+                WelcomeRoot.unmount()
         },
-            });
-      setShowWelcome(false); 
-    }
-  }, [showWelcome]);
+            })
+      setShowWelcome(false)
+    }}, [showWelcome]);
 
   useEffect(() => {
   const tiltEl = document.getElementById('background-tilt');
@@ -273,48 +272,47 @@ useEffect(() => {
   };
 
   const handleMouseMove = (e: MouseEvent) => {
-    const { innerWidth, innerHeight } = window;
-    let rx = (e.clientX / innerWidth - 0.77) * maxTilt * 2;
-    let ry = (e.clientY / innerHeight - 0.77) * maxTilt * 2;
+    const { innerWidth, innerHeight } = window
+    let rx = (e.clientX / innerWidth - 0.77) * maxTilt * 2
+    let ry = (e.clientY / innerHeight - 0.77) * maxTilt * 2
 
-    rx = Math.max(-maxTilt, Math.min(maxTilt, rx));
-    ry = Math.max(-maxTilt, Math.min(maxTilt, ry));
+    rx = Math.max(-maxTilt, Math.min(maxTilt, rx))
+    ry = Math.max(-maxTilt, Math.min(maxTilt, ry))
 
-    updateTransform(-rx, ry * 0.9);
+    updateTransform(-rx, ry * 0.9)
   };
 
 
-  window.addEventListener('mousemove', handleMouseMove);
+  window.addEventListener('mousemove', handleMouseMove)
   return () => {
-    window.removeEventListener('mousemove', handleMouseMove);
-    tiltEl.style.transform = 'translate(-50%, -50%)';
+    window.removeEventListener('mousemove', handleMouseMove)
+    tiltEl.style.transform = 'translate(-50%, -50%)'
   };
-}, [randomImage]);
+}, [randomImage])
 
-const [bgDims, setBgDims] = useState({ width: '222vw', height: '222vh' });
+const [bgDims, setBgDims] = useState({ width: '222vw', height: '222vh' })
 
 useEffect(() => {
   function updateBgDims() {
-    const tiltAngle = 15; 
-    const radians = (tiltAngle * Math.PI) / 180;
+    const tiltAngle = 15
+    const radians = (tiltAngle * Math.PI) / 180
     const extra = Math.tan(radians) * Math.max(window.innerWidth, window.innerHeight);
     setBgDims({
       width: `${window.innerWidth + extra * 2.22}px`,
       height: `${window.innerHeight + extra * 2.22}px`,
     })
   }
-  updateBgDims();
-  window.addEventListener('resize', updateBgDims);
-  return () => window.removeEventListener('resize', updateBgDims);
+  updateBgDims()
+  window.addEventListener('resize', updateBgDims)
+  return () => window.removeEventListener('resize', updateBgDims)
 }, [])
 
   const openCreditsWindow = () => {
-    if (!canOpenWindow()) return;
-    setTemporaryTitle("3cks.net - CREDITS!");
-    const CreditsContainer = document.createElement('div');
-    if (darkMode) {
-      CreditsContainer.classList.add('dark-mode');
-    }
+    if (!canOpenWindow()) return
+    setTemporaryTitle("3cks.net - CREDITS!")
+    const CreditsContainer = document.createElement('div')
+    const CreditsRoot = ReactDOM.createRoot(CreditsContainer) 
+    if (darkMode) {CreditsContainer.classList.add('dark-mode')}
     const winbox =new WinBox({
       title: "~X/CREDITS.TXT",
       icon: images.notepad,
@@ -329,36 +327,24 @@ useEffect(() => {
       mount: CreditsContainer, 
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       onclose: () => {
-                console.log('Window closed');
-                CreditsContainer.remove(); 
+          console.log('Window closed');
+          document.title = "3cks.net"
+          CreditsRoot.unmount();
+          CreditsContainer.remove(); 
         },
       })
-
       if (darkMode) {
   winbox.window.classList.add('dark-mode')}
-  const CreditsRoot = ReactDOM.createRoot(CreditsContainer); 
   CreditsRoot.render(<Credits />)}
 
   const openDonateWindow = () => {
-  if (!canOpenWindow()) return;
-  setTemporaryTitle("3cks.net - DONATE!");
-  const container = document.createElement("div");
-  if (darkMode) container.classList.add("dark-mode");
-
-  const root = ReactDOM.createRoot(container); 
-  let cleaned = false;
-
-  const cleanup = () => {
-    console.log('Window closed');
-    if (cleaned) return;
-    cleaned = true;
-    root.unmount(); 
-    container.remove();
-    document.title = "3cks.net";
-  };
-
+  if (!canOpenWindow()) return
+  setTemporaryTitle("3cks.net - DONATE!")
+  const container = document.createElement("div")
+  const DonateRoot = ReactDOM.createRoot(container)
+  if (darkMode) container.classList.add("dark-mode")
   const winbox = new WinBox({
-    title: "~X/DONATE",
+    title: "~X/DONATE/",
     icon: images.desktop_donate,
     background: "linear-gradient(180deg,rgba(0,0,0,1) 0%, rgba(0,0,0,1) 55%, rgb(40,40,40) 100%)",
     border: "0.3em",
@@ -368,22 +354,24 @@ useEffect(() => {
     y: "45%",
     mount: container,
     setBackground: (color: string) => console.log(`Background set to ${color}`),
-    onclose: cleanup
-  });
+    onclose: () => {
+      console.log('Window closed')
+      document.title = "3cks.net"
+      DonateRoot.unmount()
+      container.remove()
+    }})
 
-  if (darkMode) winbox.window.classList.add("dark-mode");
-  root.render(<Donate />);
-};
+  if (darkMode) winbox.window.classList.add("dark-mode")
+  DonateRoot.render(<Donate />)}
 
   const openAboutMeWindow = () => {
-    if (!canOpenWindow()) return;
-    setTemporaryTitle("3cks.net - ABOUT!");
-    const aboutMeContainer = document.createElement('div');
-    if (darkMode) {
-      aboutMeContainer.classList.add('dark-mode');
-    }
+    if (!canOpenWindow()) return
+    setTemporaryTitle("3cks.net - ABOUT!")
+    const aboutMeContainer = document.createElement('div')
+    const aboutMeRoot = ReactDOM.createRoot(aboutMeContainer)
+    if (darkMode) {aboutMeContainer.classList.add('dark-mode')}
     const winbox = new WinBox({
-      title: "~X/SYSINFO",
+      title: "~X/SYSINFO/",
       className: "no-resize",
       icon: images.desktop_about,
       background: "linear-gradient(180deg,rgba(40, 40, 40, 1) 1%, rgba(66, 66, 66, 1) 4%, rgba(44, 44, 44, 1) 7%, rgba(66, 66, 66, 1) 10%, rgba(44, 44, 44, 1) 14%, rgba(0, 0, 0, 1) 100%)",
@@ -398,30 +386,22 @@ useEffect(() => {
       setBackground: (color: string) => console.log(`Background set to ${color}`),
       noResize: true,
       onclose: () => {
-      console.log("Window closed");
-      document.title = "3cks.net";
-      const root = ReactDOM.createRoot(aboutMeContainer);
-      root.unmount(); 
-      aboutMeContainer.remove(); 
-    },
-      });
+      console.log("Window closed")
+      document.title = "3cks.net"
+      aboutMeRoot.unmount()
+      aboutMeContainer.remove()
+    }})
       if (darkMode) {
-    winbox.window.classList.add('dark-mode');
-  }
-  const aboutMeRoot = ReactDOM.createRoot(aboutMeContainer); 
-  aboutMeRoot.render(<AboutMe />);
-    }; 
+    winbox.window.classList.add('dark-mode')
+  } aboutMeRoot.render(<AboutMe />)}
 
     const openVideoWindow = () => {
       if (!canOpenWindow()) return;
       setTemporaryTitle("3cks.net - VIDEOS!");
-      const VideoContainer = document.createElement('div');
-      if (darkMode) {
-        VideoContainer.classList.add('dark-mode');
-      }
-      if (crtEnabled) {
-    VideoContainer.classList.add('crt');
-  }
+      const VideoContainer = document.createElement('div')
+      const videosRoot = ReactDOM.createRoot(VideoContainer) 
+      if (darkMode) {VideoContainer.classList.add('dark-mode')}
+      if (crtEnabled) {VideoContainer.classList.add('crt')}
       const winbox = new WinBox({
         title: "~X/VIDEOS/",
         icon: images.desktop_videos,
@@ -438,27 +418,20 @@ useEffect(() => {
       onclose: () => {
         console.log("Window closed");
         document.title = "3cks.net";
-        const root = ReactDOM.createRoot(VideoContainer);
-        root.unmount();
+        videosRoot.unmount();
         VideoContainer.remove(); 
       },
-      });
-      if (darkMode) {
-    winbox.window.classList.add('dark-mode');
-  }
-  const videosRoot = ReactDOM.createRoot(VideoContainer); 
-  videosRoot.render(<Videos />);
-    };
+      })
+      if (darkMode) {winbox.window.classList.add('dark-mode')} videosRoot.render(<Videos />)}
 
     const openContactWindow = () => {
       if (!canOpenWindow()) return;
       setTemporaryTitle("3cks.net - CONTACT!");
-      const ContactContainer = document.createElement('div');
-      if (darkMode) {
-        ContactContainer.classList.add('dark-mode');
-      }
+      const ContactContainer = document.createElement('div')
+      const contactRoot = ReactDOM.createRoot(ContactContainer) 
+      if (darkMode) {ContactContainer.classList.add('dark-mode')}
       const winbox = new WinBox({
-        title: "~X/HIT_MY_LINE",
+        title: "~X/HIT_MY_LINE/",
         icon: images.desktop_contact,
         background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
         border: "0.3em",
@@ -473,27 +446,22 @@ useEffect(() => {
       onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
-        const root = ReactDOM.createRoot(ContactContainer)
-        root.unmount()
+        contactRoot.unmount()
         ContactContainer.remove()
       },
-      })
+    })
       if (darkMode) {
     winbox.window.classList.add('dark-mode')
-  }
-  const contactRoot = ReactDOM.createRoot(ContactContainer) 
-  contactRoot.render(<Contact />)
-    }
+  } contactRoot.render(<Contact />)}
 
   const openGalleryWindow = () => {
     if (!canOpenWindow()) return
     setTemporaryTitle("3cks.net - GALLERY!")
     const GalleryContainer = document.createElement('div')
-    if (darkMode) {
-      GalleryContainer.classList.add('dark-mode')
-    }
+    const GalleryRoot = ReactDOM.createRoot(GalleryContainer)
+    if (darkMode) {GalleryContainer.classList.add('dark-mode')}
     const winbox = new WinBox({
-      title: "~X/GALLERY",
+      title: "~X/GALLERY/",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
@@ -508,15 +476,13 @@ useEffect(() => {
       onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
-        const root = ReactDOM.createRoot(GalleryContainer)
-        root.unmount()
+        GalleryRoot.unmount()
         GalleryContainer.remove()
       },
     })
     if (darkMode) {
     winbox.window.classList.add('dark-mode')
   }
-const GalleryRoot = ReactDOM.createRoot(GalleryContainer)
 GalleryRoot.render(<Gallery />)
   }
 
@@ -524,11 +490,10 @@ const openMusicWindow = () => {
     if (!canOpenWindow()) return
     setTemporaryTitle("3cks.net - MUSIC!")
     const MusicContainer = document.createElement('div')
-    if (darkMode) {
-      MusicContainer.classList.add('dark-mode')
-    }
+    const MusicRoot = ReactDOM.createRoot(MusicContainer) 
+    if (darkMode) {MusicContainer.classList.add('dark-mode')}
     const winbox = new WinBox({
-      title: "~X/MUSIC",
+      title: "~X/MUSIC/",
       icon: images.desktop_gallery,
       background: "linear-gradient(180deg,rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgb(40, 40, 40) 100%)",
       border: "0.3em",
@@ -543,15 +508,12 @@ const openMusicWindow = () => {
       onclose: () => {
         console.log("Window closed")
         document.title = "3cks.net"
-        const root = ReactDOM.createRoot(MusicContainer)
-        root.unmount()
+        MusicRoot.unmount()
         MusicContainer.remove()
       },
     })
     if (darkMode) {
-    winbox.window.classList.add('dark-mode')
-  }
-const MusicRoot = ReactDOM.createRoot(MusicContainer) 
+    winbox.window.classList.add('dark-mode')}
 MusicRoot.render(<Music />)
   }
  useEffect(() => {
@@ -571,7 +533,6 @@ useEffect(() => {
   if (showNotFound) {
     return <NotFound path={hashPath} />
   }
-
   return (
     <>
 
@@ -581,43 +542,36 @@ useEffect(() => {
 <div className="App">
   <div className="crt" style={{ opacity: crtEnabled ? 1 : 0, pointerEvents: 'none', transition: 'opacity 0.3s ease' }} />
   <div id="desktop">
-  
   <label htmlFor={'about-me'} className="desktop-item" onClick={openAboutMeWindow}>
-            <a href="#/about/" onClick={(e) => e.preventDefault()}>
+            <a href="#/about" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_about_gif} className="logo" alt="ABOUT" />
             <div className="desktop-text">ABOUT</div>
-            </a>
-          </label>
+            </a></label>
 
   <label htmlFor={'videos'} className="desktop-item" onClick={openVideoWindow}>
-            <a href="#/videos/" onClick={(e) => e.preventDefault()}>
+            <a href="#/videos" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_videos_gif} className="logo" alt="VIDEOS" />
             <div className="desktop-text">VIDEOS</div>
-            </a>
-          </label>
-
+            </a></label>
 
   <label htmlFor={'gallery'} className="desktop-item" onClick={openGalleryWindow}>
-            <a href="#/gallery/" onClick={(e) => e.preventDefault()}>
+            <a href="#/gallery" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_gallery_gif} className="logo" alt="GALLERY" />
             <div className="desktop-text">GALLERY</div>
-            </a>
-          </label>
+            </a></label>
 
     <label htmlFor={'contact'} className="desktop-item" onClick={openContactWindow}>
-            <a href="#/contact/" onClick={(e) => e.preventDefault()}>
+            <a href="#/contact" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_contact_gif} className="logo" alt="CONTACT" />
             <div className="desktop-text">CONTACT</div>
-            </a>
-          </label>
+            </a></label>
           
     <label htmlFor={'donate'} className="desktop-item" style={{ position: 'relative', zIndex: 2 }} onClick={openDonateWindow}>
-            <a href="#/donate/" onClick={(e) => e.preventDefault()}>
+            <a href="#/donate" onClick={(e) => e.preventDefault()}>
               <img src={images.desktop_donate_gif} className="logo" alt="DONATE" />
             <div className="desktop-text">DONATE</div>
-            </a>
-          </label>
-          
+            </a></label>
+
     </div>
 </div> 
       <div className="taskbar">
@@ -633,34 +587,16 @@ useEffect(() => {
         openContactWindow={openContactWindow}
         openDonateWindow={openDonateWindow}
         openCreditsWindow={openCreditsWindow}
-        showWelcome={showWelcome}
-        setShowWelcome={setShowWelcome}
+        showWelcome={showWelcome} setShowWelcome={setShowWelcome}
       />
-      </div>
-      
-      <div
-  id="background-tilt"
-  style={{
-    position: 'fixed',
-    top: '50%',
-    left: '50%',
-    width: bgDims.width,
-    height: bgDims.height,
-    transform: 'translate(-50%, -50%)',
-    zIndex: 0,
-    pointerEvents: 'none',
-    backgroundImage: `url(${randomImage})`,
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    transition: 'transform 0.2s cubic-bezier(.4,2,.6,1)',
-    willChange: 'transform',
-    overflow: 'hidden',
+  </div>
+  <div id="background-tilt" style={{
+    position: 'fixed', top: '50%', left: '50%', width: bgDims.width, height: bgDims.height,
+    transform: 'translate(-50%, -50%)', backgroundImage: `url(${randomImage})`, zIndex: 0,
+    pointerEvents: 'none', backgroundSize: 'cover', backgroundPosition: 'center', transition: 'transform 0.2s cubic-bezier(.4,2,.6,1)',
+    willChange: 'transform', overflow: 'hidden',
   }}
-
 ></div>
-
-
-
 </>)}
 
-export default App;
+export default App

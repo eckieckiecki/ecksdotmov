@@ -56,14 +56,13 @@
   transform: translateY(0);
   opacity: 1;
   visibility: visible;
-  pointer-events: none; /* keep disabled during slide-up animation */
+  pointer-events: none;
   transition:
     transform 0.2s ease,
     opacity 0.2s ease,
     visibility 0s 0s;
 }
 
-/* only enable after animation completes */
 .start-menu.open.ready {
   pointer-events: auto;
 }

@@ -53,7 +53,7 @@ const tabs = [
 </div>
 <div style={{width: '100%'}}>
         <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 24 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 29 </span></div>
         </div>
 </div>
       </div>
@@ -86,8 +86,8 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
           <li style={{marginBottom: 2}}>After Effects</li>
           <li style={{marginBottom: 2}}>Photoshop</li>
           <li style={{marginBottom: 2}}>Blender</li>
-          <li style={{marginBottom: 2}}>Tux Paint</li>
           <li style={{marginBottom: 2}}>FL Studio</li>          
+          <li style={{marginBottom: 2}}>Tux Paint</li>
           <li style={{marginBottom: 2}}>a Sony a7iii Camera</li>
           <li style={{marginBottom: 2}}>JASCO CamGear & Modded Radioshack Video Enhancer (for analog stuff)</li>
           <br/>
@@ -99,8 +99,7 @@ Some of my other work can be found under <a href="https://tornada.net" target="_
 
 const AboutMe = () => {
 
-  const [dateTime, setDateTime] = useState(new Date())
-
+const [dateTime, setDateTime] = useState(new Date())
 useEffect(() => {
   const interval = setInterval(() => setDateTime(new Date()), 1000)
   return () => clearInterval(interval)

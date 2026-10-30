@@ -4,6 +4,7 @@ export const images = [
     title: 'sticker',
     alt: 'STICKER',
     year: '2026',
+    notes: '"got these printed a few years ago"',
     full: 'https://cdn.3cks.net/img/2026-sticker.png',
     tags: ['photos']
   },
@@ -12,6 +13,7 @@ export const images = [
     title: 'portta',
     alt: 'PORTTA',
     year: '2026',
+    notes: '"one of the coolest things I own"',
     full: 'https://cdn.3cks.net/img/2026-portta.jpg',
     tags: ['photos', 'media']
   },
@@ -20,6 +22,7 @@ export const images = [
     title: 'fritz',
     alt: 'FRITZ_THE_CAT',
     year: '2026',
+    notes: '"Fritz the Cat (on VHS!)"',
     full: 'https://cdn.3cks.net/img/2026-fritz.png',
     tags: ['media']
   },
@@ -28,6 +31,7 @@ export const images = [
     title: 'self portrait',
     alt: 'SELF_PORTRAIT',
     year: '2026',
+    notes: '"drew this off an acid tab with jimmy neutron printed on"',
     full: 'https://cdn.3cks.net/img/2026-self-portrait.png',
     tags: ['art']
   },
@@ -36,6 +40,7 @@ export const images = [
     title: 'mixerz',
     alt: 'MIXERZ',
     year: '2026',
+    notes: '"JASCO CamGear & Modded Radioshack Video Enhancer (for the analog stuff)"',
     full: 'https://cdn.3cks.net/img/2026-setup2.png',
     tags: ['photos', 'media']
   },
@@ -44,6 +49,7 @@ export const images = [
     title: 'limestone',
     alt: 'LIMESTONE',
     year: '2026',
+    notes: '"best pony"',
     full: 'https://cdn.3cks.net/img/2026-limestone.png',
     tags: ['gfx']
   },
@@ -52,6 +58,7 @@ export const images = [
     title: '"u are watching a master at work "',
     alt: 'MASTER_AT_WORK',
     year: '2026',
+    notes: '"newer, better pic of the setup"',
     full: 'https://cdn.3cks.net/img/2026-setup.jpg',
     tags: ['media', 'photos']
   },
@@ -60,6 +67,7 @@ export const images = [
     title: 'still alive',
     alt: 'STILL ALIVE',
     year: '2026',
+    notes: '"Still Alive (The Theme From Mirrors Edge)"',
     full: 'https://cdn.3cks.net/img/2026-still-alive.png',
     tags: ['media']
   },
@@ -68,6 +76,7 @@ export const images = [
     title: 'gowillog',
     alt: 'GOWILLOG',
     year: '2026',
+    notes: '"billy woods & August Fanon - Gowillog (on VHS!)"',
     full: 'https://cdn.3cks.net/img/2026-gowillog.png',
     tags: ['media']
   },
@@ -76,6 +85,7 @@ export const images = [
     title: 'COMPS!',
     alt: 'COMPS!',
     year: '2026',
+    notes: '"Thumbnail for COMPS! Vol. 1"',
     full: 'https://cdn.3cks.net/img/2026-comp-gawd.png',
     tags: ['gfx']
   },
@@ -84,6 +94,7 @@ export const images = [
     title: '"i\'m cookin again"',
     alt: 'IM_COOKIN_AGAIN',
     year: '2026',
+    notes: '"took this while working on COMPS!"',
     full: 'https://cdn.3cks.net/img/2026-cookin.jpg',
     tags: ['photos']
   },
@@ -92,6 +103,7 @@ export const images = [
     title: 'mf wip',
     alt: 'MF-WIP',
     year: '2025',
+    notes: '"(as seen in COMPS! Vol 1)"',
     full: 'https://cdn.3cks.net/img/2025-mf-wip.png',
     tags: ['gfx']
   },
@@ -100,6 +112,7 @@ export const images = [
     title: 'koreatown oddity',
     alt: 'KTOWNODD',
     year: '2025',
+    notes: '"Koreatown Oddity - 200 Tree Rings & Little Dominique\'s Nosebleed (signed)"',
     full: 'https://cdn.3cks.net/img/2025-ktownodd.jpg',
     tags: ['media']
   },
@@ -108,6 +121,7 @@ export const images = [
     title: 'dvd = da video disc',
     alt: 'DA_VIDEO_DISC',
     year: '2025',
+    notes: '"some DVDs from my collection"',
     full: 'https://cdn.3cks.net/img/2025-DVDs.png',
     tags: ['media']
   },
@@ -116,6 +130,7 @@ export const images = [
     title: 'november haul',
     alt: 'NOVEMBER_HAUL',
     year: '2025',
+    notes: '"(as seen in my blog)"',
     full: 'https://cdn.3cks.net/img/2025-november-haul.jpg',
     tags: ['photos']
   },
@@ -124,6 +139,7 @@ export const images = [
     title: '☢♞! (by @alfredmorose)',
     alt: '☢♞!',
     year: '2025',
+    notes: '"☢♞! (art by @alfredmorose)"',
     full: 'https://cdn.3cks.net/img/2025-alfreds-comm.jpg',
     tags: ['art', 'gfx']
   },
@@ -133,22 +149,16 @@ export const images = [
     title: 'search',
     alt: 'INTERNET_SEARCH',
     year: '2025',
+    notes: '"You may see this when embedding the site somewhere.."',
     full: 'https://cdn.3cks.net/img/2025-search.jpg',
     tags: ['gfx']
-  },
-  {
-    thumb: 'https://cdn.3cks.net/img/2025-muffins-thumb.jpg',
-    title: 'muffins',
-    alt: 'MUFFINS',
-    year: '2025',
-    full: 'https://cdn.3cks.net/img/2025-muffins.jpg',
-    tags: ['photos']
   },
   {
     thumb: 'https://cdn.3cks.net/img/2025-deltron-thumb.jpg',
     title: 'deltron',
     alt: 'DELTRON_3030',
     year: '2025',
+    notes: '"Deltron 3030 - Deltron 3030 (signed)"',
     full: 'https://cdn.3cks.net/img/2025-deltron.jpg',
     tags: ['media']
   },
@@ -157,6 +167,7 @@ export const images = [
     title: 'baklava ad mockup',
     alt: 'BAKLAVA_AD_MOCKUP',
     year: '2025',
+    notes: '"Made for ciorecords.com"',
     full: 'https://cdn.3cks.net/img/2025-baklava-mockup.jpg',
     tags: ['gfx']
   },
@@ -166,6 +177,7 @@ export const images = [
     title: 'baklava.blend',
     alt: 'BAKLAVA.BLEND',
     year: '2025',
+    notes: '"Made for ciorecords.com"',
     full: 'https://cdn.3cks.net/img/2025-baklava-blend.jpg',
     tags: ['gfx']
   },
@@ -175,6 +187,7 @@ export const images = [
     title: 'tom y jerry',
     alt: 'TOM_Y_JERRY',
     year: '2025',
+    notes: '"Banner I did for tornada.net"',
     full: 'https://cdn.3cks.net/img/2025-nada.gif',
     tags: ['gfx']
   },
@@ -183,6 +196,7 @@ export const images = [
     title: 'u rule :)',
     alt: 'YOU_RULE',
     year: '2025',
+    notes: '"whens the last time yall even went to burger king??"',
     full: 'https://cdn.3cks.net/img/2025-you-rule.jpg',
     tags: ['photos']
   },
@@ -192,6 +206,7 @@ export const images = [
     title: 'crank dat',
     alt: 'CRANK_DAT',
     year: '2025',
+    notes: '"Soulja Boy - Souljaboytellem.com (signed)"',
     full: 'https://cdn.3cks.net/img/2025_crankdat.jpg',
     tags: ['media']
   },
@@ -201,6 +216,7 @@ export const images = [
     title: 'sheep',
     alt: 'SHEEP',
     year: '2025',
+    notes: '"Took this at a local sheep farm."',
     full: 'https://cdn.3cks.net/img/2025-uhuhuh.jpg',
     tags: ['photos']
   },
@@ -210,6 +226,7 @@ export const images = [
     title: 'rekkids',
     alt: 'REKKIDS',
     year: '2025',
+    notes: '"Some of the rarest vinyl I own."',
     full: 'https://cdn.3cks.net/img/2025-vinyl.jpg',
     tags: ['media']
   },
@@ -219,6 +236,7 @@ export const images = [
     title: 'kickassia',
     alt: 'BRO_HAS_KICKASSIA',
     year: '2025',
+    notes: '"need this back on letterboxd"',
     full: 'https://cdn.3cks.net/img/2025_bro-has-kickassia.jpg',
     tags: ['media']
   },
@@ -228,6 +246,7 @@ export const images = [
     title: 'scrapped vhs mockup',
     alt: 'SCRAPPED_VHS_MOCKUP',
     year: '2024',
+    notes: '"Scrapped VHS mockup from 2024"',
     full: 'https://cdn.3cks.net/img/2024-tape-mockup.jpg',
     tags: ['gfx']
   },
@@ -237,6 +256,7 @@ export const images = [
     title: 'be',
     alt: 'COMMON-BE',
     year: '2024',
+    notes: '"Common - Be (signed)"',
     full: 'https://cdn.3cks.net/img/2024-be.jpg',
     tags: ['media']
   },
@@ -246,6 +266,7 @@ export const images = [
     title: 'haitian body odor',
     alt: 'HAITIAN_BODY_ODOR',
     year: '2024',
+    notes: '"Mach-Hommy - Haitian Body Odor"',
     full: 'https://cdn.3cks.net/img/2024-HBO.jpg',
     tags: ['media']
   },
@@ -255,6 +276,7 @@ export const images = [
     title: 'firestar',
     alt: 'FIRESTAR',
     year: '2024',
+    notes: '"I don\'t know what a waffle is.."',
     full: 'https://cdn.3cks.net/img/2024-firestar.jpg',
     tags: ['photos']
   },
@@ -264,6 +286,7 @@ export const images = [
     title: 'three beers deep',
     alt: 'THREE_BEERS_DEEP',
     year: '2024',
+    notes: '"average night in the studio"',
     full: 'https://cdn.3cks.net/img/2024-threebeersdeep.jpg',
     tags: ['photos']
   },
@@ -273,6 +296,7 @@ export const images = [
     title: 'saggy n soggy',
     alt: 'SAGGY_N_SOGGY',
     year: '2024',
+    notes: '"We had this played at a theater."',
     full: 'https://cdn.3cks.net/img/2024-sagsog.jpg',
     tags: ['photos']
   },
@@ -282,6 +306,7 @@ export const images = [
     title: 'fatherhood',
     alt: 'FATHERHOOD',
     year: '2024',
+    notes: '"Me with Baby Green :D"',
     full: 'https://cdn.3cks.net/img/2024-babygreen.jpg',
     tags: ['photos']
   },
@@ -291,6 +316,7 @@ export const images = [
     title: 'mach-stoney',
     alt: 'MACH_STONEY',
     year: '2023',
+    notes: '"tf my plug just give me :sob:"',
     full: 'https://cdn.3cks.net/img/2023-mach-stoney.jpg',
     tags: ['gfx']
   },
@@ -300,6 +326,7 @@ export const images = [
     title: 'orpheus',
     alt: 'ORPHEUS',
     year: '2023',
+    notes: '"Hermit and the Recluse - Orpheus vs. The Sirens (signed)"',
     full: 'https://cdn.3cks.net/img/2023-orpheus.jpg',
     tags: ['media']
   },
@@ -309,6 +336,7 @@ export const images = [
     title: 'setup',
     alt: 'SETUP',
     year: '2023',
+    notes: '"I still make vids here occassionally."',
     full: 'https://cdn.3cks.net/img/2023-setup.jpg',
     tags: ['photos']
   },
@@ -317,6 +345,7 @@ export const images = [
     title: 'banner',
     alt: 'BANNER',
     year: '2023',
+    notes: '"Banner for YouTube"',
     full: 'https://cdn.3cks.net/img/2023-banner.png',
     tags: ['gfx']
   },
@@ -325,6 +354,7 @@ export const images = [
     title: 'work in progress',
     alt: 'WORK_IN_PROGRESS',
     year: '2023',
+    notes: '"new banner incoming..."',
     full: 'https://cdn.3cks.net/img/2023-banner-wip.jpg',
     tags: ['photos']
   },
@@ -333,6 +363,7 @@ export const images = [
     title: 'parkin lot',
     alt: 'PARKIN_LOT',
     year: '2022',
+    notes: '"took this while walking at the airport"',
     full: 'https://cdn.3cks.net/img/2022-location.jpg',
     tags: ['photos']
   },
@@ -342,6 +373,7 @@ export const images = [
     title: 'DGSE (by @luvbappy)',
     alt: 'DGSE',
     year: '2022',
+    notes: '"Dump Gawd: Scout Edition (art by @luvbappy)"',
     full: 'https://cdn.3cks.net/img/2022-DGSE.png',
     tags: ['art']
   },
@@ -351,6 +383,7 @@ export const images = [
     title: 'waffle',
     alt: 'WAFFLE',
     year: '2022',
+    notes: '"one of my favorite spots"',
     full: 'https://cdn.3cks.net/img/2022-waffle.jpg',
     tags: ['photos']
   },
@@ -360,6 +393,7 @@ export const images = [
     title: 'conway',
     alt: 'CONWAY',
     year: '2021',
+    notes: '"Conway the Machine - From King To A God & If It Bleeds It Can Be Killed (signed)"',
     full: 'https://cdn.3cks.net/img/2021-conway.jpg',
     tags: ['media']
   },
@@ -368,6 +402,7 @@ export const images = [
     title: 'weird tree',
     alt: 'WEIRD_TREE',
     year: '2021',
+    notes: '"went to SF and saw this"',
     full: 'https://cdn.3cks.net/img/2021-weirdtree.png',
     tags: ['photos']
   },
@@ -376,6 +411,7 @@ export const images = [
     title: 'dustyhot',
     alt: 'DUSTYHOT',
     year: '2021',
+    notes: '"Made in SFM back in the day."',
     full: 'https://cdn.3cks.net/img/2021-dustyhot.png',
     tags: ['gfx']
   },
@@ -384,6 +420,7 @@ export const images = [
     title: 'negative8 ( by @huvakraft)',
     alt: 'NEGATIVE8',
     year: '2020',
+    notes: '"Negative8 (by @huvakraft)"',
     full: 'https://cdn.3cks.net/img/2020-tem.jpg',
     tags: ['art']
   },
@@ -392,6 +429,7 @@ export const images = [
     title: 'fight songs',
     alt: 'FIGHT_SONGS',
     year: '2020',
+    notes: '"Custom album cover with in-game loadouts."',
     full: 'https://cdn.3cks.net/img/2020-fight-songs.jpg',
     tags: ['gfx', 'media']
   },
@@ -400,6 +438,7 @@ export const images = [
     title: 'dr bob',
     alt: 'DR_BOB',
     year: '2020',
+    notes: '"Made in SFM back in the day."',
     full: 'https://cdn.3cks.net/img/2020-drbob.png',
     tags: ['photos']
   },
@@ -408,6 +447,7 @@ export const images = [
     title: 'floppa',
     alt: 'FLOPPA',
     year: '2020',
+    notes: '"the biggest co-sign of my life"',
     full: 'https://cdn.3cks.net/img/2020-floppa.jpg',
     tags: ['photos']
   },
@@ -416,6 +456,7 @@ export const images = [
     title: 'thas me (by @soursalem )',
     alt: 'THAS_ME',
     year: '2020',
+    notes: '"Thas me (art by @soursalem)"',
     full: 'https://cdn.3cks.net/img/2020-by-soursalem.jpg',
     tags: ['art']
   },
@@ -424,6 +465,7 @@ export const images = [
     title: 'fursona (by @xonras)',
     alt: 'FURSONA',
     year: '2019',
+    notes: '"Fursona (art by @xonras)"',
     full: 'https://cdn.3cks.net/img/2019-fursona.jpg',
     tags: ['art']
   },
@@ -432,6 +474,7 @@ export const images = [
     title: '#ECKS (by @velursal )',
     alt: 'HASHTAG_ECKS',
     year: '2019',
+    notes: '"#ECKS (art by @velursal)"',
     full: 'https://cdn.3cks.net/img/2019-velursal.jpg',
     tags: ['art']
   },
@@ -440,6 +483,7 @@ export const images = [
     title: 'beavis os',
     alt: 'BEAVIS_OS',
     year: '2018',
+    notes: '"yes this is real"',
     full: 'https://cdn.3cks.net/img/2018-beavisos.jpg',
     tags: ['photos']
   },
@@ -448,6 +492,7 @@ export const images = [
     title: 'tux',
     alt: 'TUX',
     year: '2018',
+    notes: '"I used to take him everywhere"',
     full: 'https://cdn.3cks.net/img/2018-tux.jpg',
     tags: ['photos']
   },
@@ -456,6 +501,7 @@ export const images = [
     title: 'setup',
     alt: 'SETUP',
     year: '2018',
+    notes: '"I used to make vids on here."',
     full: 'https://cdn.3cks.net/img/2018-setup.png',
     tags: ['photos']
   },

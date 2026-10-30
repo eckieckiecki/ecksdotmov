@@ -206,8 +206,7 @@ useEffect(() => {
     borderRightColor: 'rgb(0, 0, 0)',
     borderBottomColor: 'rgb(0, 0, 0)',
     borderRight: 0,
-  }}
->
+  }}>
   <span
     style={{
       position: 'absolute',

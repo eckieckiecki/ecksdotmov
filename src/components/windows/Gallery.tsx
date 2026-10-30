@@ -1,8 +1,10 @@
 import './Gallery.css'
 import WinBox from '../winbox/winbox.min.jsx'
 import icons from '../../assets/images.js'
-import { JSX, useEffect, useState} from 'react'
+import { JSX, useEffect, useState, useRef} from 'react'
 import { images, TAGS } from '../../assets/gallery-images.ts'
+
+import { createPortal } from 'react-dom'
 
 const TAG_ICONS: Record<string, JSX.Element> = {
   'art': <img src={icons.gallery_art} alt="art" style={{ width: 12, height: 12 }} />,
@@ -10,6 +12,7 @@ const TAG_ICONS: Record<string, JSX.Element> = {
   'photos': <img src={icons.gallery_foto} alt="photos" style={{ width: 12, height: 12 }} />,
   'media': <img src={icons.gallery_music} alt="media" style={{ width: 12, height: 12 }} />,
 }
+
 
 const years = ['all', ...Array.from(new Set(images.map(img => img.year))).sort((a, b) => Number(b) - Number(a))]
 
@@ -19,7 +22,11 @@ const Gallery = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [lastOpenTime, setLastOpenTime] = useState(0)
   const [isMobile, setIsMobile] = useState(false)
-
+  const [tooltip, setTooltip] = useState<{
+  image: (typeof images)[number]
+  x: number
+  y: number
+} | null>(null)
   useEffect(() => {
     const mediaQuery = window.matchMedia('(max-width: 600px)')
     const updateIsMobile = () => setIsMobile(mediaQuery.matches)
@@ -37,7 +44,8 @@ const Gallery = () => {
         : [...prev, tag]
     )
   }
-
+const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+const pointerPosition = useRef({ x: 0, y: 0 })
   const handleDoubleClick = (img: typeof images[0]) => {
       const now = Date.now()
     if (now - lastOpenTime < 1111) return
@@ -168,6 +176,21 @@ const Gallery = () => {
           </div>
         </div>
 
+{tooltip && createPortal(
+  <div
+    className="gallery-tooltip"
+    style={{
+      left: Math.min(tooltip.x + 14, window.innerWidth - 220),
+      top: Math.min(tooltip.y + 14, window.innerHeight - 160),
+    }}
+  >
+    <strong><span className='tooltip-title'>{tooltip.image.title}</span></strong>
+    <span>from {tooltip.image.year}</span>
+    <span>tags: {tooltip.image.tags.join(', ')}</span>
+    <span>notes: {tooltip.image.notes}</span>
+  </div>,
+  document.body
+)}
         
         <div className="gallery-main-pane">
           {filteredImages.length === 0 ? (
@@ -178,19 +201,40 @@ const Gallery = () => {
             <div className="gallery-grid">
               {filteredImages.map((img, idx) => (
                 <div
-                  key={idx}
-                  className="gallery-img"
-                  onDoubleClick={() => handleDoubleClick(img)}
-                  onTouchEnd={() => handleDoubleClick(img)}
-                  title={img.title}
-                >
-                  <img
-                    src={img.thumb}
-                    alt={img.title}
-                    loading="lazy"
-                  />
-                  <span className="gallery-file-label">{img.title}</span>
-                </div>
+  key={idx}
+  className="gallery-img"
+  onPointerEnter={event => {
+  if (event.pointerType !== 'mouse') return
+
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+  tooltipTimer.current = setTimeout(() => {
+    setTooltip({ image: img, ...pointerPosition.current })
+    tooltipTimer.current = null
+  }, 777)
+}}
+onPointerMove={event => {
+  if (event.pointerType !== 'mouse') return
+
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+  setTooltip(current =>
+    current?.image === img
+      ? { ...current, ...pointerPosition.current }
+      : current
+  )
+}}
+onPointerLeave={() => {
+  if (tooltipTimer.current !== null) {
+    clearTimeout(tooltipTimer.current)
+    tooltipTimer.current = null
+  }
+  setTooltip(null)
+}}
+  onDoubleClick={() => handleDoubleClick(img)}
+  onTouchEnd={() => handleDoubleClick(img)}
+>
+  <img src={img.thumb} alt={img.title} loading="lazy" />
+  <span className="gallery-file-label">{img.title}</span>
+</div>
               ))}
             </div>
           )}

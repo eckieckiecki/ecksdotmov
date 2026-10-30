@@ -63,7 +63,7 @@ a:link, a:active { text-decoration: none; color: #970707 }
     white-space: normal;
     text-overflow: ellipsis;
     line-height: 1.2;
-    min-height: calc(1.2em * 2); /* reserves space for 2 lines */
+    min-height: calc(1.2em * 2);
     width: 90%;
     margin-top: 6px;
     font-size: 10px;
