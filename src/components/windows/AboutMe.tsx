@@ -53,7 +53,7 @@ const tabs = [
 </div>
 <div style={{width: '100%'}}>
         <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Oct 29 </span></div>
+        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Nov 1 </span></div>
         </div>
 </div>
       </div>

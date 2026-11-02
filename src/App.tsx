@@ -19,7 +19,8 @@ import Donate from './components/windows/Donate.tsx'
 import Credits from './components/windows/Credits.tsx'
 import NotFound from './components/NotFound'
 
-import { videos, openVideoWinBox } from './components/windows/Videos'
+import { videos } from './assets/my-videos.ts'
+import { openVideoWinBox } from './components/windows/Videos'
 
 const imageArr = [backgrounds.background1, backgrounds.background2, backgrounds.background3, backgrounds.background4, backgrounds.background5, backgrounds.background6];
 const randomNum = Math.floor(imageArr.length * Math.random())

@@ -2,9 +2,11 @@
 import './Videos.css'
 import WinBox from '../winbox/winbox.min.jsx'
 import icons from '../../assets/images.js'
+import { videos } from '../../assets/my-videos.ts'
 import featured_vhs from '../../assets/Featured-VHS.gif'
 import featured_monitor from '../../assets/icons/videos-monitor.gif'
 import { useRef, useEffect, useState } from 'react'
+import { createPortal } from 'react-dom'
 
 
 
@@ -22,157 +24,6 @@ const randomvid = () => {
     const random = eligible[Math.floor(Math.random() * eligible.length)]
     openVideoWinBox(random)
   }
-
-export const videos = [
-
-  {
-    id: 0,
-    title: 'BAPPY - R.D.S.',
-    window_title: 'BAPPY - R.D.S.',
-    alt_title: 'BAPPY - R.D.S.',
-    url: 'https://www.youtube.com/embed/ejL2J3zqpMA',
-    source: 'https://www.youtube.com/watch?v=ejL2J3zqpMA',
-    date: '03-31-2026',
-    description: `In a true meeting of the minds, I joined forces with artist and friend of the site <a href="https://4nx4e.lol/" target="_blank">bappy</a> to cook up some visuals for her landmark album.. <a href="https://bappy.bandcamp.com/album/4now-part-i" target="_blank">[4NOW: PART I]</a>. bappy edited the first half (with some of the best visuals you're ever gonna see done in HitFilm lol) while I cut together clips of her performing then played em off my CRT. Also gotta give props to ILYorg, killstreakcertified, and everyone else involved in making this happen.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/bappy-rds.jpg',
-    isYouTube: true,
-  },
-
-  {
-    id: 1,
-    title: 'LONG LIVE THA DMV',
-    window_title: 'LLDMV',
-    alt_title: 'VINCENT - LONG LIVE THE DMV',
-    url: 'https://iframe.mediadelivery.net/embed/516695/62dc6c28-ab9b-4e7a-9bfc-b93e84cfb36f?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/#/watch/lldmv',
-    date: '03-25-2026',
-    description: `Here's anotha fresh commission for my boys at <a href="https://instagram.com/ciorecords" target="_blank">@ciorecords</a> .. This one was done for the homie Vincent to promote the physical release of his album “Long Live Tha DMV." <br><br> You can buy a tape <a href="https://ciorecords.com/products/long-live-the-dmv-1" target="_blank">here</a>.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/LLDMV.jpg',
-    isYouTube: false,
-  },
-
-  {
-    id: 2,
-    title: 'COMPS! - VOL. 1',
-    window_title: 'COMPS',
-    alt_title: 'COMPS! VOLUME 1 (2018-2025)',
-    url: 'https://iframe.mediadelivery.net/embed/516695/fd769d04-3160-45d3-b4f3-b82195c22393?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/#/watch/comps',
-    date: '01-03-2026',
-    description: `New year, new video, new me oh yeahhgh baby.. Originally started this as something fun to do while being buried in much larger projects. It's less of an "edit" and more of a glimpse at the cutting floor. Somewhere along the way it turned into me raising the bar for myself. For this one, I went out and shot fresh footage (which was really just an excuse to set my camera up), dug through AEPs that had been sitting on my hard drives for years, and even went a step further by making my own beat for the intro. <br><br>"Anyone with six minutes to kill should tap in. NOW."`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/compz-thumb.jpg',
-    isYouTube: false,
-  },
-
-  {
-    id: 3,
-    title: 'BAKLAFA',
-    window_title: 'BAKLAVA-IS-FUCKING-AWESOME',
-    alt_title: 'BAKLAVA is FUCKING AWESOME',
-    url: 'https://iframe.mediadelivery.net/embed/516695/2a455ed0-a3b0-4171-9221-99c465d21d84?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/#/watch/baklava-is-fucking-awesome',
-    date: '06-2025',
-    description: `Here’s Fresh hot two-pack of some commissions I did in June 2025... <br><br> First one is a promo video for <a href="https://instagram.com/ciorecords" target="_blank">@ciorecords</a>’ BAKLAVA mixtape. Second one is for an artist named FuckingAwesome who wanted something more specific (quick and flashy with clips from Panty and Stocking, Left 4 Dead 2, Dexter, and Persona 3).. just know I was more than happy to oblige with both.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/baklafa.jpg',
-    isYouTube: false,
-  },
-  {
-    id: 4,
-    title: 'THE COLOR BROTHERS',
-    window_title: 'THE-COLOR-BROTHERS',
-    alt_title: 'COLOR BROTHERS',
-    url: 'https://iframe.mediadelivery.net/embed/516695/515277d2-1b3a-4169-b8f0-fc1fea52746b?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://www.youtube.com/watch?v=KAqmREHqTmg',
-    date: '03-23-2025',
-    description: `One of my first real forays into directing. This was a segment created for Tornada's pilot/anthology, <a href="https://www.youtube.com/watch?v=KAqmREHqTmg" target="_blank">Four of a Kind</a>. This one was a long time in the making and we had already been trading around this idea for years before being blessed with the energy to shoot it. Many strings were pulled in the week of the shoot but it led to some of the most fun I've ever had putting something together. We also got plenty of B-Roll (of us asking people in public for happy meals) that I wanna put up eventually.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/colorbros.jpg',
-    isYouTube: false,
-  },
-  {
-    id: 5,
-    title: 'HOT THEM SUMMER!',
-    window_title: 'LAMBS_HOT-THEM-SUMMER',
-    alt_title: 'HOT THEM SUMMER!',
-    url: 'https://iframe.mediadelivery.net/embed/516695/03c5e997-f922-42a8-8762-ccd12fab1d05?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://3cks.net/#/watch/hot-them-summer',
-    date: '11-24-2022',
-    description: `Lyric video I composited and threw together for my homeboy <a href="https://instagram.com/lilithlambs" target="_blank">@lilithlambs</a> a while back. Peace to <a href="https://youngchoulin.bandcamp.com" target="_blank">@bluvelv</a> who's on the song as well.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/lambs.jpg',
-    isYouTube: false,
-  },
-  {
-    id: 6,
-    title: 'KNOWLEDGEGOD!',
-    window_title: 'KNOWLEDGE-GOD',
-    alt_title: 'KNOWLEDEGOD!',
-    url: 'https://iframe.mediadelivery.net/embed/516695/53a7705a-b207-4c1a-ac95-84cb68ca4cc6?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
-    source: 'https://www.youtube.com/watch?v=sziewA2jzEY',
-    date: '12-31-2022',
-    description: `Segment I did for Tornada's <a href="https://www.youtube.com/watch?v=sziewA2jzEY" target="_blank">Two of a Kind</a>. Was asked to do a music video and this is what I sent back. You can prolly tell it was my first time datamoshing. <br><br>Song: al.divino & Estee Nack - KNOWLEDGE GOD`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/knowledgegod.jpg',
-    isYouTube: false,
-  },
-    {
-    id: 7,
-    title: 'RIDETOSEVENELEVEN',
-    window_title: 'MC-RIDE-GOES-TO-THE-STORE',
-    alt_title: 'MC RIDE GOES TO THE STORE',
-    url: 'https://www.youtube.com/embed/DKDvPdll1D4',
-    source: 'https://youtu.be/DKDvPdll1D4',
-    date: '11-24-2019',
-    description: `A fan favorite? Not sure. Made this in 20 minutes on a Sunday and still get asked about it.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/ride.jpg',
-    isYouTube: true,
-  },
-  {
-    id: 8,
-    title: 'FED UP! (IN VR)',
-    window_title: 'FED-UP-IN-VR',
-    alt_title: 'FEDUP!INVR!',
-    url: 'https://www.youtube.com/embed/9m8US6X9gWs',
-    source: 'https://www.youtube.com/watch?v=9m8US6X9gWs',
-    date: '08-31-2021',
-    description: `This was one of my first times making money off editing. Threw this one together for <a href="https://joyway.games/" target="_blank">Joy Way Games</a>, the team behind VR parkour game STRIDE. I was also explicitly told to avoid using copyrighted music but thankfully artist Bazanji came through with a plate of dense, royalty-free raps. Not my usual preferences but at least the client was happy and seein it used for promo had me geeked. Honestly besides this I could NOT tell you the last time I played a VR game.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/stride.jpg',
-    isYouTube: true,
-  },
-  {
-    id: 9,
-    title: 'CHOPPA WEDNESDAY!',
-    window_title: 'CHOPPA-WEDNESDAY',
-    alt_title: 'CHOPPA WEDNESDAY',
-    url: 'https://www.youtube.com/embed/G6ik_SLRulQ',
-    source: 'https://www.youtube.com/watch?v=G6ik_SLRulQ',
-    date: '10-07-2020',
-    description: `"HUNNID ROUND DRUM KILLIN' ERRYBODY!" Got really into Team Fortress 2 (and Atlanta trap) during this era and made a few videos like this. I think they all look rougher around the edges now but this one is still my favorite. Was planning to do make 2-3 more but my SFM stopped working lol`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/choppa.jpg',
-    isYouTube: true,
-  },
-  {
-    id: 10,
-    title: 'BALD! (TF2)',
-    window_title: 'BALD',
-    alt_title: 'BALD! (TF2)',
-    url: 'https://www.youtube.com/embed/K3XvXyNBrHA',
-    source: 'https://www.youtube.com/watch?v=K3XvXyNBrHA',
-    date: '06-10-2020',
-    description: `This one came to me in a dream. It would ultimately serve as the beginning of a short series that kept me occupied during a weird time in my life. Most of my days were being eaten up by stress that I would channel into learning Source Filmmaker in the only way I knew how: by making quick lil videos that were asking to get several effects thrown on in post. Wouldn't say it's anywhere near my best work nowadays but I got some fond memories and met some cool people through it. Shoutout to anyone who remembers when I would share this on TF2 trading sites.`,
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/bald.jpg',
-    isYouTube: true,
-  },
-  {
-    id: 12,
-    title: 'SAGGY AND SOGGY',
-    window_title: 'SAGGY-AND-SOGGY',
-    alt_title: 'SAGGY AND SOGGY - SODIUM CONNECTIONS',
-    url: 'https://www.youtube.com/embed/RnXMoazSLo4',
-    source: 'https://www.youtube.com/watch?v=RnXMoazSLo4',
-    date: '05-15-2020',
-    description: `This one's pretty old but still means a lot to me. Originally wrote the first draft for this in 2018 after a PSN party with ____. We were discussing what a funny name for a kids cartoon would be and landed on "Saggy and Soggy." That name stuck with me and would come up the next time I was in my studio. I wanted to write something I wasn't used to, which at the time, was a cartoon longer than 30 seconds. Looking at it now, my writing was debatably as goofy as it is now, but for different reasons. While I was tryna get this up on the site, I came across the first draft again and was surprised at what got cut out. Mostly just random lines like Saggy saying "God and his son, Curious George" along with even having cutaway gags in the mix at some point. At the perfect time, <a href="https://tornada.net" target="_blank">Tornada</a> just so happened to form, and after a few months, fellow videomaster and partner-in-crime <a href="https://www.youtube.com/@PITYFOWLTHEGREAT/" target="_blank">Pity Fowl</a> offered to take over. He showed (and has continued to show) a lotta love to this project, honestly more than what I had originally. That's what ultimately led to his extended involvement: he wrote the second half of the script and ended up animating most of it. From my end, I offered a music video segment which was my first time using After Effects if you could not already tell..`, 
-    thumbnail: 'https://3cks.b-cdn.net/thumbnails/sagsog.jpg',
-    isYouTube: true,
-  }
-]
 
 export function openVideoWinBox(video: typeof videos[0]) {
   const videoContainer = document.createElement('div')
@@ -276,7 +127,6 @@ export function openVideoWinBox(video: typeof videos[0]) {
             </div>
             </div>
           `
-
           setTimeout(() => {
             const copyBtn = shareBox.querySelector('#copy-share-link')
             if (copyBtn) {
@@ -284,14 +134,7 @@ export function openVideoWinBox(video: typeof videos[0]) {
                 navigator.clipboard.writeText(shareUrl)
                 copyBtn.textContent = 'Copied!'
                 setTimeout(() => (copyBtn.textContent = 'Copy'), 1200)
-              })
-            }
-          }, 0)
-        }
-      })
-    }
-  }, 0)
-}
+              })}}, 0)}})}}, 0)}
 
 const YouTubeIcon = (
   <svg width="16" height="16" viewBox="0 0 24 24" style={{marginLeft: 4, verticalAlign: 'middle'}}>
@@ -333,7 +176,24 @@ const Videos = () => {
   const [sortOrder, setSortOrder] = useState<'newest' | 'oldest'>('newest')
 
 
+  type CursorTooltip = {
+  target: string
+  x: number
+  y: number
+} & (
+  | { kind: 'text'; text: string }
+  | { kind: 'featured'; title: string }
+  | { kind: 'video'; videoId: number; title: string; date: string; summary: string }
+)
 
+const [tooltip, setTooltip] = useState<CursorTooltip | null>(null)
+
+const tooltipTimer = useRef<ReturnType<typeof setTimeout> | null>(null)
+const pointerPosition = useRef({ x: 0, y: 0 })
+
+useEffect(() => () => {
+  if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+}, [])
 
   const filteredAndSortedVideos = videos
     .filter(video => video.id !== 11)
@@ -361,22 +221,48 @@ const Videos = () => {
 
   return (
     <>
-    <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'hidden', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}>
-      <div style={{fontFamily: 'Pixeloid Sans', flexDirection: 'column', display: 'flex', minWidth: 128, borderBottom: '2px solid black', width: '40%', paddingRight: 20}}><span style={{paddingTop: 30, marginLeft: 24, fontSize: 16, position: 'absolute', wordSpacing: 8}}><span style={{color: 'yellow', fontFamily: 'Pixeloid Sans Bold', fontSize: 18}}>ECKS</span>  →   bunker</span>
-      <img className="featured-monitor-img" src={featured_monitor} style= {{ width: 'auto', height: '75%', objectFit: 'contain', margin: 'auto', marginLeft: 0, paddingTop: 48, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
+    <div className="videos-header" ref={headerRef} style={{ color: '#FDFDFD', fontSize: 24, margin: 0, overflowX: 'visible', overflowY: 'visible', display: 'flex', marginTop: -8, whiteSpace: 'nowrap', marginBottom: 16, maxHeight: 222}}
+    >
+      <span style={{paddingTop: 30, marginLeft: 24, fontSize: 16, position: 'absolute', wordSpacing: 8}}><span style={{color: 'yellow', fontFamily: 'Pixeloid Sans Bold', fontSize: 18}}>ECKS</span>  →   bunker</span>
+      <div className="videos-header-left">
+      
+    <div className="featured-monitor"
+      onPointerEnter={(event) => {
+  if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+  tooltipTimer.current = setTimeout(() => {
+    setTooltip({
+      kind: 'text',
+      target: 'monitor',
+      text: 'Click here to play a random video, playa!',
+      ...pointerPosition.current,
+    })
+  }, 700)
+}}
+onPointerMove={(event) => {
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+  setTooltip(current =>
+    current?.target === 'monitor'
+      ? { ...current, ...pointerPosition.current }
+      : current
+  )
+}}
+onPointerLeave={() => {
+  if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+  tooltipTimer.current = null
+  setTooltip(current => current?.target === 'monitor' ? null : current)
+}}>
+      <img src={featured_monitor} style= {{ objectFit: 'contain', margin: 'auto', marginLeft: 0, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
       onClick={randomvid}
-      />
-
-
+      /></div>
       </div>
       {showSubtitle && (
       <div className="videos-header-subtitle">
         <span className="header-in-a-header">エックス・ネット</span>
-  <span className="videos-header-quote"
-    style={{ fontSize: '0.41em', lineHeight: 0.9, maxWidth: 222, color: '#060606', fontFamily: 'inherit', display: 'block', whiteSpace: 'pre-line', marginLeft: 72, textRendering: 'optimizeLegibility', textAlign: 'center', alignItems: 'center',}}>
+  <span className="videos-header-quote">
     My select contributions to this wave. Find peace in its motion and create 'til you die.
   </span>
-    <div style={{ display: 'flex', flexDirection: 'row', gap: 20, marginLeft: 60 }}>
+    <div style={{ display: 'flex', flexDirection: 'row', gap: 20, marginLeft: 72 }}>
   <button
       style={{
         paddingLeft: 0, width: 120, display: 'flex', alignItems: 'center', textAlign: 'center', justifyContent: 'flex-start',}}
@@ -387,17 +273,46 @@ const Videos = () => {
         onClick={() => window.open('https://www.youtube.com/@ECKSONYT/playlists', '_blank')}>{YouTubeIcon}<span style={{ marginLeft: 2 }}> / PLAYLISTS</span></button>
   </div>
     </div>)}
-      <div className="videos-featured" style={{display: 'flex', flexDirection: 'column', alignItems: 'flex-end', padding: 4, paddingRight: 24, borderRadius: 0, cursor: 'pointer', lineHeight: 1, marginLeft: 'auto',}}
+      <div className="videos-featured"
   onClick={() => openVideoWinBox(videos[0])}>
-  <div style={{ display: 'flex', justifyContent: 'flex-end', textAlign: 'center', flexDirection: 'column', paddingLeft: 12 }}>
+  <div className="featured-vhs">
+    <div className="featured-vhs-wrap videos-tooltip" onPointerEnter={(event) => {
+  if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+
+  tooltipTimer.current = setTimeout(() => {
+    setTooltip({
+      kind: 'featured',
+      target: 'featured-vhs',
+      title: featured[0].title,
+      ...pointerPosition.current,
+    })
+  }, 700)
+}}
+onPointerMove={(event) => {
+  pointerPosition.current = { x: event.clientX, y: event.clientY }
+  setTooltip(current =>
+    current?.target === 'featured-vhs'
+      ? { ...current, ...pointerPosition.current }
+      : current
+  )
+}}
+onPointerLeave={() => {
+  if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+  tooltipTimer.current = null
+  setTooltip(current =>
+    current?.target === 'featured-vhs' ? null : current
+  )
+}}>
+    <span className="featured-vhs-star" aria-hidden="true" />
     <img
       src={featured_vhs}
       alt={featured[0].title}
-      style={{width: 165, height: 165, objectFit: 'contain', paddingRight: 6, margin: 'auto', marginTop: 33, display: 'block',}}/>
-  <span style={{ fontSize: 12, marginRight: 8, lineHeight: 1,marginTop: -12}}>
+      style={{width: 150, height: 150, objectFit: 'contain', margin: 'auto', display: 'block',}}/></div>
+  <span style={{ fontSize: 12, marginRight: 8, lineHeight: 1,marginTop: -20}}>
   <span style={{ color: 'yellow'}}>FEATURED VIDEO</span><br></br>"{featured[0].title}"</span>
-  </div>
-  </div></div>
+  
+  </div></div></div>
 
     <div style={{ display: 'flex', flexDirection: 'row', gap: 12, margin: '0 auto 16px', width: '98%', maxWidth: '99%', alignItems: 'center', fontFamily: 'Pixeloid Sans'}}>
 
@@ -408,17 +323,7 @@ const Videos = () => {
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
         style={{
-          padding: '8px 12px',
-          fontSize: '0.625rem',
-          fontFamily: 'Pixeloid Sans',
-          background: '#222',
-          color: '#FDFDFD',
-          border: '2px solid #FDFDFD',
-          width: '100%',
-          minWidth: '60px',
-          maxWidth: '260px',
-          boxSizing: 'border-box',
-        }}
+          padding: '8px 12px', fontSize: '0.625rem', fontFamily: 'Pixeloid Sans', background: '#222', color: '#FDFDFD', border: '2px solid #FDFDFD', width: '100%', minWidth: '60px', maxWidth: '260px', boxSizing: 'border-box'}}
       />
 
 
@@ -428,18 +333,7 @@ const Videos = () => {
     value={sortOrder}
     onChange={(e) => setSortOrder(e.target.value as 'newest' | 'oldest')}
     style={{
-      padding: '8px 10px',
-      fontSize: '0.625rem',
-      fontFamily: 'Pixeloid Sans',
-      background: '#222',
-      color: '#FDFDFD',
-      border: '2px solid #FDFDFD',
-      cursor: 'pointer',
-      outline: 'none',
-      touchAction: 'manipulation',
-      minHeight: 24,
-      minWidth: 80,
-    }}
+      padding: '8px 10px', fontSize: '0.625rem',fontFamily: 'Pixeloid Sans',background: '#222', color: '#FDFDFD', border: '2px solid #FDFDFD',cursor: 'pointer', outline: 'none', touchAction: 'manipulation', minHeight: 24, minWidth: 80}}
   >
     <option value="newest">Newest</option>
     <option value="oldest">Oldest</option>
@@ -448,10 +342,38 @@ const Videos = () => {
     </div>
   <div className="videos-grid" style={{ display: 'flex', flexWrap: 'wrap', width: '95%', textAlign: 'center', gap: '12px'}}>
   {filteredAndSortedVideos.map((video) => (
+    <div
+  key={video.id} className="video-card-tooltip"
+  onPointerEnter={(event) => {
+    pointerPosition.current = { x: event.clientX, y: event.clientY }
+    tooltipTimer.current = setTimeout(() => {
+      setTooltip({
+  kind: 'video',
+  target: `video-${video.id}`,
+  videoId: video.id,
+  title: video.title,
+  date: video.date,
+  summary: video.summary ?? '',
+  ...pointerPosition.current,
+})
+    }, 700)
+  }}
+  onPointerMove={(event) => {
+    pointerPosition.current = { x: event.clientX, y: event.clientY }
+    setTooltip(current =>
+    current?.kind === 'video' && current.videoId === video.id
+    ? { ...current, ...pointerPosition.current }
+    : current
+)
+  }}
+  onPointerLeave={() => {
+    if (tooltipTimer.current) clearTimeout(tooltipTimer.current)
+    tooltipTimer.current = null
+    setTooltip(null)
+  }}
+>
       <button
-        key={video.id}
         className="my-videos"
-        title={video.title}
         onClick={() => openVideoWinBox(video)}>
         <img 
           src={video.thumbnail}
@@ -461,10 +383,31 @@ const Videos = () => {
       {video.title}{video.isYouTube ? YouTubeIcon : ArrowIcon}
 </span>
       </button> 
+    </div>
     ))}
     </div>
     <span className="bottom-tag" style={{marginTop: 16, fontFamily: 'Sans Nouveaux'}}  >- press play. trust the process. -</span>
     <span style={{ textAlign: 'center', visibility: 'hidden' }}>...</span>
+    {tooltip && createPortal(
+  <div
+    className="video-cursor-tooltip"
+    role="tooltip"
+    style={{ left: tooltip.x, top: tooltip.y }}
+  >
+    {tooltip.kind === 'featured' ? (
+  <span className="video-cursor-tooltip-title">Watch "{tooltip.title}"</span>
+) : tooltip.kind === 'text' ? (
+  tooltip.text
+) : (
+  <>
+    <span className="video-cursor-tooltip-title">{tooltip.title}</span>
+    <span>From {tooltip.date}</span>
+    <span>{tooltip.summary}</span>
+  </>
+)}
+  </div>,
+  document.body
+)}
     </>
   )
 }
