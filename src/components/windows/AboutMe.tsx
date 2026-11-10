@@ -19,10 +19,11 @@ const quotes = [
   "5'10, stand on my money, now I'm 5'6",
   "long live the new flesh!",
   "make that tv explode. bjork style.",
-  "I'm afraid of what might happen if I relax.",
+  "afraid of what might happen if I relax",
   "sample text",
   "video music man boy",
   "/ɛks/",
+  "(⌐■_■)-︻デ═一"
 ]
 
 const randomQuote = quotes[Math.floor(Math.random() * quotes.length)]
@@ -52,9 +53,9 @@ const tabs = [
   </div>
 </div>
 <div style={{width: '100%'}}>
-        <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
-        <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem'}}> Nov 1 </span></div>
-        </div>
+    <div>E-mail - <span className="sysinfo-text" style={{minWidth: '7rem', width: '100%', maxWidth: '14.3rem', fontSize: '0.75rem'}}><a href="mailto:spam@3cks.net" target="_blank"> spam@3cks.net </a></span></div>
+    <div>Last Updated - <span className="sysinfo-text" style={{minWidth: '4.35rem',width: '90%', maxWidth: '11.65rem'}}> (November 09 2026) </span></div>
+    </div>
 </div>
       </div>
       ),},{
@@ -171,8 +172,8 @@ const formatClock = (date: Date) => {
                 background: activeTab === tab.key ? 'rgb(255, 255, 255)' : 'transparent',
                 color: activeTab === tab.key ? '#2f2f2f' : '#bbb',
                 border: 'none',
-                borderLeft: !isMobile && activeTab === tab.key ? '0px solid #4af' : '2px solid transparent',
-                borderBottom: isMobile && activeTab === tab.key ? '2px solid #4af' : '2px solid transparent',
+                borderLeft: !isMobile && activeTab === tab.key ? '0px solid rgb(255, 68, 68)' : '2px solid transparent',
+                borderBottom: isMobile && activeTab === tab.key ? '2px solid rgb(255, 68, 68)' : '2px solid transparent',
                 textAlign: isMobile ? 'center' : 'left',
                 padding: '12px 18px',
                 fontWeight: activeTab === tab.key ? 'bold' : 'normal',

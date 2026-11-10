@@ -30,7 +30,18 @@ body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .
   color: #f4f4f4 !important;
 }
 
-.winbox.dark-mode .about-split, .winbox.dark-mode .email, .winbox.dark-mode .socials, .winbox.dark-mode .paypal-button, .winbox.dark-mode .cashapp-button, .winbox.dark-mode .gallery-junk input[type="checkbox"], .winbox.dark-mode .line, .winbox.dark-mode .my-videos, .winbox.dark-mode .my-videos img {
+.winbox.dark-mode .my-videos {
+  border: 2px solid #fff !important;
+  border-top-color: #fff !important;
+  border-left-color: #fff !important;
+  border-bottom-color: #555 !important;
+  box-shadow:
+    inset 2px 2px 0 rgba(235, 235, 235, 0.8),
+    inset -2px -2px 0 rgba(255, 255, 255, 0.35),
+    2px 2px 0 rgba(0, 0, 0, 0.25) !important;
+}
+
+.winbox.dark-mode .about-split, .winbox.dark-mode .email, .winbox.dark-mode .socials, .winbox.dark-mode .paypal-button, .winbox.dark-mode .cashapp-button, .winbox.dark-mode .gallery-junk input[type="checkbox"], .winbox.dark-mode .line, .winbox.dark-mode .my-videos img {
   accent-color: #f4f4f4 !important;
   border-color: #f4f4f4 !important;
 }
@@ -51,7 +62,7 @@ body.dark-mode .videos-window, .winbox.dark-mode .my-videos, .winbox-dark-mode .
 .winbox.dark-mode .my-videos {
     box-shadow: 2px 2px 0 #fcfcfc !important;
 }
-.winbox-dark-mode .gallery-grid img, .winbox-dark-mode .gallery-image-frame:hover {
+.winbox.dark-mode .gallery-grid img, .winbox.dark-mode .gallery-image-frame:hover {
   box-shadow: 0 8px 16px rgba(255,255,255,0.55) !important;
 }
 

@@ -75,7 +75,7 @@ export const videos = [
     alt_title: 'HOT THEM SUMMER!',
     url: 'https://iframe.mediadelivery.net/embed/516695/03c5e997-f922-42a8-8762-ccd12fab1d05?autoplay=true&loop=false&muted=false&preload=true&responsive=true',
     source: 'https://3cks.net/#/watch/hot-them-summer',
-    date: '11-24-2022',
+    date: '11-24-2023',
     description: `Lyric video I composited and threw together for my homeboy <a href="https://twitter.com/PistolNExit" target="_blank">@PistolNExit</a> a while back. Peace to <a href="https://youngchoulin.bandcamp.com" target="_blank">@bluvelv</a> who's on the song as well.`,
     summary: `Comission done for @pistolnexit.`,
     thumbnail: 'https://3cks.b-cdn.net/thumbnails/lambs.jpg',

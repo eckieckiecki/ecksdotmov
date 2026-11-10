@@ -19,9 +19,9 @@
 }
 
 .aboutme-3d-tab.is-active {
-  background: linear-gradient(180deg, #3e8bd6 0%, #2f6fb3 100%);
-  border-top-color: #78b5ff;
-  border-left-color: #78b5ff;
+  background: linear-gradient(180deg, #d6463e 0%, #b32f2f 100%);
+  border-top-color: #ff7878;
+  border-left-color: #ff7878;
   color: #fff;
 }
 
@@ -180,6 +180,7 @@
     align-items: center;
     margin: auto;
 }
+
 .sysinfo-text {
   display: inline-block;
   vertical-align: middle;
@@ -192,7 +193,6 @@
   border-top-color: #303030;
   border-left-color: #303030;
   color: black;
-  box-shadow: 2px 1px 3px black;
   min-width: 7rem;
   max-width: 20.35rem;
   width: 100%;

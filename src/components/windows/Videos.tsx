@@ -252,7 +252,7 @@ onPointerLeave={() => {
   tooltipTimer.current = null
   setTooltip(current => current?.target === 'monitor' ? null : current)
 }}>
-      <img src={featured_monitor} style= {{ objectFit: 'contain', margin: 'auto', marginLeft: 0, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
+      <img src={featured_monitor} style= {{ objectFit: 'contain', margin: 'auto', marginLeft: -2, alignSelf: 'flex-start', cursor: 'pointer', transition: 'filter 0.25s cubic-bezier(.4,2,.6,1)', filter: 'saturate(1)',}}
       onClick={randomvid}
       /></div>
       </div>
@@ -397,7 +397,7 @@ onPointerLeave={() => {
     {tooltip.kind === 'featured' ? (
   <span className="video-cursor-tooltip-title">Watch "{tooltip.title}"</span>
 ) : tooltip.kind === 'text' ? (
-  tooltip.text
+  <span className="featured-monitor-tooltip">{tooltip.text}</span>
 ) : (
   <>
     <span className="video-cursor-tooltip-title">{tooltip.title}</span>
